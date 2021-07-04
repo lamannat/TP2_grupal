@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class DevuelveTrueTest {
+public class DevuelveTrueTest {
     @Test
     public void TesteoDevuelveTrue(){
         DevuelveTrue x = new DevuelveTrue();
