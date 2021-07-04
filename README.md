@@ -1,17 +1,17 @@
 ![tp2](https://github.com/lamannat/TP2_grupal/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/lamannat/TP2_grupal/branch/master/graph/badge.svg)](https://codecov.io/gh/lamannat/TP2_grupal)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: A.L.T.E.G.O. 
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 07
 
 * **Tobias Lamanna** - [lamannat](https://github.com/lamannat)
 * **Integrante 2** - [integrante2](https://github.com/integrante2)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
-Correctores: **{Diego Sánchez, Diego Corsi}**
+Correctores: **Diego Sánchez, Diego Corsi**
 
 ## Aplicación
 
