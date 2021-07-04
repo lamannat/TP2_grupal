@@ -1,4 +1,4 @@
-![tp2](https://github.com/fiuba/algo3_proyecto_base_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+![tp2](https://github.com/lamannat/TP2_grupal/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/lamannat/TP2_grupal/branch/master/graph/badge.svg)](https://codecov.io/gh/lamannat/TP2_grupal)
 
 # TP2 Algoritmos 3: {nombre} 
 
@@ -6,16 +6,16 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
+* **Tobias Lamanna** - [lamannat](https://github.com/lamannat)
 * **Integrante 2** - [integrante2](https://github.com/integrante2)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
-Corrector: **{Corrector}**
+Correctores: **{Diego Sánchez, Diego Corsi}**
 
 ## Aplicación
 
-La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/fiuba/algo3_proyecto_base_tp2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
+La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/lamannat/TP2_grupal/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
 
 ```bash
 $ java -jar <archivo.jar>
