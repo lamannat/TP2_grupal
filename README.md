@@ -9,7 +9,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Tobias Lamanna** - [lamannat](https://github.com/lamannat)
 * **Juan Ignacio Biancuzzo** - [JuanBiancuzzo](https://github.com/JuanBiancuzzo)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Valentín Santander** - [V-SANT](https://github.com/V-SANT)
 
 Correctores: **Diego Sánchez, Diego Corsi**
 
