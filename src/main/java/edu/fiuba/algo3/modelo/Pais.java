@@ -12,11 +12,12 @@ public class Pais {
     private String color;
     public int ejercitos;
 
+    //Este metodo va en clase Dado
     private int tirarDado(){
         int randomNum = ThreadLocalRandom.current().nextInt(1, 6 + 1);
         return randomNum;
     }
-
+    //Este metodo va en clase Dado
     private List<Integer> tirarDados(int cantidad){
 
         List<Integer> resultados = new ArrayList<>();
@@ -36,14 +37,16 @@ public class Pais {
     }
 
     public void agregarPaisLimitrofe(Pais pais){
+        //Delegar responsabilidad a clase Limitrofes
         this.limitrofes.add(pais);
 
     }
-
+    //color corresponde a clase Ejercito
     public void setColor(String color){
         this.color = color;
     }
 
+    //ejercitos corresponde a clase Ejercito
     public void agregarEjercitos(int cantidad){
         this.ejercitos += cantidad;
     }
@@ -76,7 +79,7 @@ public class Pais {
         this.ejercitos -= 1;
     }
 
-
+    //Atacar pais corresponde a la clase Batalla
     public void atacarPais(Pais pais){
 
         List<Integer> dadosAtaque, dadosDefensa;
@@ -103,7 +106,4 @@ public class Pais {
         }
 
     }
-
-
-
 }
