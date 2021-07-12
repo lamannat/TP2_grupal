@@ -38,8 +38,9 @@ public class Batalla {
     private boolean batallaValida() {
         boolean atacantePuedeLuchar = this.atacante.puedeAtacar();
         boolean sonLimitrofes = this.atacante.tienePaisLimitrofe(this.defensor);
+        boolean esAliado = this.atacante.esAliado(this.defensor);
 
-        return atacantePuedeLuchar && sonLimitrofes;
+        return atacantePuedeLuchar && sonLimitrofes && !esAliado;
     }
 
 }

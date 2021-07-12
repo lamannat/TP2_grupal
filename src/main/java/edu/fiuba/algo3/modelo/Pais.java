@@ -50,6 +50,11 @@ public class Pais {
     }
 
     public boolean tieneColor(Colores unColor) { return this.ejercitos.tieneColor(unColor); }
+
+    public boolean esAliado(Pais pais){
+        return pais.tieneColor(this.ejercitos.getColor());
+    }
 }
+
 
 

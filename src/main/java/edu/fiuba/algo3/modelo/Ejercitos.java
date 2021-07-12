@@ -61,4 +61,8 @@ public class Ejercitos {
         ejercitos.agregarEjercitos(1);
     }
 
+    public Colores getColor(){
+        return this.color;
+    }
+
 }

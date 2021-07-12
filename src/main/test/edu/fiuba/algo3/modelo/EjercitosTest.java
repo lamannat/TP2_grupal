@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class EjercitosTest {
+public class EjercitosTest {
     @Test
     public void unEjercitosNoPuedeAtacarPorDefecto() {
         Ejercitos e = new Ejercitos(Colores.MAGENTA);

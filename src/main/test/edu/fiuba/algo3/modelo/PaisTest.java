@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -14,13 +13,16 @@ import static org.mockito.Mockito.when;
 public class PaisTest {
 
     @Test
-    public void PaisConquistaAOtroPais(){
+    public void paisEmpiezaConUnaFichaYNoPuedeAtacar(){
+        Pais pais = new Pais("Temeria", Colores.VERDE);
+        assertFalse(pais.puedeAtacar());
+    }
+
+    @Test
+    public void paisConquistaAOtroPais(){
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria", Colores.VERDE);
         paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
-
-        paisAtacante.agregarEjercitos(1);
-        paisDefensor.agregarEjercitos(1);
 
         paisDefensor.conquistadoPor(paisAtacante);
 
