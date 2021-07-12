@@ -55,9 +55,6 @@ public class PaisTest {
         when(dado.tirarDados(2)).thenReturn(numsDadosDefensor);
         batalla.comenzarBatalla(dado);
 
-        Ejercitos ejercitoAtacante = paisAtacante.atacoConEjercito();
-        Ejercitos ejercitoDefensor = paisDefensor.atacoConEjercito();
-
         assertTrue(paisDefensor.tieneColor(Colores.VERDE));
     }
 
@@ -82,9 +79,6 @@ public class PaisTest {
 
         when(dado.tirarDados(2)).thenReturn(numsDados);
         batalla.comenzarBatalla(dado);
-
-        Ejercitos ejercitoAtacante = paisAtacante.atacoConEjercito();
-        Ejercitos ejercitoDefensor = paisDefensor.atacoConEjercito();
 
         assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
     }
