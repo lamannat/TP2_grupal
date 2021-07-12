@@ -13,7 +13,8 @@ public class PaisTest {
         paisAtacante.agregarEjercitos(1);
         paisDefensor.agregarEjercitos(1);
 
-        paisAtacante.atacarPais(paisDefensor);
+        Dado dado = new Dado(); // despues reemplazar con mockito
+        paisAtacante.atacarPais(paisDefensor, dado);
 
         int menorEjercito;
 

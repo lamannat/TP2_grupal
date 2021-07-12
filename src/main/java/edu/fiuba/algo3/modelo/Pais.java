@@ -12,24 +12,6 @@ public class Pais {
     private String color;
     public int ejercitos;
 
-    //Este metodo va en clase Dado
-    private int tirarDado(){
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 6 + 1);
-        return randomNum;
-    }
-    //Este metodo va en clase Dado
-    private List<Integer> tirarDados(int cantidad){
-
-        List<Integer> resultados = new ArrayList<>();
-
-        for(int i = 0; i < cantidad; i++){
-            int tmp = tirarDado();
-            resultados.add(tmp);
-        }
-        Collections.sort(resultados, Collections.reverseOrder());
-        return resultados;
-    }
-
     public Pais(String nombre) {
         this.nombre = nombre;
         this.limitrofes = new ArrayList<>();
@@ -80,14 +62,14 @@ public class Pais {
     }
 
     //Atacar pais corresponde a la clase Batalla
-    public void atacarPais(Pais pais){
+    public void atacarPais(Pais pais, Dado dado){
 
         List<Integer> dadosAtaque, dadosDefensa;
 
         if (this.ejercitos <= 1) return;
 
-        dadosAtaque = tirarDados(ejercitosParaAtaque());
-        dadosDefensa = tirarDados(pais.ejercitosParaDefensa());
+        dadosAtaque = dado.tirarDados(ejercitosParaAtaque());
+        dadosDefensa = dado.tirarDados(pais.ejercitosParaDefensa());
 
         for (int i = 0; i < dadosAtaque.size() && i < dadosDefensa.size(); i++){
 
