@@ -7,8 +7,8 @@ public class PaisTest {
     @Test
     public void ataqueEntreDosPaisesConDosEjercitos() {
         Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria");
-        paisDefensor = new Pais("Kaedwen");
+        paisAtacante = new Pais("Temeria", "Verde");
+        paisDefensor = new Pais("Kaedwen", "Violeta");
 
         paisAtacante.agregarEjercitos(1);
         paisDefensor.agregarEjercitos(1);
@@ -21,12 +21,14 @@ public class PaisTest {
         batalla.comenzarBatalla(dado);
 
         int menorEjercito;
+        Ejercitos ejercitoAtacante = paisAtacante.atacoConEjercito();
+        Ejercitos ejercitoDefensor = paisDefensor.atacoConEjercito();
 
-        if(paisAtacante.ejercitos < paisDefensor.ejercitos){
-            menorEjercito = paisAtacante.ejercitos;
+        if(ejercitoAtacante.ejercitos < ejercitoDefensor.ejercitos){
+            menorEjercito = ejercitoAtacante.ejercitos;
         }
         else{
-            menorEjercito = paisDefensor.ejercitos;
+            menorEjercito = ejercitoDefensor.ejercitos;
         }
 
         assertEquals(1, menorEjercito);

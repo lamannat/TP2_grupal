@@ -14,22 +14,32 @@ public class Batalla {
     public void comenzarBatalla(Dado dado) {
         List<Integer> dadosAtaque, dadosDefensa;
 
-        if (!this.atacante.puedeAtacar() || !this.atacante.tienePaisLimitrofe(this.defensor))
+        if (!batallaValida())
             return;
 
-        dadosAtaque = dado.tirarDados(this.atacante.ejercitosParaAtaque());
-        dadosDefensa = dado.tirarDados(this.defensor.ejercitosParaDefensa());
+        Ejercitos ejercitoAtacante = atacante.atacoConEjercito();
+        Ejercitos ejercitoDefensor = defensor.atacoConEjercito();
+
+        dadosAtaque = dado.tirarDados(ejercitoAtacante.ejercitosParaAtaque());
+        dadosDefensa = dado.tirarDados(ejercitoDefensor.ejercitosParaDefensa());
 
         int cantidadDeAtaques = Math.min(dadosAtaque.size(), dadosDefensa.size());
         for (int i = 0; i < cantidadDeAtaques; i++){
             if(dadosAtaque.get(i) > dadosDefensa.get(i))
-                this.defensor.pierdeEjercito();
+                ejercitoDefensor.pierdeEjercitos(1);
             else
-                this.atacante.pierdeEjercito();
+                ejercitoAtacante.pierdeEjercitos(1);
         }
 
-        if (this.defensor.perdioBatalla())
+        if (ejercitoDefensor.perdioBatalla())
             this.defensor.conquistadoPor(this.atacante);
+    }
+
+    private boolean batallaValida() {
+        boolean atacantePuedeLuchar = this.atacante.puedeAtacar();
+        boolean sonLimitrofes = this.atacante.tienePaisLimitrofe(this.defensor);
+
+        return atacantePuedeLuchar && sonLimitrofes;
     }
 
 }

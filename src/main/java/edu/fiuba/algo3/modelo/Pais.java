@@ -8,58 +8,38 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Pais {
 
     private final String nombre;
-    private Limitrofes limitrofes;
-    private String color;
-    public int ejercitos;
+    private final Limitrofes limitrofes;
+    private final Ejercitos ejercitos;
 
-    public Pais(String nombre) {
+    public Pais(String nombre, String color) {
         this.nombre = nombre;
         this.limitrofes = new Limitrofes();
-        this.ejercitos = 1;
+        this.ejercitos = new Ejercitos(color);
     }
 
     public void agregarPaisLimitrofe(Pais pais){
         this.limitrofes.agregarPaisLimitrofe(pais);
     }
-    //color corresponde a clase Ejercito
-    public void setColor(String color){
-        this.color = color;
+
+    public Ejercitos atacoConEjercito() {
+        return ejercitos;
     }
 
-    //ejercitos corresponde a clase Ejercito
-    public void agregarEjercitos(int cantidad){
-        this.ejercitos += cantidad;
-    }
-
-    // cambiar el 3 para que sea una variable estatica final
-    public int ejercitosParaAtaque(){
-        return Math.min(this.ejercitos - 1, 3);
-    }
-
-    public int ejercitosParaDefensa(){
-        return Math.min(this.ejercitos, 3);
+    public void agregarEjercitos(int cantidad) {
+        ejercitos.agregarEjercitos(cantidad);
     }
 
     public boolean puedeAtacar() {
-        return this.ejercitos > 1;
+        return this.ejercitos.puedeAtacar();
     }
 
     public boolean perdioBatalla() {
-        return this.ejercitos < 1;
-    }
-
-    public void pierdeEjercito(){
-        this.ejercitos -= 1;
+        return this.ejercitos.perdioBatalla();
     }
 
     public void conquistadoPor(Pais pais) {
-        pais.conquistar(this);
-    }
-
-    public void conquistar(Pais pais) {
-        pais.setColor(this.color);
-        pais.agregarEjercitos(1);
-        this.ejercitos -= 1;
+        Ejercitos ejercito = pais.atacoConEjercito();
+        ejercito.conquistadoPor(this.ejercitos);
     }
 
     public boolean tienePaisLimitrofe(Pais pais) {
