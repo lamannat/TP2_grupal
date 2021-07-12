@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 public class Batalla {
-    private Pais defensor;
-    private Pais atacante;
+    private final Pais defensor;
+    private final Pais atacante;
 
     public Batalla(Pais defensor, Pais atacante) {
         this.defensor = defensor;
@@ -14,7 +14,7 @@ public class Batalla {
     public void comenzarBatalla(Dado dado) {
         List<Integer> dadosAtaque, dadosDefensa;
 
-        if (!this.atacante.puedeAtacar())
+        if (!this.atacante.puedeAtacar() || !this.atacante.tienePaisLimitrofe(this.defensor))
             return;
 
         dadosAtaque = dado.tirarDados(this.atacante.ejercitosParaAtaque());

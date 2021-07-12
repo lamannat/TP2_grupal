@@ -8,20 +8,18 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Pais {
 
     private final String nombre;
-    private List<Pais> limitrofes;
+    private Limitrofes limitrofes;
     private String color;
     public int ejercitos;
 
     public Pais(String nombre) {
         this.nombre = nombre;
-        this.limitrofes = new ArrayList<>();
+        this.limitrofes = new Limitrofes();
         this.ejercitos = 1;
     }
 
     public void agregarPaisLimitrofe(Pais pais){
-        //Delegar responsabilidad a clase Limitrofes
-        this.limitrofes.add(pais);
-
+        this.limitrofes.agregarPaisLimitrofe(pais);
     }
     //color corresponde a clase Ejercito
     public void setColor(String color){
@@ -62,5 +60,9 @@ public class Pais {
         pais.setColor(this.color);
         pais.agregarEjercitos(1);
         this.ejercitos -= 1;
+    }
+
+    public boolean tienePaisLimitrofe(Pais pais) {
+        return this.limitrofes.esLimitrofe(pais);
     }
 }

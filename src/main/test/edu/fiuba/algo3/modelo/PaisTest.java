@@ -13,6 +13,9 @@ public class PaisTest {
         paisAtacante.agregarEjercitos(1);
         paisDefensor.agregarEjercitos(1);
 
+        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+        paisDefensor.agregarPaisLimitrofe(paisAtacante);
+
         Dado dado = new Dado(); // despues reemplazar con mockito
         Batalla batalla = new Batalla(paisAtacante, paisDefensor);
         batalla.comenzarBatalla(dado);
