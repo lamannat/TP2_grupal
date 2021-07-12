@@ -47,7 +47,7 @@ public class Pais {
     }
 
     public boolean perdioBatalla() {
-        return this.ejercitos <= 1;
+        return this.ejercitos < 1;
     }
 
     public void pierdeEjercito(){
