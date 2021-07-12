@@ -11,7 +11,7 @@ public class Pais {
     private final Limitrofes limitrofes;
     private final Ejercitos ejercitos;
 
-    public Pais(String nombre, String color) {
+    public Pais(String nombre, Colores color) {
         this.nombre = nombre;
         this.limitrofes = new Limitrofes();
         this.ejercitos = new Ejercitos(color);

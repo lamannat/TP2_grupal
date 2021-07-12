@@ -1,16 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
+enum Colores {
+    ROJO,
+    AZUL,
+    MAGENTA,
+    VERDE,
+    AMARILLO,
+    NEGRO
+}
+
 public class Ejercitos {
-    private String color;
+    private Colores color;
     public int ejercitos;
     private final static int cantidadMaximaDeEjercitos = 3;
 
-    public Ejercitos(String color) {
+    public Ejercitos(Colores color) {
         setColor(color);
         this.ejercitos = 1;
     }
 
-    public void setColor(String color) {
+    public void setColor(Colores color) {
         this.color = color;
     }
 
@@ -20,6 +29,7 @@ public class Ejercitos {
     }
 
     public void pierdeEjercitos(int cantidad) {
+
         this.ejercitos -= cantidad;
     }
 
@@ -31,6 +41,8 @@ public class Ejercitos {
         return Math.min(this.ejercitos, cantidadMaximaDeEjercitos);
     }
 
+    public boolean tieneColor(Colores unColor) { return this.color.equals(unColor); }
+
     public boolean puedeAtacar() {
         return this.ejercitos > 1;
     }
@@ -41,12 +53,12 @@ public class Ejercitos {
 
     public void conquistadoPor(Ejercitos ejercitos) {
         ejercitos.conquistar(this);
+        this.pierdeEjercitos(1);
     }
 
-    public void conquistar(Ejercitos ejercitos) {
+    private void conquistar(Ejercitos ejercitos) {
         ejercitos.setColor(this.color);
         ejercitos.agregarEjercitos(1);
-        ejercitos.pierdeEjercitos(1);
     }
 
 }

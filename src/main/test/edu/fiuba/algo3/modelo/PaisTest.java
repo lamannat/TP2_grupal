@@ -7,8 +7,8 @@ public class PaisTest {
     @Test
     public void ataqueEntreDosPaisesConDosEjercitos() {
         Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria", "Verde");
-        paisDefensor = new Pais("Kaedwen", "Violeta");
+        paisAtacante = new Pais("Temeria", Colores.VERDE);
+        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
 
         paisAtacante.agregarEjercitos(1);
         paisDefensor.agregarEjercitos(1);
