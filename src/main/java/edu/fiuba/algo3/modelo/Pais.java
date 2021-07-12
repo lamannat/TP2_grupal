@@ -33,59 +33,34 @@ public class Pais {
         this.ejercitos += cantidad;
     }
 
+    // cambiar el 3 para que sea una variable estatica final
     public int ejercitosParaAtaque(){
-        int ejercitos;
-        if(this.ejercitos >= 4){
-            ejercitos = 3;
-        }
-        else{
-            ejercitos = this.ejercitos-1;
-        }
-
-        return ejercitos;
+        return Math.min(this.ejercitos - 1, 3);
     }
 
     public int ejercitosParaDefensa(){
-        int ejercitos;
-        if(this.ejercitos >= 3){
-            ejercitos = 3;
-        }
-        else{
-            ejercitos = this.ejercitos;
-        }
+        return Math.min(this.ejercitos, 3);
+    }
 
-        return ejercitos;
+    public boolean puedeAtacar() {
+        return this.ejercitos > 1;
+    }
+
+    public boolean perdioBatalla() {
+        return this.ejercitos <= 1;
     }
 
     public void pierdeEjercito(){
         this.ejercitos -= 1;
     }
 
-    //Atacar pais corresponde a la clase Batalla
-    public void atacarPais(Pais pais, Dado dado){
+    public void conquistadoPor(Pais pais) {
+        pais.conquistar(this);
+    }
 
-        List<Integer> dadosAtaque, dadosDefensa;
-
-        if (this.ejercitos <= 1) return;
-
-        dadosAtaque = dado.tirarDados(ejercitosParaAtaque());
-        dadosDefensa = dado.tirarDados(pais.ejercitosParaDefensa());
-
-        for (int i = 0; i < dadosAtaque.size() && i < dadosDefensa.size(); i++){
-
-            if(dadosAtaque.get(i) > dadosDefensa.get(i)){
-                pais.pierdeEjercito();
-            }
-            else{
-                pierdeEjercito();
-            }
-        }
-
-        if(pais.ejercitos == 0){
-            pais.setColor(this.color);
-            pais.agregarEjercitos(1);
-            pierdeEjercito();
-        }
-
+    public void conquistar(Pais pais) {
+        pais.setColor(this.color);
+        pais.agregarEjercitos(1);
+        this.ejercitos -= 1;
     }
 }
