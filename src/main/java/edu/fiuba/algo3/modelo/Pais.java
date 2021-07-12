@@ -18,7 +18,10 @@ public class Pais {
     }
 
     public void agregarPaisLimitrofe(Pais pais){
-        this.limitrofes.agregarPaisLimitrofe(pais);
+        if (!this.limitrofes.esLimitrofe(pais))
+            this.limitrofes.agregarPaisLimitrofe(pais);
+        if (!pais.tienePaisLimitrofe(this))
+            pais.agregarPaisLimitrofe(this);
     }
 
     public Ejercitos atacoConEjercito() {
