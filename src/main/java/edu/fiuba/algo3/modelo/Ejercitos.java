@@ -12,7 +12,7 @@ enum Colores {
 public class Ejercitos {
     private Colores color;
     public int ejercitos;
-    private final static int cantidadMaximaDeEjercitos = 3;
+    private final static int cantidadMaximaDeEjercitos = 3; //esto esta mal, es la cantidad maxima de dados, no de ejercitos.
 
     public Ejercitos(Colores color) {
         setColor(color);
@@ -51,14 +51,14 @@ public class Ejercitos {
         return this.ejercitos < 1;
     }
 
-    public void conquistadoPor(Ejercitos ejercitos) {
-        ejercitos.conquistar(this);
+    public void conquistadoPor(Ejercitos ejercitosAtacantes) {
+        ejercitosAtacantes.conquistar(this);
         this.pierdeEjercitos(1);
     }
 
-    private void conquistar(Ejercitos ejercitos) {
-        ejercitos.setColor(this.color);
-        ejercitos.agregarEjercitos(1);
+    private void conquistar(Ejercitos ejercitosConquistados) {
+        ejercitosConquistados.setColor(this.color);
+        ejercitosConquistados.agregarEjercitos(1);
     }
 
     public Colores getColor(){

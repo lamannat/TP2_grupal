@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -16,6 +15,29 @@ public class PaisTest {
     public void paisEmpiezaConUnaFichaYNoPuedeAtacar(){
         Pais pais = new Pais("Temeria", Colores.VERDE);
         assertFalse(pais.puedeAtacar());
+    }
+
+    @Test
+    public void paisEmpiezaConUnaFichaPuedeAtacarSiSeAgregaFicha(){
+        Pais pais = new Pais("Temeria", Colores.VERDE);
+        pais.agregarEjercitos(1);
+        assertTrue(pais.puedeAtacar());
+    }
+
+    @Test
+    public void agregarUnPaisLimitrofeHaceAlPaisAgregadoLimitrofe(){
+        Pais pais = new Pais("Temeria", Colores.VERDE);
+        Pais paisLimitrofe = new Pais("Redania", Colores.VERDE);
+        pais.agregarPaisLimitrofe(paisLimitrofe);
+        assertTrue(pais.tienePaisLimitrofe(paisLimitrofe));
+    }
+
+    @Test
+    public void agregarUnPaisLimitrofeHaceAlPaisAgregadoLimitrofeReciprocamente(){
+        Pais pais = new Pais("Temeria", Colores.VERDE);
+        Pais paisLimitrofe = new Pais("Redania", Colores.VERDE);
+        pais.agregarPaisLimitrofe(paisLimitrofe);
+        assertTrue(paisLimitrofe.tienePaisLimitrofe(pais));
     }
 
     @Test
@@ -30,7 +52,7 @@ public class PaisTest {
     }
 
     @Test
-    public void ataqueEntreDosPaisesGanaAtacanteConMockito(){
+    public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria", Colores.VERDE);
         paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
@@ -39,7 +61,6 @@ public class PaisTest {
         paisDefensor.agregarEjercitos(1);
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
-        paisDefensor.agregarPaisLimitrofe(paisAtacante);
 
         Dado dado = mock(Dado.class); // mockito
         Batalla batalla = new Batalla(paisDefensor, paisAtacante);
@@ -61,7 +82,7 @@ public class PaisTest {
     }
 
     @Test
-    public void ataqueEntreDosPaisesAtacanteNoConquistaConMockito(){
+    public void aataqueEntreDosPaisesSiAtacantePierdeElDefensorMantieneSuColor(){
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria", Colores.VERDE);
         paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
@@ -70,7 +91,6 @@ public class PaisTest {
         paisDefensor.agregarEjercitos(1);
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
-        paisDefensor.agregarPaisLimitrofe(paisAtacante);
 
         Dado dado = mock(Dado.class); // mockito
         Batalla batalla = new Batalla(paisDefensor, paisAtacante);

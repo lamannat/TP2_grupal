@@ -24,9 +24,7 @@ public class Pais {
             pais.agregarPaisLimitrofe(this);
     }
 
-    public Ejercitos atacoConEjercito() {
-        return ejercitos;
-    }
+    public Ejercitos atacoConEjercito() { return ejercitos; } //Este metodo deberia ser privado y solo usarse para llamar a Batalla. Refactorizar Batalla
 
     public void agregarEjercitos(int cantidad) {
         ejercitos.agregarEjercitos(cantidad);
