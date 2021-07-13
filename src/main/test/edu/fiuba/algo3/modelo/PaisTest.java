@@ -82,7 +82,7 @@ public class PaisTest {
     }
 
     @Test
-    public void aataqueEntreDosPaisesSiAtacantePierdeElDefensorMantieneSuColor(){
+    public void ataqueEntreDosPaisesSiAtacantePierdeElDefensorMantieneSuColor(){
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria", Colores.VERDE);
         paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
