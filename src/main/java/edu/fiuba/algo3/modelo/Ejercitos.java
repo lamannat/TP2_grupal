@@ -1,14 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-enum Colores {
-    ROJO,
-    AZUL,
-    MAGENTA,
-    VERDE,
-    AMARILLO,
-    NEGRO
-}
-
 public class Ejercitos {
     private Colores color;
     public int ejercitos;
