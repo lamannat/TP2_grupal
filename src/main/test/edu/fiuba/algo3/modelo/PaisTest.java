@@ -46,7 +46,7 @@ public class PaisTest {
         paisAtacante = new Pais("Temeria", Colores.VERDE);
         paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
 
-        paisDefensor.conquistadoPor(paisAtacante);
+        paisAtacante.conquista(paisDefensor);
 
         assertTrue(paisDefensor.tieneColor(Colores.VERDE));
     }

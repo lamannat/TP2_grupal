@@ -38,7 +38,7 @@ public class EjercitosTest {
         assertTrue(a.tieneColor(Colores.VERDE));
         assertTrue(b.tieneColor(Colores.AZUL));
 
-        b.conquistadoPor(a);
+        a.conquista(b);
 
         assertTrue(a.tieneColor(Colores.VERDE));
         assertFalse(b.tieneColor(Colores.AZUL));

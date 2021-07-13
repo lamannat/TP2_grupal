@@ -42,14 +42,10 @@ public class Ejercitos {
         return this.ejercitos < 1;
     }
 
-    public void conquistadoPor(Ejercitos ejercitosAtacantes) {
-        ejercitosAtacantes.conquistar(this);
+    public void conquista(Ejercitos conquistado) {
+        conquistado.setColor(this.color);
+        conquistado.agregarEjercitos(1);
         this.pierdeEjercitos(1);
-    }
-
-    private void conquistar(Ejercitos ejercitosConquistados) {
-        ejercitosConquistados.setColor(this.color);
-        ejercitosConquistados.agregarEjercitos(1);
     }
 
     public Colores getColor(){
