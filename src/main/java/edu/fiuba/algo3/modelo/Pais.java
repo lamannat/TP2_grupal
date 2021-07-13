@@ -38,9 +38,9 @@ public class Pais {
         return this.ejercitos.perdioBatalla();
     }
 
-    public void conquistadoPor(Pais pais) {
-        Ejercitos ejercito = pais.atacoConEjercito();
-        this.ejercitos.conquistadoPor(ejercito);
+    public void conquista(Pais conquistado) {
+        Ejercitos ejercitoConquistado = conquistado.atacoConEjercito();
+        this.ejercitos.conquista(ejercitoConquistado);
     }
 
     public boolean tienePaisLimitrofe(Pais pais) {

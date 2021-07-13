@@ -32,7 +32,8 @@ public class Batalla {
         }
 
         if (ejercitoDefensor.perdioBatalla())
-            this.defensor.conquistadoPor(this.atacante);
+            this.atacante.conquista(this.defensor);
+//            this.defensor.conquistadoPor(this.atacante);
     }
 
     private boolean batallaValida() {
