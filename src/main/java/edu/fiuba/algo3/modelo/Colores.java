@@ -6,5 +6,5 @@ enum Colores {
     MAGENTA,
     VERDE,
     AMARILLO,
-    NEGRO
+    NEGRO,
 }

@@ -6,6 +6,12 @@ public class Pais {
     private final Limitrofes limitrofes;
     private final Ejercitos ejercitos;
 
+    public Pais(String nombre) {
+        this.nombre = nombre;
+        this.limitrofes = new Limitrofes();
+        this.ejercitos = new Ejercitos(Colores.SIN_COLOR);
+    }
+
     public Pais(String nombre, Colores color) {
         this.nombre = nombre;
         this.limitrofes = new Limitrofes();
@@ -65,6 +71,10 @@ public class Pais {
     public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion {
         puedeAtacarAPais(paisDefensor);
         paisDefensor.seDefiendeDe(this.ejercitos);
+    }
+
+    public boolean tieneNombre(String unNombre){
+        return (this.nombre == unNombre);
     }
 }
 
