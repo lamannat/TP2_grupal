@@ -1,10 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Pais {
 
     private final String nombre;
@@ -24,26 +19,15 @@ public class Pais {
             pais.agregarPaisLimitrofe(this);
     }
 
-    public Ejercitos atacoConEjercito() { return ejercitos; } //Este metodo deberia ser privado y solo usarse para llamar a Batalla. Refactorizar Batalla
+    private Ejercitos atacoConEjercito() { return ejercitos; }
 
     public void agregarEjercitos(int cantidad) {
         ejercitos.agregarEjercitos(cantidad);
     }
 
-    public boolean puedeAtacar() {
-        return this.ejercitos.puedeAtacar();
-    }
-
-//    public void conquista(Pais conquistado) {
-//        Ejercitos ejercitoConquistado = conquistado.atacoConEjercito();
-//        this.ejercitos.conquista(ejercitoConquistado);
-//    }
-
     public boolean tienePaisLimitrofe(Pais pais) {
         return this.limitrofes.esLimitrofe(pais);
     }
-
-    public boolean tieneColor(Colores unColor) { return this.ejercitos.tieneColor(unColor); }
 
     public void atacaPais(Pais pais, Dado dado) {
         if (!puedeAtacarAPais(pais))
@@ -64,9 +48,16 @@ public class Pais {
         return puedeAtacar && esLimitrofe && !esAleado;
     }
 
-    public boolean esAliado(Pais pais){
+    private boolean esAliado(Pais pais){
         return pais.tieneColor(this.ejercitos.getColor());
     }
+
+    public boolean puedeAtacar() {
+        return this.ejercitos.puedeAtacar();
+    }
+
+    public boolean tieneColor(Colores unColor) { return this.ejercitos.tieneColor(unColor); }
+
 }
 
 
