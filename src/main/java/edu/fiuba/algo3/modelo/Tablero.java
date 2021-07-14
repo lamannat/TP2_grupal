@@ -6,76 +6,76 @@ import java.util.List;
 public class Tablero {
 
     private final List<Pais> paises;
+    private final List<Continente> continentes;
+    private List<Jugador> jugadores;
 
     public Tablero() {
-
-        //paises = crearPaises();
         paises = new ArrayList<>();
+        continentes = new ArrayList<>();
+        jugadores = new ArrayList<>();
     }
 
-    public void agregarPais(Pais pais){
-        paises.add(pais);
+    public void agregarJugador(Jugador unJugador) {
+        jugadores.add(unJugador);
     }
 
-    /*private List<Pais> crearPaises() {
 
-        List paises = new ArrayList();
+    private void agregarContinentes(List<String> continenteYPaises) {
+        Continente continente = new Continente(continenteYPaises.get(0));
 
-        paises.add(new Pais("Argentina"));
-        paises.add(new Pais("Chile"));
-        paises.add(new Pais("Uruguay"));
-        paises.add(new Pais("Brasil"));
-        paises.add(new Pais("Peru"));
-        paises.add(new Pais("Colombia"));
+        for (int i = 1; i < continenteYPaises.size(); i++) {
+            Pais pais = new Pais(continenteYPaises.get(i));
+            continente.agregarPais(pais);
+            paises.add(pais);
+        }
+    }
 
-        paises.add(new Pais("Mexico"));
-        paises.add(new Pais("California"));
-        paises.add(new Pais("Oregon"));
-        paises.add(new Pais("Nueva York"));
-        paises.add(new Pais("Terranova"));
-        paises.add(new Pais("Labrador"));
-        paises.add(new Pais("Groenlandia"));
-        paises.add(new Pais("Canada"));
-        paises.add(new Pais("Yukon"));
-        paises.add(new Pais("Alaska"));
+    private Pais encontrarPais(String nombrePais) {
+        for (Pais pais : this.paises) {
+            boolean esNombre = pais.tieneNombre(nombrePais);
+            if (esNombre) {
+                return pais;
+            }
+        }
+    }
 
-        paises.add(new Pais("Islandia"));
-        paises.add(new Pais("Gran Bretaña"));
-        paises.add(new Pais("España"));
-        paises.add(new Pais("Francia"));
-        paises.add(new Pais("Italia"));
-        paises.add(new Pais("Alemania"));
-        paises.add(new Pais("Polonia"));
-        paises.add(new Pais("Rusia"));
-        paises.add(new Pais("Suecia"));
+    private void agregrarLimitrofes(List<String> paisYLimitrofes) {
 
-        paises.add(new Pais("Sahara"));
-        paises.add(new Pais("Etiopío"));
-        paises.add(new Pais("Egipto"));
-        paises.add(new Pais("Zaire"));
-        paises.add(new Pais("Sudafrica"));
-        paises.add(new Pais("Madagascar"));
+        String nombrePais = paisYLimitrofes.get(0);
+        Pais pais = encontrarPais(nombrePais);
 
-        paises.add(new Pais("Australia"));
-        paises.add(new Pais("Java"));
-        paises.add(new Pais("Borneo"));
-        paises.add(new Pais("Sumatra"));
+        for (int i = 1; i < paisYLimitrofes.size(); i++) {
+            Pais limitrofe = encontrarPais(paisYLimitrofes.get(i));
+            pais.agregarPaisLimitrofe(limitrofe);
+        }
+    }
 
-        paises.add(new Pais("Arabia"));
-        paises.add(new Pais("Israel"));
-        paises.add(new Pais("Turquia"));
-        paises.add(new Pais("Iran"));
-        paises.add(new Pais("Aral"));
-        paises.add(new Pais("India"));
-        paises.add(new Pais("Malasia"));
-        paises.add(new Pais("China"));
-        paises.add(new Pais("Gobi"));
-        paises.add(new Pais("Mongolia"));
-        paises.add(new Pais("Siberia"));
-        paises.add(new Pais("Taymir"));
-        paises.add(new Pais("Tartaria"));
-        paises.add(new Pais("Kamchatka"));
-        paises.add(new Pais("Japon"));
+    public void asignarPaises() {
 
-    }*/
+        List<Pais> copiaPaises = new ArrayList<Pais>(this.paises);
+
+        int contador = 0;
+        while (copiaPaises.size() > 0) {
+            int min = 0;
+            int max = copiaPaises.size() - 1;
+            int i = (int) Math.floor(Math.random() * (max - min + 1) + min);
+            this.jugadores.get(contador).agregarPais(copiaPaises.get(i));
+            copiaPaises.remove(i);
+            contador = (contador + 1) % this.jugadores.size();
+        }
+    }
+
+
+//    public Tablero(List<Jugadores> jugadores){
+//
+//        for (int i; i<3; i+=1){
+//            Pais p = new Pais(nombresPaises[i]);
+//            this.paises.add(p);
+//        }
+//        int paisesPorJugador = this.paises.size()/Jugadores.size();
+//
+//        tablero.repartirPaises(paisesPorJugador, jugadores);
+//
+//    }
+
 }

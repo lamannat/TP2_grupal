@@ -19,4 +19,8 @@ public class Jugador {
         this.paises.add(pais);
         pais.setColor(this.color);
     }
+
+    public int cuantosPaisesConquistados(){
+        return paises.size();
+    }
 }
