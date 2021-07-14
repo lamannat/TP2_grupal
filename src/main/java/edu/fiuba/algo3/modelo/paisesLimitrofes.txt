@@ -1,50 +1,50 @@
-Chile:Australia,Argentina,Peru
-Argentina:Chile,Uruguay,Brasil,Peru
-Uruguay:Argentina,Brasil
-Peru:Chile,Argentina,Brasil,Colombia
-Brasil:Uruguay,Argentina,Peru,Colombia,Sahara
-Colombia:Mexico,Peru,Brasil
-Mexico:Colombia,California
-California:Oregon,Nueva York,Mexico
-Oregon:Nueva York,California,Alaska,Yukon,Canada
-Alaska:Kamchatka,Yukon,Oregon
+Chile,Australia,Argentina,Peru
+Argentina,Chile,Uruguay,Brasil,Peru
+Uruguay,Argentina,Brasil
+Peru,Chile,Argentina,Brasil,Colombia
+Brasil,Uruguay,Argentina,Peru,Colombia,Sahara
+Colombia,Mexico,Peru,Brasil
+Mexico,Colombia,California
+California,Oregon,Nueva York,Mexico
+Oregon,Nueva York,California,Alaska,Yukon,Canada
+Alaska,Kamchatka,Yukon,Oregon
 Yukon,Oregon,Alaska,Canada
-Canada:Yukon,Oregon,Nueva York,Terranova
-Nueva York:Oregon,California,Canada,Terranova,Groenlandia
-Terranova:Nueva York,Canada,Labrador
-Labrador:Terranova,Groenlandia
-Groenlandia:Labrador,Nueva York,Islandia
-Islandia:Groenlandia,Suecia,Gran Bretaña
-Gran Bretaña:Islandia,España,Alemania
-España:Gran Bretaña,Sahara
-Francia:España,Alemania,Italia
-Alemania:Gran Bretaña,Polonia,Italia,Francia
-Italia:Francia,Alemania
-Suecia:Islandia,Rusia
-Polonia:Egipto,Alemania,Rusia,Turquia
-Rusia:Suecia,Polonia,Turquia,Iran,Aral
-Sahara:Brasil,España,Zaire,Etiopia,Egipto
-Zaire:Sahara,Madagascar,Sudafrica,Etiopia
-Etiopia:Zaire,Sahara,Sudafrica,Egipto
-Sudafrica:Zaire,Etiopia
-Madagascar:Zaire,Egipto
-Egipto:Sahara,Etiopia,Madagascar,Polonia,Turquia,Israel
-Turquia:Polonia,Rusia,Iran,Israel,Arabia,Egipto
-Israel:Egipto,Turquia,Arabia
-Arabia:Israel,Turquia
-Iran:Turquia,Rusia,Aral,Mongolia,Gobi,China,India
-Aral:Rusia,Iran,Tartaria,Siberia,Mongolia
-Tartaria:Aral,Siberia,Taymir
-Taymir:Tartaria,Siberia
-Siberia:Aral,Mongolia,Tartaria,Taymir,Kamchatka,China
-Mongolia:Aral,Iran,Gobi,Siberia,China
-Gobi:China,Mongolia,Iran
-China:Kanchatka,Japon,Siberia,Mongolia,Gobi,Iran,India,Malasia
-Kanchatka:Siberia,China,Japon,Alaska,
-Japon:Kanchatka,China
-India:Sumatra,China,Iran,Malasia
-Malasia:China,India,Borneo
-Sumatra:India,Australia
-Australia:Sumatra,Borneo,Java
-Borneo:Malasia,Australia
-Java:Australia
+Canada,Yukon,Oregon,Nueva York,Terranova
+Nueva York,Oregon,California,Canada,Terranova,Groenlandia
+Terranova,Nueva York,Canada,Labrador
+Labrador,Terranova,Groenlandia
+Groenlandia,Labrador,Nueva York,Islandia
+Islandia,Groenlandia,Suecia,Gran Bretaña
+Gran Bretaña,Islandia,España,Alemania
+España,Gran Bretaña,Sahara
+Francia,España,Alemania,Italia
+Alemania,Gran Bretaña,Polonia,Italia,Francia
+Italia,Francia,Alemania
+Suecia,Islandia,Rusia
+Polonia,Egipto,Alemania,Rusia,Turquia
+Rusia,Suecia,Polonia,Turquia,Iran,Aral
+Sahara,Brasil,España,Zaire,Etiopia,Egipto
+Zaire,Sahara,Madagascar,Sudafrica,Etiopia
+Etiopia,Zaire,Sahara,Sudafrica,Egipto
+Sudafrica,Zaire,Etiopia
+Madagascar,Zaire,Egipto
+Egipto,Sahara,Etiopia,Madagascar,Polonia,Turquia,Israel
+Turquia,Polonia,Rusia,Iran,Israel,Arabia,Egipto
+Israel,Egipto,Turquia,Arabia
+Arabia,Israel,Turquia
+Iran,Turquia,Rusia,Aral,Mongolia,Gobi,China,India
+Aral,Rusia,Iran,Tartaria,Siberia,Mongolia
+Tartaria,Aral,Siberia,Taymir
+Taymir,Tartaria,Siberia
+Siberia,Aral,Mongolia,Tartaria,Taymir,Kamchatka,China
+Mongolia,Aral,Iran,Gobi,Siberia,China
+Gobi,China,Mongolia,Iran
+China,Kanchatka,Japon,Siberia,Mongolia,Gobi,Iran,India,Malasia
+Kanchatka,Siberia,China,Japon,Alaska,
+Japon,Kanchatka,China
+India,Sumatra,China,Iran,Malasia
+Malasia,China,India,Borneo
+Sumatra,India,Australia
+Australia,Sumatra,Borneo,Java
+Borneo,Malasia,Australia
+Java,Australia
