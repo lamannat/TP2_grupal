@@ -52,6 +52,10 @@ public class Pais {
     public boolean esAliado(Pais pais){
         return pais.tieneColor(this.ejercitos.getColor());
     }
+
+    public boolean perteneceAContinente(Continente continente){return continente.tienePais(this); }
+
+    public void setColor(Colores color){Ejercitos.setColor(color); }
 }
 
 
