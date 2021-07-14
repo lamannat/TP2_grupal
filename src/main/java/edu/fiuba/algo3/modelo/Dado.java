@@ -22,4 +22,19 @@ public class Dado {
         return resultados;
     }
 
+    static int tirarDadoDeClase() {
+        return ThreadLocalRandom.current().nextInt(1, 6 + 1);
+    }
+
+    static List<Integer> tirarDadosDeClase(int cantidad) {
+
+        List<Integer> resultados = new ArrayList<>();
+
+        for (int i = 0; i < cantidad; i++)
+            resultados.add(tirarDadoDeClase());
+
+        Collections.sort(resultados, Collections.reverseOrder());
+        return resultados;
+    }
+
 }

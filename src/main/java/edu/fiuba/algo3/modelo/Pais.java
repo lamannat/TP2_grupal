@@ -56,6 +56,14 @@ public class Pais {
     public boolean perteneceAContinente(Continente continente){return continente.tienePais(this); }
 
     public void setColor(Colores color){ejercitos.setColor(color); }
+
+    public void seDefiendeDe(Ejercitos ejercitoAtacante) throws EsPaisAliadoException {
+        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, this.ejercitos);
+    }
+
+    public void paisAtacaAPais(Pais paisDefensor) throws EsPaisAliadoException {
+        paisDefensor.seDefiendeDe(this.ejercitos);
+    }
 }
 
 

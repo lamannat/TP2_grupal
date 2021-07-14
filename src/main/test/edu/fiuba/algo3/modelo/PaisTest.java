@@ -105,5 +105,24 @@ public class PaisTest {
         assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
     }
 
+    @Test
+    public void ataqueConMetodosDeClaseDeBatallaYDado(){
+        Pais paisAtacante, paisDefensor;
+        paisAtacante = new Pais("Temeria", Colores.VERDE);
+        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
+
+        paisAtacante.agregarEjercitos(20);
+
+        assertThrows(EsPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
+                ()->{
+                    paisAtacante.paisAtacaAPais(paisDefensor);
+                    paisAtacante.paisAtacaAPais(paisDefensor);
+                    paisAtacante.paisAtacaAPais(paisDefensor);
+                    paisAtacante.paisAtacaAPais(paisDefensor);
+                    paisAtacante.paisAtacaAPais(paisDefensor);
+                });
+        assertTrue(paisDefensor.tieneColor(Colores.VERDE)); //cambia de color porque despues de 5 ataques seguro perdio
+    }
+
 
 }

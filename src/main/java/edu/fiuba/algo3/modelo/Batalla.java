@@ -44,4 +44,25 @@ public class Batalla {
         return atacantePuedeLuchar && sonLimitrofes && !esAliado;
     }
 
+    static void ejercitoAtacaAEjercito(Ejercitos atacante, Ejercitos defensor) throws EsPaisAliadoException {
+        List<Integer> dadosAtaque, dadosDefensa;
+
+        if(atacante.esAliado(defensor)){
+            throw new EsPaisAliadoException();
+        }
+
+        dadosAtaque = Dado.tirarDadosDeClase(atacante.ejercitosParaAtaque());
+        dadosDefensa = Dado.tirarDadosDeClase(defensor.ejercitosParaDefensa());
+
+        int cantidadDeAtaques = Math.min(dadosAtaque.size(), dadosDefensa.size());
+        for (int i = 0; i < cantidadDeAtaques; i++){
+            if(dadosAtaque.get(i) > dadosDefensa.get(i))
+                defensor.pierdeEjercitos(1);
+            else
+                atacante.pierdeEjercitos(1);
+        }
+
+        if (defensor.perdioBatalla())
+            atacante.conquista(defensor);
+    }
 }

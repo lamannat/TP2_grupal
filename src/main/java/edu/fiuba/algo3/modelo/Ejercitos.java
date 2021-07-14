@@ -52,4 +52,8 @@ public class Ejercitos {
         return this.color;
     }
 
+    public boolean esAliado(Ejercitos unEjercito){
+        return (this.color == unEjercito.getColor());
+    }
+
 }
