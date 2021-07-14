@@ -7,4 +7,5 @@ enum Colores {
     VERDE,
     AMARILLO,
     NEGRO,
+    NO_ASIGNADO
 }

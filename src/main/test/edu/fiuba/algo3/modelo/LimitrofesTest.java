@@ -8,14 +8,14 @@ public class LimitrofesTest {
 
     @Test
     public void LimitrofesIniciaVacio() {
-        Pais pais = new Pais("China", Colores.ROJO);
+        Pais pais = new Pais("China");
         Limitrofes lim = new Limitrofes();
         assertFalse(lim.esLimitrofe(pais));
     }
 
     @Test
     public void agregoUnPaisALimitrofes() {
-        Pais pais = new Pais("China", Colores.VERDE);
+        Pais pais = new Pais("China");
         Limitrofes lim = new Limitrofes();
         lim.agregarPaisLimitrofe(pais);
         assertTrue(lim.esLimitrofe(pais));
@@ -23,9 +23,9 @@ public class LimitrofesTest {
 
     @Test
     public void sePruebaQueNoSonLimitrofes() {
-        Pais pais1 = new Pais("China", Colores.ROJO);
-        Pais pais2 = new Pais("Japón", Colores.AMARILLO);
-        Pais pais3 = new Pais("Corea", Colores.AZUL);
+        Pais pais1 = new Pais("China");
+        Pais pais2 = new Pais("Japón");
+        Pais pais3 = new Pais("Corea");
 
         Limitrofes lim = new Limitrofes();
 

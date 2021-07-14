@@ -12,11 +12,6 @@ public class Pais {
         this.ejercitos = new Ejercitos();
     }
 
-    public Pais(String nombre, Colores color) {
-        this.nombre = nombre;
-        this.limitrofes = new Limitrofes();
-        this.ejercitos = new Ejercitos(color);
-    }
 
     public void agregarPaisLimitrofe(Pais pais){
         if (!this.limitrofes.esLimitrofe(pais))

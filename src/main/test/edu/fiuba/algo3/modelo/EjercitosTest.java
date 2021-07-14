@@ -8,21 +8,24 @@ import static org.junit.jupiter.api.Assertions.*;
 public class EjercitosTest {
     @Test
     public void unEjercitosNoPuedeAtacarPorDefecto() {
-        Ejercitos e = new Ejercitos(Colores.MAGENTA);
+        Ejercitos e = new Ejercitos();
         assertFalse(e.puedeAtacar());
     }
 
     @Test
     public void siSeAgreganFichasPuedeAtacar() {
-        Ejercitos e = new Ejercitos(Colores.NEGRO);
+        Ejercitos e = new Ejercitos();
         e.agregarEjercitos(1);
         assertTrue(e.puedeAtacar());
     }
 
     @Test
     public void ejercitoConquistaAOtroEjercito() {
-        Ejercitos ejercitoAtacante = new Ejercitos(Colores.VERDE);
-        Ejercitos ejercitoDefensor = new Ejercitos(Colores.AMARILLO);
+        Ejercitos ejercitoAtacante = new Ejercitos();
+        Ejercitos ejercitoDefensor = new Ejercitos();
+
+        ejercitoAtacante.setColor(Colores.VERDE);
+        ejercitoDefensor.setColor(Colores.AMARILLO);
 
         ejercitoAtacante.conquista(ejercitoDefensor);
 
@@ -31,8 +34,11 @@ public class EjercitosTest {
 
     @Test
     public void ejercitoConquistaEjercito() {
-        Ejercitos a = new Ejercitos(Colores.VERDE);
-        Ejercitos b = new Ejercitos(Colores.AZUL);
+        Ejercitos a = new Ejercitos();
+        Ejercitos b = new Ejercitos();
+        a.setColor(Colores.VERDE);
+        b.setColor(Colores.AZUL);
+
         a.agregarEjercitos(1);
 
         assertTrue(a.tieneColor(Colores.VERDE));
@@ -47,7 +53,7 @@ public class EjercitosTest {
 
     @Test
     public void cantidadMaximaParaAtacarYDefender() {
-        Ejercitos ejercito = new Ejercitos(Colores.MAGENTA);
+        Ejercitos ejercito = new Ejercitos();
         ejercito.agregarEjercitos(3);
         // Son como máximo 3
         assertEquals(ejercito.ejercitosParaAtaque(),3);
@@ -56,7 +62,7 @@ public class EjercitosTest {
 
     @Test
     public void cantidadIntermediaParaAtacarYDefender() {
-        Ejercitos ejercito = new Ejercitos(Colores.MAGENTA);
+        Ejercitos ejercito = new Ejercitos();
         ejercito.agregarEjercitos(2);
         assertEquals(ejercito.ejercitosParaAtaque(),2);
         assertEquals(ejercito.ejercitosParaDefensa(),3);
@@ -64,7 +70,7 @@ public class EjercitosTest {
 
     @Test
     public void cantidadMinimaParaAtacarYDefender() {
-        Ejercitos ejercito = new Ejercitos(Colores.MAGENTA);
+        Ejercitos ejercito = new Ejercitos();
         ejercito.agregarEjercitos(1);
         assertEquals(ejercito.ejercitosParaAtaque(),1);
         assertEquals(ejercito.ejercitosParaDefensa(),2);

@@ -7,12 +7,9 @@ public class Ejercitos {
 
     public Ejercitos() {
         this.ejercitos = 1;
+        this.color = Colores.NO_ASIGNADO;
     }
 
-    public Ejercitos(Colores color) {
-        setColor(color);
-        this.ejercitos = 1;
-    }
 
     public void setColor(Colores color) {
         this.color = color;

@@ -9,10 +9,15 @@ public class ContinenteTest {
     @Test
     public void continenteConquistado() {
         Continente continente = new Continente("Africa");
-        Pais pais1 = new Pais("Egipto",Colores.AZUL);
-        Pais pais2 = new Pais("Sahara",Colores.AZUL);
-        Pais pais3 = new Pais("Etiopía", Colores.AZUL);
-        Pais pais4 = new Pais("Zaire", Colores.AZUL);
+        Pais pais1 = new Pais("Egipto");
+        Pais pais2 = new Pais("Sahara");
+        Pais pais3 = new Pais("Etiopía");
+        Pais pais4 = new Pais("Zaire");
+
+        pais1.setColor(Colores.AZUL);
+        pais2.setColor(Colores.AZUL);
+        pais3.setColor(Colores.AZUL);
+        pais4.setColor(Colores.AZUL);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
@@ -25,10 +30,15 @@ public class ContinenteTest {
     @Test
     public void continenteNoConquistado() {
         Continente continente = new Continente("Africa");
-        Pais pais1 = new Pais("Egipto",Colores.AZUL);
-        Pais pais2 = new Pais("Sahara",Colores.MAGENTA);
-        Pais pais3 = new Pais("Etiopía", Colores.AZUL);
-        Pais pais4 = new Pais("Zaire", Colores.AZUL);
+        Pais pais1 = new Pais("Egipto");
+        Pais pais2 = new Pais("Sahara");
+        Pais pais3 = new Pais("Etiopía");
+        Pais pais4 = new Pais("Zaire");
+
+        pais1.setColor(Colores.AZUL);
+        pais2.setColor(Colores.MAGENTA);
+        pais3.setColor(Colores.AZUL);
+        pais4.setColor(Colores.AZUL);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
@@ -41,10 +51,15 @@ public class ContinenteTest {
     @Test
     public void cantidadDePaisesConquistados() {
         Continente continente = new Continente("Africa");
-        Pais pais1 = new Pais("Egipto",Colores.AZUL);
-        Pais pais2 = new Pais("Sahara",Colores.MAGENTA);
-        Pais pais3 = new Pais("Etiopía", Colores.NEGRO);
-        Pais pais4 = new Pais("Zaire", Colores.AZUL);
+        Pais pais1 = new Pais("Egipto");
+        Pais pais2 = new Pais("Sahara");
+        Pais pais3 = new Pais("Etiopía");
+        Pais pais4 = new Pais("Zaire");
+
+        pais1.setColor(Colores.AZUL);
+        pais2.setColor(Colores.MAGENTA);
+        pais3.setColor(Colores.NEGRO);
+        pais4.setColor(Colores.AZUL);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
@@ -59,10 +74,15 @@ public class ContinenteTest {
     @Test
     public void continenteNoTienePaisesConUnColor() {
         Continente continente = new Continente("Africa");
-        Pais pais1 = new Pais("Egipto",Colores.AZUL);
-        Pais pais2 = new Pais("Sahara",Colores.MAGENTA);
-        Pais pais3 = new Pais("Etiopía", Colores.NEGRO);
-        Pais pais4 = new Pais("Zaire", Colores.AZUL);
+        Pais pais1 = new Pais("Egipto");
+        Pais pais2 = new Pais("Sahara");
+        Pais pais3 = new Pais("Etiopía");
+        Pais pais4 = new Pais("Zaire");
+
+        pais1.setColor(Colores.AZUL);
+        pais2.setColor(Colores.MAGENTA);
+        pais3.setColor(Colores.NEGRO);
+        pais4.setColor(Colores.AZUL);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);

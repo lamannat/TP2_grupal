@@ -13,29 +13,29 @@ public class PaisTest {
 
     @Test
     public void paisEmpiezaConUnaFichaYNoPuedeAtacar(){
-        Pais pais = new Pais("Temeria", Colores.VERDE);
+        Pais pais = new Pais("Temeria");
         assertFalse(pais.puedeAtacar());
     }
 
     @Test
     public void paisEmpiezaConUnaFichaPuedeAtacarSiSeAgregaFicha(){
-        Pais pais = new Pais("Temeria", Colores.VERDE);
+        Pais pais = new Pais("Temeria");
         pais.agregarEjercitos(1);
         assertTrue(pais.puedeAtacar());
     }
 
     @Test
     public void agregarUnPaisLimitrofeHaceAlPaisAgregadoLimitrofe(){
-        Pais pais = new Pais("Temeria", Colores.VERDE);
-        Pais paisLimitrofe = new Pais("Redania", Colores.VERDE);
+        Pais pais = new Pais("Temeria");
+        Pais paisLimitrofe = new Pais("Redania");
         pais.agregarPaisLimitrofe(paisLimitrofe);
         assertTrue(pais.tienePaisLimitrofe(paisLimitrofe));
     }
 
     @Test
     public void agregarUnPaisLimitrofeHaceAlPaisAgregadoLimitrofeReciprocamente(){
-        Pais pais = new Pais("Temeria", Colores.VERDE);
-        Pais paisLimitrofe = new Pais("Redania", Colores.VERDE);
+        Pais pais = new Pais("Temeria");
+        Pais paisLimitrofe = new Pais("Redania");
         pais.agregarPaisLimitrofe(paisLimitrofe);
         assertTrue(paisLimitrofe.tienePaisLimitrofe(pais));
     }
@@ -43,8 +43,11 @@ public class PaisTest {
     @Test
     public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
         Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria", Colores.VERDE);
-        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
+        paisAtacante = new Pais("Temeria");
+        paisDefensor = new Pais("Kaedwen");
+
+        paisAtacante.setColor(Colores.VERDE);
+        paisDefensor.setColor(Colores.AMARILLO);
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
         paisAtacante.agregarEjercitos(20);
@@ -63,8 +66,11 @@ public class PaisTest {
     @Test
     public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor(){
         Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria", Colores.VERDE);
-        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
+        paisAtacante = new Pais("Temeria");
+        paisDefensor = new Pais("Kaedwen");
+
+        paisAtacante.setColor(Colores.VERDE);
+        paisDefensor.setColor(Colores.AMARILLO);
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
         paisAtacante.agregarEjercitos(1);
