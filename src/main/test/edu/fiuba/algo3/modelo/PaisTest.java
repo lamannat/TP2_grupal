@@ -60,5 +60,21 @@ public class PaisTest {
         assertTrue(paisDefensor.tieneColor(Colores.VERDE)); //cambia de color porque despues de 5 ataques seguro perdio
     }
 
+    @Test
+    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor(){
+        Pais paisAtacante, paisDefensor;
+        paisAtacante = new Pais("Temeria", Colores.VERDE);
+        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
+
+        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+        paisAtacante.agregarEjercitos(1);
+        paisDefensor.agregarEjercitos(20);
+
+        try {
+            paisAtacante.paisAtacaAPais(paisDefensor);
+        } catch (AtaqueInvalidoExcepcion e) {}
+
+        assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
+    }
 
 }
