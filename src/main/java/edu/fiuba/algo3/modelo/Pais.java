@@ -1,10 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Pais {
 
     private final String nombre;
@@ -24,27 +19,41 @@ public class Pais {
             pais.agregarPaisLimitrofe(this);
     }
 
-    public Ejercitos atacoConEjercito() { return ejercitos; } //Este metodo deberia ser privado y solo usarse para llamar a Batalla. Refactorizar Batalla
+    private Ejercitos atacoConEjercito() { return ejercitos; }
 
     public void agregarEjercitos(int cantidad) {
         ejercitos.agregarEjercitos(cantidad);
     }
 
-    public boolean puedeAtacar() {
-        return this.ejercitos.puedeAtacar();
-    }
-
-    public boolean perdioBatalla() {
-        return this.ejercitos.perdioBatalla();
-    }
-
-    public void conquista(Pais conquistado) {
-        Ejercitos ejercitoConquistado = conquistado.atacoConEjercito();
-        this.ejercitos.conquista(ejercitoConquistado);
-    }
-
     public boolean tienePaisLimitrofe(Pais pais) {
         return this.limitrofes.esLimitrofe(pais);
+    }
+
+//    public void atacaPais(Pais pais, Dado dado) {
+//        if (!puedeAtacarAPais(pais))
+//            return;
+//
+//        Ejercitos ejercitoDefensor = pais.atacoConEjercito();
+//        Ejercitos ejercitoAtacante = this.ejercitos;
+//
+//        Batalla batalla = new Batalla(ejercitoDefensor, ejercitoAtacante);
+//        batalla.comenzarBatalla(dado);
+//    }
+
+    private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion {
+        boolean puedeAtacar = this.ejercitos.puedeAtacar();
+        boolean esLimitrofe = this.limitrofes.esLimitrofe(pais);
+        boolean esAleado = esAliado(pais);
+
+        boolean ataqueValido = puedeAtacar && esLimitrofe && !esAleado;
+
+        if (!ataqueValido)
+            throw new AtaqueInvalidoExcepcion(puedeAtacar, esLimitrofe, esAleado);
+    }
+
+
+    public boolean puedeAtacar() {
+        return this.ejercitos.puedeAtacar();
     }
 
     public boolean tieneColor(Colores unColor) { return this.ejercitos.tieneColor(unColor); }
@@ -57,11 +66,12 @@ public class Pais {
 
     public void setColor(Colores color){ejercitos.setColor(color); }
 
-    public void seDefiendeDe(Ejercitos ejercitoAtacante) throws EsPaisAliadoException {
+    public void seDefiendeDe(Ejercitos ejercitoAtacante) {
         Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, this.ejercitos);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor) throws EsPaisAliadoException {
+    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion {
+        puedeAtacarAPais(paisDefensor);
         paisDefensor.seDefiendeDe(this.ejercitos);
     }
 }

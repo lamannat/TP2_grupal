@@ -39,17 +39,59 @@ public class PaisTest {
         pais.agregarPaisLimitrofe(paisLimitrofe);
         assertTrue(paisLimitrofe.tienePaisLimitrofe(pais));
     }
+//
+//    @Test
+//    public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
+//        Pais paisAtacante, paisDefensor;
+//        paisAtacante = new Pais("Temeria", Colores.VERDE);
+//        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
+//
+//        paisAtacante.agregarEjercitos(3);
+//        paisDefensor.agregarEjercitos(1);
+//
+//        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+//
+//        Dado dado = mock(Dado.class); // mockito
+//
+//        List<Integer> numsDadosAtacante = new ArrayList<>();
+//        List<Integer> numsDadosDefensor = new ArrayList<>();
+//        numsDadosAtacante.add(6);
+//        numsDadosAtacante.add(6);
+//        numsDadosAtacante.add(6);
+//
+//        numsDadosDefensor.add(1);
+//        numsDadosDefensor.add(1);
+//
+//        when(dado.tirarDados(3)).thenReturn(numsDadosAtacante);
+//        when(dado.tirarDados(2)).thenReturn(numsDadosDefensor);
+//
+//        paisAtacante.atacaPais(paisDefensor, dado);
+//
+//        assertTrue(paisDefensor.tieneColor(Colores.VERDE));
+//    }
 
-    @Test
-    public void paisConquistaAOtroPais(){
-        Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria", Colores.VERDE);
-        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
-
-        paisAtacante.conquista(paisDefensor);
-
-        assertTrue(paisDefensor.tieneColor(Colores.VERDE));
-    }
+//    @Test
+//    public void ataqueEntreDosPaisesSiAtacantePierdeElDefensorMantieneSuColor(){
+//        Pais paisAtacante, paisDefensor;
+//        paisAtacante = new Pais("Temeria", Colores.VERDE);
+//        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
+//
+//        paisAtacante.agregarEjercitos(1);
+//        paisDefensor.agregarEjercitos(1);
+//
+//        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+//
+//        Dado dado = mock(Dado.class); // mockito
+//
+//        List<Integer> numsDados = new ArrayList<>();
+//        numsDados.add(6);
+//        numsDados.add(3);
+//
+//        when(dado.tirarDados(2)).thenReturn(numsDados);
+//        paisAtacante.atacaPais(paisDefensor, dado);
+//
+//        assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
+//    }
 
     @Test
     public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
@@ -57,63 +99,10 @@ public class PaisTest {
         paisAtacante = new Pais("Temeria", Colores.VERDE);
         paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
 
-        paisAtacante.agregarEjercitos(3);
-        paisDefensor.agregarEjercitos(1);
-
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
-
-        Dado dado = mock(Dado.class); // mockito
-        Batalla batalla = new Batalla(paisDefensor, paisAtacante);
-
-        List<Integer> numsDadosAtacante = new ArrayList<>();
-        List<Integer> numsDadosDefensor = new ArrayList<>();
-        numsDadosAtacante.add(6);
-        numsDadosAtacante.add(6);
-        numsDadosAtacante.add(6);
-
-        numsDadosDefensor.add(1);
-        numsDadosDefensor.add(1);
-
-        when(dado.tirarDados(3)).thenReturn(numsDadosAtacante);
-        when(dado.tirarDados(2)).thenReturn(numsDadosDefensor);
-        batalla.comenzarBatalla(dado);
-
-        assertTrue(paisDefensor.tieneColor(Colores.VERDE));
-    }
-
-    @Test
-    public void ataqueEntreDosPaisesSiAtacantePierdeElDefensorMantieneSuColor(){
-        Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria", Colores.VERDE);
-        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
-
-        paisAtacante.agregarEjercitos(1);
-        paisDefensor.agregarEjercitos(1);
-
-        paisAtacante.agregarPaisLimitrofe(paisDefensor);
-
-        Dado dado = mock(Dado.class); // mockito
-        Batalla batalla = new Batalla(paisDefensor, paisAtacante);
-
-        List<Integer> numsDados = new ArrayList<>();
-        numsDados.add(6);
-        numsDados.add(3);
-
-        when(dado.tirarDados(2)).thenReturn(numsDados);
-        batalla.comenzarBatalla(dado);
-
-        assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
-    }
-
-    @Test
-    public void ataqueConMetodosDeClaseDeBatallaYDado(){
-        Pais paisAtacante, paisDefensor;
-        paisAtacante = new Pais("Temeria", Colores.VERDE);
-        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
-
         paisAtacante.agregarEjercitos(20);
 
-        assertThrows(EsPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
+        assertThrows(AtaqueInvalidoExcepcion.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
                 ()->{
                     paisAtacante.paisAtacaAPais(paisDefensor);
                     paisAtacante.paisAtacaAPais(paisDefensor);

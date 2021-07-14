@@ -3,53 +3,39 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 public class Batalla {
-    private final Pais defensor;
-    private final Pais atacante;
+    private final Ejercitos defensor;
+    private final Ejercitos atacante;
 
-    public Batalla(Pais defensor, Pais atacante) {
+    public Batalla(Ejercitos defensor, Ejercitos atacante) {
         this.defensor = defensor;
         this.atacante = atacante;
     }
+//
+//    public void comenzarBatalla(Dado dado) {
+//        List<Integer> dadosAtaque, dadosDefensa;
+//
+//        dadosAtaque = dado.tirarDados(atacante.ejercitosParaAtaque());
+//        dadosDefensa = dado.tirarDados(defensor.ejercitosParaDefensa());
+//
+//        int cantidadDeAtaques = Math.min(dadosAtaque.size(), dadosDefensa.size());
+//        for (int i = 0; i < cantidadDeAtaques; i++){
+//            if(dadosAtaque.get(i) > dadosDefensa.get(i))
+//                defensor.pierdeContraEjercito(atacante);
+//            else
+//                atacante.pierdeContraEjercito(defensor);
+//        }
+//    }
 
-    public void comenzarBatalla(Dado dado) {
+//    private boolean batallaValida() {
+//        boolean atacantePuedeLuchar = this.atacante.puedeAtacar();
+//        boolean sonLimitrofes = this.atacante.tienePaisLimitrofe(this.defensor);
+//        boolean esAliado = this.atacante.esAliado(this.defensor);
+//
+//        return atacantePuedeLuchar && sonLimitrofes && !esAliado;
+//    }
+
+    static void ejercitoAtacaAEjercito(Ejercitos atacante, Ejercitos defensor) {
         List<Integer> dadosAtaque, dadosDefensa;
-
-        if (!batallaValida())
-            return;
-
-        Ejercitos ejercitoAtacante = atacante.atacoConEjercito();
-        Ejercitos ejercitoDefensor = defensor.atacoConEjercito();
-
-        dadosAtaque = dado.tirarDados(ejercitoAtacante.ejercitosParaAtaque());
-        dadosDefensa = dado.tirarDados(ejercitoDefensor.ejercitosParaDefensa());
-
-        int cantidadDeAtaques = Math.min(dadosAtaque.size(), dadosDefensa.size());
-        for (int i = 0; i < cantidadDeAtaques; i++){
-            if(dadosAtaque.get(i) > dadosDefensa.get(i))
-                ejercitoDefensor.pierdeEjercitos(1);
-            else
-                ejercitoAtacante.pierdeEjercitos(1);
-        }
-
-        if (ejercitoDefensor.perdioBatalla())
-            this.atacante.conquista(this.defensor);
-//            this.defensor.conquistadoPor(this.atacante);
-    }
-
-    private boolean batallaValida() {
-        boolean atacantePuedeLuchar = this.atacante.puedeAtacar();
-        boolean sonLimitrofes = this.atacante.tienePaisLimitrofe(this.defensor);
-        boolean esAliado = this.atacante.esAliado(this.defensor);
-
-        return atacantePuedeLuchar && sonLimitrofes && !esAliado;
-    }
-
-    static void ejercitoAtacaAEjercito(Ejercitos atacante, Ejercitos defensor) throws EsPaisAliadoException {
-        List<Integer> dadosAtaque, dadosDefensa;
-
-        if(atacante.esAliado(defensor)){
-            throw new EsPaisAliadoException();
-        }
 
         dadosAtaque = Dado.tirarDadosDeClase(atacante.ejercitosParaAtaque());
         dadosDefensa = Dado.tirarDadosDeClase(defensor.ejercitosParaDefensa());
@@ -57,12 +43,9 @@ public class Batalla {
         int cantidadDeAtaques = Math.min(dadosAtaque.size(), dadosDefensa.size());
         for (int i = 0; i < cantidadDeAtaques; i++){
             if(dadosAtaque.get(i) > dadosDefensa.get(i))
-                defensor.pierdeEjercitos(1);
+                defensor.pierdeContraEjercito(atacante);
             else
-                atacante.pierdeEjercitos(1);
+                atacante.pierdeContraEjercito(defensor);
         }
-
-        if (defensor.perdioBatalla())
-            atacante.conquista(defensor);
     }
 }
