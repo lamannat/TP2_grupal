@@ -19,8 +19,6 @@ public class Pais {
             pais.agregarPaisLimitrofe(this);
     }
 
-    private Ejercitos atacoConEjercito() { return ejercitos; }
-
     public void agregarEjercitos(int cantidad) {
         ejercitos.agregarEjercitos(cantidad);
     }
@@ -28,17 +26,6 @@ public class Pais {
     public boolean tienePaisLimitrofe(Pais pais) {
         return this.limitrofes.esLimitrofe(pais);
     }
-
-//    public void atacaPais(Pais pais, Dado dado) {
-//        if (!puedeAtacarAPais(pais))
-//            return;
-//
-//        Ejercitos ejercitoDefensor = pais.atacoConEjercito();
-//        Ejercitos ejercitoAtacante = this.ejercitos;
-//
-//        Batalla batalla = new Batalla(ejercitoDefensor, ejercitoAtacante);
-//        batalla.comenzarBatalla(dado);
-//    }
 
     private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion {
         boolean puedeAtacar = this.ejercitos.puedeAtacar();
@@ -51,20 +38,25 @@ public class Pais {
             throw new AtaqueInvalidoExcepcion(puedeAtacar, esLimitrofe, esAleado);
     }
 
-
     public boolean puedeAtacar() {
         return this.ejercitos.puedeAtacar();
     }
 
-    public boolean tieneColor(Colores unColor) { return this.ejercitos.tieneColor(unColor); }
+    public boolean tieneColor(Colores unColor) {
+        return this.ejercitos.tieneColor(unColor);
+    }
 
     public boolean esAliado(Pais pais){
         return pais.tieneColor(this.ejercitos.getColor());
     }
 
-    public boolean perteneceAContinente(Continente continente){return continente.tienePais(this); }
+    public boolean perteneceAContinente(Continente continente){
+        return continente.tienePais(this);
+    }
 
-    public void setColor(Colores color){ejercitos.setColor(color); }
+    public void setColor(Colores color){
+        ejercitos.setColor(color);
+    }
 
     public void seDefiendeDe(Ejercitos ejercitoAtacante) {
         Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, this.ejercitos);

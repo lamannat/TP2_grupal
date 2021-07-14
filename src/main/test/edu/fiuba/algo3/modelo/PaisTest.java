@@ -39,59 +39,6 @@ public class PaisTest {
         pais.agregarPaisLimitrofe(paisLimitrofe);
         assertTrue(paisLimitrofe.tienePaisLimitrofe(pais));
     }
-//
-//    @Test
-//    public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
-//        Pais paisAtacante, paisDefensor;
-//        paisAtacante = new Pais("Temeria", Colores.VERDE);
-//        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
-//
-//        paisAtacante.agregarEjercitos(3);
-//        paisDefensor.agregarEjercitos(1);
-//
-//        paisAtacante.agregarPaisLimitrofe(paisDefensor);
-//
-//        Dado dado = mock(Dado.class); // mockito
-//
-//        List<Integer> numsDadosAtacante = new ArrayList<>();
-//        List<Integer> numsDadosDefensor = new ArrayList<>();
-//        numsDadosAtacante.add(6);
-//        numsDadosAtacante.add(6);
-//        numsDadosAtacante.add(6);
-//
-//        numsDadosDefensor.add(1);
-//        numsDadosDefensor.add(1);
-//
-//        when(dado.tirarDados(3)).thenReturn(numsDadosAtacante);
-//        when(dado.tirarDados(2)).thenReturn(numsDadosDefensor);
-//
-//        paisAtacante.atacaPais(paisDefensor, dado);
-//
-//        assertTrue(paisDefensor.tieneColor(Colores.VERDE));
-//    }
-
-//    @Test
-//    public void ataqueEntreDosPaisesSiAtacantePierdeElDefensorMantieneSuColor(){
-//        Pais paisAtacante, paisDefensor;
-//        paisAtacante = new Pais("Temeria", Colores.VERDE);
-//        paisDefensor = new Pais("Kaedwen", Colores.AMARILLO);
-//
-//        paisAtacante.agregarEjercitos(1);
-//        paisDefensor.agregarEjercitos(1);
-//
-//        paisAtacante.agregarPaisLimitrofe(paisDefensor);
-//
-//        Dado dado = mock(Dado.class); // mockito
-//
-//        List<Integer> numsDados = new ArrayList<>();
-//        numsDados.add(6);
-//        numsDados.add(3);
-//
-//        when(dado.tirarDados(2)).thenReturn(numsDados);
-//        paisAtacante.atacaPais(paisDefensor, dado);
-//
-//        assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
-//    }
 
     @Test
     public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
