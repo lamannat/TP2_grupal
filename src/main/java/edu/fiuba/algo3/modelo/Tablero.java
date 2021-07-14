@@ -7,22 +7,19 @@ public class Tablero {
 
     private final List<Pais> paises;
     private final List<Continente> continentes;
-    private List<Jugador> jugadores;
+    private final List<Jugador> jugadores;
 
     public Tablero() {
         paises = new ArrayList<>();
         continentes = new ArrayList<>();
         jugadores = new ArrayList<>();
 
-        List<List<String>> continentesYPaises = LeerArchivo.leerListaDeListaDePaises("paisesEnContinentes.txt");
-        List<List<String>> paisesYLimitrofes = LeerArchivo.leerListaDeListaDePaises("paisesLimitrofes.txt");
+        for (List<String> continentes : LeerArchivo.leerListaDeListaDePaises("paisesEnContinentes.txt"))
+            this.agregarContinentes(continentes);
 
-        for (List<String> actual: continentesYPaises){
-            this.agregarContinentes(actual);
-        }
-        for (List<String> actual: paisesYLimitrofes){
-            this.agregrarLimitrofes(actual);
-        }
+        for (List<String> pais : LeerArchivo.leerListaDeListaDePaises("paisesLimitrofes.txt"))
+            this.agregrarLimitrofes(pais);
+
     }
 
     public void agregarJugador(Jugador unJugador) {
@@ -41,12 +38,9 @@ public class Tablero {
     }
 
     private Pais encontrarPais(String nombrePais) {
-        for (Pais pais : this.paises) {
-            boolean esNombre = pais.tieneNombre(nombrePais);
-            if (esNombre) {
+        for (Pais pais : this.paises)
+            if (pais.tieneNombre(nombrePais))
                 return pais;
-            }
-        }
         return this.paises.get(0);
     }
 
