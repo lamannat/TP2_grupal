@@ -10,13 +10,15 @@ import java.util.List;
 
 public class LeerArchivo {
 
-    static public List<List<String>> listaDePaises(String archivo) {
+    static final private String carpetaArchivo = "src/main/java/edu/fiuba/algo3/archivos/";
+
+    static public List<List<String>> leerListaDeListaDePaises(String archivo) {
 
         List<List<String>> resultado = new ArrayList<>();
 
         try {
             String cadena;
-            FileReader f = new FileReader(archivo);
+            FileReader f = new FileReader(carpetaArchivo + archivo);
             BufferedReader b = new BufferedReader(f);
             while((cadena = b.readLine())!=null)
                 resultado.add(Arrays.asList(cadena.split(",", 0)));
