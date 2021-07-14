@@ -39,9 +39,9 @@ Taymir,Tartaria,Siberia
 Siberia,Aral,Mongolia,Tartaria,Taymir,Kamchatka,China
 Mongolia,Aral,Iran,Gobi,Siberia,China
 Gobi,China,Mongolia,Iran
-China,Kanchatka,Japon,Siberia,Mongolia,Gobi,Iran,India,Malasia
-Kanchatka,Siberia,China,Japon,Alaska,
-Japon,Kanchatka,China
+China,Kamchatka,Japon,Siberia,Mongolia,Gobi,Iran,India,Malasia
+Kamchatka,Siberia,China,Japon,Alaska
+Japon,Kamchatka,China
 India,Sumatra,China,Iran,Malasia
 Malasia,China,India,Borneo
 Sumatra,India,Australia
