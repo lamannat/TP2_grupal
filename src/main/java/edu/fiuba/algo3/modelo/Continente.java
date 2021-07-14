@@ -37,4 +37,5 @@ public class Continente {
     public boolean sinPaisesDe(Colores unColor) {
         return this.cantidadPaisesConquistadosPor(unColor) == 0;
     }
+    public boolean tienePais(Pais pais){ return paises.contains(pais); }
 }

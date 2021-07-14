@@ -55,7 +55,7 @@ public class Pais {
 
     public boolean perteneceAContinente(Continente continente){return continente.tienePais(this); }
 
-    public void setColor(Colores color){Ejercitos.setColor(color); }
+    public void setColor(Colores color){ejercitos.setColor(color); }
 }
 
 
