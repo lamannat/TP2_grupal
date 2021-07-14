@@ -13,6 +13,16 @@ public class Tablero {
         paises = new ArrayList<>();
         continentes = new ArrayList<>();
         jugadores = new ArrayList<>();
+
+        List<List<String>> continentesYPaises = LeerArchivo.leerListaDeListaDePaises("paisesEnContinentes.txt");
+        List<List<String>> paisesYLimitrofes = LeerArchivo.leerListaDeListaDePaises("paisesLimitrofes.txt");
+
+        for (List<String> actual: continentesYPaises){
+            this.agregarContinentes(actual);
+        }
+        for (List<String> actual: paisesYLimitrofes){
+            this.agregrarLimitrofes(actual);
+        }
     }
 
     public void agregarJugador(Jugador unJugador) {
@@ -37,6 +47,7 @@ public class Tablero {
                 return pais;
             }
         }
+        return this.paises.get(0);
     }
 
     private void agregrarLimitrofes(List<String> paisYLimitrofes) {
@@ -64,18 +75,4 @@ public class Tablero {
             contador = (contador + 1) % this.jugadores.size();
         }
     }
-
-
-//    public Tablero(List<Jugadores> jugadores){
-//
-//        for (int i; i<3; i+=1){
-//            Pais p = new Pais(nombresPaises[i]);
-//            this.paises.add(p);
-//        }
-//        int paisesPorJugador = this.paises.size()/Jugadores.size();
-//
-//        tablero.repartirPaises(paisesPorJugador, jugadores);
-//
-//    }
-
 }

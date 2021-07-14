@@ -5,6 +5,10 @@ public class Ejercitos {
     public int ejercitos;
     private final static int cantidadMaximaDeDados = 3;
 
+    public Ejercitos() {
+        this.ejercitos = 1;
+    }
+
     public Ejercitos(Colores color) {
         setColor(color);
         this.ejercitos = 1;

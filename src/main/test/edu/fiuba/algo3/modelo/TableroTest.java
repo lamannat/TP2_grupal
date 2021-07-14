@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TableroTest {
@@ -39,9 +41,9 @@ public class TableroTest {
         Integer paisesJuance = Juance.cuantosPaisesConquistados();
         Integer paisesTobias = Tobias.cuantosPaisesConquistados();
 
-        assertTrue(paisesValentin == 1 || paisesValentin == 2);
-        assertTrue(paisesJuance == 1 || paisesJuance == 2);
-        assertTrue(paisesTobias == 1 || paisesTobias == 2);
+        assertTrue(paisesValentin == 16 || paisesValentin == 17);
+        assertTrue(paisesJuance == 16 || paisesJuance == 17);
+        assertTrue(paisesTobias == 16 || paisesTobias == 17);
     }
 
 }

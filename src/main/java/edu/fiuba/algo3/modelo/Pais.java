@@ -9,7 +9,7 @@ public class Pais {
     public Pais(String nombre) {
         this.nombre = nombre;
         this.limitrofes = new Limitrofes();
-        this.ejercitos = new Ejercitos(Colores.SIN_COLOR);
+        this.ejercitos = new Ejercitos();
     }
 
     public Pais(String nombre, Colores color) {
