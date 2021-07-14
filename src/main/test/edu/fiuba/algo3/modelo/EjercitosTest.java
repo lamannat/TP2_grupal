@@ -20,13 +20,13 @@ public class EjercitosTest {
     }
 
     @Test
-    public void sePuedenPerderEjercitos() {
-        Ejercitos e = new Ejercitos(Colores.ROJO);
-        assertFalse(e.puedeAtacar());
-        e.agregarEjercitos(3);
-        assertTrue(e.puedeAtacar());
-        e.pierdeEjercitos(3);
-        assertFalse(e.puedeAtacar());
+    public void ejercitoConquistaAOtroEjercito() {
+        Ejercitos ejercitoAtacante = new Ejercitos(Colores.VERDE);
+        Ejercitos ejercitoDefensor = new Ejercitos(Colores.AMARILLO);
+
+        ejercitoAtacante.conquista(ejercitoDefensor);
+
+        assertTrue(ejercitoDefensor.tieneColor(Colores.VERDE));
     }
 
     @Test
