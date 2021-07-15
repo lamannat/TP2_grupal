@@ -14,10 +14,11 @@ public class Pais {
 
 
     public void agregarPaisLimitrofe(Pais pais){
-        if (!this.limitrofes.esLimitrofe(pais))
+        if (!this.limitrofes.esLimitrofe(pais)) {
             this.limitrofes.agregarPaisLimitrofe(pais);
-        if (!pais.tienePaisLimitrofe(this))
             pais.agregarPaisLimitrofe(this);
+        }
+
     }
 
     public void agregarEjercitos(int cantidad) {
