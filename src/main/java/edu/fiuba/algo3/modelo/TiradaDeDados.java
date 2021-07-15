@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Dado {
+public class TiradaDeDados {
 
     private int tirarDado() {
         return ThreadLocalRandom.current().nextInt(1, 6 + 1);
