@@ -16,10 +16,10 @@ Correctores: **Diego Sánchez, Diego Corsi**
 
 ## Aplicación
 
-La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/lamannat/TP2_grupal/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
+La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/lamannat/TP2_grupal/releases/latest) y ejecutarse en Linux, Windows o Mac, haciendo los pasos previos vistos en [Nativo](docs/Nativo.md) o en [Docker](docs/Docker.md), y ahi se puede ejecutar de esta forma:
 
 ```bash
-$ java -jar <archivo.jar>
+$ java -jar target/tp2-0.1.0.jar
 ```
 
 ## Desarrollo
