@@ -29,7 +29,7 @@ public class Pais {
         return this.limitrofes.esLimitrofe(pais);
     }
 
-    private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion {
+    private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion, EjercitosInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         boolean puedeAtacar = this.ejercitos.puedeAtacar();
         boolean esLimitrofe = this.limitrofes.esLimitrofe(pais);
         boolean esAleado = esAliado(pais);
@@ -64,7 +64,7 @@ public class Pais {
         Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, this.ejercitos);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion {
+    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, EjercitosInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
         paisDefensor.seDefiendeDe(this.ejercitos);
     }

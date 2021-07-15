@@ -52,7 +52,7 @@ public class PaisTest {
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
         paisAtacante.agregarEjercitos(20);
 
-        assertThrows(AtaqueInvalidoExcepcion.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
+        assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
                 ()->{
                     paisAtacante.paisAtacaAPais(paisDefensor);
                     paisAtacante.paisAtacaAPais(paisDefensor);
@@ -64,7 +64,7 @@ public class PaisTest {
     }
 
     @Test
-    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor(){
+    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor() throws EjercitosInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
         paisDefensor = new Pais("Kaedwen");
