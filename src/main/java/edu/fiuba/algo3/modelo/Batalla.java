@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
+
 public class Batalla {
 
     static void ejercitoAtacaAEjercito(Ejercitos atacante, Ejercitos defensor) {
