@@ -1,4 +1,4 @@
 package edu.fiuba.algo3.modelo;
 
-public class NoEsLimitrofeException {
+public class NoEsLimitrofeException extends Exception {
 }
