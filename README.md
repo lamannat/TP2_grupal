@@ -27,7 +27,7 @@ $ java -jar <archivo.jar>
 Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desarrollo](./docs/Desarrollo.md).
 
 ## Informe
-El informe será desarrollado en éste [enlace](https://www.overleaf.com/project/60eb615001156a2dfe6062d2)
+El informe será desarrollado en éste [enlace](https://www.overleaf.com/read/kymgbqnmbdgs)
 
 
 ## Licencia
