@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PaisTest {
 
@@ -74,24 +75,41 @@ public class PaisTest {
         paisAtacante.setColor(new ColorVerde());
         paisDefensor.setColor(new ColorAmarillo());
 
+        Dado unDado = mock(Dado.class);
+
+        TiradaDeDados tiradaAtacante = new TiradaDeDados();
+        tiradaAtacante.agregarResultado(6);
+        tiradaAtacante.agregarResultado(6);
+        when(unDado.tirarDado(2)).thenReturn(tiradaAtacante);
+
+        TiradaDeDados tiradaDefensor = new TiradaDeDados();
+        tiradaDefensor.agregarResultado(2);
+        when(unDado.tirarDado(1)).thenReturn(tiradaDefensor);
+
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
 
         List<Ficha> fichas = new ArrayList<>();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 3; i++)
             fichas.add(new Ficha(new ColorVerde()));
 
         paisAtacante.agregarFichas(fichas);
         paisDefensor.agregarFicha(new Ficha(new ColorAmarillo()));
 
-        assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
-                ()->{
-                    paisAtacante.paisAtacaAPais(paisDefensor);
-                    paisAtacante.paisAtacaAPais(paisDefensor);
-                    paisAtacante.paisAtacaAPais(paisDefensor);
-                    paisAtacante.paisAtacaAPais(paisDefensor);
-                    paisAtacante.paisAtacaAPais(paisDefensor);
-                });
-        assertTrue(paisDefensor.tieneColor(new ColorVerde())); //cambia de color porque despues de 5 ataques seguro perdio
+        try {
+            paisAtacante.paisAtacaAPais(paisDefensor,unDado);
+        } catch (AtaqueInvalidoExcepcion | FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
+            ataqueInvalidoExcepcion.printStackTrace();
+        }
+
+//        assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
+//                ()->{
+//                    paisAtacante.paisAtacaAPais(paisDefensor);
+//                    paisAtacante.paisAtacaAPais(paisDefensor);
+//                    paisAtacante.paisAtacaAPais(paisDefensor);
+//                    paisAtacante.paisAtacaAPais(paisDefensor);
+//                    paisAtacante.paisAtacaAPais(paisDefensor);
+//                });
+           assertTrue(paisDefensor.tieneColor(new ColorVerde())); //cambia de color porque despues de 5 ataques seguro perdio
     }
 
     @Test
@@ -103,22 +121,58 @@ public class PaisTest {
         paisAtacante.setColor(new ColorVerde());
         paisDefensor.setColor(new ColorAmarillo());
 
-        paisAtacante.agregarPaisLimitrofe(paisDefensor);
-        List<Ficha> fichasAtacante = new ArrayList<>();
-        fichasAtacante.add(new Ficha(new ColorVerde()));
-        fichasAtacante.add(new Ficha(new ColorVerde()));
-        paisAtacante.agregarFichas(fichasAtacante);
+        Dado unDado = mock(Dado.class);
 
-        List<Ficha> fichasDefensor = new ArrayList<>();
-        for (int i = 0; i < 20; i++)
-            fichasDefensor.add(new Ficha(new ColorAmarillo()));
-        paisDefensor.agregarFichas(fichasDefensor);
+        TiradaDeDados tiradaAtacante = new TiradaDeDados();
+        tiradaAtacante.agregarResultado(1);
+        when(unDado.tirarDado(1)).thenReturn(tiradaAtacante);
+
+        TiradaDeDados tiradaDefensor = new TiradaDeDados();
+        tiradaDefensor.agregarResultado(3);
+        tiradaDefensor.agregarResultado(4);
+        when(unDado.tirarDado(2)).thenReturn(tiradaDefensor);
+
+        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+
+        for (int i = 0; i < 2; i++){
+            paisAtacante.agregarFicha(new Ficha( new ColorVerde()));
+            paisDefensor.agregarFicha(new Ficha( new ColorAmarillo()));
+        }
+
 
         try {
-            paisAtacante.paisAtacaAPais(paisDefensor);
-        } catch (AtaqueInvalidoExcepcion e) {}
+            paisAtacante.paisAtacaAPais(paisDefensor,unDado);
+        } catch (AtaqueInvalidoExcepcion | FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
+            ataqueInvalidoExcepcion.printStackTrace();
+        }
 
         assertTrue(paisDefensor.tieneColor(new ColorAmarillo()));
+
+
+
+
+//       Pais paisAtacante, paisDefensor;
+//        paisAtacante = new Pais("Temeria");
+//        paisDefensor = new Pais("Kaedwen");
+//
+//        paisAtacante.setColor(new ColorVerde());
+//        paisDefensor.setColor(new ColorAmarillo());
+//
+//        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+//        List<Ficha> fichasAtacante = new ArrayList<>();
+//        fichasAtacante.add(new Ficha(new ColorVerde()));
+//        fichasAtacante.add(new Ficha(new ColorVerde()));
+//        paisAtacante.agregarFichas(fichasAtacante);
+//
+//        List<Ficha> fichasDefensor = new ArrayList<>();
+//        for (int i = 0; i < 20; i++)
+//            fichasDefensor.add(new Ficha(new ColorAmarillo()));
+//        paisDefensor.agregarFichas(fichasDefensor);
+//
+//        try {
+//            paisAtacante.paisAtacaAPais(paisDefensor);
+//        } catch (AtaqueInvalidoExcepcion e) {}
+//
     }
 
 }

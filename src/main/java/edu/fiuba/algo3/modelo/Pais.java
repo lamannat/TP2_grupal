@@ -89,13 +89,13 @@ public class Pais {
         return new EjercitoDeBatalla(ejercito);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void paisAtacaAPais(Pais paisDefensor, Dado unDado) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
 
-        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor);
+        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor, unDado);
 
         this.agregarFichas(ejercitoAtacante.fichasRestantes());
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
