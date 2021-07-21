@@ -1,60 +1,64 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class Ejercitos {
-    private Colores color;
-    public int ejercitos;
+    public List<Ficha> fichas;
     private final static int cantidadMaximaDeDados = 3;
 
     public Ejercitos() {
-        this.ejercitos = 1;
-        this.color = Colores.NO_ASIGNADO;
+        this.fichas = new ArrayList<>();
+        Ficha ficha = new Ficha(Colores.NO_ASIGNADO);
+        fichas.add(ficha);
     }
-
 
     public void setColor(Colores color) {
-        this.color = color;
+        this.fichas.forEach(ficha -> { ficha.setColor(color);});
     }
 
-    public void agregarEjercitos(int cantidad) {
-        this.ejercitos += cantidad;
+    public Colores getColor(){
+        return this.fichas.get(0).getColor();
+    }
+
+    public void agregarEjercitos(List<Ficha> fichas) {
+        this.fichas.addAll(fichas);
     }
 
     public int ejercitosParaAtaque() {
-        return Math.min(this.ejercitos - 1, cantidadMaximaDeDados);
+        return Math.min(this.fichas.size() - 1, cantidadMaximaDeDados);
     }
 
     public int ejercitosParaDefensa() {
-        return Math.min(this.ejercitos, cantidadMaximaDeDados);
+        return Math.min(this.fichas.size(), cantidadMaximaDeDados);
     }
 
-    public boolean tieneColor(Colores unColor) { return this.color.equals(unColor); }
+    public boolean tieneColor(Colores unColor) { return this.getColor().equals(unColor); }
 
     public boolean puedeAtacar() {
-        return this.ejercitos > 1;
+        return this.fichas.size() > 1;
     }
 
     public void conquista(Ejercitos conquistado) {
-        conquistado.setColor(this.color);
+        conquistado.setColor(this.getColor());
         this.moverTropa(conquistado);
     }
 
     public void moverTropa(Ejercitos destino) {
-        this.ejercitos -= 1;
-        destino.agregarEjercitos(1);
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(this.fichas.remove(0));
+        destino.agregarEjercitos(fichas);
     }
 
     public void pierdeContraEjercito(Ejercitos conquistador) {
-        this.ejercitos -= 1;
-        if (this.ejercitos < 1)
+        this.fichas.remove(0);
+        if (this.fichas.size() < 1)
             conquistador.conquista(this);
     }
 
-    public Colores getColor(){
-        return this.color;
-    }
-
     public boolean esAliado(Ejercitos unEjercito){
-        return (this.color == unEjercito.getColor());
+        return (this.getColor() == unEjercito.getColor());
     }
 
 }
