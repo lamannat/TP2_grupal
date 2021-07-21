@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class PaisTest {
     public void paisEmpiezaConUnaFichaPuedeAtacarSiSeAgregaFicha(){
         Pais pais = new Pais("Temeria");
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(Colores.AZUL));
+        fichas.add(new Ficha(new ColorAzul()));
 
         pais.agregarEjercitos(fichas);
         assertTrue(pais.puedeAtacar());
@@ -71,14 +72,14 @@ public class PaisTest {
         paisAtacante = new Pais("Temeria");
         paisDefensor = new Pais("Kaedwen");
 
-        paisAtacante.setColor(Colores.VERDE);
-        paisDefensor.setColor(Colores.AMARILLO);
+        paisAtacante.setColor(new ColorVerde());
+        paisDefensor.setColor(new ColorAmarillo());
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
 
         List<Ficha> fichas = new ArrayList<>();
         for (int i = 0; i < 20; i++)
-            fichas.add(new Ficha(Colores.VERDE));
+            fichas.add(new Ficha(new ColorVerde()));
 
         paisAtacante.agregarEjercitos(fichas);
 
@@ -90,7 +91,7 @@ public class PaisTest {
                     paisAtacante.paisAtacaAPais(paisDefensor);
                     paisAtacante.paisAtacaAPais(paisDefensor);
                 });
-        assertTrue(paisDefensor.tieneColor(Colores.VERDE)); //cambia de color porque despues de 5 ataques seguro perdio
+        assertTrue(paisDefensor.tieneColor(new ColorVerde())); //cambia de color porque despues de 5 ataques seguro perdio
     }
 
     @Test
@@ -99,25 +100,25 @@ public class PaisTest {
         paisAtacante = new Pais("Temeria");
         paisDefensor = new Pais("Kaedwen");
 
-        paisAtacante.setColor(Colores.VERDE);
-        paisDefensor.setColor(Colores.AMARILLO);
+        paisAtacante.setColor(new ColorVerde());
+        paisDefensor.setColor(new ColorAmarillo());
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
         List<Ficha> fichasAtacante = new ArrayList<>();
-        fichasAtacante.add(new Ficha(Colores.VERDE));
+        fichasAtacante.add(new Ficha(new ColorVerde()));
         paisAtacante.agregarEjercitos(fichasAtacante);
 
 
         List<Ficha> fichasDefensor = new ArrayList<>();
         for (int i = 0; i < 20; i++)
-            fichasDefensor.add(new Ficha(Colores.AMARILLO));
+            fichasDefensor.add(new Ficha(new ColorAmarillo()));
         paisDefensor.agregarEjercitos(fichasDefensor);
 
         try {
             paisAtacante.paisAtacaAPais(paisDefensor);
         } catch (AtaqueInvalidoExcepcion e) {}
 
-        assertTrue(paisDefensor.tieneColor(Colores.AMARILLO));
+        assertTrue(paisDefensor.tieneColor(new ColorAmarillo()));
     }
 
 }

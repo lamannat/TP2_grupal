@@ -1,17 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
-public class Ficha {
-    private Colores color;
+import edu.fiuba.algo3.modelo.color.*;
 
-    public Ficha(Colores color) {
+public class Ficha {
+    private Color color;
+
+    public Ficha(Color color) {
         this.color = color;
     }
 
-    public Colores getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(Colores color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 }

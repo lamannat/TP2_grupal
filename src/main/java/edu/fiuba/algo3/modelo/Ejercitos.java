@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -10,15 +12,15 @@ public class Ejercitos {
 
     public Ejercitos() {
         this.fichas = new ArrayList<>();
-        Ficha ficha = new Ficha(Colores.NO_ASIGNADO);
+        Ficha ficha = new Ficha(new ColorNoAsignado());
         fichas.add(ficha);
     }
 
-    public void setColor(Colores color) {
+    public void setColor(Color color) {
         this.fichas.forEach(ficha -> { ficha.setColor(color);});
     }
 
-    public Colores getColor(){
+    public Color getColor(){
         return this.fichas.get(0).getColor();
     }
 
@@ -34,7 +36,7 @@ public class Ejercitos {
         return Math.min(this.fichas.size(), cantidadMaximaDeDados);
     }
 
-    public boolean tieneColor(Colores unColor) { return this.getColor().equals(unColor); }
+    public boolean tieneColor(Color unColor) { return this.getColor().tieneColor(unColor); }
 
     public boolean puedeAtacar() {
         return this.fichas.size() > 1;

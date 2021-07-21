@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.ColorRojo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +9,7 @@ public class JugadorTest {
 
     @Test
     public void agregarPaisesAJugador() {
-        Jugador jugador = new Jugador("Pedro",Colores.ROJO);
+        Jugador jugador = new Jugador("Pedro", new ColorRojo());
 
         Pais pais1 = new Pais("Aral");
         Pais pais2 = new Pais("Mongolia");

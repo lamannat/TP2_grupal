@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,17 +15,17 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(Colores.AZUL);
-        pais2.setColor(Colores.AZUL);
-        pais3.setColor(Colores.AZUL);
-        pais4.setColor(Colores.AZUL);
+        pais1.setColor(new ColorAzul());
+        pais2.setColor(new ColorAzul());
+        pais3.setColor(new ColorAzul());
+        pais4.setColor(new ColorAzul());
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertTrue(continente.conquistadoPor(Colores.AZUL));
+        assertTrue(continente.conquistadoPor(new ColorAzul()));
     }
 
     @Test
@@ -35,17 +36,17 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(Colores.AZUL);
-        pais2.setColor(Colores.MAGENTA);
-        pais3.setColor(Colores.AZUL);
-        pais4.setColor(Colores.AZUL);
+        pais1.setColor(new ColorAzul());
+        pais2.setColor(new ColorMagenta());
+        pais3.setColor(new ColorAzul());
+        pais4.setColor(new ColorAzul());
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertFalse(continente.conquistadoPor(Colores.AZUL));
+        assertFalse(continente.conquistadoPor(new ColorAzul()));
     }
 
     @Test
@@ -56,19 +57,19 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(Colores.AZUL);
-        pais2.setColor(Colores.MAGENTA);
-        pais3.setColor(Colores.NEGRO);
-        pais4.setColor(Colores.AZUL);
+        pais1.setColor(new ColorAzul());
+        pais2.setColor(new ColorMagenta());
+        pais3.setColor(new ColorNegro());
+        pais4.setColor(new ColorAzul());
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertEquals(continente.cantidadPaisesConquistadosPor(Colores.AZUL),2);
-        assertEquals(continente.cantidadPaisesConquistadosPor(Colores.MAGENTA),1);
-        assertEquals(continente.cantidadPaisesConquistadosPor(Colores.NEGRO),1);
+        assertEquals(continente.cantidadPaisesConquistadosPor(new ColorAzul()),2);
+        assertEquals(continente.cantidadPaisesConquistadosPor(new ColorMagenta()),1);
+        assertEquals(continente.cantidadPaisesConquistadosPor(new ColorNegro()),1);
     }
 
     @Test
@@ -79,21 +80,21 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(Colores.AZUL);
-        pais2.setColor(Colores.MAGENTA);
-        pais3.setColor(Colores.NEGRO);
-        pais4.setColor(Colores.AZUL);
+        pais1.setColor(new ColorAzul());
+        pais2.setColor(new ColorMagenta());
+        pais3.setColor(new ColorNegro());
+        pais4.setColor(new ColorAzul());
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertTrue(continente.sinPaisesDe(Colores.ROJO));
-        assertTrue(continente.sinPaisesDe(Colores.VERDE));
-        assertTrue(continente.sinPaisesDe(Colores.AMARILLO));
-        assertFalse(continente.sinPaisesDe(Colores.AZUL));
-        assertFalse(continente.sinPaisesDe(Colores.NEGRO));
-        assertFalse(continente.sinPaisesDe(Colores.MAGENTA));
+        assertTrue(continente.sinPaisesDe(new ColorRojo()));
+        assertTrue(continente.sinPaisesDe(new ColorVerde()));
+        assertTrue(continente.sinPaisesDe(new ColorAmarillo()));
+        assertFalse(continente.sinPaisesDe(new ColorAzul()));
+        assertFalse(continente.sinPaisesDe(new ColorNegro()));
+        assertFalse(continente.sinPaisesDe(new ColorMagenta()));
     }
 }

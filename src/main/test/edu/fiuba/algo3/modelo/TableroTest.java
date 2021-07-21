@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,8 +13,8 @@ public class TableroTest {
     public void TableroDividePaisesEntreJugadoresEquitativamente(){
         Tablero tablero = new Tablero();
 
-        Jugador Valentin = new Jugador("Valentin", Colores.AMARILLO);
-        Jugador Juance = new Jugador("Juance", Colores.VERDE);
+        Jugador Valentin = new Jugador("Valentin", new ColorAmarillo());
+        Jugador Juance = new Jugador("Juance", new ColorVerde());
 
         tablero.agregarJugador(Valentin);
         tablero.agregarJugador(Juance);
@@ -27,9 +28,9 @@ public class TableroTest {
     public void TableroDividePaisesEntreJugadoresNoEquitativamente(){
         Tablero tablero = new Tablero();
 
-        Jugador Valentin = new Jugador("Valentin", Colores.AMARILLO);
-        Jugador Juance = new Jugador("Juance", Colores.VERDE);
-        Jugador Tobias = new Jugador("Tobias", Colores.ROJO);
+        Jugador Valentin = new Jugador("Valentin", new ColorAmarillo());
+        Jugador Juance = new Jugador("Juance", new ColorVerde());
+        Jugador Tobias = new Jugador("Tobias", new ColorRojo());
 
         tablero.agregarJugador(Valentin);
         tablero.agregarJugador(Juance);

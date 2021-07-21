@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class Pais {
         }
     }
 
-    public void setColor(Colores color){
+    public void setColor(Color color){
         ejercitos.setColor(color);
     }
 
@@ -49,7 +51,7 @@ public class Pais {
 
     public boolean esAliado(Pais pais){ return pais.tieneColor(this.ejercitos.getColor()); }
 
-    public boolean tieneColor(Colores unColor) {
+    public boolean tieneColor(Color unColor) {
         return this.ejercitos.tieneColor(unColor);
     }
 
