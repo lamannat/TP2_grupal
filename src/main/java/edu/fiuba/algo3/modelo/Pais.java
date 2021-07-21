@@ -12,6 +12,8 @@ public class Pais {
     private final Ejercito ejercito;
     private final List<Ficha> fichas;
 
+    private final static int cantidadMaximaDeDados = 3;
+
     public Pais(String nombre) {
         this.nombre = nombre;
         this.limitrofes = new ArrayList<>();
@@ -34,6 +36,11 @@ public class Pais {
     public void agregarFichas(List<Ficha> fichas) {
 //        ejercito.agregarEjercitos(fichas);
         this.fichas.addAll(fichas);
+    }
+
+    public void agregarFicha(Ficha ficha) {
+//        ejercito.agregarEjercitos(fichas);
+        this.fichas.add(ficha);
     }
 
     private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
@@ -61,6 +68,8 @@ public class Pais {
     }
 
     public boolean tieneColor(Color unColor) {
+        if (this.fichas.isEmpty())
+            return false;
         return this.fichas.get(0).getColor().tieneColor(unColor);
 //        return this.ejercito.tieneColor(unColor);
     }
@@ -73,14 +82,54 @@ public class Pais {
         return this.nombre.equals(unNombre);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        puedeAtacarAPais(paisDefensor);
-        paisDefensor.seDefiendeDe(this.ejercito);
+    private EjercitoDeBatalla ejercitoParaDefensa()
+    {
+        List<Ficha> ejercito = new ArrayList<>();
+        for (int i = 0; i < Math.min(this.fichas.size(), cantidadMaximaDeDados); i++)
+            ejercito.add(this.fichas.remove(0));
+        return new EjercitoDeBatalla(ejercito);
     }
 
-    public void seDefiendeDe(Ejercito ejercitoAtacante) {
-        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, this.ejercito);
+    private EjercitoDeBatalla ejercitoParaAtaque()
+    {
+        List<Ficha> ejercito = new ArrayList<>();
+        for (int i = 0; i < Math.min(this.fichas.size() - 1, cantidadMaximaDeDados); i++)
+            ejercito.add(this.fichas.remove(0));
+        return new EjercitoDeBatalla(ejercito);
     }
+
+    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+        puedeAtacarAPais(paisDefensor);
+
+        EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
+        EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
+
+        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor);
+
+        this.agregarFichas(ejercitoAtacante.fichasRestantes());
+        paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
+
+        if (paisDefensor.fueConquistado())
+            this.moverTropas(paisDefensor);
+    }
+
+    private boolean fueConquistado() {
+        return fichas.isEmpty();
+    }
+
+    private void moverTropas(Pais paisDestino) {
+        paisDestino.agregarFicha(this.fichas.remove(0));
+    }
+
+
+//    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+//        puedeAtacarAPais(paisDefensor);
+//        paisDefensor.seDefiendeDe(this.ejercito);
+//    }
+//
+//    public void seDefiendeDe(Ejercito ejercitoAtacante) {
+//        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, this.ejercito);
+//    }
 }
 
 

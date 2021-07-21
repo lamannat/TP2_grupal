@@ -12,22 +12,23 @@ import static org.mockito.Mockito.mock;
 public class PaisTest {
 
     @Test
-    public void paisEmpiezaConUnaFichaYNoPuedeAtacar(){
+    public void paisEmpiezaSinFichasYNoPuedeAtacar(){
         Pais pais = new Pais("Temeria");
         assertFalse(pais.fichasSuficientes());
     }
 
     @Test
-    public void paisEmpiezaConUnaFichaPuedeAtacarSiSeAgregaFicha(){
+    public void paisEmpiezaSinFichasPuedeAtacarSiSeLeAgregaDosFichas(){
         Pais pais = new Pais("Temeria");
         List<Ficha> fichas = new ArrayList<>();
+        fichas.add(new Ficha(new ColorAzul()));
         fichas.add(new Ficha(new ColorAzul()));
 
         pais.agregarFichas(fichas);
         assertTrue(pais.fichasSuficientes());
     }
 
-    // Esta prueba es trivial. La dejamos ?
+    // Esta prueba es trivial. La dejamos?
     @Test
     public void inicialmenteUnPaisNoTieneLimitrofes() {
         Pais pais1 = new Pais("China");
@@ -35,7 +36,6 @@ public class PaisTest {
         assertFalse(pais1.tienePaisLimitrofe(pais2));
         assertFalse(pais2.tienePaisLimitrofe(pais1));
     }
-
 
     @Test
     public void agregarUnPaisLimitrofeHaceAlPaisAgregadoLimitrofe(){
@@ -81,6 +81,7 @@ public class PaisTest {
             fichas.add(new Ficha(new ColorVerde()));
 
         paisAtacante.agregarFichas(fichas);
+        paisDefensor.agregarFicha(new Ficha(new ColorAmarillo()));
 
         assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
                 ()->{
@@ -105,8 +106,8 @@ public class PaisTest {
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
         List<Ficha> fichasAtacante = new ArrayList<>();
         fichasAtacante.add(new Ficha(new ColorVerde()));
+        fichasAtacante.add(new Ficha(new ColorVerde()));
         paisAtacante.agregarFichas(fichasAtacante);
-
 
         List<Ficha> fichasDefensor = new ArrayList<>();
         for (int i = 0; i < 20; i++)
