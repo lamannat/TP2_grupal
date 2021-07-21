@@ -15,10 +15,10 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(new ColorAzul());
-        pais2.setColor(new ColorAzul());
-        pais3.setColor(new ColorAzul());
-        pais4.setColor(new ColorAzul());
+        pais1.agregarFicha(new Ficha(new ColorAzul()));
+        pais2.agregarFicha(new Ficha(new ColorAzul()));
+        pais3.agregarFicha(new Ficha(new ColorAzul()));
+        pais4.agregarFicha(new Ficha(new ColorAzul()));
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
@@ -36,10 +36,10 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(new ColorAzul());
-        pais2.setColor(new ColorMagenta());
-        pais3.setColor(new ColorAzul());
-        pais4.setColor(new ColorAzul());
+        pais1.agregarFicha(new Ficha(new ColorAzul()));
+        pais2.agregarFicha(new Ficha(new ColorMagenta()));
+        pais3.agregarFicha(new Ficha(new ColorAzul()));
+        pais4.agregarFicha(new Ficha(new ColorAzul()));
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
@@ -57,10 +57,10 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(new ColorAzul());
-        pais2.setColor(new ColorMagenta());
-        pais3.setColor(new ColorNegro());
-        pais4.setColor(new ColorAzul());
+        pais1.agregarFicha(new Ficha(new ColorAzul()));
+        pais2.agregarFicha(new Ficha(new ColorMagenta()));
+        pais3.agregarFicha(new Ficha(new ColorNegro()));
+        pais4.agregarFicha(new Ficha(new ColorAzul()));
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
@@ -80,10 +80,10 @@ public class ContinenteTest {
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.setColor(new ColorAzul());
-        pais2.setColor(new ColorMagenta());
-        pais3.setColor(new ColorNegro());
-        pais4.setColor(new ColorAzul());
+        pais1.agregarFicha(new Ficha(new ColorAzul()));
+        pais2.agregarFicha(new Ficha(new ColorMagenta()));
+        pais3.agregarFicha(new Ficha(new ColorNegro()));
+        pais4.agregarFicha(new Ficha(new ColorAzul()));
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
