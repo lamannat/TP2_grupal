@@ -58,7 +58,7 @@ public class Pais {
     }
 
     public boolean tieneNombre(String unNombre){
-        return (this.nombre == unNombre);
+        return this.nombre.equals(unNombre);
     }
 
     public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, EjercitosInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
