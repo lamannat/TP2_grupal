@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class EjercitosTest {
     @Test
     public void unEjercitosNoPuedeAtacarPorDefecto() {
-        Ejercitos e = new Ejercitos();
+        Ejercito e = new Ejercito();
         assertFalse(e.puedeAtacar());
     }
 
     @Test
     public void siSeAgreganFichasPuedeAtacar() {
-        Ejercitos e = new Ejercitos();
+        Ejercito e = new Ejercito();
         List<Ficha> fichas = new ArrayList<>();
         fichas.add(new Ficha(new ColorAzul()));
         e.agregarEjercitos(fichas);
@@ -27,8 +27,8 @@ public class EjercitosTest {
 
     @Test
     public void ejercitoConquistaAOtroEjercito() {
-        Ejercitos ejercitoAtacante = new Ejercitos();
-        Ejercitos ejercitoDefensor = new Ejercitos();
+        Ejercito ejercitoAtacante = new Ejercito();
+        Ejercito ejercitoDefensor = new Ejercito();
 
         ejercitoAtacante.setColor(new ColorVerde());
         ejercitoDefensor.setColor(new ColorAmarillo());
@@ -40,8 +40,8 @@ public class EjercitosTest {
 
     @Test
     public void ejercitoConquistaEjercito() {
-        Ejercitos a = new Ejercitos();
-        Ejercitos b = new Ejercitos();
+        Ejercito a = new Ejercito();
+        Ejercito b = new Ejercito();
         a.setColor(new ColorVerde());
         b.setColor(new ColorAzul());
 
@@ -61,7 +61,7 @@ public class EjercitosTest {
 
     @Test
     public void cantidadMaximaParaAtacarYDefender() {
-        Ejercitos ejercito = new Ejercitos();
+        Ejercito ejercito = new Ejercito();
         ejercito.setColor(new ColorVerde());
 
         List<Ficha> fichas = new ArrayList<>();
@@ -77,7 +77,7 @@ public class EjercitosTest {
 
     @Test
     public void cantidadIntermediaParaAtacarYDefender() {
-        Ejercitos ejercito = new Ejercitos();
+        Ejercito ejercito = new Ejercito();
         ejercito.setColor(new ColorVerde());
 
         List<Ficha> fichas = new ArrayList<>();
@@ -91,7 +91,7 @@ public class EjercitosTest {
 
     @Test
     public void cantidadMinimaParaAtacarYDefender() {
-        Ejercitos ejercito = new Ejercitos();
+        Ejercito ejercito = new Ejercito();
         ejercito.setColor(new ColorVerde());
 
         List<Ficha> fichas = new ArrayList<>();

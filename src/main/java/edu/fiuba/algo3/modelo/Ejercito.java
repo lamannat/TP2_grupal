@@ -4,13 +4,12 @@ import edu.fiuba.algo3.modelo.color.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-public class Ejercitos {
+public class Ejercito {
     public List<Ficha> fichas;
     private final static int cantidadMaximaDeDados = 3;
 
-    public Ejercitos() {
+    public Ejercito() {
         this.fichas = new ArrayList<>();
         Ficha ficha = new Ficha(new ColorNoAsignado());
         fichas.add(ficha);
@@ -42,24 +41,24 @@ public class Ejercitos {
         return this.fichas.size() > 1;
     }
 
-    public void conquista(Ejercitos conquistado) {
+    public void conquista(Ejercito conquistado) {
         conquistado.setColor(this.getColor());
         this.moverTropa(conquistado);
     }
 
-    public void moverTropa(Ejercitos destino) {
+    public void moverTropa(Ejercito destino) {
         List<Ficha> fichas = new ArrayList<>();
         fichas.add(this.fichas.remove(0));
         destino.agregarEjercitos(fichas);
     }
 
-    public void pierdeContraEjercito(Ejercitos conquistador) {
+    public void pierdeContraEjercito(Ejercito conquistador) {
         this.fichas.remove(0);
         if (this.fichas.size() < 1)
             conquistador.conquista(this);
     }
 
-    public boolean esAliado(Ejercitos unEjercito){
+    public boolean esAliado(Ejercito unEjercito){
         return (this.getColor() == unEjercito.getColor());
     }
 

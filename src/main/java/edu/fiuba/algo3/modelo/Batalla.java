@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Batalla {
 
-    static void ejercitoAtacaAEjercito(Ejercitos atacante, Ejercitos defensor) {
+    static void ejercitoAtacaAEjercito(Ejercito atacante, Ejercito defensor) {
         List<Integer> dadosAtaque, dadosDefensa;
 
         dadosAtaque = TiradaDeDados.tirarDadosDeClase(atacante.ejercitosParaAtaque());

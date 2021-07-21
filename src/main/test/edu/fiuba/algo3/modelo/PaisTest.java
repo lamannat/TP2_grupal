@@ -8,14 +8,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class PaisTest {
 
     @Test
     public void paisEmpiezaConUnaFichaYNoPuedeAtacar(){
         Pais pais = new Pais("Temeria");
-        assertFalse(pais.puedeAtacar());
+        assertFalse(pais.fichasSuficientes());
     }
 
     @Test
@@ -24,8 +23,8 @@ public class PaisTest {
         List<Ficha> fichas = new ArrayList<>();
         fichas.add(new Ficha(new ColorAzul()));
 
-        pais.agregarEjercitos(fichas);
-        assertTrue(pais.puedeAtacar());
+        pais.agregarFichas(fichas);
+        assertTrue(pais.fichasSuficientes());
     }
 
     // Esta prueba es trivial. La dejamos ?
@@ -81,7 +80,7 @@ public class PaisTest {
         for (int i = 0; i < 20; i++)
             fichas.add(new Ficha(new ColorVerde()));
 
-        paisAtacante.agregarEjercitos(fichas);
+        paisAtacante.agregarFichas(fichas);
 
         assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
                 ()->{
@@ -95,7 +94,7 @@ public class PaisTest {
     }
 
     @Test
-    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor() throws EjercitosInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor() throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
         paisDefensor = new Pais("Kaedwen");
@@ -106,13 +105,13 @@ public class PaisTest {
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
         List<Ficha> fichasAtacante = new ArrayList<>();
         fichasAtacante.add(new Ficha(new ColorVerde()));
-        paisAtacante.agregarEjercitos(fichasAtacante);
+        paisAtacante.agregarFichas(fichasAtacante);
 
 
         List<Ficha> fichasDefensor = new ArrayList<>();
         for (int i = 0; i < 20; i++)
             fichasDefensor.add(new Ficha(new ColorAmarillo()));
-        paisDefensor.agregarEjercitos(fichasDefensor);
+        paisDefensor.agregarFichas(fichasDefensor);
 
         try {
             paisAtacante.paisAtacaAPais(paisDefensor);
