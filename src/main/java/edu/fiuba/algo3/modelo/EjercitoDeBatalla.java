@@ -15,7 +15,8 @@ public class EjercitoDeBatalla {
 
     public void pierdeFicha()
     {
-        fichas.remove(0);
+        if (!fichas.isEmpty())
+            fichas.remove(0);
     }
 
     public List<Ficha> fichasRestantes() {
