@@ -25,4 +25,13 @@ public class Jugador {
     public int cuantosPaisesConquistados(){
         return paises.size();
     }
+
+    public void comienzaElAtaque() {
+    }
+
+    public void reagruparFuerzas() {
+    }
+
+    public void solicitarTarjeta() {
+    }
 }
