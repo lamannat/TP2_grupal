@@ -5,29 +5,26 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Ejercitos {
-    private Colores color;
     public List<Ficha> fichas;
     private final static int cantidadMaximaDeDados = 3;
 
     public Ejercitos() {
-        this.color = Colores.NO_ASIGNADO;
         this.fichas = new ArrayList<>();
         Ficha ficha = new Ficha(Colores.NO_ASIGNADO);
         fichas.add(ficha);
     }
 
     public void setColor(Colores color) {
-        this.color = color;
         this.fichas.forEach(ficha -> { ficha.setColor(color);});
     }
 
     public Colores getColor(){
-        return this.color;
+        return this.fichas.get(0).getColor();
     }
 
-    public void agregarEjercitos(int cantidad) {
+    public void agregarEjercitos(int cantidad, ) {
         for (int i = 0; i < cantidad; i++) {
-            Ficha ficha = new Ficha(this.color);
+            Ficha ficha = new Ficha(this.getColor());
             this.fichas.add(ficha);
         }
     }
@@ -40,19 +37,20 @@ public class Ejercitos {
         return Math.min(this.fichas.size(), cantidadMaximaDeDados);
     }
 
-    public boolean tieneColor(Colores unColor) { return this.color.equals(unColor); }
+    public boolean tieneColor(Colores unColor) { return this.getColor().equals(unColor); }
 
     public boolean puedeAtacar() {
         return this.fichas.size() > 1;
     }
 
     public void conquista(Ejercitos conquistado) {
-        conquistado.setColor(this.color);
+        conquistado.setColor(this.getColor());
         this.moverTropa(conquistado);
     }
 
     public void moverTropa(Ejercitos destino) {
-        this.fichas.remove(0);
+        Ficha ficha = this.fichas.remove(0);
+
         destino.agregarEjercitos(1);
     }
 
@@ -63,7 +61,7 @@ public class Ejercitos {
     }
 
     public boolean esAliado(Ejercitos unEjercito){
-        return (this.color == unEjercito.getColor());
+        return (this.getColor() == unEjercito.getColor());
     }
 
 }
