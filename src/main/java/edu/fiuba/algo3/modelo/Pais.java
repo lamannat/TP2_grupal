@@ -26,8 +26,8 @@ public class Pais {
         ejercitos.setColor(color);
     }
 
-    public void agregarEjercitos(int cantidad) {
-        ejercitos.agregarEjercitos(cantidad);
+    public void agregarEjercitos(List<Ficha> fichas) {
+        ejercitos.agregarEjercitos(fichas);
     }
 
     private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion, EjercitosInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {

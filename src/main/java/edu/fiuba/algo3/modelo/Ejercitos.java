@@ -22,11 +22,8 @@ public class Ejercitos {
         return this.fichas.get(0).getColor();
     }
 
-    public void agregarEjercitos(int cantidad, ) {
-        for (int i = 0; i < cantidad; i++) {
-            Ficha ficha = new Ficha(this.getColor());
-            this.fichas.add(ficha);
-        }
+    public void agregarEjercitos(List<Ficha> fichas) {
+        this.fichas.addAll(fichas);
     }
 
     public int ejercitosParaAtaque() {
@@ -49,9 +46,9 @@ public class Ejercitos {
     }
 
     public void moverTropa(Ejercitos destino) {
-        Ficha ficha = this.fichas.remove(0);
-
-        destino.agregarEjercitos(1);
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(this.fichas.remove(0));
+        destino.agregarEjercitos(fichas);
     }
 
     public void pierdeContraEjercito(Ejercitos conquistador) {

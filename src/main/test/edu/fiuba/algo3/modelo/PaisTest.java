@@ -20,7 +20,10 @@ public class PaisTest {
     @Test
     public void paisEmpiezaConUnaFichaPuedeAtacarSiSeAgregaFicha(){
         Pais pais = new Pais("Temeria");
-        pais.agregarEjercitos(1);
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(new Ficha(Colores.AZUL));
+
+        pais.agregarEjercitos(fichas);
         assertTrue(pais.puedeAtacar());
     }
 
@@ -72,7 +75,12 @@ public class PaisTest {
         paisDefensor.setColor(Colores.AMARILLO);
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
-        paisAtacante.agregarEjercitos(20);
+
+        List<Ficha> fichas = new ArrayList<>();
+        for (int i = 0; i < 20; i++)
+            fichas.add(new Ficha(Colores.VERDE));
+
+        paisAtacante.agregarEjercitos(fichas);
 
         assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
                 ()->{
@@ -95,8 +103,15 @@ public class PaisTest {
         paisDefensor.setColor(Colores.AMARILLO);
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
-        paisAtacante.agregarEjercitos(1);
-        paisDefensor.agregarEjercitos(20);
+        List<Ficha> fichasAtacante = new ArrayList<>();
+        fichasAtacante.add(new Ficha(Colores.VERDE));
+        paisAtacante.agregarEjercitos(fichasAtacante);
+
+
+        List<Ficha> fichasDefensor = new ArrayList<>();
+        for (int i = 0; i < 20; i++)
+            fichasDefensor.add(new Ficha(Colores.AMARILLO));
+        paisDefensor.agregarEjercitos(fichasDefensor);
 
         try {
             paisAtacante.paisAtacaAPais(paisDefensor);
