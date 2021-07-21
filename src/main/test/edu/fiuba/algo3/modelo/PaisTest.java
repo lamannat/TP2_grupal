@@ -24,6 +24,16 @@ public class PaisTest {
         assertTrue(pais.puedeAtacar());
     }
 
+    // Esta prueba es trivial. La dejamos ?
+    @Test
+    public void inicialmenteUnPaisNoTieneLimitrofes() {
+        Pais pais1 = new Pais("China");
+        Pais pais2 = new Pais("Japón");
+        assertFalse(pais1.tienePaisLimitrofe(pais2));
+        assertFalse(pais2.tienePaisLimitrofe(pais1));
+    }
+
+
     @Test
     public void agregarUnPaisLimitrofeHaceAlPaisAgregadoLimitrofe(){
         Pais pais = new Pais("Temeria");
@@ -38,6 +48,18 @@ public class PaisTest {
         Pais paisLimitrofe = new Pais("Redania");
         pais.agregarPaisLimitrofe(paisLimitrofe);
         assertTrue(paisLimitrofe.tienePaisLimitrofe(pais));
+    }
+
+    @Test
+    public void sePruebaQueNoSonLimitrofes() {
+        Pais pais1 = new Pais("China");
+        Pais pais2 = new Pais("Japón");
+        Pais pais3 = new Pais("Corea");
+
+        pais1.agregarPaisLimitrofe(pais2);
+
+        assertFalse(pais1.tienePaisLimitrofe(pais3));
+        assertFalse(pais2.tienePaisLimitrofe(pais3));
     }
 
     @Test
