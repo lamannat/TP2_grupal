@@ -10,6 +10,7 @@ public class Pais {
     private final String nombre;
     private final List<Pais> limitrofes;
     private final List<Ficha> fichas;
+    private Jugador jugador;
 
     private final static int cantidadMaximaDeDados = 3;
 
@@ -26,6 +27,10 @@ public class Pais {
         }
     }
 
+    public void asignarJugador(Jugador unJugador) {
+        this.jugador = unJugador;
+    }
+
     public void setColor(Color color){
         this.fichas.forEach(ficha -> { ficha.setColor(color);});
     }
@@ -38,15 +43,13 @@ public class Pais {
         this.fichas.add(ficha);
     }
 
-    private void puedeAtacarAPais(Pais pais) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    private void puedeAtacarAPais(Pais pais) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         boolean fichasSuficientes = this.fichasSuficientes();
+        if (!fichasSuficientes) { throw new FichasInsuficientesException(); }
         boolean esLimitrofe = this.tienePaisLimitrofe(pais);
+        if (!esLimitrofe) { throw new NoEsLimitrofeException(); }
         boolean esAliado = esAliado(pais);
-
-        boolean ataqueValido = fichasSuficientes && esLimitrofe && !esAliado;
-
-        if (!ataqueValido)
-            throw new AtaqueInvalidoExcepcion(fichasSuficientes, esLimitrofe, esAliado);
+        if (esAliado) { throw new AtaqueAPaisAliadoException(); }
     }
 
     public boolean fichasSuficientes() {
@@ -91,7 +94,7 @@ public class Pais {
         return new EjercitoDeBatalla(ejercito);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor, Dado unDado) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void paisAtacaAPais(Pais paisDefensor, Dado unDado) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
@@ -102,8 +105,15 @@ public class Pais {
         this.agregarFichas(ejercitoAtacante.fichasRestantes());
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
 
-        if (paisDefensor.fueConquistado())
+        if (paisDefensor.fueConquistado()) {
             this.moverTropas(paisDefensor);
+            paisDefensor.meConquisto(this.jugador);
+        }
+    }
+
+    private void meConquisto(Jugador unJugador) {
+        this.jugador.quitarPais(this);
+        unJugador.agregarPais(this);
     }
 
     private boolean fueConquistado() {
@@ -114,7 +124,17 @@ public class Pais {
         paisDestino.agregarFicha(this.fichas.remove(0));
     }
 
+    public int cantidadFichas(){
+        return fichas.size();
+    }
 
+    public List<Pais> paisesDisponiblesParaAtacar() {
+        List<Pais> disponibles = new ArrayList<>();
+        for (Pais pais : limitrofes)
+            if(!this.esAliado(pais))
+                disponibles.add(pais);
+        return disponibles;
+    }
 }
 
 

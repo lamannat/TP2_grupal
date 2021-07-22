@@ -67,9 +67,16 @@ public class PaisTest {
 
     @Test
     public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
+
+        Jugador j1 = new Jugador("Jugador 1",new ColorVerde());
+        Jugador j2 = new Jugador("Jugador 2",new ColorAmarillo());
+
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
         paisDefensor = new Pais("Kaedwen");
+
+        j1.agregarPais(paisAtacante);
+        j2.agregarPais(paisDefensor);
 
         paisAtacante.setColor(new ColorVerde());
         paisDefensor.setColor(new ColorAmarillo());
@@ -96,7 +103,7 @@ public class PaisTest {
 
         try {
             paisAtacante.paisAtacaAPais(paisDefensor,unDado);
-        } catch (AtaqueInvalidoExcepcion | FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
+        } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
             ataqueInvalidoExcepcion.printStackTrace();
         }
            assertTrue(paisDefensor.tieneColor(new ColorVerde())); //cambia de color porque despues de 5 ataques seguro perdio
@@ -132,7 +139,7 @@ public class PaisTest {
 
         try {
             paisAtacante.paisAtacaAPais(paisDefensor,unDado);
-        } catch (AtaqueInvalidoExcepcion | FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
+        } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
             ataqueInvalidoExcepcion.printStackTrace();
         }
 

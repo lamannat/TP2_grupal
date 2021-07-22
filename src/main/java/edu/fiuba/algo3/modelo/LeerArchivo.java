@@ -12,7 +12,7 @@ public class LeerArchivo {
 
     static final private String carpetaArchivo = "src/main/java/edu/fiuba/algo3/archivos/";
 
-    static public List<List<String>> leerListaDeListaDePaises(String archivo) {
+    static public List<List<String>> leerArchivo(String archivo) {
 
         List<List<String>> resultado = new ArrayList<>();
 
