@@ -9,13 +9,11 @@ public class Tablero {
 
     private final List<Pais> paises;
     private final List<Continente> continentes;
-    private final List<Jugador> jugadores;
     private final List<Carta> cartasPais;
 
     public Tablero() {
         paises = new ArrayList<>();
         continentes = new ArrayList<>();
-        jugadores = new ArrayList<>();
         cartasPais = new ArrayList<>();
 
         for (List<String> continentes : LeerArchivo.leerArchivo("paisesEnContinentes.txt"))
@@ -26,10 +24,6 @@ public class Tablero {
 
         for (List<String> carta : LeerArchivo.leerArchivo("tegCartas.txt"))
             this.agregrarCartas(carta);
-    }
-
-    public void agregarJugador(Jugador unJugador) {
-        jugadores.add(unJugador);
     }
 
 
@@ -70,20 +64,20 @@ public class Tablero {
         cartasPais.add(new Carta(pais,tipoCarta));
     }
 
-    public void asignarPaises() {
+    public void asignarPaises(List<Jugador> jugadores) {
 
         List<Pais> copiaPaises = new ArrayList<Pais>(this.paises);
 
         int contador = 0;
         while (copiaPaises.size()>0){
             int i = (int) Math.floor(Math.random() * copiaPaises.size());
-            Jugador jugadorActual = this.jugadores.get(contador);
+            Jugador jugadorActual = jugadores.get(contador);
             Color color = jugadorActual.getColor();
             Pais paisActual = copiaPaises.remove(i);
             paisActual.agregarFichas(GeneradorFichas.generar(1,color));
             jugadorActual.agregarPais(paisActual);
 
-            contador = (contador + 1) % this.jugadores.size();
+            contador = (contador + 1) % jugadores.size();
         }
     }
 }

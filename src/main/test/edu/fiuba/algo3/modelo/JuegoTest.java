@@ -18,7 +18,9 @@ public class JuegoTest {
         jugadores.add(Valentin);
         jugadores.add(Juan);
 
-        Juego juego = new Juego(jugadores);
+        Tablero tablero = new Tablero();
+
+        Juego juego = new Juego(jugadores, tablero);
 
         assertEquals(Valentin.contarTotalFichas(), 25);
         assertEquals(Juan.contarTotalFichas(), 25);
@@ -32,7 +34,8 @@ public class JuegoTest {
         jugadores.add(Valentin);
         jugadores.add(Juan);
 
-        Juego juego = new Juego(jugadores);
+        Tablero tablero = new Tablero();
+        Juego juego = new Juego(jugadores, tablero);
         juego.comenzarRonda();
 
         assertEquals(Valentin.contarTotalFichas(), 30);
@@ -47,7 +50,8 @@ public class JuegoTest {
         jugadores.add(Valentin);
         jugadores.add(Juan);
 
-        Juego juego = new Juego(jugadores);
+        Tablero tablero = new Tablero();
+        Juego juego = new Juego(jugadores, tablero);
         juego.comenzarRonda();
         juego.siguienteRonda();
         juego.comenzarRonda();

@@ -27,6 +27,7 @@ public class Jugador {
     }
 
     public void comienzaElAtaque() {
+        //this.elegirPais();
     }
 
     public void reagruparFuerzas() {

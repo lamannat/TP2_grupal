@@ -9,14 +9,12 @@ public class Juego {
     private final List<Jugador> jugadores;
     private final Tablero tablero;
     private Ronda rondaActual;
-    public Juego(List<Jugador> listaJugadores) {
-        jugadores = listaJugadores;
-        rondaActual = new RondaAgregarCincoEjercitos(this);
 
-        tablero = new Tablero();
-        for (Jugador jugador : jugadores)
-            tablero.agregarJugador(jugador);
-        tablero.asignarPaises();
+    public Juego(List<Jugador> listaJugadores, Tablero tablero) {
+        jugadores = listaJugadores;
+        this.tablero = tablero;
+        rondaActual = new RondaAgregarCincoEjercitos(this);
+        this.tablero.asignarPaises(listaJugadores);
     }
 
     public void comenzarRonda(){
