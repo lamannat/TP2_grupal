@@ -15,7 +15,7 @@ public class Juego {
         this.turno = turno;
         this.tablero = tablero;
         this.dado = unDado;
-        rondaActual = new RondaAgregarCincoEjercitos(this);
+        rondaActual = new RondaAgregarCincoFichas(this);
         this.tablero.asignarPaises(this.turno);
     }
 

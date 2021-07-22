@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.moduloRonda;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 
-public abstract class RondaAgregarEjercitos implements Ronda{
+public abstract class RondaAgregarFichas implements Ronda{
 
     protected Juego juego;
     protected static int cantFichas;
