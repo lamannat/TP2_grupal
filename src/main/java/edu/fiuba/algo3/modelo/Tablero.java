@@ -8,18 +8,22 @@ public class Tablero {
     private final List<Pais> paises;
     private final List<Continente> continentes;
     private final List<Jugador> jugadores;
+    private final List<Carta> cartasPais;
 
     public Tablero() {
         paises = new ArrayList<>();
         continentes = new ArrayList<>();
         jugadores = new ArrayList<>();
+        cartasPais = new ArrayList<>();
 
-        for (List<String> continentes : LeerArchivo.leerListaDeListaDePaises("paisesEnContinentes.txt"))
+        for (List<String> continentes : LeerArchivo.leerArchivo("paisesEnContinentes.txt"))
             this.agregarContinentes(continentes);
 
-        for (List<String> pais : LeerArchivo.leerListaDeListaDePaises("paisesLimitrofes.txt"))
+        for (List<String> pais : LeerArchivo.leerArchivo("paisesLimitrofes.txt"))
             this.agregrarLimitrofes(pais);
 
+        for (List<String> carta : LeerArchivo.leerArchivo("TegCartas.txt"))
+            this.agregrarCartas(carta);
     }
 
     public void agregarJugador(Jugador unJugador) {
@@ -37,11 +41,12 @@ public class Tablero {
         }
     }
 
+
     private Pais encontrarPais(String nombrePais) {
         for (Pais pais : this.paises)
             if (pais.tieneNombre(nombrePais))
                 return pais;
-        return this.paises.get(0);
+        return null;
     }
 
     private void agregrarLimitrofes(List<String> paisYLimitrofes) {
@@ -53,6 +58,14 @@ public class Tablero {
             Pais limitrofe = encontrarPais(paisYLimitrofes.get(i));
             pais.agregarPaisLimitrofe(limitrofe);
         }
+    }
+
+    private void agregrarCartas(List<String> carta) {
+        String nombrePais = carta.get(0);
+        Pais pais = encontrarPais(nombrePais);
+
+        String tipoCarta = carta.get(1);
+        cartasPais.add(new Carta(pais,tipoCarta));
     }
 
     public void asignarPaises() {
