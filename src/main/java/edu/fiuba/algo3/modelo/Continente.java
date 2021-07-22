@@ -19,6 +19,10 @@ public class Continente {
         paises.add(pais);
     }
 
+    public boolean tieneNombre(String unNombre){
+        return this.nombre.equals(unNombre);
+    }
+
     public boolean conquistadoPor(Color unColor) {
         for (Pais paisActual: paises) {
             if(!paisActual.tieneColor(unColor)) return false;

@@ -30,6 +30,7 @@ public class Tablero {
 
     private void agregarContinentes(List<String> continenteYPaises) {
         Continente continente = new Continente(continenteYPaises.get(0));
+        this.continentes.add(continente);
 
         for (int i = 1; i < continenteYPaises.size(); i++) {
             Pais pais = new Pais(continenteYPaises.get(i));
@@ -43,6 +44,13 @@ public class Tablero {
         for (Pais pais : this.paises)
             if (pais.tieneNombre(nombrePais))
                 return pais;
+        return null;
+    }
+
+    public Continente encontrarContinente(String nombreContinente) {
+        for (Continente continente : this.continentes)
+            if (continente.tieneNombre(nombreContinente))
+                return continente;
         return null;
     }
 
