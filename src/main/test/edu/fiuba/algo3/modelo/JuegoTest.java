@@ -24,7 +24,7 @@ public class JuegoTest {
         Tablero tablero = new Tablero();
         Turno turno = new Turno(jugadores);
 
-        Juego juego = new Juego(tablero, turno);
+        Juego juego = new Juego(tablero, turno, new DadoEstandar());
 
         assertEquals(Valentin.contarTotalFichas(), 25);
         assertEquals(Juan.contarTotalFichas(), 25);
@@ -41,7 +41,7 @@ public class JuegoTest {
         Tablero tablero = new Tablero();
         Turno turno = new Turno(jugadores);
 
-        Juego juego = new Juego(tablero, turno);
+        Juego juego = new Juego(tablero, turno, new DadoEstandar());
         juego.comenzarRonda();
 
         assertEquals(Valentin.contarTotalFichas(), 30);
@@ -59,7 +59,7 @@ public class JuegoTest {
         Tablero tablero = new Tablero();
         Turno turno = new Turno(jugadores);
 
-        Juego juego = new Juego(tablero, turno);
+        Juego juego = new Juego(tablero, turno, new DadoEstandar());
         juego.comenzarRonda();
         juego.siguienteRonda();
         juego.comenzarRonda();
@@ -83,7 +83,7 @@ public class JuegoTest {
         Turno turno = mock(Turno.class);
         when(turno.jugadorActual()).thenReturn(Valentin);
 
-        Juego juego = new Juego(tablero, turno);
+        Juego juego = new Juego(tablero, turno, new DadoEstandar());
 
         Continente Asia = tablero.encontrarContinente("Asia");
         assertTrue(Asia.conquistadoPor(new ColorNegro()));
@@ -104,7 +104,7 @@ public class JuegoTest {
         Turno turno = mock(Turno.class);
         when(turno.jugadorActual()).thenReturn(Juan);
 
-        Juego juego = new Juego(tablero, turno);
+        Juego juego = new Juego(tablero, turno, new DadoEstandar());
 
         Continente Asia = tablero.encontrarContinente("Europa");
         assertTrue(Asia.conquistadoPor(new ColorMagenta()));

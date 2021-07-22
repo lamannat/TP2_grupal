@@ -9,7 +9,7 @@ public class Jugador {
 
     private final String nombre;
     private final Color color;
-    private final List<Pais> paises;
+    private List<Pais> paises;
 
     public Jugador(String nombre, Color color) {
         this.nombre = nombre;
@@ -18,6 +18,7 @@ public class Jugador {
     }
 
     public void agregarPais(Pais pais){
+        pais.asignarJugador(this);
         this.paises.add(pais);
         pais.setColor(this.color);
     }
@@ -26,8 +27,21 @@ public class Jugador {
         return paises.size();
     }
 
-    public void comienzaElAtaque() {
-        //this.elegirPais();
+    public void comienzaElAtaque(Dado unDado) {
+        List<Pais> copiaPaises = new ArrayList<Pais>(this.paises);
+
+        for (Pais pais : copiaPaises) {
+            List<Pais> paisesDisponibles = pais.paisesDisponiblesParaAtacar();
+            for (Pais paisAtacado : paisesDisponibles) {
+                try {
+                    pais.paisAtacaAPais(paisAtacado,unDado);
+                } catch (FichasInsuficientesException e) {
+                    break;
+                } catch (NoEsLimitrofeException | AtaqueAPaisAliadoException e) {
+                    continue;
+                }
+            }
+        }
     }
 
     public void reagruparFuerzas() {
@@ -40,9 +54,8 @@ public class Jugador {
     }
 
     public void colocarFichas(List<Ficha> fichas) {
-        // por ahora le agrega las fichas a los paises de forma "aleatoria"
-        for (int i = 0; i < fichas.size(); i++)
-            paises.get(i % paises.size()).agregarFicha(fichas.get(i));
+        // por ahora le agrega las fichas a los paises de forma "aleatoria" FIcsme
+        this.paises.get(0).agregarFichas(fichas);
     }
 
     public int contarTotalFichas(){
@@ -51,5 +64,10 @@ public class Jugador {
             total += pais.cantidadFichas();
         }
         return total;
+    }
+
+    public void quitarPais(Pais pais) {
+        if(!this.paises.remove(pais))
+            System.out.println("Que Pais?");
     }
 }

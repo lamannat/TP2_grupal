@@ -8,13 +8,17 @@ public class Juego {
     private Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
+    private final Dado dado;
 
-    public Juego(Tablero tablero, Turno turno) {
+    public Juego(Tablero tablero, Turno turno, Dado unDado) {
         this.turno = turno;
         this.tablero = tablero;
+        this.dado = unDado;
         rondaActual = new RondaAgregarCincoEjercitos(this);
         this.tablero.asignarPaises(this.turno);
     }
+
+    public Dado getDado() { return this.dado; }
 
     public void comenzarRonda(){
         Jugador cortarEn = turno.jugadorActual();
@@ -46,4 +50,5 @@ public class Juego {
 
     public void jugadorReclamaPorTarjetas(Jugador jugador) {
     }
+
 }
