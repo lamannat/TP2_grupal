@@ -29,7 +29,6 @@ public class PaisTest {
         assertTrue(pais.fichasSuficientes());
     }
 
-    // Esta prueba es trivial. La dejamos?
     @Test
     public void inicialmenteUnPaisNoTieneLimitrofes() {
         Pais pais1 = new Pais("China");
@@ -100,15 +99,6 @@ public class PaisTest {
         } catch (AtaqueInvalidoExcepcion | FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
             ataqueInvalidoExcepcion.printStackTrace();
         }
-
-//        assertThrows(AtaqueAPaisAliadoException.class, //En el primer o segundo ataque el pais va a ser conquistado, luego de eso los ataques lanzan la excepcion.
-//                ()->{
-//                    paisAtacante.paisAtacaAPais(paisDefensor);
-//                    paisAtacante.paisAtacaAPais(paisDefensor);
-//                    paisAtacante.paisAtacaAPais(paisDefensor);
-//                    paisAtacante.paisAtacaAPais(paisDefensor);
-//                    paisAtacante.paisAtacaAPais(paisDefensor);
-//                });
            assertTrue(paisDefensor.tieneColor(new ColorVerde())); //cambia de color porque despues de 5 ataques seguro perdio
     }
 
@@ -148,31 +138,6 @@ public class PaisTest {
 
         assertTrue(paisDefensor.tieneColor(new ColorAmarillo()));
 
-
-
-
-//       Pais paisAtacante, paisDefensor;
-//        paisAtacante = new Pais("Temeria");
-//        paisDefensor = new Pais("Kaedwen");
-//
-//        paisAtacante.setColor(new ColorVerde());
-//        paisDefensor.setColor(new ColorAmarillo());
-//
-//        paisAtacante.agregarPaisLimitrofe(paisDefensor);
-//        List<Ficha> fichasAtacante = new ArrayList<>();
-//        fichasAtacante.add(new Ficha(new ColorVerde()));
-//        fichasAtacante.add(new Ficha(new ColorVerde()));
-//        paisAtacante.agregarFichas(fichasAtacante);
-//
-//        List<Ficha> fichasDefensor = new ArrayList<>();
-//        for (int i = 0; i < 20; i++)
-//            fichasDefensor.add(new Ficha(new ColorAmarillo()));
-//        paisDefensor.agregarFichas(fichasDefensor);
-//
-//        try {
-//            paisAtacante.paisAtacaAPais(paisDefensor);
-//        } catch (AtaqueInvalidoExcepcion e) {}
-//
     }
 
 }
