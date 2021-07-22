@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +19,18 @@ public class Continente {
         paises.add(pais);
     }
 
-    public boolean conquistadoPor(Colores unColor) {
+    public boolean tieneNombre(String unNombre){
+        return this.nombre.equals(unNombre);
+    }
+
+    public boolean conquistadoPor(Color unColor) {
         for (Pais paisActual: paises) {
             if(!paisActual.tieneColor(unColor)) return false;
         }
         return true;
     }
 
-    public int cantidadPaisesConquistadosPor(Colores unColor) {
+    public int cantidadPaisesConquistadosPor(Color unColor) {
         int cantidadFinal = 0;
         for (Pais paisActual: paises) {
             if(paisActual.tieneColor(unColor)) {
@@ -34,7 +40,7 @@ public class Continente {
         return cantidadFinal;
     }
 
-    public boolean sinPaisesDe(Colores unColor) {
+    public boolean sinPaisesDe(Color unColor) {
         return this.cantidadPaisesConquistadosPor(unColor) == 0;
     }
     public boolean tienePais(Pais pais){ return paises.contains(pais); }
