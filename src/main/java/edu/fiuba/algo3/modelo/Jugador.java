@@ -9,37 +9,40 @@ public class Jugador {
 
     private final String nombre;
     private final Color color;
-    private List<Pais> paises;
+    private List<Pais> paisesConquistados;
 
     public Jugador(String nombre, Color color) {
         this.nombre = nombre;
         this.color = color;
-        this.paises = new ArrayList<>();
+        this.paisesConquistados = new ArrayList<>();
     }
 
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
-        this.paises.add(pais);
+        this.paisesConquistados.add(pais);
         pais.setColor(this.color);
     }
 
     public int cuantosPaisesConquistados(){
-        return paises.size();
+        return paisesConquistados.size();
     }
 
     public void comienzaElAtaque(Dado unDado) {
-        List<Pais> copiaPaises = new ArrayList<Pais>(this.paises);
+        List<Pais> copiaPaises = new ArrayList<Pais>(this.paisesConquistados);
 
         for (Pais pais : copiaPaises) {
             List<Pais> paisesDisponibles = pais.paisesDisponiblesParaAtacar();
             for (Pais paisAtacado : paisesDisponibles) {
                 try {
-                    pais.paisAtacaAPais(paisAtacado,unDado);
+                    pais.paisAtacaAPais(paisAtacado, unDado);
                 } catch (FichasInsuficientesException e) {
                     break;
                 } catch (NoEsLimitrofeException | AtaqueAPaisAliadoException e) {
                     continue;
                 }
+                System.out.printf("Pais atacante: %s\n",pais.nombre);
+                System.out.printf("Pais defensor: %s\n",paisAtacado.nombre);
+                System.out.println();
             }
         }
     }
@@ -55,19 +58,23 @@ public class Jugador {
 
     public void colocarFichas(List<Ficha> fichas) {
         // por ahora le agrega las fichas a los paises de forma "aleatoria" FIcsme
-        this.paises.get(0).agregarFichas(fichas);
+        this.paisesConquistados.get(0).agregarFichas(fichas);
     }
 
     public int contarTotalFichas(){
         int total = 0;
-        for (Pais pais : paises){
+        for (Pais pais : paisesConquistados){
             total += pais.cantidadFichas();
         }
         return total;
     }
 
+    public Integer cantidadDePaisesConquistados() {
+        return paisesConquistados.size();
+    }
+
     public void quitarPais(Pais pais) {
-        if(!this.paises.remove(pais))
+        if(!this.paisesConquistados.remove(pais))
             System.out.println("Que Pais?");
     }
 }
