@@ -14,7 +14,6 @@ public class Batalla {
                 defensor.pierdeFicha();
             else
                 atacante.pierdeFicha();
-
         }
     }
 }
