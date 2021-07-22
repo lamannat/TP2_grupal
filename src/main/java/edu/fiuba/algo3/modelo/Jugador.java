@@ -34,4 +34,21 @@ public class Jugador {
 
     public void solicitarTarjeta() {
     }
+    public Color getColor(){
+        return this.color;
+    }
+
+    public void colocarFichas(List<Ficha> fichas) {
+        // por ahora le agrega las fichas a los paises de forma "aleatoria"
+        for (int i = 0; i < fichas.size(); i++)
+            paises.get(i % paises.size()).agregarFicha(fichas.get(i));
+    }
+
+    public int contarTotalFichas(){
+        int total = 0;
+        for (Pais pais : paises){
+            total += pais.cantidadFichas();
+        }
+        return total;
+    }
 }

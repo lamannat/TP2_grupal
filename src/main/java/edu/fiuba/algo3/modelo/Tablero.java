@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class Tablero {
         for (List<String> pais : LeerArchivo.leerArchivo("paisesLimitrofes.txt"))
             this.agregrarLimitrofes(pais);
 
-        for (List<String> carta : LeerArchivo.leerArchivo("TegCartas.txt"))
+        for (List<String> carta : LeerArchivo.leerArchivo("tegCartas.txt"))
             this.agregrarCartas(carta);
     }
 
@@ -73,12 +75,14 @@ public class Tablero {
         List<Pais> copiaPaises = new ArrayList<Pais>(this.paises);
 
         int contador = 0;
-        while (copiaPaises.size() > 0) {
-            int min = 0;
-            int max = copiaPaises.size() - 1;
-            int i = (int) Math.floor(Math.random() * (max - min + 1) + min);
-            this.jugadores.get(contador).agregarPais(copiaPaises.get(i));
-            copiaPaises.remove(i);
+        while (copiaPaises.size()>0){
+            int i = (int) Math.floor(Math.random() * copiaPaises.size());
+            Jugador jugadorActual = this.jugadores.get(contador);
+            Color color = jugadorActual.getColor();
+            Pais paisActual = copiaPaises.remove(i);
+            paisActual.agregarFichas(GeneradorFichas.generar(1,color));
+            jugadorActual.agregarPais(paisActual);
+
             contador = (contador + 1) % this.jugadores.size();
         }
     }

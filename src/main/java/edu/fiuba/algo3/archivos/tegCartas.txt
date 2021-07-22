@@ -8,7 +8,7 @@ Oregon,Cañon
 Etiopia,Globo
 Chile,Globo
 Australia,Cañon
-Kamtchatka,Globo
+Kamchatka,Globo
 Egipto,Globo
 Turquia,Barco
 Nueva York,Barco

@@ -1,5 +1,5 @@
 America del sur,Argentina,Chile,Uruguay,Brasil,Peru,Colombia
-America del norte,Mexico,Califorinia,Oregon,Nueva York,Terranova,Labrador,Groenlandia,Canada,Yukon,Alaska
+America del norte,Mexico,California,Oregon,Nueva York,Terranova,Labrador,Groenlandia,Canada,Yukon,Alaska
 Europa,Islandia,Gran Bretaña,España,Francia,Italia,Alemania,Polonia,Rusia,Suecia
 Africa,Sahara,Etiopia,Egipto,Zaire,Sudafrica,Madagascar
 Oceania,Australia,Java,Borneo,Sumatra

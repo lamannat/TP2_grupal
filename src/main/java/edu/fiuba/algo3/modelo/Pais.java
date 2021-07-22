@@ -114,6 +114,9 @@ public class Pais {
         paisDestino.agregarFicha(this.fichas.remove(0));
     }
 
+    public int cantidadFichas(){
+        return fichas.size();
+    }
 
 }
 
