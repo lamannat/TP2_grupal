@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,20 +65,17 @@ public class Tablero {
         cartasPais.add(new Carta(pais,tipoCarta));
     }
 
-    public void asignarPaises(List<Jugador> jugadores) {
+    public void asignarPaises(Turno turno) {
 
         List<Pais> copiaPaises = new ArrayList<Pais>(this.paises);
 
-        int contador = 0;
         while (copiaPaises.size()>0){
             int i = (int) Math.floor(Math.random() * copiaPaises.size());
-            Jugador jugadorActual = jugadores.get(contador);
+            Jugador jugadorActual = turno.jugadorActual();
             Color color = jugadorActual.getColor();
             Pais paisActual = copiaPaises.remove(i);
             paisActual.agregarFichas(GeneradorFichas.generar(1,color));
             jugadorActual.agregarPais(paisActual);
-
-            contador = (contador + 1) % jugadores.size();
         }
     }
 }

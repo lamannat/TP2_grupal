@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.*;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -19,8 +20,9 @@ public class JuegoTest {
         jugadores.add(Juan);
 
         Tablero tablero = new Tablero();
+        Turno turno = new Turno(jugadores);
 
-        Juego juego = new Juego(jugadores, tablero);
+        Juego juego = new Juego(tablero, turno);
 
         assertEquals(Valentin.contarTotalFichas(), 25);
         assertEquals(Juan.contarTotalFichas(), 25);
@@ -35,7 +37,9 @@ public class JuegoTest {
         jugadores.add(Juan);
 
         Tablero tablero = new Tablero();
-        Juego juego = new Juego(jugadores, tablero);
+        Turno turno = new Turno(jugadores);
+
+        Juego juego = new Juego(tablero, turno);
         juego.comenzarRonda();
 
         assertEquals(Valentin.contarTotalFichas(), 30);
@@ -51,7 +55,9 @@ public class JuegoTest {
         jugadores.add(Juan);
 
         Tablero tablero = new Tablero();
-        Juego juego = new Juego(jugadores, tablero);
+        Turno turno = new Turno(jugadores);
+
+        Juego juego = new Juego(tablero, turno);
         juego.comenzarRonda();
         juego.siguienteRonda();
         juego.comenzarRonda();

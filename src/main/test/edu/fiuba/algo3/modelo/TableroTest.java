@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.*;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,7 +22,9 @@ public class TableroTest {
         jugadores.add(Valentin);
         jugadores.add(Juance);
 
-        tablero.asignarPaises(jugadores);
+        Turno turno = new Turno(jugadores);
+
+        tablero.asignarPaises(turno);
 
         assertEquals(Valentin.cuantosPaisesConquistados(),Juance.cuantosPaisesConquistados());
     }
@@ -39,7 +42,9 @@ public class TableroTest {
         jugadores.add(Juance);
         jugadores.add(Tobias);
 
-        tablero.asignarPaises(jugadores);
+        Turno turno = new Turno(jugadores);
+
+        tablero.asignarPaises(turno);
 
         Integer paisesValentin = Valentin.cuantosPaisesConquistados();
         Integer paisesJuance = Juance.cuantosPaisesConquistados();

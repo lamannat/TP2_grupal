@@ -2,24 +2,30 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.moduloRonda.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
-    private final List<Jugador> jugadores;
+    private Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
 
-    public Juego(List<Jugador> listaJugadores, Tablero tablero) {
-        jugadores = listaJugadores;
+    public Juego(Tablero tablero, Turno turno) {
+        this.turno = turno;
         this.tablero = tablero;
         rondaActual = new RondaAgregarCincoEjercitos(this);
-        this.tablero.asignarPaises(listaJugadores);
+        this.tablero.asignarPaises(this.turno);
     }
 
     public void comenzarRonda(){
-        for (Jugador jugador : jugadores)
+        Jugador cortarEn = turno.jugadorActual();
+        rondaActual.comenzarLaRonda(cortarEn);
+
+        Jugador jugador= turno.jugadorActual();
+
+        while(cortarEn != jugador){
             rondaActual.comenzarLaRonda(jugador);
+            jugador = turno.jugadorActual();
+        }
     }
 
     public void siguienteRonda(){
