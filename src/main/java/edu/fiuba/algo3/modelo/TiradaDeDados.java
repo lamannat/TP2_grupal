@@ -3,38 +3,27 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TiradaDeDados {
 
-    private int tirarDado() {
-        return ThreadLocalRandom.current().nextInt(1, 6 + 1);
+    private List<Integer> resultados;
+
+
+    public TiradaDeDados() {
+        this.resultados = new ArrayList<>();
     }
 
-    public List<Integer> tirarDados(int cantidad) {
-
-        List<Integer> resultados = new ArrayList<>();
-
-        for (int i = 0; i < cantidad; i++)
-            resultados.add(tirarDado());
-
+    public void agregarResultado(Integer resultado) {
+        resultados.add(resultado);
         Collections.sort(resultados, Collections.reverseOrder());
-        return resultados;
     }
 
-    static int tirarDadoDeClase() {
-        return ThreadLocalRandom.current().nextInt(1, 6 + 1);
+    public boolean primerResultadoMayor(TiradaDeDados tirada) {
+        if (this.resultados.isEmpty() || tirada.resultados.isEmpty())
+            return false;
+        return this.resultados.remove(0) > tirada.resultados.remove(0);
     }
 
-    static List<Integer> tirarDadosDeClase(int cantidad) {
-
-        List<Integer> resultados = new ArrayList<>();
-
-        for (int i = 0; i < cantidad; i++)
-            resultados.add(tirarDadoDeClase());
-
-        Collections.sort(resultados, Collections.reverseOrder());
-        return resultados;
-    }
+    public boolean tiradaVacia() { return this.resultados.isEmpty(); }
 
 }

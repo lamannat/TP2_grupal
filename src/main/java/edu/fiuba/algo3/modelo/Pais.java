@@ -76,7 +76,8 @@ public class Pais {
     private EjercitoDeBatalla ejercitoParaDefensa()
     {
         List<Ficha> ejercito = new ArrayList<>();
-        for (int i = 0; i < Math.min(this.fichas.size(), cantidadMaximaDeDados); i++)
+        Integer cantidadDeFichas = Math.min(this.fichas.size(), cantidadMaximaDeDados);
+        for (int i = 0; i < cantidadDeFichas; i++)
             ejercito.add(this.fichas.remove(0));
         return new EjercitoDeBatalla(ejercito);
     }
@@ -84,18 +85,19 @@ public class Pais {
     private EjercitoDeBatalla ejercitoParaAtaque()
     {
         List<Ficha> ejercito = new ArrayList<>();
-        for (int i = 0; i < Math.min(this.fichas.size() - 1, cantidadMaximaDeDados); i++)
+        Integer cantidadDeFichas = Math.min(this.fichas.size() - 1, cantidadMaximaDeDados);
+        for (int i = 0; i < cantidadDeFichas; i++)
             ejercito.add(this.fichas.remove(0));
         return new EjercitoDeBatalla(ejercito);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void paisAtacaAPais(Pais paisDefensor, Dado unDado) throws AtaqueInvalidoExcepcion, FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
 
-        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor);
+        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor, unDado);
 
         this.agregarFichas(ejercitoAtacante.fichasRestantes());
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
