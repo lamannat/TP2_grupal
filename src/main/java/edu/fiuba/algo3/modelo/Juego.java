@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.moduloRonda.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
@@ -49,6 +50,13 @@ public class Juego {
     }
 
     public void jugadorReclamaPorTarjetas(Jugador jugador) {
+        jugador.hacerCanje();
     }
 
+    public List<Carta> cartasParaJugador(Jugador jugador) {
+        List<Carta> cartas = new ArrayList<>();
+        if (jugador.merecesCarta())
+            cartas.add(tablero.darCarta());
+        return cartas;
+    }
 }

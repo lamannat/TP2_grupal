@@ -86,4 +86,10 @@ public class Tablero {
             jugadorActual.agregarPais(paisActual);
         }
     }
+
+    public Carta darCarta() {
+        if (cartasPais.isEmpty())
+            return null;
+        return cartasPais.remove(0);
+    }
 }

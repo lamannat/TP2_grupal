@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.moduloRonda;
 
+import edu.fiuba.algo3.modelo.Carta;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 
@@ -20,7 +21,7 @@ public class RondaPrimeraHostilidades implements Ronda {
 //        }
         this.atacar(jugador);
         this.reagrupar(jugador);
-        this.solicitarTarjeta(jugador);
+        this.solicitarCarta(jugador);
     }
 
     private void atacar(Jugador jugador){
@@ -31,8 +32,9 @@ public class RondaPrimeraHostilidades implements Ronda {
         jugador.reagruparFuerzas();
     }
 
-    private void solicitarTarjeta(Jugador jugador){
-        jugador.solicitarTarjeta();
+    private void solicitarCarta(Jugador jugador){
+        List<Carta> cartas = this.juego.cartasParaJugador(jugador);
+        jugador.solicitarCarta(cartas);
     }
 
     public Ronda siguienteRonda(){

@@ -9,12 +9,16 @@ public class Jugador {
 
     private final String nombre;
     private final Color color;
-    private List<Pais> paisesConquistados;
+    private final List<Pais> paisesConquistados;
+    private final Canjeador canjeador;
+    private boolean conquisteEnRonda;
 
     public Jugador(String nombre, Color color) {
         this.nombre = nombre;
         this.color = color;
         this.paisesConquistados = new ArrayList<>();
+        this.canjeador = new Canjeador();
+        conquisteEnRonda = false;
     }
 
     public void agregarPais(Pais pais){
@@ -28,6 +32,7 @@ public class Jugador {
     }
 
     public void comienzaElAtaque(Dado unDado) {
+        conquisteEnRonda = false;
         List<Pais> copiaPaises = new ArrayList<Pais>(this.paisesConquistados);
 
         for (Pais pais : copiaPaises) {
@@ -35,14 +40,15 @@ public class Jugador {
             for (Pais paisAtacado : paisesDisponibles) {
                 try {
                     pais.paisAtacaAPais(paisAtacado, unDado);
+                    // checkear si conquisto ey
                 } catch (FichasInsuficientesException e) {
                     break;
                 } catch (NoEsLimitrofeException | AtaqueAPaisAliadoException e) {
                     continue;
                 }
-                System.out.printf("Pais atacante: %s\n",pais.nombre);
-                System.out.printf("Pais defensor: %s\n",paisAtacado.nombre);
-                System.out.println();
+//                System.out.printf("Pais atacante: %s\n",pais.nombre);
+//                System.out.printf("Pais defensor: %s\n",paisAtacado.nombre);
+//                System.out.println();
             }
         }
     }
@@ -50,8 +56,19 @@ public class Jugador {
     public void reagruparFuerzas() {
     }
 
-    public void solicitarTarjeta() {
+    public void solicitarCarta(List<Carta> cartas) {
+        for (Carta carta : cartas)
+            canjeador.agregarCartaPais(carta);
     }
+
+    public boolean merecesCarta() {
+        return conquisteEnRonda;
+    }
+
+    public void hacerCanje() {
+        colocarFichas(canjeador.canjearCartas());
+    }
+
     public Color getColor(){
         return this.color;
     }

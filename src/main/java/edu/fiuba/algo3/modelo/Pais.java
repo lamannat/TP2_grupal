@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Pais {
 
-    public final String nombre; // NO SOY PUBLIC LCDTM
+    private final String nombre;
     private final List<Pais> limitrofes;
     private final List<Ficha> fichas;
     private Jugador jugador;
