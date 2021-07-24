@@ -30,7 +30,7 @@ public class Jugador {
         this.color = color;
         this.paisesConquistados = new ArrayList<>();
         this.fichasReservadas = new ArrayList<>();
-        this.canjeador = new Canjeador(this); //esta malo crear cosas >:(
+        this.canjeador = new Canjeador(); //esta malo crear cosas >:(
         conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
     }
 
@@ -81,7 +81,8 @@ public class Jugador {
 
 
     public void hacerCanjePorCarta(){
-        this.fichasReservadas.addAll(canjeador.canjearCartas());
+        int numeroDeFichas = this.canjeador.canjearCartas();
+        this.fichasReservadas.addAll(GeneradorFichas.generar(numeroDeFichas,this.color));
     }
 
     public Color getColor(){

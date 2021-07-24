@@ -63,7 +63,7 @@ public class JugadorTest {
         Canjeador canjeador = mock(Canjeador.class);
         Jugador j = new Jugador("J", new ColorVerde(),canjeador);
 
-        when(canjeador.canjearCartas()).thenReturn(GeneradorFichas.generar(3,j.getColor()));
+        when(canjeador.canjearCartas()).thenReturn(3);
         j.hacerCanjePorCarta();
 
         assertEquals(j.contarTotalFichas(),3);

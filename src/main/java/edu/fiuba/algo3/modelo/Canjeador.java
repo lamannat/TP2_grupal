@@ -6,29 +6,24 @@ import java.util.List;
 public class Canjeador {
     private final List<Carta> cartas;
     private int numeroDeCanje;
-    private Jugador jugador;
 
-    public Canjeador(Jugador jugador) {
+    public Canjeador() {
         this.cartas = new ArrayList<>();
         this.numeroDeCanje = 0;
-        this.jugador = jugador;
     }
 
     public void agregarCartaPais(Carta carta) {
         cartas.add(carta);
     }
 
-    public List<Ficha> canjearCartas() {
+    public int canjearCartas() {
         //canjeo se hace automaticamente
 
-        if (cartas.size()<3) return new ArrayList<>();
-        if (!cartasIguales() && !cartasDiferentes()) return new ArrayList<>();
+        if (cartas.size()<3) return 0;
+        if (!cartasIguales() && !cartasDiferentes()) return 0;
 
         this.numeroDeCanje++;
-        int cant = decidirNumeroFichas();
-        List<Ficha> fichas = GeneradorFichas.generar(cant, jugador.getColor());
-
-        return new ArrayList<>();
+        return decidirNumeroFichas();
     }
 
     private List<List<Carta>> organizarCartas(){
