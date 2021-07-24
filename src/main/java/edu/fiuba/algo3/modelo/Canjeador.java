@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Canjeador {
     private final List<Carta> cartas;
@@ -12,6 +14,49 @@ public class Canjeador {
         this.numeroDeCanje = 0;
     }
 
+    // Map<String, String> map = new HashMap<String, String>();
+
+    public Map<String, List<Carta>> generarMapaDeSimbolos() {
+        Map<String, List<Carta>> mapaSimbolos = new HashMap<String, List<Carta>>();
+        for (Carta cartaActual: this.cartas) {
+            if (!mapaSimbolos.containsKey(cartaActual.getSimbolo())) {
+                mapaSimbolos.put(cartaActual.getSimbolo(),new ArrayList<>());
+            }
+            List<Carta> cartas = mapaSimbolos.get(cartaActual.getSimbolo());
+            cartas.add(cartaActual);
+        }
+        return mapaSimbolos;
+    }
+
+    public boolean verificarCanje() {
+        Map<String, List<Carta>> mapaSimbolos = generarMapaDeSimbolos();
+
+        boolean hayDiferentes = mapaSimbolos.size() >= 3;
+        if (hayDiferentes) {
+            int i = 0;
+            for ( List<Carta> cartasActuales : mapaSimbolos.values() ) {
+                if (i >= 3) {
+                    break;
+                }
+                cartasActuales.remove(0);
+                i++;
+            }
+            return true;
+        }
+
+        for ( List<Carta> cartasActuales : mapaSimbolos.values() ) {
+            if (cartasActuales.size() >= 3) {
+                cartasActuales.remove(0);
+                cartasActuales.remove(0);
+                cartasActuales.remove(0);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
     public void agregarCartaPais(Carta carta) {
         cartas.add(carta);
     }
@@ -20,7 +65,7 @@ public class Canjeador {
         //canjeo se hace automaticamente
 
         if (cartas.size()<3) return 0;
-        if (!cartasIguales() && !cartasDiferentes()) return 0;
+        if (!verificarCanje()) return 0;
 
         this.numeroDeCanje++;
         return decidirNumeroFichas();

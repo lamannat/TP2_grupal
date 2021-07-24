@@ -49,13 +49,13 @@ public class CanjeadorTest {
         canjeador.agregarCartaPais(carta2);
         canjeador.agregarCartaPais(carta3);
         canjeador.canjearCartas();
-        Carta carta1 = new Carta(new Pais("Argentina"),"globo");
-        Carta carta2 = new Carta(new Pais("Mexico"),"barco");
-        Carta carta3 = new Carta(new Pais("Kamchatka"),"canion");
+//        Carta carta1 = new Carta(new Pais("Argentina"),"globo");
+//        Carta carta2 = new Carta(new Pais("Mexico"),"barco");
+//        Carta carta3 = new Carta(new Pais("Kamchatka"),"canion");
         canjeador.agregarCartaPais(carta1);
         canjeador.agregarCartaPais(carta2);
         canjeador.agregarCartaPais(carta3);
 
-        assertEquals(4, canjeador.canjearCartas());
+        assertEquals(7, canjeador.canjearCartas());
     }
 }
