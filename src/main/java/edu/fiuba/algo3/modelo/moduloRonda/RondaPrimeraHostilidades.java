@@ -25,16 +25,18 @@ public class RondaPrimeraHostilidades implements Ronda {
     }
 
     private void atacar(Jugador jugador){
-        jugador.comienzaElAtaque(this.juego.getDado());
+        jugador.comienzaElAtaque(this.juego.getBatalla());
     }
 
     private void reagrupar(Jugador jugador){
         jugador.reagruparFuerzas();
     }
 
-    private void solicitarCarta(Jugador jugador){
-        List<Carta> cartas = this.juego.cartasParaJugador(jugador);
-        jugador.solicitarCarta(cartas);
+    private void solicitarCarta(Jugador jugador) {
+        Carta carta = this.juego.cartaParaJugador(jugador);
+        if (carta != null) {
+            jugador.solicitarCarta(carta);
+        }
     }
 
     public Ronda siguienteRonda(){

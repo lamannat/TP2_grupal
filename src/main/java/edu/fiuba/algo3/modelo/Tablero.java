@@ -99,6 +99,7 @@ public class Tablero {
     }
 
     public Carta darCarta() {
+        //pensar en maso. ver una forma de que no se repitan
         if (cartasPais.isEmpty())
             return null;
         return cartasPais.remove(0);

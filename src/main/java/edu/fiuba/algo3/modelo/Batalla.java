@@ -4,11 +4,16 @@ import java.util.List;
 
 
 public class Batalla {
+    private Dado dado;
 
-    static void ejercitoAtacaAEjercito(EjercitoDeBatalla atacante, EjercitoDeBatalla defensor, Dado unDado) {
+    public Batalla(Dado unDado){
+        this.dado = unDado;
+    }
 
-        TiradaDeDados tiradaAtacante = unDado.tirarDado(atacante.cantidadDeFichas());
-        TiradaDeDados tiradaDefensor = unDado.tirarDado(defensor.cantidadDeFichas());
+    public void ejercitoAtacaAEjercito(EjercitoDeBatalla atacante, EjercitoDeBatalla defensor) {
+
+        TiradaDeDados tiradaAtacante = this.dado.tirarDado(atacante.cantidadDeFichas());
+        TiradaDeDados tiradaDefensor = this.dado.tirarDado(defensor.cantidadDeFichas());
 
         while (!tiradaAtacante.tiradaVacia() && !tiradaDefensor.tiradaVacia()) {
             if (tiradaAtacante.primerResultadoMayor(tiradaDefensor))
@@ -16,5 +21,9 @@ public class Batalla {
             else
                 atacante.pierdeFicha();
         }
+    }
+
+    public void cambiarDado(Dado unDado){
+        this.dado = unDado;
     }
 }

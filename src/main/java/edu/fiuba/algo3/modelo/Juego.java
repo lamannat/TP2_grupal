@@ -9,17 +9,15 @@ public class Juego {
     private Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
-    private final Dado dado;
+    private final Batalla batalla;
 
-    public Juego(Tablero tablero, Turno turno, Dado unDado) {
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla) {
         this.turno = turno;
         this.tablero = tablero;
-        this.dado = unDado;
+        this.batalla = unaBatalla;
         rondaActual = new RondaAgregarCincoFichas(this);
         this.tablero.asignarPaises(this.turno);
     }
-
-    public Dado getDado() { return this.dado; }
 
     public void comenzarRonda(){
         Jugador cortarEn = turno.jugadorActual();
@@ -40,7 +38,10 @@ public class Juego {
     public void darleFichasAJugador(Jugador jugador, int cantFichas) {
         List<Ficha> fichas = GeneradorFichas.generar(cantFichas,jugador.getColor());
         //preguntar por paises, devuelve lista de paises
-        jugador.colocarFichas(fichas);
+//        jugador.colocarFichas(fichas);
+
+        //falta lo del input
+        jugador.darFichas(fichas);
     }
 
     public void jugadorReclamaPorPaises(Jugador jugador) {
@@ -50,13 +51,17 @@ public class Juego {
     }
 
     public void jugadorReclamaPorTarjetas(Jugador jugador) {
-        jugador.hacerCanje();
+        jugador.hacerCanjePorCarta();
     }
 
-    public List<Carta> cartasParaJugador(Jugador jugador) {
-        List<Carta> cartas = new ArrayList<>();
-        if (jugador.merecesCarta())
-            cartas.add(tablero.darCarta());
-        return cartas;
+    public Carta cartaParaJugador(Jugador jugador) {
+        if (jugador.merecesCarta()){
+            return tablero.darCarta();
+        }
+       return null;
+    }
+
+    public Batalla getBatalla() {
+        return this.batalla;
     }
 }

@@ -32,9 +32,9 @@ public class Pais {
         this.jugador = unJugador;
     }
 
-    public void setColor(Color color){
-        this.fichas.forEach(ficha -> { ficha.setColor(color);});
-    }
+//    public void setColor(Color color){
+//        this.fichas.forEach(ficha -> { ficha.setColor(color);});
+//    }
 
     public void agregarFichas(List<Ficha> fichas) {
         this.fichas.addAll(fichas);
@@ -60,22 +60,23 @@ public class Pais {
     public boolean tienePaisLimitrofe(Pais pais) { return limitrofes.stream().anyMatch(estePais -> estePais == pais); }
 
     public boolean esAliado(Pais pais){
-        return pais.tieneColor(this.fichas.get(0).getColor());
+        return pais.conquistadoPorJugador(this.jugador);
+//        return pais.tieneColor(this.fichas.get(0).getColor());
     }
 
-    public boolean tieneColor(Color unColor) {
-        if (this.fichas.isEmpty())
-            return false;
-        return this.fichas.get(0).getColor().tieneColor(unColor);
-    }
+//    public boolean tieneColor(Color unColor) {
+//        if (this.fichas.isEmpty())
+//            return false;
+//        return this.fichas.get(0).getColor().tieneColor(unColor);
+//    }
 
-    public boolean perteneceAContinente(Continente continente){
-        return continente.tienePais(this);
-    }
+//    public boolean perteneceAContinente(Continente continente){
+//        return continente.tienePais(this);
+//    }
 
-    public boolean tieneNombre(String unNombre){
-        return this.nombre.equals(unNombre);
-    }
+//    public boolean tieneNombre(String unNombre){
+//        return this.nombre.equals(unNombre);
+//    }
 
     private EjercitoDeBatalla ejercitoParaDefensa()
     {
@@ -95,13 +96,14 @@ public class Pais {
         return new EjercitoDeBatalla(ejercito);
     }
 
-    public void paisAtacaAPais(Pais paisDefensor, Dado unDado) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
 
-        Batalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor, unDado);
+
+        unaBatalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor);
 
         this.agregarFichas(ejercitoAtacante.fichasRestantes());
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
