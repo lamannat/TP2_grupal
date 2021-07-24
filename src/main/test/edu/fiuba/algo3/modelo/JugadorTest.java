@@ -47,12 +47,9 @@ public class JugadorTest {
         Canjeador canjeador = mock(Canjeador.class);
         Jugador j = new Jugador("J", new ColorVerde(),canjeador);
 
-        List<Carta> cartas = new ArrayList<>();
-        cartas.add(carta1);
-        cartas.add(carta2);
-        cartas.add(carta3);
-
-        j.recibirCartas(cartas);
+        j.solicitarCarta(carta1);
+        j.solicitarCarta(carta2);
+        j.solicitarCarta(carta3);
 
         verify(canjeador, times(1)).agregarCartaPais(carta1);
         verify(canjeador, times(1)).agregarCartaPais(carta2);

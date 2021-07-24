@@ -7,4 +7,8 @@ public class Carta {
         this.pais = pais;
         this.simbolo = simbolo;
     }
+
+    public boolean sosIgual(Carta carta){
+        return carta.simbolo == this.simbolo;
+    }
 }

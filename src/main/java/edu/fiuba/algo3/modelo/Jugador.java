@@ -30,7 +30,7 @@ public class Jugador {
         this.color = color;
         this.paisesConquistados = new ArrayList<>();
         this.fichasReservadas = new ArrayList<>();
-        this.canjeador = new Canjeador(); //esta malo crear cosas >:(
+        this.canjeador = new Canjeador(this); //esta malo crear cosas >:(
         conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
     }
 
@@ -66,9 +66,9 @@ public class Jugador {
     public void reagruparFuerzas() {
     }
 
-    public void recibirCartas(List<Carta> cartas) {
-        for (Carta carta : cartas)
-            canjeador.agregarCartaPais(carta);
+    public void solicitarCarta(Carta carta) {
+        //cuando hiciste una conquista y te tinen que dar UNA carta
+        canjeador.agregarCartaPais(carta);
     }
 
     public boolean merecesCarta() {

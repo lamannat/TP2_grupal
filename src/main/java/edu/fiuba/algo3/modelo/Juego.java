@@ -54,11 +54,11 @@ public class Juego {
         jugador.hacerCanjePorCarta();
     }
 
-    public List<Carta> cartasParaJugador(Jugador jugador) {
-        List<Carta> cartas = new ArrayList<>();
-        if (jugador.merecesCarta())
-            cartas.add(tablero.darCarta());
-        return cartas;
+    public Carta cartaParaJugador(Jugador jugador) {
+        if (jugador.merecesCarta()){
+            return tablero.darCarta();
+        }
+       return null;
     }
 
     public Batalla getBatalla() {

@@ -37,8 +37,10 @@ public class RondaHostilidadesGeneral implements Ronda{
     }
 
     private void solicitarCarta(Jugador jugador){
-        List<Carta> cartas = this.juego.cartasParaJugador(jugador);
-        jugador.recibirCartas(cartas);
+        Carta carta = this.juego.cartaParaJugador(jugador);
+        if (carta != null){
+            jugador.solicitarCarta(carta);
+        }
     }
 
     public Ronda siguienteRonda(){
