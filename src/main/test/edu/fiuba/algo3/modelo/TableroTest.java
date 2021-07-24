@@ -11,9 +11,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TableroTest {
 
+    private List<Continente> listaDeContientes() {
+        List<Continente> continentes = new ArrayList<>();
+        for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
+
+            Continente continente = new Continente(continenteYPaises.get(0));
+            continentes.add(continente);
+
+            for (int i = 1; i < continenteYPaises.size(); i++)
+                continente.agregarPais(new Pais(continenteYPaises.get(i)));
+        }
+        return continentes;
+    }
+
     @Test
     public void TableroDividePaisesEntreJugadoresEquitativamente(){
         Tablero tablero = new Tablero();
+        for (Continente continente : listaDeContientes())
+            tablero.agregarContinente(continente);
 
         Jugador Valentin = new Jugador("Valentin", new ColorAmarillo());
         Jugador Juance = new Jugador("Juance", new ColorVerde());
@@ -26,12 +41,15 @@ public class TableroTest {
 
         tablero.asignarPaises(turno);
 
-        assertEquals(Valentin.cuantosPaisesConquistados(),Juance.cuantosPaisesConquistados());
+        assertEquals(25, Juance.cuantosPaisesConquistados());
+        assertEquals(25, Valentin.cuantosPaisesConquistados());
     }
 
     @Test
     public void TableroDividePaisesEntreJugadoresNoEquitativamente(){
         Tablero tablero = new Tablero();
+        for (Continente continente : listaDeContientes())
+            tablero.agregarContinente(continente);
 
         Jugador Valentin = new Jugador("Valentin", new ColorAmarillo());
         Jugador Juance = new Jugador("Juance", new ColorVerde());

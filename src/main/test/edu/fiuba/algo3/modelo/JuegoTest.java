@@ -9,9 +9,21 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class JuegoTest {
+
+    private List<Continente> listaDeContientes() {
+        List<Continente> continentes = new ArrayList<>();
+        for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
+
+            Continente continente = new Continente(continenteYPaises.get(0));
+            continentes.add(continente);
+
+            for (int i = 1; i < continenteYPaises.size(); i++)
+                continente.agregarPais(new Pais(continenteYPaises.get(i)));
+        }
+        return continentes;
+    }
 
     @Test
     public void SeIniciaElJuegoYLosDosJugadoresTienen25FichasCadaUno(){
@@ -22,6 +34,8 @@ public class JuegoTest {
         jugadores.add(Juan);
 
         Tablero tablero = new Tablero();
+        for (Continente continente : listaDeContientes())
+            tablero.agregarContinente(continente);
         Turno turno = new Turno(jugadores);
 
         Juego juego = new Juego(tablero, turno, new DadoEstandar());
@@ -39,6 +53,8 @@ public class JuegoTest {
         jugadores.add(Juan);
 
         Tablero tablero = new Tablero();
+        for (Continente continente : listaDeContientes())
+            tablero.agregarContinente(continente);
         Turno turno = new Turno(jugadores);
 
         Juego juego = new Juego(tablero, turno, new DadoEstandar());
@@ -57,6 +73,8 @@ public class JuegoTest {
         jugadores.add(Juan);
 
         Tablero tablero = new Tablero();
+        for (Continente continente : listaDeContientes())
+            tablero.agregarContinente(continente);
         Turno turno = new Turno(jugadores);
 
         Juego juego = new Juego(tablero, turno, new DadoEstandar());
@@ -66,6 +84,16 @@ public class JuegoTest {
 
         assertEquals(Valentin.contarTotalFichas(), 33);
         assertEquals(Juan.contarTotalFichas(), 33);
+    }
+
+    private List<Continente> listaDelContienteAsia() {
+        List<Continente> continentes = new ArrayList<>();
+
+        Continente Asia = new Continente("Asia");
+        Asia.agregarPais(new Pais("China"));
+        continentes.add(Asia);
+
+        return continentes;
     }
 
     @Test
@@ -80,34 +108,21 @@ public class JuegoTest {
         jugadores.add(Tobias);
 
         Tablero tablero = new Tablero();
-        Turno turno = mock(Turno.class);
-        when(turno.jugadorActual()).thenReturn(Valentin);
+        for (Continente continente : listaDelContienteAsia()) {
+            if (continente.tieneNombre("Asia"))
+                while (true) {
+                    Pais paisSinAsignar = continente.obtenerPaisNoAsignado();
+                    if (paisSinAsignar == null)
+                        break;
+                    Valentin.agregarPais(paisSinAsignar);
+                }
+            tablero.agregarContinente(continente);
+        }
 
+        Turno turno = new Turno(jugadores);
         Juego juego = new Juego(tablero, turno, new DadoEstandar());
 
         Continente Asia = tablero.encontrarContinente("Asia");
-        assertTrue(Asia.conquistadoPor(new ColorNegro()));
+        assertTrue(Asia.conquistadoPor(Valentin));
     }
-
-    @Test
-    public void JugadorConquistoEuropa(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro());
-        Jugador Juan = new Jugador("Juan", new ColorMagenta());
-        Jugador Tobias = new Jugador("Tobias", new ColorVerde());
-
-        List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(Valentin);
-        jugadores.add(Juan);
-        jugadores.add(Tobias);
-
-        Tablero tablero = new Tablero();
-        Turno turno = mock(Turno.class);
-        when(turno.jugadorActual()).thenReturn(Juan);
-
-        Juego juego = new Juego(tablero, turno, new DadoEstandar());
-
-        Continente Asia = tablero.encontrarContinente("Europa");
-        assertTrue(Asia.conquistadoPor(new ColorMagenta()));
-    }
-
 }
