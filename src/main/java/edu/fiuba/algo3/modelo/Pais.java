@@ -140,6 +140,10 @@ public class Pais {
     public boolean estaAsignado() {
         return this.jugador != null;
     }
+
+    public boolean conquistadoPorJugador(Jugador jugador) {
+        return this.jugador == jugador;
+    }
 }
 
 

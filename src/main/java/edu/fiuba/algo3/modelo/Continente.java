@@ -24,10 +24,11 @@ public class Continente {
     }
 
     public boolean conquistadoPor(Color unColor) {
-        for (Pais paisActual: paises) {
-            if(!paisActual.tieneColor(unColor)) return false;
-        }
-        return true;
+        return paises.stream().allMatch(paisActual -> paisActual.tieneColor(unColor));
+    }
+
+    public boolean conquistadoPor(Jugador jugador) {
+        return paises.stream().allMatch(paisActual -> paisActual.conquistadoPorJugador(jugador));
     }
 
     public int cantidadPaisesConquistadosPor(Color unColor) {
