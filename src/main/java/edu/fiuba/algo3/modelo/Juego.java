@@ -38,7 +38,10 @@ public class Juego {
     public void darleFichasAJugador(Jugador jugador, int cantFichas) {
         List<Ficha> fichas = GeneradorFichas.generar(cantFichas,jugador.getColor());
         //preguntar por paises, devuelve lista de paises
-        jugador.colocarFichas(fichas);
+//        jugador.colocarFichas(fichas);
+
+        //falta lo del input
+        jugador.darFichas(fichas);
     }
 
     public void jugadorReclamaPorPaises(Jugador jugador) {
@@ -48,7 +51,7 @@ public class Juego {
     }
 
     public void jugadorReclamaPorTarjetas(Jugador jugador) {
-        jugador.hacerCanje();
+        jugador.hacerCanjePorCarta();
     }
 
     public List<Carta> cartasParaJugador(Jugador jugador) {

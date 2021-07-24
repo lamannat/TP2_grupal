@@ -145,7 +145,5 @@ public class PaisTest {
         }
 
         assertFalse(paisDefensor.conquistadoPorJugador(j1));
-
     }
-
 }
