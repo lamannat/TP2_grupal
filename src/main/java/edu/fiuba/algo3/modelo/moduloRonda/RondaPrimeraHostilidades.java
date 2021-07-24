@@ -25,7 +25,7 @@ public class RondaPrimeraHostilidades implements Ronda {
     }
 
     private void atacar(Jugador jugador){
-        jugador.comienzaElAtaque(this.juego.getDado());
+        jugador.comienzaElAtaque(this.juego.getBatalla());
     }
 
     private void reagrupar(Jugador jugador){

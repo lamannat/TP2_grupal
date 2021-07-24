@@ -24,14 +24,14 @@ public class Jugador {
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
         this.paisesConquistados.add(pais);
-        pais.setColor(this.color);
+//        pais.setColor(this.color);
     }
 
     public int cuantosPaisesConquistados(){
         return paisesConquistados.size();
     }
 
-    public void comienzaElAtaque(Dado unDado) {
+    public void comienzaElAtaque(Batalla unaBatalla) {
         conquisteEnRonda = false;
         List<Pais> copiaPaises = new ArrayList<Pais>(this.paisesConquistados);
 
@@ -39,7 +39,7 @@ public class Jugador {
             List<Pais> paisesDisponibles = pais.paisesDisponiblesParaAtacar();
             for (Pais paisAtacado : paisesDisponibles) {
                 try {
-                    pais.paisAtacaAPais(paisAtacado, unDado);
+                    pais.paisAtacaAPais(paisAtacado, unaBatalla);
                     // checkear si conquisto ey
                 } catch (FichasInsuficientesException e) {
                     break;

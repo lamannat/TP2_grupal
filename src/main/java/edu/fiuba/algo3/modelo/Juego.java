@@ -9,17 +9,15 @@ public class Juego {
     private Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
-    private final Dado dado;
+    private final Batalla batalla;
 
-    public Juego(Tablero tablero, Turno turno, Dado unDado) {
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla) {
         this.turno = turno;
         this.tablero = tablero;
-        this.dado = unDado;
+        this.batalla = unaBatalla;
         rondaActual = new RondaAgregarCincoFichas(this);
         this.tablero.asignarPaises(this.turno);
     }
-
-    public Dado getDado() { return this.dado; }
 
     public void comenzarRonda(){
         Jugador cortarEn = turno.jugadorActual();
@@ -58,5 +56,9 @@ public class Juego {
         if (jugador.merecesCarta())
             cartas.add(tablero.darCarta());
         return cartas;
+    }
+
+    public Batalla getBatalla() {
+        return this.batalla;
     }
 }

@@ -14,7 +14,7 @@ public class PaisTest {
 
     @Test
     public void paisEmpiezaSinFichasYNoPuedeAtacar(){
-        Pais pais = new Pais("Temeria");
+        Pais pais = new Pais("Argentina");
         assertFalse(pais.fichasSuficientes());
     }
 
@@ -66,10 +66,10 @@ public class PaisTest {
     }
 
     @Test
-    public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeColor(){
+    public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeJugador() {
 
-        Jugador j1 = new Jugador("Jugador 1",new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2",new ColorAmarillo());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo());
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
@@ -78,10 +78,8 @@ public class PaisTest {
         j1.agregarPais(paisAtacante);
         j2.agregarPais(paisDefensor);
 
-        paisAtacante.setColor(new ColorVerde());
-        paisDefensor.setColor(new ColorAmarillo());
-
         Dado unDado = mock(Dado.class);
+        Batalla batalla = new Batalla(unDado);
 
         TiradaDeDados tiradaAtacante = new TiradaDeDados();
         tiradaAtacante.agregarResultado(6);
@@ -102,23 +100,27 @@ public class PaisTest {
         paisDefensor.agregarFicha(new Ficha(new ColorAmarillo()));
 
         try {
-            paisAtacante.paisAtacaAPais(paisDefensor,unDado);
+            paisAtacante.paisAtacaAPais(paisDefensor, batalla);
         } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
             ataqueInvalidoExcepcion.printStackTrace();
         }
-           assertTrue(paisDefensor.tieneColor(new ColorVerde())); //cambia de color porque despues de 5 ataques seguro perdio
+        assertTrue(paisDefensor.conquistadoPorJugador(j1));
     }
 
     @Test
-    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeColor() throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeJugador() throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo());
+
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
         paisDefensor = new Pais("Kaedwen");
 
-        paisAtacante.setColor(new ColorVerde());
-        paisDefensor.setColor(new ColorAmarillo());
+        j1.agregarPais(paisAtacante);
+        j2.agregarPais(paisDefensor);
 
         Dado unDado = mock(Dado.class);
+        Batalla batalla = new Batalla(unDado);
 
         TiradaDeDados tiradaAtacante = new TiradaDeDados();
         tiradaAtacante.agregarResultado(1);
@@ -136,14 +138,13 @@ public class PaisTest {
             paisDefensor.agregarFicha(new Ficha( new ColorAmarillo()));
         }
 
-
         try {
-            paisAtacante.paisAtacaAPais(paisDefensor,unDado);
+            paisAtacante.paisAtacaAPais(paisDefensor,batalla);
         } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ataqueInvalidoExcepcion) {
             ataqueInvalidoExcepcion.printStackTrace();
         }
 
-        assertTrue(paisDefensor.tieneColor(new ColorAmarillo()));
+        assertFalse(paisDefensor.conquistadoPorJugador(j1));
 
     }
 

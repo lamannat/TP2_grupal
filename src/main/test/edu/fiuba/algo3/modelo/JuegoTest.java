@@ -37,8 +37,9 @@ public class JuegoTest {
         for (Continente continente : listaDeContientes())
             tablero.agregarContinente(continente);
         Turno turno = new Turno(jugadores);
+        Batalla batalla = new Batalla(new DadoEstandar());
 
-        Juego juego = new Juego(tablero, turno, new DadoEstandar());
+        Juego juego = new Juego(tablero, turno, batalla);
 
         assertEquals(Valentin.contarTotalFichas(), 25);
         assertEquals(Juan.contarTotalFichas(), 25);
@@ -57,7 +58,9 @@ public class JuegoTest {
             tablero.agregarContinente(continente);
         Turno turno = new Turno(jugadores);
 
-        Juego juego = new Juego(tablero, turno, new DadoEstandar());
+        Batalla batalla = new Batalla(new DadoEstandar());
+
+        Juego juego = new Juego(tablero, turno, batalla);
         juego.comenzarRonda();
 
         assertEquals(Valentin.contarTotalFichas(), 30);
@@ -76,8 +79,9 @@ public class JuegoTest {
         for (Continente continente : listaDeContientes())
             tablero.agregarContinente(continente);
         Turno turno = new Turno(jugadores);
+        Batalla batalla = new Batalla(new DadoEstandar());
 
-        Juego juego = new Juego(tablero, turno, new DadoEstandar());
+        Juego juego = new Juego(tablero, turno, batalla);
         juego.comenzarRonda();
         juego.siguienteRonda();
         juego.comenzarRonda();
@@ -120,9 +124,10 @@ public class JuegoTest {
         }
 
         Turno turno = new Turno(jugadores);
-        Juego juego = new Juego(tablero, turno, new DadoEstandar());
+        Batalla batalla = new Batalla(new DadoEstandar());
+        Juego juego = new Juego(tablero, turno, batalla);
 
         Continente Asia = tablero.encontrarContinente("Asia");
-        assertTrue(Asia.conquistadoPor(Valentin));
+        assertTrue(Asia.conquistadoPorJugador(Valentin));
     }
 }

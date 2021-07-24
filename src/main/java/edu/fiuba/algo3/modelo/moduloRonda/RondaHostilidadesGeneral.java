@@ -29,7 +29,7 @@ public class RondaHostilidadesGeneral implements Ronda{
     }
 
     private void atacar(Jugador jugador){
-        jugador.comienzaElAtaque(juego.getDado());
+        jugador.comienzaElAtaque(juego.getBatalla());
     }
 
     private void reagrupar(Jugador jugador){

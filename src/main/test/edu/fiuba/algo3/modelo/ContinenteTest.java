@@ -9,92 +9,79 @@ public class ContinenteTest {
 
     @Test
     public void continenteConquistado() {
+        Jugador j = new Jugador("Jugador", new ColorVerde());
+
         Continente continente = new Continente("Africa");
         Pais pais1 = new Pais("Egipto");
         Pais pais2 = new Pais("Sahara");
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.agregarFicha(new Ficha(new ColorAzul()));
-        pais2.agregarFicha(new Ficha(new ColorAzul()));
-        pais3.agregarFicha(new Ficha(new ColorAzul()));
-        pais4.agregarFicha(new Ficha(new ColorAzul()));
+        j.agregarPais(pais1);
+        j.agregarPais(pais2);
+        j.agregarPais(pais3);
+        j.agregarPais(pais4);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertTrue(continente.conquistadoPor(new ColorAzul()));
+        assertTrue(continente.conquistadoPorJugador(j));
     }
 
     @Test
-    public void continenteNoConquistado() {
+    public void continenteNoConquistado(){
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j2 = new Jugador("Jugador 2", new ColorMagenta());
+
         Continente continente = new Continente("Africa");
         Pais pais1 = new Pais("Egipto");
         Pais pais2 = new Pais("Sahara");
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.agregarFicha(new Ficha(new ColorAzul()));
-        pais2.agregarFicha(new Ficha(new ColorMagenta()));
-        pais3.agregarFicha(new Ficha(new ColorAzul()));
-        pais4.agregarFicha(new Ficha(new ColorAzul()));
+        j1.agregarPais(pais1);
+        j1.agregarPais(pais3);
+        j1.agregarPais(pais4);
+
+        j2.agregarPais(pais2);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertFalse(continente.conquistadoPor(new ColorAzul()));
+        assertFalse(continente.conquistadoPorJugador(j1));
     }
 
     @Test
     public void cantidadDePaisesConquistados() {
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j2 = new Jugador("Jugador 2", new ColorMagenta());
+        Jugador j3 = new Jugador("Jugador 3", new ColorNegro());
+        
         Continente continente = new Continente("Africa");
         Pais pais1 = new Pais("Egipto");
         Pais pais2 = new Pais("Sahara");
         Pais pais3 = new Pais("Etiopía");
         Pais pais4 = new Pais("Zaire");
 
-        pais1.agregarFicha(new Ficha(new ColorAzul()));
-        pais2.agregarFicha(new Ficha(new ColorMagenta()));
-        pais3.agregarFicha(new Ficha(new ColorNegro()));
-        pais4.agregarFicha(new Ficha(new ColorAzul()));
+        j1.agregarPais(pais1);
+        j1.agregarPais(pais4);
+
+        j2.agregarPais(pais2);
+
+        j3.agregarPais(pais3);
 
         continente.agregarPais(pais1);
         continente.agregarPais(pais2);
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertEquals(continente.cantidadPaisesConquistadosPor(new ColorAzul()),2);
-        assertEquals(continente.cantidadPaisesConquistadosPor(new ColorMagenta()),1);
-        assertEquals(continente.cantidadPaisesConquistadosPor(new ColorNegro()),1);
+        assertEquals(continente.cantidadPaisesConquistadosPorJugador(j1),2);
+        assertEquals(continente.cantidadPaisesConquistadosPorJugador(j2),1);
+        assertEquals(continente.cantidadPaisesConquistadosPorJugador(j3),1);
     }
 
-    @Test
-    public void continenteNoTienePaisesConUnColor() {
-        Continente continente = new Continente("Africa");
-        Pais pais1 = new Pais("Egipto");
-        Pais pais2 = new Pais("Sahara");
-        Pais pais3 = new Pais("Etiopía");
-        Pais pais4 = new Pais("Zaire");
-
-        pais1.agregarFicha(new Ficha(new ColorAzul()));
-        pais2.agregarFicha(new Ficha(new ColorMagenta()));
-        pais3.agregarFicha(new Ficha(new ColorNegro()));
-        pais4.agregarFicha(new Ficha(new ColorAzul()));
-
-        continente.agregarPais(pais1);
-        continente.agregarPais(pais2);
-        continente.agregarPais(pais3);
-        continente.agregarPais(pais4);
-
-        assertTrue(continente.sinPaisesDe(new ColorRojo()));
-        assertTrue(continente.sinPaisesDe(new ColorVerde()));
-        assertTrue(continente.sinPaisesDe(new ColorAmarillo()));
-        assertFalse(continente.sinPaisesDe(new ColorAzul()));
-        assertFalse(continente.sinPaisesDe(new ColorNegro()));
-        assertFalse(continente.sinPaisesDe(new ColorMagenta()));
-    }
 }
