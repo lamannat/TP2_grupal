@@ -44,4 +44,11 @@ public class Continente {
         return this.cantidadPaisesConquistadosPor(unColor) == 0;
     }
     public boolean tienePais(Pais pais){ return paises.contains(pais); }
+
+    public Pais obtenerPaisNoAsignado() {
+        for (Pais pais : paises)
+            if (!pais.estaAsignado())
+                return pais;
+        return null;
+    }
 }

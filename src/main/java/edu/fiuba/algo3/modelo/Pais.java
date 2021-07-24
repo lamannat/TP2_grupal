@@ -18,6 +18,7 @@ public class Pais {
         this.nombre = nombre;
         this.limitrofes = new ArrayList<>();
         this.fichas = new ArrayList<>();
+        this.jugador = null;
     }
 
     public void agregarPaisLimitrofe(Pais pais){
@@ -134,6 +135,10 @@ public class Pais {
             if(!this.esAliado(pais))
                 disponibles.add(pais);
         return disponibles;
+    }
+
+    public boolean estaAsignado() {
+        return this.jugador != null;
     }
 }
 
