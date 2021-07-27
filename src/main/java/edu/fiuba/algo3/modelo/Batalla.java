@@ -23,7 +23,7 @@ public class Batalla {
         }
     }
 
-    public void cambiarDado(Dado unDado){
-        this.dado = unDado;
-    }
+//    public void cambiarDado(Dado unDado){
+//        this.dado = unDado;
+//    }
 }

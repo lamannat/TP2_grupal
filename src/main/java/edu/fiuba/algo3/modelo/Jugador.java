@@ -44,6 +44,14 @@ public class Jugador {
         return paisesConquistados.size();
     }
 
+
+    public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor,Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+        if (!paisesConquistados.contains(paisAtacante)) {
+        // return PaisNoEncontradoExcepcion --> Puede Estar en Juego
+        }
+        paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
+    }
+
     public void comienzaElAtaque(Batalla unaBatalla) {
 //        conquisteEnRonda = false;
 //        List<Pais> copiaPaises = new ArrayList<Pais>(this.paisesConquistados);

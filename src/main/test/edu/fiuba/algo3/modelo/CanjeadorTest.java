@@ -95,24 +95,6 @@ public class CanjeadorTest {
         assertEquals(4, canjeador.canjearCartas());
     }
 
-    @Test
-    public void segundoCanjeDevuelveSieteFichas(){
-        Canjeador canjeador = new Canjeador();
-        Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
-        Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("barco"));
-        Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
-        canjeador.agregarCartaPais(carta1);
-        canjeador.agregarCartaPais(carta2);
-        canjeador.agregarCartaPais(carta3);
-
-        canjeador.canjearCartas();
-
-        canjeador.agregarCartaPais(carta1);
-        canjeador.agregarCartaPais(carta2);
-        canjeador.agregarCartaPais(carta3);
-
-        assertEquals(7, canjeador.canjearCartas());
-    }
 
     @Test
     public void primerCanjeConDosCartasIgualesYUnComodin() {
@@ -153,5 +135,49 @@ public class CanjeadorTest {
         canjeador.agregarCartaPais(carta4);
 
         assertEquals(4, canjeador.canjearCartas());
+    }
+
+    @Test
+    public void segundoCanjeDevuelveSieteFichas(){
+        Canjeador canjeador = new Canjeador();
+        Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
+        Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("barco"));
+        Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
+        canjeador.agregarCartaPais(carta1);
+        canjeador.agregarCartaPais(carta2);
+        canjeador.agregarCartaPais(carta3);
+
+        canjeador.canjearCartas();
+
+        canjeador.agregarCartaPais(carta1);
+        canjeador.agregarCartaPais(carta2);
+        canjeador.agregarCartaPais(carta3);
+
+        assertEquals(7, canjeador.canjearCartas());
+    }
+
+    @Test
+    public void tercerCanjeDevuelveDiezFichas(){
+        Canjeador canjeador = new Canjeador();
+        Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
+        Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("barco"));
+        Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
+        canjeador.agregarCartaPais(carta1);
+        canjeador.agregarCartaPais(carta2);
+        canjeador.agregarCartaPais(carta3);
+
+        canjeador.canjearCartas();
+
+        canjeador.agregarCartaPais(carta1);
+        canjeador.agregarCartaPais(carta2);
+        canjeador.agregarCartaPais(carta3);
+
+        canjeador.canjearCartas();
+
+        canjeador.agregarCartaPais(carta1);
+        canjeador.agregarCartaPais(carta2);
+        canjeador.agregarCartaPais(carta3);
+
+        assertEquals(10, canjeador.canjearCartas());
     }
 }
