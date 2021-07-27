@@ -12,6 +12,8 @@ import static org.mockito.Mockito.when;
 
 public class PaisTest {
 
+    Canjeador canjeador = new Canjeador(new Mazo());
+
     @Test
     public void paisEmpiezaSinFichasYNoPuedeAtacar(){
         Pais pais = new Pais("Argentina");
@@ -68,7 +70,7 @@ public class PaisTest {
     @Test
     public void noSePuedeAtacarAUnPaisAliado() {
 
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
@@ -94,7 +96,7 @@ public class PaisTest {
     @Test
     public void noSePuedeAtacarAUnPaisNoLimitrofe() {
 
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
@@ -118,7 +120,7 @@ public class PaisTest {
     @Test
     public void noSePuedeAtacarConSoloUnaFicha() {
 
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
@@ -143,8 +145,8 @@ public class PaisTest {
     @Test
     public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeJugador() {
 
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
@@ -180,8 +182,8 @@ public class PaisTest {
 
     @Test
     public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeJugador() throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");

@@ -12,6 +12,8 @@ import static org.mockito.Mockito.mock;
 
 public class JuegoTest {
 
+    Canjeador canjeador = new Canjeador(new Mazo());
+
     private List<Continente> listaDeContientes() {
         List<Continente> continentes = new ArrayList<>();
         for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
@@ -27,8 +29,8 @@ public class JuegoTest {
 
     @Test
     public void SeIniciaElJuegoYLosDosJugadoresTienen25FichasCadaUno(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro());
-        Jugador Juan = new Jugador("Juan", new ColorMagenta());
+        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
+        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
         List<Jugador> jugadores = new ArrayList<>();
         jugadores.add(Valentin);
         jugadores.add(Juan);
@@ -47,8 +49,8 @@ public class JuegoTest {
 
     @Test
     public void DespuesDeLaPrimeraRondaLosDosJugadoresTienen30Fichas(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro());
-        Jugador Juan = new Jugador("Juan", new ColorMagenta());
+        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
+        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
         List<Jugador> jugadores = new ArrayList<>();
         jugadores.add(Valentin);
         jugadores.add(Juan);
@@ -69,8 +71,8 @@ public class JuegoTest {
 
     @Test
     public void DespuesDeLaSegundaRondaLosDosJugadoresTienen33Fichas(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro());
-        Jugador Juan = new Jugador("Juan", new ColorMagenta());
+        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
+        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
         List<Jugador> jugadores = new ArrayList<>();
         jugadores.add(Valentin);
         jugadores.add(Juan);
@@ -102,9 +104,9 @@ public class JuegoTest {
 
     @Test
     public void JugadorConquistoAsia(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro());
-        Jugador Juan = new Jugador("Juan", new ColorMagenta());
-        Jugador Tobias = new Jugador("Tobias", new ColorVerde());
+        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
+        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
+        Jugador Tobias = new Jugador("Tobias", new ColorVerde(),canjeador);
 
         List<Jugador> jugadores = new ArrayList<>();
         jugadores.add(Valentin);

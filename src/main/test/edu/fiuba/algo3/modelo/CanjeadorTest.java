@@ -9,13 +9,13 @@ public class CanjeadorTest {
 
     @Test
     public void noSePuedeCanjearCuandoNoTenesCartas(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         assertEquals(0, canjeador.canjearCartas());
     }
 
     @Test
     public void noSePuedeCanjearConSoloUnaCarta(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
 
         Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("globo"));;
 
@@ -26,7 +26,7 @@ public class CanjeadorTest {
 
     @Test
     public void noSePuedeCanjearConDosCartas(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
 
         Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("barco"));
         Carta carta2 = new Carta(new Pais("Mexico"), new SimboloNormal("globo"));
@@ -39,7 +39,7 @@ public class CanjeadorTest {
 
     @Test
     public void noSePuedeCanjearConTresCartasSiNoSonTodasIgualesODiferentes(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
 
         Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"), new SimboloNormal("globo"));
@@ -54,7 +54,7 @@ public class CanjeadorTest {
 
     @Test
     public void noSePuedeCanjearConCuatroCartasSiNoHayTresIgualesOTresDiferentes(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
 
         Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"), new SimboloNormal("globo"));
@@ -71,7 +71,7 @@ public class CanjeadorTest {
 
     @Test
     public void tresCartasMismoSimboloPrimerCanjeDevuelveCuatroFichas(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"), new SimboloNormal("globo"));
         Carta carta3 = new Carta(new Pais("Kamchatka"), new SimboloNormal("globo"));
@@ -84,7 +84,7 @@ public class CanjeadorTest {
 
     @Test
     public void tresCartasDiferenteSimboloPrimerCanjeDevuelveCuatroFichas(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("barco"));
         Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
@@ -98,7 +98,7 @@ public class CanjeadorTest {
 
     @Test
     public void primerCanjeConDosCartasIgualesYUnComodin() {
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"),new Comodin("comodin"));
         Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("globo"));
@@ -110,7 +110,7 @@ public class CanjeadorTest {
 
     @Test
     public void primerCanjeConDosCartasDiferentesYUnComodin() {
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
         Carta carta3 = new Carta(new Pais("Mexico"),new Comodin("comodin"));
@@ -123,7 +123,7 @@ public class CanjeadorTest {
 
     @Test
     public void primerCanjeConDosCartasDiferentesUnComodinYOtraCarta() {
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
         Carta carta3 = new Carta(new Pais("Mexico"),new Comodin("comodin"));
@@ -139,7 +139,7 @@ public class CanjeadorTest {
 
     @Test
     public void segundoCanjeDevuelveSieteFichas(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("barco"));
         Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
@@ -158,7 +158,7 @@ public class CanjeadorTest {
 
     @Test
     public void tercerCanjeDevuelveDiezFichas(){
-        Canjeador canjeador = new Canjeador();
+        Canjeador canjeador = new Canjeador(new Mazo());
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
         Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("barco"));
         Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));

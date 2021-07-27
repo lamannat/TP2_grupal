@@ -10,9 +10,11 @@ import static org.mockito.Mockito.*;
 
 public class JugadorTest {
 
+    Canjeador canjeador = new Canjeador(new Mazo());
+
     @Test
     public void agregarPaisesAJugador() {
-        Jugador jugador = new Jugador("Pedro", new ColorRojo());
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
 
         Pais pais1 = new Pais("Aral");
         Pais pais2 = new Pais("Mongolia");
@@ -27,7 +29,7 @@ public class JugadorTest {
 
     @Test
     public void jugadorColocaFichaEnPaisPropio(){
-        Jugador jugador = new Jugador("Pedro", new ColorRojo());
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
 
         Pais pais = new Pais("Aral");
 
@@ -58,13 +60,27 @@ public class JugadorTest {
     @Test
     public void jugadorEfectuaUnCanjeDeCartasPorFichas(){
 
-        Canjeador canjeador = mock(Canjeador.class);
+        Mazo mazo = new Mazo();
+
+        Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("x"));
+        Carta carta2 = new Carta(new Pais("Chile"), new SimboloNormal("o"));
+        Carta carta3 = new Carta(new Pais("Peru"), new SimboloNormal("y"));
+
+        mazo.agregarCarta(carta1);
+        mazo.agregarCarta(carta2);
+        mazo.agregarCarta(carta3);
+
+        Canjeador canjeador = new Canjeador(mazo);
+
         Jugador j = new Jugador("J", new ColorVerde(),canjeador);
 
-        when(canjeador.canjearCartas()).thenReturn(3);
+        j.solicitarCarta(mazo.sacarCartaAleatoria());
+        j.solicitarCarta(mazo.sacarCartaAleatoria());
+        j.solicitarCarta(mazo.sacarCartaAleatoria());
+
         j.hacerCanjePorCarta();
 
-        assertEquals(j.contarTotalFichas(),3);
+        assertEquals(4,j.contarTotalFichas());
     }
 
 }

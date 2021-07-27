@@ -8,11 +8,13 @@ import java.util.stream.Stream;
 
 public class Canjeador {
     private final List<Carta> cartas;
+    private Mazo mazo;
     private int numeroDeCanje;
     private final static int cantidadCartasConPatron = 3;
 
-    public Canjeador() {
+    public Canjeador(Mazo unMazo) {
         this.cartas = new ArrayList<>();
+        this.mazo = unMazo;
         this.numeroDeCanje = 0;
     }
 
@@ -23,8 +25,8 @@ public class Canjeador {
         for (Carta cartaActual : this.cartas) {
             listaIguales = cartas.stream().filter(cartaActual::sonIguales).collect(Collectors.toList());
             if (listaIguales.size() >= cantidadCartasConPatron) {
-                for (int i = 0; i < cantidadCartasConPatron; i++)
-                    this.cartas.remove(listaIguales.get(i));
+                for (Carta unaCarta : listaIguales)
+                    mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
                 return true;
             }
         }
@@ -37,8 +39,8 @@ public class Canjeador {
             listaDiferentes.add(cartaActual);
             for(Carta cartaAuxiliar: this.cartas) {
                 if (listaDiferentes.size() >= cantidadCartasConPatron) {
-                    for (int i = 0; i < cantidadCartasConPatron; i++)
-                        this.cartas.remove(listaDiferentes.get(i));
+                    for (Carta unaCarta : listaDiferentes)
+                        mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
                     return true;
                 }
                 if( listaDiferentes.stream().noneMatch(carta -> carta.sonIguales(cartaAuxiliar)) ) {

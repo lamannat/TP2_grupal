@@ -25,14 +25,14 @@ public class Jugador {
     }
 
 
-    public Jugador(String nombre, Color color) {
-        this.nombre = nombre;
-        this.color = color;
-        this.paisesConquistados = new ArrayList<>();
-        this.fichasReservadas = new ArrayList<>();
-        this.canjeador = new Canjeador(); //esta malo crear cosas >:(
-        conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
-    }
+//    public Jugador(String nombre, Color color) {
+//        this.nombre = nombre;
+//        this.color = color;
+//        this.paisesConquistados = new ArrayList<>();
+//        this.fichasReservadas = new ArrayList<>();
+//        this.canjeador = new Canjeador( new Mazo() ); //esta malo crear cosas >:(
+//        conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
+//    }
 
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
