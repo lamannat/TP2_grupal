@@ -31,9 +31,6 @@ public class CanjeadorTest {
         Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("barco"));
         Carta carta2 = new Carta(new Pais("Mexico"), new SimboloNormal("globo"));
 
-        System.out.println(carta1);
-        System.out.println(carta2);
-
         canjeador.agregarCartaPais(carta1);
         canjeador.agregarCartaPais(carta2);
 
@@ -139,6 +136,22 @@ public class CanjeadorTest {
         canjeador.agregarCartaPais(carta1);
         canjeador.agregarCartaPais(carta2);
         canjeador.agregarCartaPais(carta3);
+        assertEquals(4, canjeador.canjearCartas());
+    }
+
+    @Test
+    public void primerCanjeConDosCartasDiferentesUnComodinYOtraCarta() {
+        Canjeador canjeador = new Canjeador();
+        Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
+        Carta carta2 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
+        Carta carta3 = new Carta(new Pais("Mexico"),new Comodin("comodin"));
+        Carta carta4 = new Carta(new Pais("Gobi"),new Comodin("canion"));
+
+        canjeador.agregarCartaPais(carta1);
+        canjeador.agregarCartaPais(carta2);
+        canjeador.agregarCartaPais(carta3);
+        canjeador.agregarCartaPais(carta4);
+
         assertEquals(4, canjeador.canjearCartas());
     }
 }
