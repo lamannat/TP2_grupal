@@ -146,6 +146,11 @@ public class Pais {
     public boolean conquistadoPorJugador(Jugador jugador) {
         return this.jugador == jugador;
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }
 
 

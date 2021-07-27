@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mazo {
-    private List<Carta> cartas;
+    private final List<Carta> cartas;
 
     public Mazo() {
         this.cartas = new ArrayList<>();
-    }
-
-    public Mazo(List<Carta> cartas) {
-        this.cartas = cartas;
     }
 
     public boolean contienteCarta(Carta unaCarta) {
@@ -22,8 +18,13 @@ public class Mazo {
         cartas.add(unaCarta);
     }
 
-    public Carta sacarCarta() {
+    public Carta sacarCartaAleatoria() {
         int i = (int)Math.floor(Math.random()*(cartas.size()));
         return cartas.remove(i);
     }
+
+    public Carta sacarCarta(Carta unaCarta) {
+        return cartas.remove(cartas.indexOf(unaCarta));
+    }
+
 }

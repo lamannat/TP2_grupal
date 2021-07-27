@@ -18,4 +18,9 @@ public class Carta {
 
     public boolean sonIguales (Carta carta) { return simbolo.sonIguales(carta.simbolo); }
 
+    @Override
+    public String toString() {
+        return "Carta | " + pais.toString() + " / " + simbolo.toString();
+    }
+
 }

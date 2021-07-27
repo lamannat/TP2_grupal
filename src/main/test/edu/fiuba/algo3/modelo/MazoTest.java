@@ -40,9 +40,28 @@ public class MazoTest {
         mazo.agregarCarta(carta2);
         mazo.agregarCarta(carta3);
 
-        mazo.sacarCarta();
+        mazo.sacarCartaAleatoria();
 
         assertFalse(mazo.contienteCarta(carta1) && mazo.contienteCarta(carta2) && mazo.contienteCarta(carta3));
     }
+
+    @Test
+    public void obtenerCartaEspecificaDelMazo() {
+        Mazo mazo = new Mazo();
+        Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("Globo"));
+        Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("Barco"));
+        Carta carta3 = new Carta(new Pais("Gobi"),new SimboloNormal("Cañon"));
+
+        mazo.agregarCarta(carta1);
+        mazo.agregarCarta(carta2);
+        mazo.agregarCarta(carta3);
+
+        mazo.sacarCarta(carta2);
+
+        assertTrue(mazo.contienteCarta(carta1));
+        assertFalse(mazo.contienteCarta(carta2));
+        assertTrue(mazo.contienteCarta(carta3));
+    }
+
 
 }
