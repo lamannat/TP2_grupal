@@ -26,9 +26,10 @@ public class Canjeador {
                 mapaCartas.add(lista);
             }
         }
-        System.out.println("MAPA DE CARTAS:" + mapaCartas);
+        System.out.println("MAPA DE CARTAS IGUALES:" + mapaCartas);
         return mapaCartas;
     }
+
 
     private void agregarCarta(List<Carta> lista, Carta carta) {
         if (lista.isEmpty())
@@ -40,6 +41,7 @@ public class Canjeador {
     public boolean verificarCanje() {
         List<List<Carta>> mapaCartas = generarMapaDeCartas();
 
+        System.out.println("Voy a verificar");
         if (sonDiferentes(mapaCartas))
             return true;
         return sonIguales(mapaCartas);
@@ -54,7 +56,7 @@ public class Canjeador {
         for (List<Carta> cartasActuales : mapaCartas) {
             if (i >= cantidadCartasConPatron)
                 break;
-            cartasActuales.remove(0);
+            this.cartas.remove(cartasActuales.get(0));
             i++;
         }
         return true;
@@ -64,7 +66,9 @@ public class Canjeador {
     private boolean sonIguales(List<List<Carta>> mapaCartas) {
         for (List<Carta> cartasActuales : mapaCartas)
             if (cartasActuales.size() >= cantidadCartasConPatron) {
-                cartasActuales.subList(0, cantidadCartasConPatron).clear();
+                for (int i = 0; i < cantidadCartasConPatron; i++) {
+                    this.cartas.remove(cartasActuales.get(i));
+                }
                 return true;
             }
         return false;

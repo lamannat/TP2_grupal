@@ -133,8 +133,9 @@ public class CanjeadorTest {
     public void primerCanjeConDosCartasDiferentesYUnComodin() {
         Canjeador canjeador = new Canjeador();
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("globo"));
-        Carta carta2 = new Carta(new Pais("Mexico"),new Comodin("comodin"));
-        Carta carta3 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
+        Carta carta2 = new Carta(new Pais("Kamchatka"),new SimboloNormal("canion"));
+        Carta carta3 = new Carta(new Pais("Mexico"),new Comodin("comodin"));
+
         canjeador.agregarCartaPais(carta1);
         canjeador.agregarCartaPais(carta2);
         canjeador.agregarCartaPais(carta3);
