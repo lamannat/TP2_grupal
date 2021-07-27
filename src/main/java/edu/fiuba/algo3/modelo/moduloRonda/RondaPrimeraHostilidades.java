@@ -4,8 +4,6 @@ import edu.fiuba.algo3.modelo.Carta;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 
-import java.util.List;
-
 public class RondaPrimeraHostilidades implements Ronda {
     private final Juego juego;
 //    private final List<Accion> acciones;

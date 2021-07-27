@@ -1,19 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.simbolo.Simbolo;
+
 public class Carta {
     private final Pais pais;
-    private final String simbolo;
+    private final Simbolo simbolo;
 
-    public Carta(Pais pais, String simbolo) {
+    public Carta(Pais pais, Simbolo simbolo) {
         this.pais = pais;
         this.simbolo = simbolo;
     }
 
-    public String getSimbolo() {
-        return simbolo;
-    }
-
-    public boolean sosIgual(Carta carta){
-        return carta.simbolo == this.simbolo;
-    }
+    public boolean sonIguales (Carta carta) { return simbolo.sonIguales(carta.simbolo); }
 }

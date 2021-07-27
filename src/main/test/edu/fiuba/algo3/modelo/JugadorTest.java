@@ -2,10 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.ColorRojo;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
+import edu.fiuba.algo3.modelo.simbolo.*;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -40,9 +38,9 @@ public class JugadorTest {
 
     @Test
     public void jugadorAgregaCartasEnCanjeador(){
-        Carta carta1 = new Carta(new Pais("Argentina"), "x");
-        Carta carta2 = new Carta(new Pais("Chile"), "o");
-        Carta carta3 = new Carta(new Pais("Peru"), "y");
+        Carta carta1 = new Carta(new Pais("Argentina"), new SimboloNormal("x"));
+        Carta carta2 = new Carta(new Pais("Chile"), new SimboloNormal("o"));
+        Carta carta3 = new Carta(new Pais("Peru"), new SimboloNormal("y"));
 
         Canjeador canjeador = mock(Canjeador.class);
         Jugador j = new Jugador("J", new ColorVerde(),canjeador);
