@@ -6,6 +6,12 @@ public class SimboloNormal extends Simbolo{
         nombre = simbolo;
     }
 
-    public boolean sonIguales(Simbolo simbolo) { return this.nombre.equals(simbolo.nombre); }
+    public boolean sonIguales(Simbolo simbolo) {
+        return this.nombre.equals(simbolo.nombre) || simbolo.esComodin;
+    }
+
+    public boolean sonDiferentes(Simbolo simbolo) {
+        return !this.nombre.equals(simbolo.nombre) || simbolo.esComodin;
+    }
 
 }

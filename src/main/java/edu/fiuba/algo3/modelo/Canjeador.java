@@ -14,6 +14,9 @@ public class Canjeador {
         this.numeroDeCanje = 0;
     }
 
+
+
+
     public List<List<Carta>> generarMapaDeCartas() {
         List<List<Carta>> mapaCartas = new ArrayList<>();
 
@@ -74,6 +77,23 @@ public class Canjeador {
         return false;
     }
 
+    private boolean hayPatronDeIguales() {
+        List<Carta> listaIguales = new ArrayList<>();
+        for (Carta carta : this.cartas) {
+            listaIguales = (List<Carta>) this.cartas.stream().filter(carta::sonIguales);
+            if (listaIguales.size() >= cantidadCartasConPatron) {
+                for (int i = 0; i < cantidadCartasConPatron; i++)
+                    this.cartas.remove(listaIguales.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hayPatronDeDiferentes() {
+        return false;
+    }
+
     public void agregarCartaPais(Carta carta) {
         cartas.add(carta);
     }
@@ -83,7 +103,7 @@ public class Canjeador {
         System.out.println("CARTAS ANTES DE CANJEAR:" + cartas);
         if (cartas.size() < 3)
             return 0;
-        if (!verificarCanje())
+        if (!hayPatronDeIguales() && !hayPatronDeDiferentes())
             return 0;
         System.out.println("CARTAS DESPUES DE CANJEAR:" + cartas);
         this.numeroDeCanje++;
