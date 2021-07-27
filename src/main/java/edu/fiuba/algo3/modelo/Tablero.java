@@ -91,9 +91,8 @@ public class Tablero {
         Pais paisParaAsignar = obtenerPaisNoAsignado();
         while (paisParaAsignar != null) {
             Jugador jugadorActual = turno.jugadorActual();
-            Color color = jugadorActual.getColor();
-            paisParaAsignar.agregarFichas((GeneradorFichas.generar(1, color)));
             jugadorActual.agregarPais(paisParaAsignar);
+            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(1));
             paisParaAsignar = obtenerPaisNoAsignado();
         }
     }

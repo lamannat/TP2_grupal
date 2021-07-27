@@ -35,12 +35,11 @@ public class Juego {
     }
 
     public void darleFichasAJugador(Jugador jugador, int cantFichas) {
-        List<Ficha> fichas = GeneradorFichas.generar(cantFichas,jugador.getColor());
         //preguntar por paises, devuelve lista de paises
 //        jugador.colocarFichas(fichas);
 
         //falta lo del input
-        jugador.darFichas(fichas);
+        jugador.darFichas(jugador.generarFichas(cantFichas));
     }
 
     public void jugadorReclamaPorPaises(Jugador jugador) {

@@ -82,7 +82,7 @@ public class Jugador {
 
     public void hacerCanjePorCarta(){
         int numeroDeFichas = this.canjeador.canjearCartas();
-        this.fichasReservadas.addAll(GeneradorFichas.generar(numeroDeFichas,this.color));
+        this.fichasReservadas.addAll(this.generarFichas(numeroDeFichas));
     }
 
     public Color getColor(){
@@ -116,5 +116,14 @@ public class Jugador {
 
     public void darFichas(List<Ficha> fichas) {
         this.fichasReservadas.addAll(fichas);
+    }
+
+    public List<Ficha> generarFichas(Integer cantFichas){
+        List<Ficha> fichas = new ArrayList<>();
+
+        for (int i = 0; i<cantFichas; i++){
+            fichas.add(new Ficha(color));
+        }
+        return fichas;
     }
 }

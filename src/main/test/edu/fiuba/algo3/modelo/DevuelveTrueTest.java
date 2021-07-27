@@ -15,17 +15,4 @@ public class DevuelveTrueTest {
         boolean y = x.devuelveTrue();
         assertEquals(y, true);
     }
-
-    @Test
-    public void lanzarExcepcion() {
-
-        LinkedList mockedList = mock(LinkedList.class);
-
-        when(mockedList.get(1)).thenThrow(new RuntimeException());
-
-        assertThrows(RuntimeException.class, () -> {
-            mockedList.get(1);
-        });
-    }
-
 }

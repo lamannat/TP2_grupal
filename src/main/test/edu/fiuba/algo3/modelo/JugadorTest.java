@@ -32,7 +32,7 @@ public class JugadorTest {
         Pais pais = new Pais("Aral");
 
         jugador.agregarPais(pais);
-        jugador.colocarFichasEnPais(GeneradorFichas.generar(1,jugador.getColor()),pais);
+        jugador.colocarFichasEnPais(jugador.generarFichas(1),pais);
         assertEquals(pais.cantidadFichas(),1);
     }
 
