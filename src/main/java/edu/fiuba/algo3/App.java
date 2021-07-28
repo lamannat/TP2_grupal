@@ -36,11 +36,11 @@ public class App extends Application {
 
         Scene sceneVolver = new Scene(pane);
 
-//        NombresYColores nombresYColores = new NombresYColores();
-//        Scene sceneNombresColores =  nombresYColores.crearJugadores(ventana,sceneVolver);
+        NombresYColores nombresYColores = new NombresYColores();
+        Scene sceneNombresColores =  nombresYColores.crearJugadores(ventana,sceneVolver);
 
         CantidadJugadores cantJugadores = new CantidadJugadores();
-        Scene sceneCantJugadores = cantJugadores.crearCantJugadores(ventana,sceneVolver);
+        Scene sceneCantJugadores = cantJugadores.crearCantJugadores(ventana,sceneNombresColores);
 
         Titulo titulo = new Titulo();
         sceneTitulo = titulo.crearTitulo(ventana, sceneCantJugadores);
