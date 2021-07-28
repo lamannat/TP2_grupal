@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class CantidadJugadores {
 
-    public Scene crearCantJugadores(Stage ventana){
+    public Scene crearCantJugadores(Stage ventana, Scene sceneNombresColores){
         HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: yellow");
 
@@ -54,11 +54,26 @@ public class CantidadJugadores {
         boton6.setAlignment(Pos.CENTER);
 
         //acordarse de que solo se puede cliquear UN boton
-        boton2.setOnAction(e -> System.out.println("2"));
-        boton3.setOnAction(e -> System.out.println("3"));
-        boton4.setOnAction(e -> System.out.println("4"));
-        boton5.setOnAction(e -> System.out.println("5"));
-        boton6.setOnAction(e -> System.out.println("6"));
+        boton2.setOnAction(e -> {
+            System.out.println("2");
+            ventana.setScene(sceneNombresColores);
+        });
+        boton3.setOnAction(e -> {
+            System.out.println("3");
+            ventana.setScene(sceneNombresColores);
+        });
+        boton4.setOnAction(e -> {
+            System.out.println("4");
+            ventana.setScene(sceneNombresColores);
+        });
+        boton5.setOnAction(e -> {
+            System.out.println("5");
+            ventana.setScene(sceneNombresColores);
+        });
+        boton6.setOnAction(e -> {
+            System.out.println("6");
+            ventana.setScene(sceneNombresColores);
+        });
 
         hbox.setSpacing(200.0);
         hbox.setAlignment(Pos.CENTER);
