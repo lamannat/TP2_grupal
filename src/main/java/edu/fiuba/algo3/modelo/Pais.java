@@ -31,11 +31,7 @@ public class Pais {
     public void asignarJugador(Jugador unJugador) {
         this.jugador = unJugador;
     }
-
-//    public void setColor(Color color){
-//        this.fichas.forEach(ficha -> { ficha.setColor(color);});
-//    }
-
+    
     public void agregarFichas(List<Ficha> fichas) {
         this.fichas.addAll(fichas);
     }
@@ -131,13 +127,13 @@ public class Pais {
         return fichas.size();
     }
 
-    public List<Pais> paisesDisponiblesParaAtacar() {
-        List<Pais> disponibles = new ArrayList<>();
-        for (Pais pais : limitrofes)
-            if(!this.esAliado(pais))
-                disponibles.add(pais);
-        return disponibles;
-    }
+//    public List<Pais> paisesDisponiblesParaAtacar() {
+//        List<Pais> disponibles = new ArrayList<>();
+//        for (Pais pais : limitrofes)
+//            if(!this.esAliado(pais))
+//                disponibles.add(pais);
+//        return disponibles;
+//    }
 
     public boolean estaAsignado() {
         return this.jugador != null;
@@ -147,10 +143,6 @@ public class Pais {
         return this.jugador == jugador;
     }
 
-    @Override
-    public String toString() {
-        return this.nombre;
-    }
 }
 
 

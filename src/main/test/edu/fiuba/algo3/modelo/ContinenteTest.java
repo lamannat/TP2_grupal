@@ -7,9 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ContinenteTest {
 
+    Canjeador canjeador = new Canjeador(new Mazo());
+
     @Test
     public void continenteConquistado() {
-        Jugador j = new Jugador("Jugador", new ColorVerde());
+        Jugador j = new Jugador("Jugador", new ColorVerde(),canjeador);
 
         Continente continente = new Continente("Africa");
         Pais pais1 = new Pais("Egipto");
@@ -32,8 +34,8 @@ public class ContinenteTest {
 
     @Test
     public void continenteNoConquistado(){
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2", new ColorMagenta());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorMagenta(),canjeador);
 
         Continente continente = new Continente("Africa");
         Pais pais1 = new Pais("Egipto");
@@ -57,9 +59,9 @@ public class ContinenteTest {
 
     @Test
     public void cantidadDePaisesConquistados() {
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2", new ColorMagenta());
-        Jugador j3 = new Jugador("Jugador 3", new ColorNegro());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorMagenta(),canjeador);
+        Jugador j3 = new Jugador("Jugador 3", new ColorNegro(),canjeador);
         
         Continente continente = new Continente("Africa");
         Pais pais1 = new Pais("Egipto");

@@ -12,6 +12,8 @@ import static org.mockito.Mockito.when;
 
 public class PaisTest {
 
+    Canjeador canjeador = new Canjeador(new Mazo());
+
     @Test
     public void paisEmpiezaSinFichasYNoPuedeAtacar(){
         Pais pais = new Pais("Argentina");
@@ -54,7 +56,7 @@ public class PaisTest {
     }
 
     @Test
-    public void sePruebaQueNoSonLimitrofes() {
+    public void losPaisesPuedenSerNoLimitrofes() {
         Pais pais1 = new Pais("China");
         Pais pais2 = new Pais("Japón");
         Pais pais3 = new Pais("Corea");
@@ -66,10 +68,85 @@ public class PaisTest {
     }
 
     @Test
+    public void noSePuedeAtacarAUnPaisAliado() {
+
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+
+        Pais paisAtacante, paisDefensor;
+        paisAtacante = new Pais("Temeria");
+        paisDefensor = new Pais("Kaedwen");
+
+        paisAtacante.agregarFichas(j1.generarFichas(2));
+        paisDefensor.agregarFichas(j1.generarFichas(2));
+
+        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+
+        j1.agregarPais(paisAtacante);
+        j1.agregarPais(paisDefensor);
+
+        Dado unDado = new DadoEstandar();
+        Batalla unaBatalla = new Batalla(unDado);
+
+        assertThrows(AtaqueAPaisAliadoException.class,
+                ()->{
+                    j1.atacaUnPaisCon(paisAtacante,paisDefensor,unaBatalla);
+                });
+    }
+
+    @Test
+    public void noSePuedeAtacarAUnPaisNoLimitrofe() {
+
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+
+        Pais paisAtacante, paisDefensor;
+        paisAtacante = new Pais("Temeria");
+        paisDefensor = new Pais("Kaedwen");
+
+        paisAtacante.agregarFichas(j1.generarFichas(2));
+        paisDefensor.agregarFichas(j1.generarFichas(2));
+
+        j1.agregarPais(paisAtacante);
+        j1.agregarPais(paisDefensor);
+
+        Dado unDado = new DadoEstandar();
+        Batalla unaBatalla = new Batalla(unDado);
+
+        assertThrows(NoEsLimitrofeException.class,
+                ()->{
+                    j1.atacaUnPaisCon(paisAtacante,paisDefensor,unaBatalla);
+                });
+    }
+
+    @Test
+    public void noSePuedeAtacarConSoloUnaFicha() {
+
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+
+        Pais paisAtacante, paisDefensor;
+        paisAtacante = new Pais("Temeria");
+        paisDefensor = new Pais("Kaedwen");
+
+        paisAtacante.agregarFichas(j1.generarFichas(1));
+        paisDefensor.agregarFichas(j1.generarFichas(1));
+
+        j1.agregarPais(paisAtacante);
+        j1.agregarPais(paisDefensor);
+
+        Dado unDado = new DadoEstandar();
+        Batalla unaBatalla = new Batalla(unDado);
+
+        assertThrows(FichasInsuficientesException.class,
+                ()->{
+                    j1.atacaUnPaisCon(paisAtacante,paisDefensor,unaBatalla);
+                });
+    }
+
+
+    @Test
     public void ataqueEntreDosPaisesSiDefensorPierdeTodasSusFichasDebeCambiarDeJugador() {
 
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");
@@ -92,12 +169,8 @@ public class PaisTest {
 
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
 
-        List<Ficha> fichas = new ArrayList<>();
-        for (int i = 0; i < 3; i++)
-            fichas.add(new Ficha(new ColorVerde()));
-
-        paisAtacante.agregarFichas(fichas);
-        paisDefensor.agregarFicha(new Ficha(new ColorAmarillo()));
+        paisAtacante.agregarFichas(j1.generarFichas(3));
+        paisDefensor.agregarFichas(j2.generarFichas(1));
 
         try {
             paisAtacante.paisAtacaAPais(paisDefensor, batalla);
@@ -109,8 +182,8 @@ public class PaisTest {
 
     @Test
     public void ataqueEntreDosPaisesSiDefensorNoPierdeTodasSusFichasNoDebeCambiarDeJugador() throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        Jugador j1 = new Jugador("Jugador 1", new ColorVerde());
-        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo());
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo(),canjeador);
 
         Pais paisAtacante, paisDefensor;
         paisAtacante = new Pais("Temeria");

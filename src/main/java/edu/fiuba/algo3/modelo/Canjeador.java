@@ -8,80 +8,25 @@ import java.util.stream.Stream;
 
 public class Canjeador {
     private final List<Carta> cartas;
+    private Mazo mazo;
     private int numeroDeCanje;
     private final static int cantidadCartasConPatron = 3;
 
-    public Canjeador() {
+    public Canjeador(Mazo unMazo) {
         this.cartas = new ArrayList<>();
+        this.mazo = unMazo;
         this.numeroDeCanje = 0;
     }
 
-
-//    public List<List<Carta>> generarMapaDeCartas() {
-//        List<List<Carta>> mapaCartas = new ArrayList<>();
-//
-//        for (Carta cartaActual : this.cartas) {
-//            if (mapaCartas.stream().anyMatch(lista -> lista.get(0).sonIguales(cartaActual))) {
-//                mapaCartas.forEach(lista -> agregarCarta(lista, cartaActual));
-//            } else {
-//                List<Carta> lista = new ArrayList<>();
-//                lista.add(cartaActual);
-//                mapaCartas.add(lista);
-//            }
-//        }
-//        return mapaCartas;
-//    }
-
-
-//    private void agregarCarta(List<Carta> lista, Carta carta) {
-//        if (lista.isEmpty())
-//            return;
-//        if (lista.get(0).sonIguales(carta))
-//            lista.add(carta);
-//    }
-
-//    public boolean verificarCanje() {
-//        List<List<Carta>> mapaCartas = generarMapaDeCartas();
-//
-//        if (sonDiferentes(mapaCartas))
-//            return true;
-//        return sonIguales(mapaCartas);
-//
-//    }
-
-
-//    private boolean sonDiferentes(List<List<Carta>> mapaCartas) {
-//        if (mapaCartas.size() < cantidadCartasConPatron)
-//            return false;
-//        int i = 0;
-//        for (List<Carta> cartasActuales : mapaCartas) {
-//            if (i >= cantidadCartasConPatron)
-//                break;
-//            this.cartas.remove(cartasActuales.get(0));
-//            i++;
-//        }
-//        return true;
-//    }
-//
-//
-//    private boolean sonIguales(List<List<Carta>> mapaCartas) {
-//        for (List<Carta> cartasActuales : mapaCartas)
-//            if (cartasActuales.size() >= cantidadCartasConPatron) {
-//                for (int i = 0; i < cantidadCartasConPatron; i++) {
-//                    this.cartas.remove(cartasActuales.get(i));
-//                }
-//                return true;
-//            }
-//        return false;
-//    }
+    public void agregarCartaPais(Carta carta) { cartas.add(carta); }
 
     private boolean hayPatronDeIguales() {
         List<Carta> listaIguales = new ArrayList<>();
         for (Carta cartaActual : this.cartas) {
             listaIguales = cartas.stream().filter(cartaActual::sonIguales).collect(Collectors.toList());
             if (listaIguales.size() >= cantidadCartasConPatron) {
-                for (int i = 0; i < cantidadCartasConPatron; i++)
-                    this.cartas.remove(listaIguales.get(i));
+                for (Carta unaCarta : listaIguales)
+                    mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
                 return true;
             }
         }
@@ -94,8 +39,8 @@ public class Canjeador {
             listaDiferentes.add(cartaActual);
             for(Carta cartaAuxiliar: this.cartas) {
                 if (listaDiferentes.size() >= cantidadCartasConPatron) {
-                    for (int i = 0; i < cantidadCartasConPatron; i++)
-                        this.cartas.remove(listaDiferentes.get(i));
+                    for (Carta unaCarta : listaDiferentes)
+                        mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
                     return true;
                 }
                 if( listaDiferentes.stream().noneMatch(carta -> carta.sonIguales(cartaAuxiliar)) ) {
@@ -107,9 +52,6 @@ public class Canjeador {
         return false;
     }
 
-    public void agregarCartaPais(Carta carta) {
-        cartas.add(carta);
-    }
 
     public int canjearCartas() { //canjeo se hace automaticamente
         if (cartas.size() < 3)

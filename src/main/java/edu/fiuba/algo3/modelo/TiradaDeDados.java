@@ -19,8 +19,6 @@ public class TiradaDeDados {
     }
 
     public boolean primerResultadoMayor(TiradaDeDados tirada) {
-        if (this.resultados.isEmpty() || tirada.resultados.isEmpty())
-            return false;
         return this.resultados.remove(0) > tirada.resultados.remove(0);
     }
 

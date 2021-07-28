@@ -25,14 +25,14 @@ public class Jugador {
     }
 
 
-    public Jugador(String nombre, Color color) {
-        this.nombre = nombre;
-        this.color = color;
-        this.paisesConquistados = new ArrayList<>();
-        this.fichasReservadas = new ArrayList<>();
-        this.canjeador = new Canjeador(); //esta malo crear cosas >:(
-        conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
-    }
+//    public Jugador(String nombre, Color color) {
+//        this.nombre = nombre;
+//        this.color = color;
+//        this.paisesConquistados = new ArrayList<>();
+//        this.fichasReservadas = new ArrayList<>();
+//        this.canjeador = new Canjeador( new Mazo() ); //esta malo crear cosas >:(
+//        conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
+//    }
 
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
@@ -42,6 +42,14 @@ public class Jugador {
 
     public int cuantosPaisesConquistados(){
         return paisesConquistados.size();
+    }
+
+
+    public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor,Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+        if (!paisesConquistados.contains(paisAtacante)) {
+        // return PaisNoEncontradoExcepcion --> Puede Estar en Juego
+        }
+        paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
     }
 
     public void comienzaElAtaque(Batalla unaBatalla) {
@@ -82,7 +90,7 @@ public class Jugador {
 
     public void hacerCanjePorCarta(){
         int numeroDeFichas = this.canjeador.canjearCartas();
-        this.fichasReservadas.addAll(GeneradorFichas.generar(numeroDeFichas,this.color));
+        this.fichasReservadas.addAll(this.generarFichas(numeroDeFichas));
     }
 
     public Color getColor(){
@@ -116,5 +124,14 @@ public class Jugador {
 
     public void darFichas(List<Ficha> fichas) {
         this.fichasReservadas.addAll(fichas);
+    }
+
+    public List<Ficha> generarFichas(Integer cantFichas){
+        List<Ficha> fichas = new ArrayList<>();
+
+        for (int i = 0; i<cantFichas; i++){
+            fichas.add(new Ficha(color));
+        }
+        return fichas;
     }
 }

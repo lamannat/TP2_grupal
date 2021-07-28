@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TableroTest {
 
+    Canjeador canjeador = new Canjeador(new Mazo());
+
     private List<Continente> listaDeContientes() {
         List<Continente> continentes = new ArrayList<>();
         for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
@@ -30,8 +32,8 @@ public class TableroTest {
         for (Continente continente : listaDeContientes())
             tablero.agregarContinente(continente);
 
-        Jugador Valentin = new Jugador("Valentin", new ColorAmarillo());
-        Jugador Juance = new Jugador("Juance", new ColorVerde());
+        Jugador Valentin = new Jugador("Valentin", new ColorAmarillo(),canjeador);
+        Jugador Juance = new Jugador("Juance", new ColorVerde(),canjeador);
 
         List<Jugador> jugadores = new ArrayList<>();
         jugadores.add(Valentin);
@@ -51,9 +53,9 @@ public class TableroTest {
         for (Continente continente : listaDeContientes())
             tablero.agregarContinente(continente);
 
-        Jugador Valentin = new Jugador("Valentin", new ColorAmarillo());
-        Jugador Juance = new Jugador("Juance", new ColorVerde());
-        Jugador Tobias = new Jugador("Tobias", new ColorRojo());
+        Jugador Valentin = new Jugador("Valentin", new ColorAmarillo(),canjeador);
+        Jugador Juance = new Jugador("Juance", new ColorVerde(),canjeador);
+        Jugador Tobias = new Jugador("Tobias", new ColorRojo(),canjeador);
 
         List<Jugador> jugadores = new ArrayList<>();
         jugadores.add(Valentin);
