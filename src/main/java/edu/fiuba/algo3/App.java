@@ -1,11 +1,13 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.vista.VistaSetearCantidadJugadores;
+import edu.fiuba.algo3.vista.VistaSetearNombresYColores;
+import edu.fiuba.algo3.vista.VistaTitulo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -36,13 +38,13 @@ public class App extends Application {
 
         Scene sceneVolver = new Scene(pane);
 
-        NombresYColores nombresYColores = new NombresYColores();
+        VistaSetearNombresYColores nombresYColores = new VistaSetearNombresYColores();
         Scene sceneNombresColores =  nombresYColores.crearJugadores(ventana,sceneVolver);
 
-        CantidadJugadores cantJugadores = new CantidadJugadores();
+        VistaSetearCantidadJugadores cantJugadores = new VistaSetearCantidadJugadores();
         Scene sceneCantJugadores = cantJugadores.crearCantJugadores(ventana,sceneNombresColores);
 
-        Titulo titulo = new Titulo();
+        VistaTitulo titulo = new VistaTitulo();
         sceneTitulo = titulo.crearTitulo(ventana, sceneCantJugadores);
 
         ventana.setTitle("A.L.T.E.G.O");

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.vista;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,11 +10,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class CantidadJugadores {
+public class VistaSetearCantidadJugadores {
 
     public Scene crearCantJugadores(Stage ventana, Scene sceneNombresColores){
         HBox hbox = new HBox();
-        hbox.setStyle("-fx-background-color: yellow");
+        hbox.setStyle("-fx-background-color: #272727");
 
         Button boton2 = new Button("2");
         Button boton3 = new Button("3");
@@ -22,16 +22,16 @@ public class CantidadJugadores {
         Button boton5 = new Button("5");
         Button boton6 = new Button("6");
 
-        boton2.setScaleX(5);
-        boton2.setScaleY(5);
-        boton3.setScaleX(5);
-        boton3.setScaleY(5);
-        boton4.setScaleX(5);
-        boton4.setScaleY(5);
-        boton5.setScaleX(5);
-        boton5.setScaleY(5);
-        boton6.setScaleX(5);
-        boton6.setScaleY(5);
+        boton2.setScaleX(3);
+        boton2.setScaleY(3);
+        boton3.setScaleX(3);
+        boton3.setScaleY(3);
+        boton4.setScaleX(3);
+        boton4.setScaleY(3);
+        boton5.setScaleX(3);
+        boton5.setScaleY(3);
+        boton6.setScaleX(3);
+        boton6.setScaleY(3);
 
         boton2.setStyle("-fx-background-color: black");
         boton2.setTextFill(Color.WHITE);
@@ -80,13 +80,14 @@ public class CantidadJugadores {
         hbox.getChildren().addAll(boton2,boton3,boton4,boton5,boton6);
 
         VBox vbox = new VBox();
-        vbox.setStyle("-fx-background-color: yellow");
+        vbox.setStyle("-fx-background-color: #272727");
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(200.0);
 
         Label textoCantidadJugadores = new Label("¿Cuántos juegan?");
         textoCantidadJugadores.setScaleX(10);
         textoCantidadJugadores.setScaleY(10);
+        textoCantidadJugadores.setTextFill(Color.YELLOW);
 
         vbox.getChildren().addAll(textoCantidadJugadores,hbox);
         Scene sceneCantJugadores = new Scene(vbox);
