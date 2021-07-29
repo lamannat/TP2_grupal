@@ -4,7 +4,8 @@ public class ColorRojo extends Color{
 
     public ColorRojo()
     {
-        this.codigo = "#cc3311"; /* #cc3311 */
+        this.codigo = "#cc3311";
+        this.nombre = "Rojo";
     }
 
 }

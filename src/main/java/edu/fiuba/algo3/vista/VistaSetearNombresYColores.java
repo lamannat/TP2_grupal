@@ -1,16 +1,22 @@
 package edu.fiuba.algo3.vista;
 
-import javafx.geometry.Insets;
+import edu.fiuba.algo3.controlador.BotonColorEventHandler;
+import edu.fiuba.algo3.controlador.BotonDeColor;
+import edu.fiuba.algo3.controlador.BotonSiguiente;
+import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
+import edu.fiuba.algo3.modelo.color.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Pair;
+
+import java.util.ArrayList;
 
 public class VistaSetearNombresYColores {
 
@@ -21,93 +27,77 @@ public class VistaSetearNombresYColores {
     }
 
     public Scene crearJugadores(Stage ventana, Scene mapa){
-        HBox hbox1 = new HBox();
-        hbox1.setStyle("-fx-background-color: #272727");
+        HBox hboxTexto = new HBox();
+        hboxTexto.setStyle("-fx-background-color: #272727");
 
         TextField texto = new TextField();
         texto.setPromptText("Ingrese el nombre del Jugador");
         texto.setScaleX(2);
         texto.setScaleY(2);
 
-        //azul, amarillo, rojo, verde, magenta, negro
-
-        Button botonColorAzul = new Button("Azul");
-        Button botonColorRojo = new Button("Rojo");
-        Button botonColorVerde = new Button("Verde");
-        Button botonColorMagenta = new Button("Magenta");
-        Button botonColorNegro = new Button("Negro");
-        Button botonColorAmarillo = new Button("Amarillo");
-
-        Button botonSiguiente = new Button();
+        BotonSiguiente botonSiguiente = new BotonSiguiente(3);
         botonSiguiente.setText("Siguiente Jugador");
         botonSiguiente.setScaleX(3);
         botonSiguiente.setScaleY(3);
 
-        hbox1.setSpacing(320.0);
-        hbox1.setAlignment(Pos.CENTER);
+        ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
-        hbox1.getChildren().addAll(texto,botonSiguiente);
+        botonSiguiente.setOnAction(new BotonSiguienteEventHandler(listaNombreYBoton,texto));
 
-        HBox hbox2 = new HBox();
-        hbox2.setStyle("-fx-background-color: #272727");
 
-        botonColorAzul.setScaleX(3);
-        botonColorAzul.setScaleY(3);
-        botonColorRojo.setScaleX(3);
-        botonColorRojo.setScaleY(3);
-        botonColorVerde.setScaleX(3);
-        botonColorVerde.setScaleY(3);
-        botonColorMagenta.setScaleX(3);
-        botonColorMagenta.setScaleY(3);
-        botonColorNegro.setScaleX(3);
-        botonColorNegro.setScaleY(3);
-        botonColorAmarillo.setScaleX(3);
-        botonColorAmarillo.setScaleY(3);
+        hboxTexto.setSpacing(320.0);
+        hboxTexto.setAlignment(Pos.CENTER);
+        Label label = new Label();
+        label.setTextFill(Color.WHITE);
+        label.setScaleX(3);
+        label.setScaleY(3);
 
-        botonColorAzul.setStyle("-fx-background-color: #0077bb");
+        hboxTexto.getChildren().addAll(texto,botonSiguiente);
+
+        HBox hboxColores = new HBox();
+        hboxColores.setStyle("-fx-background-color: #272727");
+
+        //seteamos botones de colores
+        BotonDeColor botonColorAzul = new BotonDeColor(new ColorAzul());
+        BotonDeColor botonColorRojo = new BotonDeColor(new ColorRojo());
+        BotonDeColor botonColorVerde = new BotonDeColor(new ColorVerde());
+        BotonDeColor botonColorMagenta = new BotonDeColor(new ColorMagenta());
+        BotonDeColor botonColorNegro = new BotonDeColor(new ColorNegro());
+        BotonDeColor botonColorAmarillo = new BotonDeColor(new ColorAmarillo());
+
         botonColorAzul.setTextFill(Color.WHITE);
-        botonColorRojo.setStyle("-fx-background-color: #cc3311");
         botonColorRojo.setTextFill(Color.WHITE);
-        botonColorVerde.setStyle("-fx-background-color: #009988");
         botonColorVerde.setTextFill(Color.WHITE);
-        botonColorMagenta.setStyle("-fx-background-color: #ee3377");
         botonColorMagenta.setTextFill(Color.WHITE);
-        botonColorNegro.setStyle("-fx-background-color: #000000");
         botonColorNegro.setTextFill(Color.WHITE);
-        botonColorAmarillo.setStyle("-fx-background-color: #ee7733");
         botonColorAmarillo.setTextFill(Color.BLACK);
 
-        hbox2.getChildren().addAll(botonColorAzul,botonColorAmarillo,botonColorMagenta,botonColorNegro,botonColorRojo,botonColorVerde);
-        hbox2.setAlignment(Pos.CENTER);
-        hbox2.setSpacing(200);
+        BotonColorEventHandler botonAzulEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
+        botonColorAzul.enAccion(botonAzulEventHandler);
+        BotonColorEventHandler botonRojoEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
+        botonColorRojo.enAccion(botonRojoEventHandler);
+        BotonColorEventHandler botonVerdeEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
+        botonColorVerde.enAccion(botonVerdeEventHandler);
+        BotonColorEventHandler botonMagentaEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
+        botonColorMagenta.enAccion(botonMagentaEventHandler);
+        BotonColorEventHandler botonNegroEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
+        botonColorNegro.enAccion(botonNegroEventHandler);
+        BotonColorEventHandler botonAmarilloEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
+        botonColorAmarillo.enAccion(botonAmarilloEventHandler);
+
+        hboxColores.getChildren().addAll(botonColorAzul,botonColorAmarillo,botonColorMagenta,botonColorNegro,botonColorRojo,botonColorVerde);
+        hboxColores.setAlignment(Pos.CENTER);
+        hboxColores.setSpacing(200);
+
+        if (!listaNombreYBoton.isEmpty())
+            hboxColores.getChildren().remove(listaNombreYBoton.get(0).getValue());
 
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(100.0);
-        vbox.getChildren().addAll(hbox1,hbox2);
+        vbox.getChildren().addAll(hboxTexto,hboxColores,label);
         vbox.setMinSize(110.0,110.0);
         vbox.setStyle("-fx-background-color: #272727");
-
-//        Label label = new Label();
-
-        botonSiguiente.setOnAction(e -> {
-            if (texto.getText().trim().equals("")) {
-                System.out.println("mal :(");
-//                vbox.getChildren().add(label);
-//                label.setText("Debe ingresar un nombre");
-//                label.setTextFill(Color.RED);
-//                texto.requestFocus();
-//                label.setScaleX(3);
-//                label.setScaleY(3);
-//                vbox.getChildren().add(label);
-
-            }
-            //if (no se cliqueo lo de colores)
-            else {
-//                label.setText(texto.getText());
-//                label.setTextFill(Color.DARKGREEN);
-            }
-        });
 
 
 

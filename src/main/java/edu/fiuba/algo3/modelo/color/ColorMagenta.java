@@ -4,7 +4,8 @@ public class ColorMagenta extends Color{
 
     public ColorMagenta()
     {
-        this.codigo = "#ee3377"; /* #ee3377 */
+        this.codigo = "#ee3377";
+        this.nombre = "Magenta";
     }
 
 }
