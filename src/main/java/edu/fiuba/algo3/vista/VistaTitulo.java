@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonJugarEventHandler;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 
 public class VistaTitulo {
 
-    public Scene crearTitulo(Stage ventana, Scene segunda){
+    public Scene crearTitulo(Stage ventana){
         Button botonJugar;
         Scene primera;
 
@@ -30,10 +31,7 @@ public class VistaTitulo {
         botonJugar.setTextFill(Color.WHITE);
         botonJugar.setScaleX(5);
         botonJugar.setScaleY(5);
-        botonJugar.setOnAction(e -> {
-            ventana.setScene(segunda);
-        });
-
+        botonJugar.setOnAction(new BotonJugarEventHandler(ventana));
         // LAYOUT INICIAL
         VBox layout1 = new VBox(250);
         layout1.getChildren().addAll(altego, botonJugar);

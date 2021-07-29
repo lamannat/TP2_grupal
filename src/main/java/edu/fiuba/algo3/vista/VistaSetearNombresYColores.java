@@ -20,13 +20,13 @@ import java.util.ArrayList;
 
 public class VistaSetearNombresYColores {
 
-    Integer cantJugadores;
+    private int cantJugadores;
 
-    public void setCantJugadores(Integer n){
+    public void setCantJugadores(int n){
         cantJugadores = n;
     }
 
-    public Scene crearJugadores(Stage ventana, Scene mapa){
+    public Scene crearJugadores(Stage ventana) {
         HBox hboxTexto = new HBox();
         hboxTexto.setStyle("-fx-background-color: #272727");
 
@@ -40,14 +40,14 @@ public class VistaSetearNombresYColores {
         label.setScaleX(3);
         label.setScaleY(3);
 
-        BotonSiguiente botonSiguiente = new BotonSiguiente(3);
+        BotonSiguiente botonSiguiente = new BotonSiguiente();
         botonSiguiente.setText("Siguiente Jugador");
         botonSiguiente.setScaleX(3);
         botonSiguiente.setScaleY(3);
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
-        botonSiguiente.setOnAction(new BotonSiguienteEventHandler(listaNombreYBoton,texto,label));
+        botonSiguiente.setOnAction(new BotonSiguienteEventHandler(ventana,listaNombreYBoton,texto,label,cantJugadores));
 
         hboxTexto.setSpacing(320.0);
         hboxTexto.setAlignment(Pos.CENTER);
@@ -85,7 +85,7 @@ public class VistaSetearNombresYColores {
 
         hboxColores.getChildren().addAll(botonColorAzul,botonColorAmarillo,botonColorMagenta,botonColorNegro,botonColorRojo,botonColorVerde);
         hboxColores.setAlignment(Pos.CENTER);
-        hboxColores.setSpacing(200);
+        hboxColores.setSpacing(100);
 
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);

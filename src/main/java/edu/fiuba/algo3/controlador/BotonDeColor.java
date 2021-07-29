@@ -12,8 +12,8 @@ public class BotonDeColor extends Button {
         this.color = unColor;
         this.setText(color.getNombre());
         this.setStyle("-fx-background-color: " + color.getCodigo());
-        this.setScaleX(3);
-        this.setScaleY(3);
+        this.setScaleX(2);
+        this.setScaleY(2);
     }
 
     public void enAccion(BotonColorEventHandler eventHandler){

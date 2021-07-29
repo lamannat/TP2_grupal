@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonCantidadEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 
 public class VistaSetearCantidadJugadores {
 
-    public Scene crearCantJugadores(Stage ventana, Scene sceneNombresColores){
+    public Scene crearCantJugadores(Stage ventana) {
         HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: #272727");
 
@@ -53,27 +54,13 @@ public class VistaSetearCantidadJugadores {
         boton6.setTextFill(Color.WHITE);
         boton6.setAlignment(Pos.CENTER);
 
-        //acordarse de que solo se puede cliquear UN boton
-        boton2.setOnAction(e -> {
-            System.out.println("2");
-            ventana.setScene(sceneNombresColores);
-        });
-        boton3.setOnAction(e -> {
-            System.out.println("3");
-            ventana.setScene(sceneNombresColores);
-        });
-        boton4.setOnAction(e -> {
-            System.out.println("4");
-            ventana.setScene(sceneNombresColores);
-        });
-        boton5.setOnAction(e -> {
-            System.out.println("5");
-            ventana.setScene(sceneNombresColores);
-        });
-        boton6.setOnAction(e -> {
-            System.out.println("6");
-            ventana.setScene(sceneNombresColores);
-        });
+
+        boton2.setOnAction(new BotonCantidadEventHandler(ventana,2));
+        boton3.setOnAction(new BotonCantidadEventHandler(ventana,3));
+        boton4.setOnAction(new BotonCantidadEventHandler(ventana,4));
+        boton5.setOnAction(new BotonCantidadEventHandler(ventana,5));
+        boton6.setOnAction(new BotonCantidadEventHandler(ventana,6));
+
 
         hbox.setSpacing(200.0);
         hbox.setAlignment(Pos.CENTER);
@@ -93,6 +80,5 @@ public class VistaSetearCantidadJugadores {
         Scene sceneCantJugadores = new Scene(vbox);
 
         return sceneCantJugadores;
-
     }
 }
