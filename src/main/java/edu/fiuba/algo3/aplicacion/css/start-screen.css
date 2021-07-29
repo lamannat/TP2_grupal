@@ -1,6 +1,6 @@
 .root{
     -fx-background-image: url("imagenes/logo_teg.png");
-    -fx-background-color: #ee7733;
+    -fx-background-color: #ffcc3d;
     -fx-background-repeat: stretch;
     -fx-background-size: 1280 700;
     -fx-background-position: center center;
@@ -37,12 +37,12 @@
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
     -fx-background-color: #1d1d1d;
-    -fx-text-fill: white;
+    -fx-text-fill: #000000;
 }
 
 .button:default {
     -fx-background-color: -fx-focus-color;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #000000;
 }
 
 .button:default:hover {
@@ -52,6 +52,6 @@
 .label {
     -fx-font-size: 34px;
     -fx-font-family: "arial";
-    -fx-text-fill: #E0F8E6;
+    -fx-text-fill: #000000;
 
 }
