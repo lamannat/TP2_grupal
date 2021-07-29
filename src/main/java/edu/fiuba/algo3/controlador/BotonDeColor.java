@@ -21,4 +21,11 @@ public class BotonDeColor extends Button {
         this.setOnAction(eventHandler);
         eventHandler.setColorSeleccionado(this);
     }
+
+    public void desactivar(String nombreJugador){
+        this.setStyle("-fx-background-color: #373737");
+        this.setTextFill(javafx.scene.paint.Color.WHITE);
+        this.setText(nombreJugador);
+        this.setOnAction(e -> {});
+    }
 }

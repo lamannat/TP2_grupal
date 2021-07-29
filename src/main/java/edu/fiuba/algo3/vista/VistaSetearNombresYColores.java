@@ -35,6 +35,11 @@ public class VistaSetearNombresYColores {
         texto.setScaleX(2);
         texto.setScaleY(2);
 
+        Label label = new Label();
+        label.setTextFill(Color.WHITE);
+        label.setScaleX(3);
+        label.setScaleY(3);
+
         BotonSiguiente botonSiguiente = new BotonSiguiente(3);
         botonSiguiente.setText("Siguiente Jugador");
         botonSiguiente.setScaleX(3);
@@ -42,18 +47,11 @@ public class VistaSetearNombresYColores {
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
-        botonSiguiente.setOnAction(new BotonSiguienteEventHandler(listaNombreYBoton,texto));
-
+        botonSiguiente.setOnAction(new BotonSiguienteEventHandler(listaNombreYBoton,texto,label));
 
         hboxTexto.setSpacing(320.0);
         hboxTexto.setAlignment(Pos.CENTER);
-        Label label = new Label();
-        label.setTextFill(Color.WHITE);
-        label.setScaleX(3);
-        label.setScaleY(3);
-
         hboxTexto.getChildren().addAll(texto,botonSiguiente);
-
         HBox hboxColores = new HBox();
         hboxColores.setStyle("-fx-background-color: #272727");
 
@@ -89,9 +87,6 @@ public class VistaSetearNombresYColores {
         hboxColores.setAlignment(Pos.CENTER);
         hboxColores.setSpacing(200);
 
-        if (!listaNombreYBoton.isEmpty())
-            hboxColores.getChildren().remove(listaNombreYBoton.get(0).getValue());
-
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(100.0);
@@ -99,14 +94,9 @@ public class VistaSetearNombresYColores {
         vbox.setMinSize(110.0,110.0);
         vbox.setStyle("-fx-background-color: #272727");
 
-
-
         Scene sceneJugadores = new Scene(vbox);
 
         return sceneJugadores;
-//        for (int i = 0; i<cantJugadores; i++){
-//            ventana.setScene(sceneJugadores);
-//
-//        }
+
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BotonSiguienteEventHandler implements EventHandler<ActionEvent> {
@@ -15,8 +16,11 @@ public class BotonSiguienteEventHandler implements EventHandler<ActionEvent> {
     Label label;
     ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
 
-    public BotonSiguienteEventHandler(ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto) {
+
+    public BotonSiguienteEventHandler(ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label) {
         this.listaNombreYBoton = listaNombreYBoton;
+        this.inputUsuario = texto;
+        this.label = label;
     }
 
     @Override
@@ -31,6 +35,10 @@ public class BotonSiguienteEventHandler implements EventHandler<ActionEvent> {
             BotonDeColor boton = par.getValue();
             System.out.println("Nombre: "+nombre+" Boton: " + boton.getText());
             listaNombreYBoton.clear();
+            this.inputUsuario.clear();
+            this.inputUsuario.requestFocus();
+            this.label.setText("");
+            boton.desactivar(nombre);
         }
 
     }
