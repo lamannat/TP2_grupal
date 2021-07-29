@@ -134,4 +134,8 @@ public class Jugador {
         }
         return fichas;
     }
+
+    public boolean ganador(int minimoDePaises) {
+        return this.paisesConquistados.size() >= minimoDePaises;
+    }
 }

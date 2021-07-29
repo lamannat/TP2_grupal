@@ -9,11 +9,13 @@ public class Juego {
     private final Tablero tablero;
     private Ronda rondaActual;
     private final Batalla batalla;
+    private final Mazo mazo;
 
-    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla) {
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
         this.tablero = tablero;
         this.batalla = unaBatalla;
+        this.mazo = unMazo;
         rondaActual = new RondaAgregarCincoFichas(this);
         this.tablero.asignarPaises(this.turno);
     }
@@ -54,7 +56,7 @@ public class Juego {
 
     public Carta cartaParaJugador(Jugador jugador) {
         if (jugador.merecesCarta()){
-            return tablero.darCarta();
+            return this.mazo.sacarCartaAleatoria();
         }
        return null;
     }

@@ -10,12 +10,12 @@ public class Tablero {
 
 //    private final List<Pais> paises;
     private final List<Continente> continentes;
-    private final List<Carta> cartasPais;
+    //private final List<Carta> cartasPais;
 
     public Tablero() {
 //        paises = new ArrayList<>();
         continentes = new ArrayList<>();
-        cartasPais = new ArrayList<>();
+        //cartasPais = new ArrayList<>();
 
 //        for (List<String> continentes : LeerArchivo.leerArchivo("paisesEnContinentes.txt"))
 //            this.agregarContinentes(continentes);
@@ -97,10 +97,10 @@ public class Tablero {
         }
     }
 
-    public Carta darCarta() {
-        //pensar en maso. ver una forma de que no se repitan
-        if (cartasPais.isEmpty())
-            return null;
-        return cartasPais.remove(0);
-    }
+//    public Carta darCarta() {
+//        //pensar en maso. ver una forma de que no se repitan
+//        if (cartasPais.isEmpty())
+//            return null;
+//        return cartasPais.remove(0);
+//    }
 }

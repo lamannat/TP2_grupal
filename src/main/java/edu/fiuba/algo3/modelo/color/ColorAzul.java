@@ -4,7 +4,8 @@ public class ColorAzul extends Color{
 
     public ColorAzul()
     {
-        this.codigo = 30651; /* #0077bb */
+        this.codigo = "#0077bb";
+        this.nombre = "Azul";
     }
 
 }

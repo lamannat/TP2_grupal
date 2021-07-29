@@ -1,0 +1,31 @@
+package edu.fiuba.algo3.controlador;
+
+import edu.fiuba.algo3.modelo.color.Color;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+
+public class BotonDeColor extends Button {
+    private Color color;
+
+    public BotonDeColor(Color unColor){
+        this.color = unColor;
+        this.setText(color.getNombre());
+        this.setStyle("-fx-background-color: " + color.getCodigo());
+        this.setScaleX(2);
+        this.setScaleY(2);
+    }
+
+    public void enAccion(BotonColorEventHandler eventHandler){
+        eventHandler.setColor(color);
+        this.setOnAction(eventHandler);
+        eventHandler.setColorSeleccionado(this);
+    }
+
+    public void desactivar(String nombreJugador){
+        this.setStyle("-fx-background-color: #373737");
+        this.setTextFill(javafx.scene.paint.Color.WHITE);
+        this.setText(nombreJugador);
+        this.setOnAction(e -> {});
+    }
+}

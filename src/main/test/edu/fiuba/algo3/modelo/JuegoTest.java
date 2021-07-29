@@ -41,7 +41,7 @@ public class JuegoTest {
         Turno turno = new Turno(jugadores);
         Batalla batalla = new Batalla(new DadoEstandar());
 
-        Juego juego = new Juego(tablero, turno, batalla);
+        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
 
         assertEquals(Valentin.contarTotalFichas(), 25);
         assertEquals(Juan.contarTotalFichas(), 25);
@@ -62,7 +62,7 @@ public class JuegoTest {
 
         Batalla batalla = new Batalla(new DadoEstandar());
 
-        Juego juego = new Juego(tablero, turno, batalla);
+        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
         juego.comenzarRonda();
 
         assertEquals(Valentin.contarTotalFichas(), 30);
@@ -83,7 +83,7 @@ public class JuegoTest {
         Turno turno = new Turno(jugadores);
         Batalla batalla = new Batalla(new DadoEstandar());
 
-        Juego juego = new Juego(tablero, turno, batalla);
+        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
         juego.comenzarRonda();
         juego.siguienteRonda();
         juego.comenzarRonda();
@@ -127,7 +127,7 @@ public class JuegoTest {
 
         Turno turno = new Turno(jugadores);
         Batalla batalla = new Batalla(new DadoEstandar());
-        Juego juego = new Juego(tablero, turno, batalla);
+        Juego juego = new Juego(tablero, turno, batalla, new Mazo());
 
         Continente Asia = tablero.encontrarContinente("Asia");
         assertTrue(Asia.conquistadoPorJugador(Valentin));
