@@ -20,24 +20,13 @@ public class Jugador {
         this.color = color;
         this.paisesConquistados = new ArrayList<>();
         this.fichasReservadas = new ArrayList<>();
-        this.canjeador = canjeador; //esta malo crear cosas >:(
-        conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
+        this.canjeador = canjeador;
+        conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
     }
-
-
-//    public Jugador(String nombre, Color color) {
-//        this.nombre = nombre;
-//        this.color = color;
-//        this.paisesConquistados = new ArrayList<>();
-//        this.fichasReservadas = new ArrayList<>();
-//        this.canjeador = new Canjeador( new Mazo() ); //esta malo crear cosas >:(
-//        conquisteEnRonda = false; //reemplazar tal vez en canjeador ficsmi
-//    }
 
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
         this.paisesConquistados.add(pais);
-//        pais.setColor(this.color);
     }
 
     public int cuantosPaisesConquistados(){
@@ -52,24 +41,7 @@ public class Jugador {
         paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
     }
 
-    public void comienzaElAtaque(Batalla unaBatalla) {
-//        conquisteEnRonda = false;
-//        List<Pais> copiaPaises = new ArrayList<Pais>(this.paisesConquistados);
-//
-//        for (Pais pais : copiaPaises) {
-//            List<Pais> paisesDisponibles = pais.paisesDisponiblesParaAtacar();
-//            for (Pais paisAtacado : paisesDisponibles) {
-//                try {
-//                    pais.paisAtacaAPais(paisAtacado, unaBatalla);
-//                    // checkear si conquisto ey
-//                } catch (FichasInsuficientesException e) {
-//                    break;
-//                } catch (NoEsLimitrofeException | AtaqueAPaisAliadoException e) {
-//                    continue;
-//                }
-//            }
-//        }
-    }
+    public void comienzaElAtaque(Batalla unaBatalla) {}
 
     public void reagruparFuerzas() {
     }
@@ -82,11 +54,6 @@ public class Jugador {
     public boolean merecesCarta() {
         return conquisteEnRonda;
     }
-
-//    public void hacerCanje() {
-//        colocarFichas(canjeador.canjearCartas());
-//    }
-
 
     public void hacerCanjePorCarta(){
         int numeroDeFichas = this.canjeador.canjearCartas();
@@ -102,24 +69,18 @@ public class Jugador {
         pais.agregarFichas(fichas);
     }
 
-//    public void colocarFichas(List<Ficha> fichas) {
-//        // che donde y cuantas ---> poner x fichas en x pais()
-//        this.fichasReservadas.addAll(fichas);
-//        // por ahora le agrega las fichas a los paises de forma "aleatoria" FIcsme
-//        // this.paisesConquistados.get(0).agregarFichas(fichas);
-//    }
-
     public int contarTotalFichas(){
-        int total =this.fichasReservadas.size();
-        for (Pais pais : paisesConquistados){
+        int total = this.fichasReservadas.size();
+
+        for (Pais pais : paisesConquistados)
             total += pais.cantidadFichas();
-        }
+
         return total;
     }
 
     public void quitarPais(Pais pais) {
-        if(!this.paisesConquistados.remove(pais))
-            System.out.println("Que Pais?"); ///////////////hacer algo con esto
+        // deberia estar ese pais
+        this.paisesConquistados.remove(pais);
     }
 
     public void darFichas(List<Ficha> fichas) {
@@ -129,9 +90,9 @@ public class Jugador {
     public List<Ficha> generarFichas(Integer cantFichas){
         List<Ficha> fichas = new ArrayList<>();
 
-        for (int i = 0; i<cantFichas; i++){
+        for (int i = 0; i < cantFichas; i++)
             fichas.add(new Ficha(color));
-        }
+
         return fichas;
     }
 
