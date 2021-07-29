@@ -1,11 +1,10 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.aplicacion.app;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -47,7 +46,7 @@ public class App extends Application {
 
         ventana.setTitle("A.L.T.E.G.O");
         ventana.setScene(sceneTitulo);
-        ventana.setMaximized(true);
+        ventana.setFullScreen(true);
 
         ventana.show();
 
