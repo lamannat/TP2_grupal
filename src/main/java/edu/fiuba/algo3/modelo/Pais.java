@@ -57,14 +57,7 @@ public class Pais {
 
     public boolean esAliado(Pais pais){
         return pais.conquistadoPorJugador(this.jugador);
-//        return pais.tieneColor(this.fichas.get(0).getColor());
     }
-
-//    public boolean tieneColor(Color unColor) {
-//        if (this.fichas.isEmpty())
-//            return false;
-//        return this.fichas.get(0).getColor().tieneColor(unColor);
-//    }
 
 //    public boolean perteneceAContinente(Continente continente){
 //        return continente.tienePais(this);
@@ -126,14 +119,6 @@ public class Pais {
     public int cantidadFichas(){
         return fichas.size();
     }
-
-//    public List<Pais> paisesDisponiblesParaAtacar() {
-//        List<Pais> disponibles = new ArrayList<>();
-//        for (Pais pais : limitrofes)
-//            if(!this.esAliado(pais))
-//                disponibles.add(pais);
-//        return disponibles;
-//    }
 
     public boolean estaAsignado() {
         return this.jugador != null;

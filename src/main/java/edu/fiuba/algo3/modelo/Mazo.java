@@ -19,7 +19,7 @@ public class Mazo {
     }
 
     public Carta sacarCartaAleatoria() {
-        int i = (int)Math.floor(Math.random()*(cartas.size()));
+        int i = (int) Math.floor(Math.random() * cartas.size());
         return cartas.remove(i);
     }
 

@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.moduloRonda.*;
 import java.util.List;
 
 public class Juego {
-    private Turno turno;
+    private final Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
     private final Batalla batalla;
@@ -16,8 +16,11 @@ public class Juego {
         this.tablero = tablero;
         this.batalla = unaBatalla;
         this.mazo = unMazo;
-        rondaActual = new RondaAgregarCincoFichas(this);
         this.tablero.asignarPaises(this.turno);
+    }
+
+    public void seleccionarRonda(Ronda ronda) {
+        rondaActual = ronda;
     }
 
     public void comenzarRonda(){
@@ -55,9 +58,8 @@ public class Juego {
     }
 
     public Carta cartaParaJugador(Jugador jugador) {
-        if (jugador.merecesCarta()){
-            return this.mazo.sacarCartaAleatoria();
-        }
+        if (jugador.merecesCarta())
+            return mazo.sacarCartaAleatoria();
        return null;
     }
 

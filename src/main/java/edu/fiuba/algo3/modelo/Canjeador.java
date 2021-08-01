@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class Canjeador {
     private final List<Carta> cartas;
-    private Mazo mazo;
+    private final Mazo mazo;
     private int numeroDeCanje;
     private final static int cantidadCartasConPatron = 3;
 
@@ -21,12 +21,13 @@ public class Canjeador {
     public void agregarCartaPais(Carta carta) { cartas.add(carta); }
 
     private boolean hayPatronDeIguales() {
-        List<Carta> listaIguales = new ArrayList<>();
         for (Carta cartaActual : this.cartas) {
-            listaIguales = cartas.stream().filter(cartaActual::sonIguales).collect(Collectors.toList());
+            List<Carta> listaIguales = cartas.stream().filter(cartaActual::sonIguales).collect(Collectors.toList());
             if (listaIguales.size() >= cantidadCartasConPatron) {
-                for (Carta unaCarta : listaIguales)
-                    mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
+                for (Carta unaCarta : listaIguales){
+                    cartas.remove(unaCarta);
+                    mazo.agregarCarta(unaCarta);
+                }
                 return true;
             }
         }
@@ -39,19 +40,19 @@ public class Canjeador {
             listaDiferentes.add(cartaActual);
             for(Carta cartaAuxiliar: this.cartas) {
                 if (listaDiferentes.size() >= cantidadCartasConPatron) {
-                    for (Carta unaCarta : listaDiferentes)
-                        mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
+                    for (Carta unaCarta : listaDiferentes) {
+                        cartas.remove(unaCarta);
+                        mazo.agregarCarta(unaCarta);
+                    }
                     return true;
                 }
-                if( listaDiferentes.stream().noneMatch(carta -> carta.sonIguales(cartaAuxiliar)) ) {
+                if( listaDiferentes.stream().noneMatch(carta -> carta.sonIguales(cartaAuxiliar)) )
                     listaDiferentes.add(cartaAuxiliar);
-                }
             }
             listaDiferentes.clear();
         }
         return false;
     }
-
 
     public int canjearCartas() { //canjeo se hace automaticamente
         if (cartas.size() < 3)

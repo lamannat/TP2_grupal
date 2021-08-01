@@ -22,8 +22,4 @@ public class Batalla {
                 atacante.pierdeFicha();
         }
     }
-
-//    public void cambiarDado(Dado unDado){
-//        this.dado = unDado;
-//    }
 }
