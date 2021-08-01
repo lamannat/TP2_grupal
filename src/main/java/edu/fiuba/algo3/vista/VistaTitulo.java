@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -32,7 +33,7 @@ public class VistaTitulo extends Escena {
     @Override
     public void mostrar(Stage ventana) {
         this.padre.getChildren().clear();
-        padre.setStyle("-fx-background-color: #ffcc3d");
+        padre.setStyle("-fx-background-color: #ffcc3d;");
 
         Button botonJugar;
 
@@ -58,13 +59,12 @@ public class VistaTitulo extends Escena {
 
         // BOTON JUGAR
         botonJugar = new Button("JUGAR");
-        botonJugar.setPadding(new Insets(-50,250,0,0));
+        //botonJugar.setPadding(new Insets(-50,250,0,0));
         botonJugar.setScaleX(3);
         botonJugar.setScaleY(3);
         botonJugar.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
-        botonJugar.setStyle("-fx-background-color: #000000");
-        botonJugar.setTextFill(Color.BLACK);
-
+        botonJugar.setStyle("-fx-background-color:black");
+        botonJugar.setTextFill(Color.WHITE);
 
 
         // LAYOUT SECUNDARIO
@@ -72,7 +72,7 @@ public class VistaTitulo extends Escena {
         titulo.setAlignment(Pos.CENTER);
         titulo.getChildren().addAll(label1,logo,label2);
 
-        padre.setAlignment(Pos.BOTTOM_CENTER);
+        padre.setAlignment(Pos.TOP_CENTER);
         padre.getChildren().addAll(titulo, botonJugar);
     }
 

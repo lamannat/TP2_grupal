@@ -53,7 +53,7 @@ public class App extends Application {
         Juego juego = setearJuego();
 
         ControladorDeEscena controladorDeEscena = new ControladorDeEscena();
-        controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(75), controladorDeEscena, juego));
+        controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(50), controladorDeEscena, juego));
         controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena, juego));
         controladorDeEscena.agregarEscena(new VistaSetearNombresYColores(new VBox(250), controladorDeEscena, juego));
         controladorDeEscena.agregarEscena(new VistaJuego(new VBox(250), controladorDeEscena, juego));
