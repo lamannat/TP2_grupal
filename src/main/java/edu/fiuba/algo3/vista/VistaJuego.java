@@ -20,13 +20,13 @@ public class VistaJuego extends Escena {
 
     private final VBox padre;
 
-    public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
-        super(padre, controladorDeEscena, juego);
+    public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena) {
+        super(padre, controladorDeEscena);
         this.padre = (VBox) padre;
     }
 
     public void mostrar(Stage ventana) {
-        this.juego.asignarPaises();
+        //this.juego.asignarPaises();
 
         HBox estados = new HBox();
 

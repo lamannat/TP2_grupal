@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Jugador {
     private final Canjeador canjeador;
     private boolean conquisteEnRonda;
     private final List<Ficha> fichasReservadas;
+    private final List<Objetivo> objetivos;
 
     public Jugador(String nombre, Color color, Canjeador canjeador) {
         //despues vamos a editar los constructores
@@ -20,6 +22,7 @@ public class Jugador {
         this.color = color;
         this.paisesConquistados = new ArrayList<>();
         this.fichasReservadas = new ArrayList<>();
+        this.objetivos = new ArrayList<>();
         this.canjeador = canjeador;
         conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
     }
@@ -27,6 +30,7 @@ public class Jugador {
     public Jugador(Canjeador canjeador) {
         this.paisesConquistados = new ArrayList<>();
         this.fichasReservadas = new ArrayList<>();
+        this.objetivos = new ArrayList<>();
         this.canjeador = canjeador;
         conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
     }
@@ -40,6 +44,11 @@ public class Jugador {
         pais.asignarJugador(this);
         this.paisesConquistados.add(pais);
     }
+
+    public void setObjetivo(Objetivo objetivo){
+        this.objetivos.add(objetivo);
+    }
+
 
     public int cuantosPaisesConquistados(){
         return paisesConquistados.size();
@@ -112,5 +121,9 @@ public class Jugador {
 
     public boolean ganador(int minimoDePaises) {
         return this.paisesConquistados.size() >= minimoDePaises;
+    }
+
+    public boolean seguisJugando() {
+        return paisesConquistados.size() > 0;
     }
 }

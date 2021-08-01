@@ -7,18 +7,16 @@ import javafx.scene.control.Button;
 
 public class BotonCantidadEventHandler implements EventHandler<ActionEvent> {
     private final Button botonSiguiente;
-    private final Juego juego;
     private int cantidadBoton;
 
-    public BotonCantidadEventHandler(int unaCantidad, Juego juego, Button botonSiguiente) {
+    public BotonCantidadEventHandler(int unaCantidad,Button botonSiguiente) {
         this.cantidadBoton = unaCantidad;
         this.botonSiguiente = botonSiguiente;
-        this.juego = juego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         botonSiguiente.setVisible(true);
-        juego.setearJugadores(cantidadBoton); // tal vez cambiar
+        //juego.setearJugadores(cantidadBoton); // tal vez cambiar
     }
 }

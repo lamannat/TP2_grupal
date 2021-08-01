@@ -25,8 +25,8 @@ public class Continente {
         return paises.stream().allMatch(paisActual -> paisActual.conquistadoPorJugador(jugador));
     }
 
-    public Integer cantidadPaisesConquistadosPorJugador(Jugador unJugador) {
-        return (int) paises.stream().filter(paisActual -> paisActual.conquistadoPorJugador(unJugador)).count();
+    public boolean conquistoCantidadDePaises(Jugador unJugador, int cantidad) {
+        return (int) paises.stream().filter(paisActual -> paisActual.conquistadoPorJugador(unJugador)).count() >= cantidad;
     }
 
     public Pais obtenerPaisNoAsignado() {

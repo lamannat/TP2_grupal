@@ -81,9 +81,9 @@ public class ContinenteTest {
         continente.agregarPais(pais3);
         continente.agregarPais(pais4);
 
-        assertEquals(continente.cantidadPaisesConquistadosPorJugador(j1),2);
-        assertEquals(continente.cantidadPaisesConquistadosPorJugador(j2),1);
-        assertEquals(continente.cantidadPaisesConquistadosPorJugador(j3),1);
+        assertTrue(continente.conquistoCantidadDePaises(j1,1));
+        assertTrue(continente.conquistoCantidadDePaises(j2,1));
+        assertTrue(continente.conquistoCantidadDePaises(j3,1));
     }
 
 }
