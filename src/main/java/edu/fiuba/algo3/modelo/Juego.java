@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.moduloRonda.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
@@ -29,9 +30,11 @@ public class Juego {
         this.tablero.asignarPaises(this.turno);
     }
 
-    public void agregarJugadores(int cantidadJugadores) {
+    public void setearJugadores(int cantidadJugadores) {
+        List<Jugador> jugadores = new ArrayList<>();
         for (int i = 0; i < cantidadJugadores; i++)
-            turno.agregarJugador(new Jugador(tipoCanjeador.getInstanciaNueva()));
+            jugadores.add(new Jugador(tipoCanjeador.getInstanciaNueva()));
+        turno.setearJugadores(jugadores);
     }
 
     public int cantJugadores() {
@@ -86,8 +89,12 @@ public class Juego {
         return this.batalla;
     }
 
-    public void setearJugador(String nombre, Color color) {
+    public void setearNombreYColor(String nombre, Color color) {
         Jugador jugador = turno.jugadorActual();
         jugador.setJugador(nombre, color);
+    }
+
+    public void asignarPaises() {
+        this.tablero.asignarPaises(this.turno);
     }
 }

@@ -2,9 +2,6 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.color.Color;
-import edu.fiuba.algo3.vista.Escena;
-import edu.fiuba.algo3.vista.VistaJuego;
-import edu.fiuba.algo3.vista.VistaTitulo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -13,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEvent> {
@@ -62,7 +58,7 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
             Color color = boton.getColor();
             String nombre = par.getKey();
 
-            this.juego.setearJugador(nombre, color);
+            this.juego.setearNombreYColor(nombre, color);
 
             listaNombreYBoton.clear();
             this.inputUsuario.clear();

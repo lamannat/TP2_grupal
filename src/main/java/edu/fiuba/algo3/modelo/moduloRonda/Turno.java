@@ -10,7 +10,6 @@ public class Turno {
     private int indice;
 
     public Turno() {
-        this.jugadores = new ArrayList<>();
         this.indice = 0;
     }
 
@@ -19,8 +18,8 @@ public class Turno {
         this.indice = 0;
     }
 
-    public void agregarJugador(Jugador jugador) {
-        jugadores.add(jugador);
+    public void setearJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
 
     public Jugador jugadorActual(){
@@ -32,4 +31,6 @@ public class Turno {
     public int cantJugadores() {
         return jugadores.size();
     }
+
+
 }

@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Canjeador;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -21,6 +19,6 @@ public class BotonCantidadEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         botonSiguiente.setVisible(true);
-        juego.agregarJugadores(cantidadBoton); // tal vez cambiar
+        juego.setearJugadores(cantidadBoton); // tal vez cambiar
     }
 }

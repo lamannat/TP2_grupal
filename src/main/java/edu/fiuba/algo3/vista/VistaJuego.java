@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -25,28 +26,27 @@ public class VistaJuego extends Escena {
     }
 
     public void mostrar(Stage ventana) {
-        InputStream stream = null;
-        try {
-            stream = new FileInputStream("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
-        } catch (FileNotFoundException e) {
-            System.out.println("Y el archivo? capo");
-            e.printStackTrace();
-        }
-        assert stream != null;
-        Image image = new Image(stream);
-        //Creating the image view
-        ImageView imageView = new ImageView();
-        //Setting image to the image view
-        imageView.setImage(image);
-        //Setting the image view parameters
-        imageView.setX(0);
-        imageView.setY(0);
-        imageView.setFitWidth(850);
-        imageView.setPreserveRatio(true);
-        //Setting the Scene object
-//        HBox root = new HBox(imageView);
-        padre.getChildren().add(imageView);
+        this.juego.asignarPaises();
+
+        HBox estados = new HBox();
+
+        VBox mapaObjetivos = new VBox();
+        mapaObjetivos.getChildren().add(this.setearMapa());
+
+        HBox principal = new HBox();
+
+        principal.getChildren().add(mapaObjetivos); //agrger info 1 y 2
+
+        padre.getChildren().addAll(estados,principal);
+
         padre.setStyle("-fx-background-color: black");
     }
 
+    private ImageView setearMapa(){
+        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+        Image image = new Image(file.toURI().toString());
+        ImageView iv = new ImageView(image);
+
+        return iv;
+    }
 }
