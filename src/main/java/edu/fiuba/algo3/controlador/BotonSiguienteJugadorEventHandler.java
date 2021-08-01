@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.VistaJuego;
 import edu.fiuba.algo3.vista.VistaTitulo;
 import javafx.event.ActionEvent;
@@ -13,35 +16,39 @@ import javafx.util.Pair;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class BotonSiguienteEventHandler implements EventHandler<ActionEvent> {
+public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEvent> {
 
     private final Stage ventana;
     private final TextField inputUsuario;
     private final Label label;
     private final ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
+    private final Button botonSiguiente;
     private int cantidadActualJugadores;
     private int cantidadTotalJugadores;
+    private final Juego juego;
 
 
-    public BotonSiguienteEventHandler(Stage unaVentana, ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label,int cantidadTotalJugadores) {
+    public BotonSiguienteJugadorEventHandler(Stage unaVentana, ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente, Juego juego) {
         this.ventana = unaVentana;
         this.listaNombreYBoton = listaNombreYBoton;
         this.inputUsuario = texto;
         this.label = label;
-        this.cantidadActualJugadores = 1;
+        this.cantidadActualJugadores = 0;
         this.cantidadTotalJugadores = cantidadTotalJugadores;
+        this.botonSiguiente = botonSiguiente;
+        this.juego = juego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        if(cantidadActualJugadores == cantidadTotalJugadores) {
-            // Pasaría al mapa
-            VistaJuego siguienteVista = new VistaJuego();
-            ventana.setScene(siguienteVista.crearJuego(ventana));
-        }
+        if (cantidadActualJugadores >= cantidadTotalJugadores) {
+            this.label.setText("Ya eligio la cantidad suficiente de jugadores, aprete Siguiente");
+            this.label.setTextFill(javafx.scene.paint.Color.RED);
+            this.inputUsuario.requestFocus();
+            System.out.println("hay error v2");
 
-        else if (this.listaNombreYBoton.isEmpty()) {
+        } else if (this.listaNombreYBoton.isEmpty()) {
             this.label.setText("Debe ingresar un color");
             this.label.setTextFill(javafx.scene.paint.Color.RED);
             this.inputUsuario.requestFocus();
@@ -49,9 +56,14 @@ public class BotonSiguienteEventHandler implements EventHandler<ActionEvent> {
 
         } else {
             Pair<String,BotonDeColor> par = listaNombreYBoton.get(0);
-            String nombre = par.getKey();
+
             BotonDeColor boton = par.getValue();
-            System.out.println("Nombre: "+nombre+" Boton: " + boton.getText());
+
+            Color color = boton.getColor();
+            String nombre = par.getKey();
+
+            this.juego.setearJugador(nombre, color);
+
             listaNombreYBoton.clear();
             this.inputUsuario.clear();
             this.inputUsuario.requestFocus();
@@ -60,5 +72,8 @@ public class BotonSiguienteEventHandler implements EventHandler<ActionEvent> {
             cantidadActualJugadores++;
         }
 
+        if (cantidadActualJugadores == cantidadTotalJugadores) {
+            botonSiguiente.setVisible(true);
+        }
     }
 }

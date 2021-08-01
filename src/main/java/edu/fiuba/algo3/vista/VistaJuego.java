@@ -1,23 +1,35 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorDeEscena;
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class VistaJuego {
+public class VistaJuego extends Escena {
 
-    public Scene crearJuego(Stage ventana) {
+    private final VBox padre;
+
+    public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
+        super(padre, controladorDeEscena, juego);
+        this.padre = (VBox) padre;
+    }
+
+    public void mostrar(Stage ventana) {
         InputStream stream = null;
         try {
-            stream = new FileInputStream("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.png");
+            stream = new FileInputStream("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
         } catch (FileNotFoundException e) {
-            System.out.println("Y el archivo?");
+            System.out.println("Y el archivo? capo");
             e.printStackTrace();
         }
         assert stream != null;
@@ -32,10 +44,9 @@ public class VistaJuego {
         imageView.setFitWidth(850);
         imageView.setPreserveRatio(true);
         //Setting the Scene object
-        Group root = new Group(imageView);
-        root.setStyle("-fx-background-color: black");
-        Scene escenaJuego = new Scene(root);
-        return escenaJuego;
+//        HBox root = new HBox(imageView);
+        padre.getChildren().add(imageView);
+        padre.setStyle("-fx-background-color: black");
     }
 
 }

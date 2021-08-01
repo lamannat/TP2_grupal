@@ -71,6 +71,8 @@ public class Canjeador {
         }
     }
 
-
+    public Canjeador getInstanciaNueva() {
+        return new Canjeador(mazo);
+    }
 
 }

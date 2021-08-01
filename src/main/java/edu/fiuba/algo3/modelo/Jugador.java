@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Jugador {
 
-    private final String nombre;
-    private final Color color;
+    private String nombre;
+    private Color color;
     private final List<Pais> paisesConquistados;
     private final Canjeador canjeador;
     private boolean conquisteEnRonda;
@@ -22,6 +22,18 @@ public class Jugador {
         this.fichasReservadas = new ArrayList<>();
         this.canjeador = canjeador;
         conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
+    }
+
+    public Jugador(Canjeador canjeador) {
+        this.paisesConquistados = new ArrayList<>();
+        this.fichasReservadas = new ArrayList<>();
+        this.canjeador = canjeador;
+        conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
+    }
+
+    public void setJugador(String nombre, Color color) {
+        this.nombre = nombre;
+        this.color = color;
     }
 
     public void agregarPais(Pais pais){

@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonColorEventHandler;
-import edu.fiuba.algo3.controlador.BotonDeColor;
-import edu.fiuba.algo3.controlador.BotonSiguiente;
-import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
+import edu.fiuba.algo3.controlador.*;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.color.*;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,15 +16,25 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class VistaSetearNombresYColores {
+public class VistaSetearNombresYColores extends Escena {
 
+    private final VBox padre;
     private int cantJugadores;
 
-    public void setCantJugadores(int n){
-        cantJugadores = n;
+    public VistaSetearNombresYColores(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
+        super(padre, controladorDeEscena, juego);
+        this.padre = (VBox) padre;
     }
 
-    public Scene crearJugadores(Stage ventana) {
+    public void mostrar(Stage ventana) {
+        padre.getChildren().clear();
+
+        cantJugadores = juego.cantJugadores();
+
+        Button botonSiguienteEscena = new Button("Siguiente");
+        botonSiguienteEscena.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
+        botonSiguienteEscena.setVisible(false);
+
         HBox hboxTexto = new HBox();
         hboxTexto.setStyle("-fx-background-color: #272727");
 
@@ -40,14 +48,16 @@ public class VistaSetearNombresYColores {
         label.setScaleX(3);
         label.setScaleY(3);
 
-        BotonSiguiente botonSiguiente = new BotonSiguiente();
+        Button botonSiguiente = new Button();
         botonSiguiente.setText("Siguiente Jugador");
+        botonSiguiente.setTextFill(Color.BLACK);
+        botonSiguiente.setStyle("-fx-background-color: white");
         botonSiguiente.setScaleX(3);
         botonSiguiente.setScaleY(3);
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
-        botonSiguiente.setOnAction(new BotonSiguienteEventHandler(ventana,listaNombreYBoton,texto,label,cantJugadores));
+        botonSiguiente.setOnAction(new BotonSiguienteJugadorEventHandler(ventana, listaNombreYBoton, texto, label, cantJugadores, botonSiguienteEscena, this.juego));
 
         hboxTexto.setSpacing(320.0);
         hboxTexto.setAlignment(Pos.CENTER);
@@ -87,16 +97,11 @@ public class VistaSetearNombresYColores {
         hboxColores.setAlignment(Pos.CENTER);
         hboxColores.setSpacing(100);
 
-        VBox vbox = new VBox();
-        vbox.setAlignment(Pos.CENTER);
-        vbox.setSpacing(100.0);
-        vbox.getChildren().addAll(hboxTexto,hboxColores,label);
-        vbox.setMinSize(110.0,110.0);
-        vbox.setStyle("-fx-background-color: #272727");
-
-        Scene sceneJugadores = new Scene(vbox);
-
-        return sceneJugadores;
-
+//        VBox vbox = new VBox();
+        padre.setAlignment(Pos.CENTER);
+        padre.setSpacing(100.0);
+        padre.getChildren().addAll(hboxTexto, hboxColores, label, botonSiguienteEscena);
+        padre.setMinSize(110.0,110.0);
+        padre.setStyle("-fx-background-color: #272727");
     }
 }
