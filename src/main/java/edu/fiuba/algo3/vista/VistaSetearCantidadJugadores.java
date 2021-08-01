@@ -1,21 +1,36 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonCantidadEventHandler;
+import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
+import edu.fiuba.algo3.controlador.ControladorDeEscena;
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class VistaSetearCantidadJugadores {
+public class VistaSetearCantidadJugadores extends Escena {
 
-    public Scene crearCantJugadores(Stage ventana) {
+    private final VBox padre;
+
+    public VistaSetearCantidadJugadores(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
+        super(padre, controladorDeEscena, juego);
+        this.padre = (VBox) padre;
+    }
+
+    public void mostrar(Stage ventana) {
+        padre.getChildren().clear();
+
         HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: #272727");
+
+        Button botonSiguiente = new Button("Siguiente");
+        botonSiguiente.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
+        botonSiguiente.setVisible(false);
 
         Button boton2 = new Button("2");
         Button boton3 = new Button("3");
@@ -55,30 +70,27 @@ public class VistaSetearCantidadJugadores {
         boton6.setAlignment(Pos.CENTER);
 
 
-        boton2.setOnAction(new BotonCantidadEventHandler(ventana,2));
-        boton3.setOnAction(new BotonCantidadEventHandler(ventana,3));
-        boton4.setOnAction(new BotonCantidadEventHandler(ventana,4));
-        boton5.setOnAction(new BotonCantidadEventHandler(ventana,5));
-        boton6.setOnAction(new BotonCantidadEventHandler(ventana,6));
+        boton2.setOnAction(new BotonCantidadEventHandler(2, juego, botonSiguiente));
+        boton3.setOnAction(new BotonCantidadEventHandler(3, juego, botonSiguiente));
+        boton4.setOnAction(new BotonCantidadEventHandler(4, juego, botonSiguiente));
+        boton5.setOnAction(new BotonCantidadEventHandler(5, juego, botonSiguiente));
+        boton6.setOnAction(new BotonCantidadEventHandler(6, juego, botonSiguiente));
 
 
         hbox.setSpacing(200.0);
         hbox.setAlignment(Pos.CENTER);
         hbox.getChildren().addAll(boton2,boton3,boton4,boton5,boton6);
 
-        VBox vbox = new VBox();
-        vbox.setStyle("-fx-background-color: #272727");
-        vbox.setAlignment(Pos.CENTER);
-        vbox.setSpacing(200.0);
+//        VBox vbox = new VBox();
+        padre.setStyle("-fx-background-color: #272727");
+        padre.setAlignment(Pos.CENTER);
+        padre.setSpacing(200.0);
 
         Label textoCantidadJugadores = new Label("¿Cuántos juegan?");
         textoCantidadJugadores.setScaleX(10);
         textoCantidadJugadores.setScaleY(10);
         textoCantidadJugadores.setTextFill(Color.YELLOW);
 
-        vbox.getChildren().addAll(textoCantidadJugadores,hbox);
-        Scene sceneCantJugadores = new Scene(vbox);
-
-        return sceneCantJugadores;
+        padre.getChildren().addAll(textoCantidadJugadores,hbox, botonSiguiente);
     }
 }

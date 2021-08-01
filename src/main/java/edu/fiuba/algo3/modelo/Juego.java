@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.moduloRonda.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
@@ -10,13 +12,33 @@ public class Juego {
     private Ronda rondaActual;
     private final Batalla batalla;
     private final Mazo mazo;
+    private Canjeador tipoCanjeador;
 
-    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo, Canjeador canjeador) {
+        this.turno = turno;
+        this.tablero = tablero;
+        this.batalla = unaBatalla;
+        this.mazo = unMazo;
+        this.tipoCanjeador = canjeador;
+    }
+
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) { // este se tiene que ir
         this.turno = turno;
         this.tablero = tablero;
         this.batalla = unaBatalla;
         this.mazo = unMazo;
         this.tablero.asignarPaises(this.turno);
+    }
+
+    public void setearJugadores(int cantidadJugadores) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (int i = 0; i < cantidadJugadores; i++)
+            jugadores.add(new Jugador(tipoCanjeador.getInstanciaNueva()));
+        turno.setearJugadores(jugadores);
+    }
+
+    public int cantJugadores() {
+        return turno.cantJugadores();
     }
 
     public void seleccionarRonda(Ronda ronda) {
@@ -65,5 +87,14 @@ public class Juego {
 
     public Batalla getBatalla() {
         return this.batalla;
+    }
+
+    public void setearNombreYColor(String nombre, Color color) {
+        Jugador jugador = turno.jugadorActual();
+        jugador.setJugador(nombre, color);
+    }
+
+    public void asignarPaises() {
+        this.tablero.asignarPaises(this.turno);
     }
 }

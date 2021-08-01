@@ -1,13 +1,16 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.vista.VistaSetearCantidadJugadores;
-import edu.fiuba.algo3.vista.VistaSetearNombresYColores;
-import edu.fiuba.algo3.vista.VistaTitulo;
+import edu.fiuba.algo3.controlador.ControladorDeEscena;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
+import edu.fiuba.algo3.vista.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -44,14 +47,44 @@ public class App extends Application {
 //        VistaSetearCantidadJugadores cantJugadores = new VistaSetearCantidadJugadores();
 //        Scene sceneCantJugadores = cantJugadores.crearCantJugadores(ventana,sceneNombresColores);
 
-        VistaTitulo titulo = new VistaTitulo();
-        sceneTitulo = titulo.crearTitulo(ventana);
+//        VBox padre = new VBox();
+
+
+        Juego juego = setearJuego();
+
+        ControladorDeEscena controladorDeEscena = new ControladorDeEscena();
+        controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(250), controladorDeEscena, juego));
+        controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena, juego));
+        controladorDeEscena.agregarEscena(new VistaSetearNombresYColores(new VBox(250), controladorDeEscena, juego));
+        controladorDeEscena.agregarEscena(new VistaJuego(new VBox(250), controladorDeEscena, juego));
+
+        Escena sceneTitulo = controladorDeEscena.siguienteEscena();
+        sceneTitulo.mostrar(ventana);
+
+//        VistaTitulo titulo = new VistaTitulo();
+//        sceneTitulo = titulo.crearTitulo(ventana);
+
+
+
 
         ventana.setTitle("A.L.T.E.G.O");
         ventana.setScene(sceneTitulo);
         ventana.setMaximized(true);
 
         ventana.show();
+    }
+
+    public Juego setearJuego() {
+
+        Tablero tablero = new Tablero();
+        // crear los continentes y paises y cosas
+
+        Turno turno = new Turno();
+        Batalla batalla = new Batalla(new DadoEstandar());
+        Mazo mazo = new Mazo();
+        Canjeador canjeador = new Canjeador(mazo);
+
+        return new Juego(tablero, turno, batalla, mazo, canjeador);
     }
 
     public static void main(String[] args) {

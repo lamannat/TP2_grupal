@@ -1,41 +1,52 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorDeEscena;
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class VistaJuego {
+public class VistaJuego extends Escena {
 
-    public Scene crearJuego(Stage ventana) {
-        InputStream stream = null;
-        try {
-            stream = new FileInputStream("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.png");
-        } catch (FileNotFoundException e) {
-            System.out.println("Y el archivo?");
-            e.printStackTrace();
-        }
-        assert stream != null;
-        Image image = new Image(stream);
-        //Creating the image view
-        ImageView imageView = new ImageView();
-        //Setting image to the image view
-        imageView.setImage(image);
-        //Setting the image view parameters
-        imageView.setX(0);
-        imageView.setY(0);
-        imageView.setFitWidth(850);
-        imageView.setPreserveRatio(true);
-        //Setting the Scene object
-        Group root = new Group(imageView);
-        root.setStyle("-fx-background-color: black");
-        Scene escenaJuego = new Scene(root);
-        return escenaJuego;
+    private final VBox padre;
+
+    public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
+        super(padre, controladorDeEscena, juego);
+        this.padre = (VBox) padre;
     }
 
+    public void mostrar(Stage ventana) {
+        this.juego.asignarPaises();
+
+        HBox estados = new HBox();
+
+        VBox mapaObjetivos = new VBox();
+        mapaObjetivos.getChildren().add(this.setearMapa());
+
+        HBox principal = new HBox();
+
+        principal.getChildren().add(mapaObjetivos); //agrger info 1 y 2
+
+        padre.getChildren().addAll(estados,principal);
+
+        padre.setStyle("-fx-background-color: black");
+    }
+
+    private ImageView setearMapa(){
+        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+        Image image = new Image(file.toURI().toString());
+        ImageView iv = new ImageView(image);
+
+        return iv;
+    }
 }

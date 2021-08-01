@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.moduloRonda;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.color.ColorMagenta;
-import edu.fiuba.algo3.modelo.color.ColorNegro;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 import org.junit.jupiter.api.Test;
@@ -11,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
-public class RondaPrimeraHostilidadesTest {
+public class RondaHostilidadesGeneralTest {
 
     @Test
     public void juegadorAtacaReagrupaYSolicitaCarta() {
@@ -28,7 +25,7 @@ public class RondaPrimeraHostilidadesTest {
         mazo.agregarCarta(carta);
         Juego juego = new Juego(new Tablero(), turno, batalla, mazo);
 
-        RondaPrimeraHostilidades ronda = new RondaPrimeraHostilidades(juego);
+        RondaHostilidadesGeneral ronda = new RondaHostilidadesGeneral(juego);
         juego.seleccionarRonda(ronda);
 
         juego.comenzarRonda();
@@ -36,6 +33,7 @@ public class RondaPrimeraHostilidadesTest {
         assertEquals(jugador.comiezaElAtaque, 1);
         assertEquals(jugador.reagruparFuerzas, 1);
         assertEquals(jugador.solicitarCartas, 1);
+        assertEquals(jugador.jugadorReclamaPorTarjetas, 1);
     }
 
 }

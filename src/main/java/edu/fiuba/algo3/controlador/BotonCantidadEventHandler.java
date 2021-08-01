@@ -1,26 +1,24 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.vista.VistaSetearCantidadJugadores;
-import edu.fiuba.algo3.vista.VistaSetearNombresYColores;
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class BotonCantidadEventHandler implements EventHandler<ActionEvent> {
+    private final Button botonSiguiente;
+    private final Juego juego;
     private int cantidadBoton;
-    private Stage ventana;
 
-    public BotonCantidadEventHandler(Stage ventana,int unaCantidad) {
-        this.ventana = ventana;
+    public BotonCantidadEventHandler(int unaCantidad, Juego juego, Button botonSiguiente) {
         this.cantidadBoton = unaCantidad;
+        this.botonSiguiente = botonSiguiente;
+        this.juego = juego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VistaSetearNombresYColores siguienteVista = new VistaSetearNombresYColores();
-        siguienteVista.setCantJugadores(cantidadBoton);
-        Scene nuevaEscena = siguienteVista.crearJugadores(ventana);
-        ventana.setScene(nuevaEscena);
+        botonSiguiente.setVisible(true);
+        juego.setearJugadores(cantidadBoton); // tal vez cambiar
     }
 }

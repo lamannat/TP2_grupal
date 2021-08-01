@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 public class BotonDeColor extends Button {
+
     private Color color;
 
     public BotonDeColor(Color unColor){
@@ -27,5 +28,9 @@ public class BotonDeColor extends Button {
         this.setTextFill(javafx.scene.paint.Color.WHITE);
         this.setText(nombreJugador);
         this.setOnAction(e -> {});
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
