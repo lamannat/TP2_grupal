@@ -12,7 +12,7 @@ public class Jugador {
     private final List<Pais> paisesConquistados;
     private final Canjeador canjeador;
     private boolean conquisteEnRonda;
-    private List<Ficha> fichasReservadas;
+    private final List<Ficha> fichasReservadas;
 
     public Jugador(String nombre, Color color, Canjeador canjeador) {
         //despues vamos a editar los constructores
@@ -41,7 +41,9 @@ public class Jugador {
         paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
     }
 
-    public void comienzaElAtaque(Batalla unaBatalla) {}
+    public void comienzaElAtaque(Batalla unaBatalla) {
+        // aca deberia estar interactuando con la GUI
+    }
 
     public void reagruparFuerzas() {
     }

@@ -32,9 +32,8 @@ public class RondaPrimeraHostilidades implements Ronda {
 
     private void solicitarCarta(Jugador jugador) {
         Carta carta = this.juego.cartaParaJugador(jugador);
-        if (carta != null) {
+        if (carta != null)
             jugador.solicitarCarta(carta);
-        }
     }
 
     public Ronda siguienteRonda(){
