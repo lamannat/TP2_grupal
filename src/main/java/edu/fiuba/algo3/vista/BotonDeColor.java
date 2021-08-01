@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.controlador;
+package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonColorEventHandler;
 import edu.fiuba.algo3.modelo.color.Color;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,4 +34,5 @@ public class BotonDeColor extends Button {
     public Color getColor() {
         return color;
     }
+
 }

@@ -28,8 +28,7 @@ public class VistaSetearCantidadJugadores extends Escena {
         HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: #272727");
 
-        Button botonSiguiente = new Button("Siguiente");
-        botonSiguiente.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
+        BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguiente.setVisible(false);
 
         Button boton2 = new Button("2");

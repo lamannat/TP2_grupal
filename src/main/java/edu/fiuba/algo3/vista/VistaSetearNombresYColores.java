@@ -31,8 +31,7 @@ public class VistaSetearNombresYColores extends Escena {
 
         cantJugadores = juego.cantJugadores();
 
-        Button botonSiguienteEscena = new Button("Siguiente");
-        botonSiguienteEscena.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
+        BotonSiguiente botonSiguienteEscena = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguienteEscena.setVisible(false);
 
         HBox hboxTexto = new HBox();
