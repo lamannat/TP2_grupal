@@ -126,4 +126,6 @@ public class Jugador {
     public boolean seguisJugando() {
         return paisesConquistados.size() > 0;
     }
+
+    public void agregarObjetivo(Objetivo objetivo) { objetivos.add(objetivo); }
 }

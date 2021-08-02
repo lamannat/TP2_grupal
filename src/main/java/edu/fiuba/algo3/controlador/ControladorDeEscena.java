@@ -20,6 +20,7 @@ public class ControladorDeEscena {
 
     public Escena siguienteEscena() {
         Escena escena = listaDeEscenas.get(ordenDeEscena);
+        ordenDeEscena++;
         ordenDeEscena = (ordenDeEscena + 1) % listaDeEscenas.size(); // despues q haga un return null y explote la compu poquito
         return escena;
     }

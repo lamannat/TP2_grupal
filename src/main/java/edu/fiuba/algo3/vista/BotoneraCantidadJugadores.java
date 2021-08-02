@@ -7,6 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BotoneraCantidadJugadores extends HBox {
 
     public BotoneraCantidadJugadores(Button botonSiguiente, SetUpJuego setUp) {
@@ -20,6 +23,13 @@ public class BotoneraCantidadJugadores extends HBox {
         Button boton4 = new Button("4");
         Button boton5 = new Button("5");
         Button boton6 = new Button("6");
+
+        List<Button> botones = new ArrayList<>();
+        botones.add(boton2);
+        botones.add(boton3);
+        botones.add(boton4);
+        botones.add(boton5);
+        botones.add(boton6);
 
         boton2.setScaleX(3);
         boton2.setScaleY(3);
@@ -59,8 +69,41 @@ public class BotoneraCantidadJugadores extends HBox {
         boton5.setOnAction(new BotonCantidadEventHandler(setUp, 5, botonSiguiente));
         boton6.setOnAction(new BotonCantidadEventHandler(setUp, 6, botonSiguiente));
 
+        boton2.setOnMouseClicked(e-> {
+            botones.forEach(this::estiloBotonDefault);
+            this.estiloBotonSeleccionado(boton2);
+        });
+
+        boton3.setOnMouseClicked(e-> {
+            botones.forEach(this::estiloBotonDefault);
+            this.estiloBotonSeleccionado(boton3);
+        });
+
+        boton4.setOnMouseClicked(e-> {
+            botones.forEach(this::estiloBotonDefault);
+            this.estiloBotonSeleccionado(boton4);
+        });
+
+        boton5.setOnMouseClicked(e-> {
+            botones.forEach(this::estiloBotonDefault);
+            this.estiloBotonSeleccionado(boton5);
+        });
+
+        boton6.setOnMouseClicked(e-> {
+            botones.forEach(this::estiloBotonDefault);
+            this.estiloBotonSeleccionado(boton6);
+        });
+
         this.setSpacing(200.0);
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(boton2,boton3,boton4,boton5,boton6);
+    }
+
+    private void estiloBotonDefault(Button unBoton) {
+        unBoton.setStyle("-fx-background-color: black");
+    }
+
+    private void estiloBotonSeleccionado(Button unBoton) {
+        unBoton.setStyle("-fx-border-color: #ffcc3d;-fx-background-color: #000000");
     }
 }
