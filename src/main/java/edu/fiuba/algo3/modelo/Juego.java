@@ -5,8 +5,9 @@ import edu.fiuba.algo3.modelo.moduloRonda.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Juego {
+public class Juego extends Observable {
     private final Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
@@ -97,4 +98,5 @@ public class Juego {
     public void asignarPaises() {
         this.tablero.asignarPaises(this.turno);
     }
+
 }

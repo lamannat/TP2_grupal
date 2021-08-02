@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.SetUpJuego;
 import edu.fiuba.algo3.modelo.color.*;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -16,14 +18,16 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class VistaSetearNombresYColores extends Escena {
+public class VistaSetearNombresYColores extends Escena implements Observer {
 
     private final VBox padre;
     private int cantJugadores;
+    private final SetUpJuego setUp;
 
-    public VistaSetearNombresYColores(Parent padre, ControladorDeEscena controladorDeEscena) {
+    public VistaSetearNombresYColores(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
         this.padre = (VBox) padre;
+        this.setUp = setUp;
     }
 
     public void mostrar(Stage ventana) {
@@ -102,5 +106,11 @@ public class VistaSetearNombresYColores extends Escena {
         padre.getChildren().addAll(hboxTexto, hboxColores, label, botonSiguienteEscena);
         padre.setMinSize(110.0,110.0);
         padre.setStyle("-fx-background-color: #272727");
+    }
+
+    @Override
+    public void change() {
+        cantJugadores = setUp.getCantidadJugadores();
+        System.out.println("Estoy en change de VSNC --> " + cantJugadores);
     }
 }
