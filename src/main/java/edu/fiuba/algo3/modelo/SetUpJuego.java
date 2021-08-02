@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import edu.fiuba.algo3.modelo.simbolo.Comodin;
 import edu.fiuba.algo3.modelo.simbolo.Simbolo;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +14,12 @@ import java.util.Optional;
 
 public class SetUpJuego implements Observable {
     private final List<Observer> observers;
-    private final List<Jugador> jugadores;
+    private final List<Pair<String, Color>> nombresYColores;
     private int cantidadJugadores;
-    private final Mazo mazo;
 
     public SetUpJuego() {
         observers = new ArrayList<>();
-        jugadores = new ArrayList<>();
-        mazo = new Mazo();
+        nombresYColores = new ArrayList<>();
     }
 
     @Override
@@ -43,10 +42,16 @@ public class SetUpJuego implements Observable {
     }
 
     public void agregarJugador(String nombre, Color color) {
-        jugadores.add(new Jugador(nombre, color, new Canjeador(mazo)));
+        nombresYColores.add(new Pair<>(nombre, color));
     }
 
     public Juego dameJuego() {
+
+        Mazo mazo = new Mazo();
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Pair<String, Color> jugador : nombresYColores)
+            jugadores.add(new Jugador(jugador.getKey(), jugador.getValue(), new Canjeador(mazo)));
+
         Turno turno = new Turno(jugadores);
         Tablero tablero = new Tablero();
 
