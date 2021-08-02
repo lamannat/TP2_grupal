@@ -119,7 +119,7 @@ public class Jugador {
         return fichas;
     }
 
-    public boolean ganador(int minimoDePaises) {
+    public boolean superaCantidadDePaises(int minimoDePaises) {
         return this.paisesConquistados.size() >= minimoDePaises;
     }
 
@@ -128,4 +128,8 @@ public class Jugador {
     }
 
     public void agregarObjetivo(Objetivo objetivo) { objetivos.add(objetivo); }
+
+    public boolean ganador() {
+        return objetivos.stream().anyMatch(Objetivo::cumplido);
+    }
 }

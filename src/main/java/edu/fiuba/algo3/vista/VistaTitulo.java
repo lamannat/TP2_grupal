@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.File;
 
 
-public class VistaTitulo extends Escena implements Observer {
+public class VistaTitulo extends Escena {
 
     private final VBox padre;
 
@@ -30,8 +30,6 @@ public class VistaTitulo extends Escena implements Observer {
     public void mostrar(Stage ventana) {
         this.padre.getChildren().clear();
         padre.setStyle("-fx-background-color: #ffcc3d;");
-
-        Button botonJugar;
 
         // ETIQUETAS
         Label label1 = new Label("A.L.");
@@ -54,11 +52,11 @@ public class VistaTitulo extends Escena implements Observer {
         ImageView logo = new ImageView(image);
 
         // BOTON JUGAR
-        botonJugar = new Button("JUGAR");
+        BotonSiguiente botonJugar = new BotonSiguiente(ventana, controladorDeEscena);
+        botonJugar.setText("Jugar");
         //botonJugar.setPadding(new Insets(-50,250,0,0));
         botonJugar.setScaleX(3);
         botonJugar.setScaleY(3);
-        botonJugar.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
         botonJugar.setStyle("-fx-background-color:black");
         botonJugar.setTextFill(Color.WHITE);
 
@@ -68,44 +66,7 @@ public class VistaTitulo extends Escena implements Observer {
         titulo.setAlignment(Pos.CENTER);
         titulo.getChildren().addAll(label1,logo,label2);
 
-        padre.setAlignment(Pos.TOP_CENTER);
+        padre.setAlignment(Pos.CENTER);
         padre.getChildren().addAll(titulo, botonJugar);
     }
-
-    @Override
-    public void change() {
-
-    }
-
-
-//    public Scene crearTitulo(Stage ventana){
-//        Button botonJugar;
-//        Scene primera;
-//
-//        // ALTEGO
-//        Label altego = new Label("A.L.T.E.G.O");
-//        altego.setScaleX(20);
-//        altego.setScaleY(20);
-//        altego.setTextFill(Color.YELLOW);
-//        Font font = new Font(10);
-//        altego.setFont(font);
-//
-//        // BOTON JUGAR
-//        botonJugar = new Button("JUGAR");
-//        botonJugar.setStyle("-fx-background-color: black");
-//        botonJugar.setTextFill(Color.WHITE);
-//        botonJugar.setScaleX(5);
-//        botonJugar.setScaleY(5);
-//        botonJugar.setOnAction(new BotonSiguienteEscena(ventana));
-//        // LAYOUT INICIAL
-//        VBox layout1 = new VBox(250);
-//        layout1.getChildren().addAll(altego, botonJugar);
-//        layout1.setAlignment(Pos.CENTER);
-//        layout1.setStyle("-fx-background-color: #272727");
-//        primera = new Scene(layout1, 500, 100);
-//
-//        return primera;
-//    }
-
-
 }

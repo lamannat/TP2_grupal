@@ -32,7 +32,7 @@ public class VistaSetearCantidadJugadores extends Escena {
         BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguiente.setVisible(false);
 
-        BotoneraCantidadJugadores botonera = new BotoneraCantidadJugadores(botonSiguiente,setUp);
+        BotoneraCantidadJugadores botonera = new BotoneraCantidadJugadores(botonSiguiente, setUp);
 
 //        VBox vbox = new VBox();
         padre.setStyle("-fx-background-color: #272727");
@@ -44,6 +44,6 @@ public class VistaSetearCantidadJugadores extends Escena {
         textoCantidadJugadores.setScaleY(10);
         textoCantidadJugadores.setTextFill(Color.YELLOW);
 
-        padre.getChildren().addAll(textoCantidadJugadores,botonera, botonSiguiente);
+        padre.getChildren().addAll(textoCantidadJugadores, botonera, botonSiguiente);
     }
 }

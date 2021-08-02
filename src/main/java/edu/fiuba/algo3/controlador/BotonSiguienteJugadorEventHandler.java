@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEvent> {
 
-    private final Stage ventana;
     private final TextField inputUsuario;
     private final Label label;
     private final ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton;
@@ -25,8 +24,7 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
     private SetUpJuego setUp;
 
 
-    public BotonSiguienteJugadorEventHandler(Stage unaVentana, ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente, SetUpJuego setUp) {
-        this.ventana = unaVentana;
+    public BotonSiguienteJugadorEventHandler(ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente, SetUpJuego setUp) {
         this.listaNombreYBoton = listaNombreYBoton;
         this.inputUsuario = texto;
         this.label = label;

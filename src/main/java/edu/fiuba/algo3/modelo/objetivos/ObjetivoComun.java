@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.objetivos;
 import edu.fiuba.algo3.modelo.Jugador;
 
 public class ObjetivoComun implements Objetivo{
-    private Jugador jugador;
+    private final Jugador jugador;
     private final static int minimoDePaises = 30;
 
     public ObjetivoComun(Jugador jugador){
@@ -11,5 +11,5 @@ public class ObjetivoComun implements Objetivo{
     }
 
     @Override
-    public boolean cumplido(){ return jugador.ganador(minimoDePaises);}
+    public boolean cumplido(){ return jugador.superaCantidadDePaises(minimoDePaises);}
 }
