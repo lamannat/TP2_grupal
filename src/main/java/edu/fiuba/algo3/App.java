@@ -50,13 +50,13 @@ public class App extends Application {
 //        VBox padre = new VBox();
 
 
-        Juego juego = setearJuego();
+        Juego juego = setearJuego(); //esto se tiene que sacar para poder crear los objetivos
 
         ControladorDeEscena controladorDeEscena = new ControladorDeEscena();
-        controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(50), controladorDeEscena, juego));
-        controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena, juego));
-        controladorDeEscena.agregarEscena(new VistaSetearNombresYColores(new VBox(250), controladorDeEscena, juego));
-        controladorDeEscena.agregarEscena(new VistaJuego(new VBox(250), controladorDeEscena, juego));
+        controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(50), controladorDeEscena));
+        controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena));
+        controladorDeEscena.agregarEscena(new VistaSetearNombresYColores(new VBox(250), controladorDeEscena));
+        controladorDeEscena.agregarEscena(new VistaJuego(new VBox(250), controladorDeEscena));
 
         Escena sceneTitulo = controladorDeEscena.siguienteEscena();
         sceneTitulo.mostrar(ventana);

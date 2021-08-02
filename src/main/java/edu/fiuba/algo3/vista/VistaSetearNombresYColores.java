@@ -21,18 +21,17 @@ public class VistaSetearNombresYColores extends Escena {
     private final VBox padre;
     private int cantJugadores;
 
-    public VistaSetearNombresYColores(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
-        super(padre, controladorDeEscena, juego);
+    public VistaSetearNombresYColores(Parent padre, ControladorDeEscena controladorDeEscena) {
+        super(padre, controladorDeEscena);
         this.padre = (VBox) padre;
     }
 
     public void mostrar(Stage ventana) {
         padre.getChildren().clear();
 
-        cantJugadores = juego.cantJugadores();
+        //cantJugadores = juego.cantJugadores();
 
-        Button botonSiguienteEscena = new Button("Siguiente");
-        botonSiguienteEscena.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
+        BotonSiguiente botonSiguienteEscena = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguienteEscena.setVisible(false);
 
         HBox hboxTexto = new HBox();
@@ -57,7 +56,7 @@ public class VistaSetearNombresYColores extends Escena {
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
-        botonSiguiente.setOnAction(new BotonSiguienteJugadorEventHandler(ventana, listaNombreYBoton, texto, label, cantJugadores, botonSiguienteEscena, this.juego));
+        botonSiguiente.setOnAction(new BotonSiguienteJugadorEventHandler(ventana, listaNombreYBoton, texto, label, cantJugadores, botonSiguienteEscena));
 
         hboxTexto.setSpacing(320.0);
         hboxTexto.setAlignment(Pos.CENTER);

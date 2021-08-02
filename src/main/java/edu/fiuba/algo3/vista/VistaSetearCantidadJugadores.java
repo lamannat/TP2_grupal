@@ -17,8 +17,8 @@ public class VistaSetearCantidadJugadores extends Escena {
 
     private final VBox padre;
 
-    public VistaSetearCantidadJugadores(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
-        super(padre, controladorDeEscena, juego);
+    public VistaSetearCantidadJugadores(Parent padre, ControladorDeEscena controladorDeEscena) {
+        super(padre, controladorDeEscena);
         this.padre = (VBox) padre;
     }
 
@@ -28,8 +28,7 @@ public class VistaSetearCantidadJugadores extends Escena {
         HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: #272727");
 
-        Button botonSiguiente = new Button("Siguiente");
-        botonSiguiente.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, this.controladorDeEscena));
+        BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguiente.setVisible(false);
 
         Button boton2 = new Button("2");
@@ -70,11 +69,11 @@ public class VistaSetearCantidadJugadores extends Escena {
         boton6.setAlignment(Pos.CENTER);
 
 
-        boton2.setOnAction(new BotonCantidadEventHandler(2, juego, botonSiguiente));
-        boton3.setOnAction(new BotonCantidadEventHandler(3, juego, botonSiguiente));
-        boton4.setOnAction(new BotonCantidadEventHandler(4, juego, botonSiguiente));
-        boton5.setOnAction(new BotonCantidadEventHandler(5, juego, botonSiguiente));
-        boton6.setOnAction(new BotonCantidadEventHandler(6, juego, botonSiguiente));
+        boton2.setOnAction(new BotonCantidadEventHandler(2, botonSiguiente));
+        boton3.setOnAction(new BotonCantidadEventHandler(3, botonSiguiente));
+        boton4.setOnAction(new BotonCantidadEventHandler(4, botonSiguiente));
+        boton5.setOnAction(new BotonCantidadEventHandler(5, botonSiguiente));
+        boton6.setOnAction(new BotonCantidadEventHandler(6, botonSiguiente));
 
 
         hbox.setSpacing(200.0);

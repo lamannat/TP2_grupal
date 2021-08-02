@@ -25,8 +25,8 @@ public class VistaTitulo extends Escena {
 
     private final VBox padre;
 
-    public VistaTitulo(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
-        super(padre, controladorDeEscena, juego);
+    public VistaTitulo(Parent padre, ControladorDeEscena controladorDeEscena) {
+        super(padre, controladorDeEscena);
         this.padre = (VBox) padre;
     }
 

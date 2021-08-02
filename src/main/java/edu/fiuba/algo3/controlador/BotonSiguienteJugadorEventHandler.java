@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.vista.BotonDeColor;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -17,14 +18,13 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
     private final Stage ventana;
     private final TextField inputUsuario;
     private final Label label;
-    private final ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
+    private final ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton;
     private final Button botonSiguiente;
     private int cantidadActualJugadores;
     private int cantidadTotalJugadores;
-    private final Juego juego;
 
 
-    public BotonSiguienteJugadorEventHandler(Stage unaVentana, ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente, Juego juego) {
+    public BotonSiguienteJugadorEventHandler(Stage unaVentana, ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente) {
         this.ventana = unaVentana;
         this.listaNombreYBoton = listaNombreYBoton;
         this.inputUsuario = texto;
@@ -32,7 +32,6 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
         this.cantidadActualJugadores = 0;
         this.cantidadTotalJugadores = cantidadTotalJugadores;
         this.botonSiguiente = botonSiguiente;
-        this.juego = juego;
     }
 
     @Override
@@ -58,7 +57,7 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
             Color color = boton.getColor();
             String nombre = par.getKey();
 
-            this.juego.setearNombreYColor(nombre, color);
+            //this.juego.setearNombreYColor(nombre, color);
 
             listaNombreYBoton.clear();
             this.inputUsuario.clear();

@@ -9,12 +9,10 @@ import javafx.stage.Stage;
 public abstract class Escena extends Scene {
 
     protected final ControladorDeEscena controladorDeEscena;
-    protected final Juego juego;
 
-    public Escena(Parent padre, ControladorDeEscena controladorDeEscena, Juego juego) {
+    public Escena(Parent padre, ControladorDeEscena controladorDeEscena) {
         super(padre);
         this.controladorDeEscena = controladorDeEscena;
-        this.juego = juego;
     }
 
     public abstract void mostrar(Stage ventana);
