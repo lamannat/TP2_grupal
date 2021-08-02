@@ -60,7 +60,7 @@ public class VistaSetearNombresYColores extends Escena implements Observer {
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
-        botonSiguiente.setOnAction(new BotonSiguienteJugadorEventHandler(ventana, listaNombreYBoton, texto, label, cantJugadores, botonSiguienteEscena));
+        botonSiguiente.setOnAction(new BotonSiguienteJugadorEventHandler(ventana, listaNombreYBoton, texto, label, cantJugadores, botonSiguienteEscena, setUp));
 
         hboxTexto.setSpacing(320.0);
         hboxTexto.setAlignment(Pos.CENTER);

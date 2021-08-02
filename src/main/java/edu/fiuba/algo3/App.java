@@ -53,37 +53,22 @@ public class App extends Application {
 
         ControladorDeEscena controladorDeEscena = new ControladorDeEscena();
         controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(50), controladorDeEscena));
-        controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena,inicio));
-        controladorDeEscena.agregarEscena(new VistaSetearNombresYColores(new VBox(250), controladorDeEscena,inicio));
-        controladorDeEscena.agregarEscena(new VistaJuego(new VBox(250), controladorDeEscena));
+        controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena, inicio));
+        VistaSetearNombresYColores vistaSetearNombresYColores = new VistaSetearNombresYColores(new VBox(250), controladorDeEscena, inicio);
+        inicio.addObserver(vistaSetearNombresYColores);
+        controladorDeEscena.agregarEscena(vistaSetearNombresYColores);
+
+        VistaJuego vistaJuego = new VistaJuego(new VBox(250), controladorDeEscena, inicio);
+        controladorDeEscena.agregarEscena(vistaJuego);
 
         Escena sceneTitulo = controladorDeEscena.siguienteEscena();
         sceneTitulo.mostrar(ventana);
-
-//        VistaTitulo titulo = new VistaTitulo();
-//        sceneTitulo = titulo.crearTitulo(ventana);
-
-
-
 
         ventana.setTitle("A.L.T.E.G.O");
         ventana.setScene(sceneTitulo);
         ventana.setMaximized(true);
 
         ventana.show();
-    }
-
-    public Juego setearJuego() {
-
-        Tablero tablero = new Tablero();
-        // crear los continentes y paises y cosas
-
-        Turno turno = new Turno();
-        Batalla batalla = new Batalla(new DadoEstandar());
-        Mazo mazo = new Mazo();
-        Canjeador canjeador = new Canjeador(mazo);
-
-        return new Juego(tablero, turno, batalla, mazo, canjeador);
     }
 
     public static void main(String[] args) {

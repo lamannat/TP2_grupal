@@ -63,9 +63,9 @@ public class Pais {
 //        return continente.tienePais(this);
 //    }
 
-//    public boolean tieneNombre(String unNombre){
-//        return this.nombre.equals(unNombre);
-//    }
+    public boolean tieneNombre(String unNombre){
+        return this.nombre.equals(unNombre);
+    }
 
     private EjercitoDeBatalla ejercitoParaDefensa()
     {

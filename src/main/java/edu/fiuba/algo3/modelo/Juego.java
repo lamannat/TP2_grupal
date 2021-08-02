@@ -23,23 +23,12 @@ public class Juego extends Observable {
         this.tipoCanjeador = canjeador;
     }
 
-    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) { // este se tiene que ir
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
         this.tablero = tablero;
         this.batalla = unaBatalla;
         this.mazo = unMazo;
         this.tablero.asignarPaises(this.turno);
-    }
-
-    public void setearJugadores(int cantidadJugadores) {
-        List<Jugador> jugadores = new ArrayList<>();
-        for (int i = 0; i < cantidadJugadores; i++)
-            jugadores.add(new Jugador(tipoCanjeador.getInstanciaNueva()));
-        turno.setearJugadores(jugadores);
-    }
-
-    public int cantJugadores() {
-        return turno.cantJugadores();
     }
 
     public void seleccionarRonda(Ronda ronda) {

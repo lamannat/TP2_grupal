@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.BotonCantidadEventHandler;
 import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.SetUpJuego;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
