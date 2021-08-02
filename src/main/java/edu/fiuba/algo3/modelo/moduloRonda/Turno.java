@@ -15,8 +15,10 @@ public class Turno {
     }
 
     public Jugador jugadorActual(){
-        Jugador jugadorActual = jugadores.get(indice);
+        return jugadores.get(indice);
+    }
+
+    public void avanzarJugador() {
         indice = (indice + 1) % jugadores.size();
-        return jugadorActual;
     }
 }

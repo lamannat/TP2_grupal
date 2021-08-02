@@ -38,8 +38,18 @@ public class Tablero {
         while (paisParaAsignar != null) {
             Jugador jugadorActual = turno.jugadorActual();
             jugadorActual.agregarPais(paisParaAsignar);
-            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(1));
+            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(2)); // cambiar feo
             paisParaAsignar = obtenerPaisNoAsignado();
+            turno.avanzarJugador();
         }
+    }
+
+    public Pais getPaisPorNombre(String nombre) {
+        for (Continente continente : continentes) {
+            Pais pais = continente.getPaisPorNombre(nombre);
+            if (pais != null)
+                return pais;
+        }
+        return null;
     }
 }

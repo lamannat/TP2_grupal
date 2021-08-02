@@ -58,7 +58,7 @@ public class App extends Application {
         inicio.addObserver(vistaSetearNombresYColores);
         controladorDeEscena.agregarEscena(vistaSetearNombresYColores);
 
-        VistaJuego vistaJuego = new VistaJuego(new VBox(250), controladorDeEscena, inicio);
+        VistaJuego vistaJuego = new VistaJuego(new BorderPane(), controladorDeEscena, inicio);
         controladorDeEscena.agregarEscena(vistaJuego);
 
         Escena sceneTitulo = controladorDeEscena.siguienteEscena();

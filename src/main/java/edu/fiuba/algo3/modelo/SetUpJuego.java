@@ -99,7 +99,7 @@ public class SetUpJuego implements Observable {
             Pais paisActual = buscarPais(paises, lineaPaises.get(0));
             if (paisActual == null)
                 continue;
-            for (int i = 1; i < lineaPaises.size() - 1; i++) {
+            for (int i = 1; i < lineaPaises.size(); i++) {
                 Pais paisVecino = buscarPais(paises, lineaPaises.get(i));
                 if (paisVecino == null)
                     continue;
@@ -115,7 +115,7 @@ public class SetUpJuego implements Observable {
         for (List<String> lineaContinente : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
             Continente continente = new Continente(lineaContinente.get(0));
             continentes.add(continente);
-            for (int i = 1; i < lineaContinente.size() - 1; i++)
+            for (int i = 1; i < lineaContinente.size(); i++)
             {
                 Pais pais = new Pais(lineaContinente.get(i));
                 paises.add(pais);

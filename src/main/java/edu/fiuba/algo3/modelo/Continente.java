@@ -32,4 +32,11 @@ public class Continente {
     public Pais obtenerPaisNoAsignado() {
         return paises.stream().filter(limitrofe -> !limitrofe.estaAsignado()).findFirst().orElse(null);
     }
+
+    public Pais getPaisPorNombre(String nombre) {
+        for (Pais pais : paises)
+            if (pais.tieneNombre(nombre))
+                return pais;
+        return null;
+    }
 }

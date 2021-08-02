@@ -1,27 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.moduloRonda.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-public class Juego extends Observable {
+public class Juego implements Observable {
     private final Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
     private final Batalla batalla;
     private final Mazo mazo;
-    private Canjeador tipoCanjeador;
-
-    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo, Canjeador canjeador) {
-        this.turno = turno;
-        this.tablero = tablero;
-        this.batalla = unaBatalla;
-        this.mazo = unMazo;
-        this.tipoCanjeador = canjeador;
-    }
+    private final List<Observer> observadores;
+    private Pais paisActual;
 
     public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
@@ -29,12 +20,14 @@ public class Juego extends Observable {
         this.batalla = unaBatalla;
         this.mazo = unMazo;
         this.tablero.asignarPaises(this.turno);
+        this.observadores = new ArrayList<>();
     }
 
     public void seleccionarRonda(Ronda ronda) {
         rondaActual = ronda;
     }
 
+    // suponer q esto no existe
     public void comenzarRonda(){
         Jugador cortarEn = turno.jugadorActual();
         rondaActual.comenzarLaRonda(cortarEn);
@@ -47,14 +40,25 @@ public class Juego extends Observable {
         }
     }
 
+    public Jugador jugadorActual() {
+        return turno.jugadorActual();
+    }
+
+    public Pais getPaisPorNombre(String nombre) {
+        paisActual = tablero.getPaisPorNombre(nombre);
+        notifyObservers();
+        return paisActual;
+    }
+
+    public Pais getPaisActual() {
+        return paisActual;
+    }
+
     public void siguienteRonda(){
         this.rondaActual = this.rondaActual.siguienteRonda();
     }
 
     public void darleFichasAJugador(Jugador jugador, int cantFichas) {
-        //preguntar por paises, devuelve lista de paises
-//        jugador.colocarFichas(fichas);
-
         //falta lo del input
         jugador.darFichas(jugador.generarFichas(cantFichas));
     }
@@ -79,13 +83,14 @@ public class Juego extends Observable {
         return this.batalla;
     }
 
-    public void setearNombreYColor(String nombre, Color color) {
-        Jugador jugador = turno.jugadorActual();
-        jugador.setJugador(nombre, color);
+
+    @Override
+    public void addObserver(Observer observer) {
+        observadores.add(observer);
     }
 
-    public void asignarPaises() {
-        this.tablero.asignarPaises(this.turno);
+    @Override
+    public void notifyObservers() {
+        observadores.forEach(Observer::change);
     }
-
 }

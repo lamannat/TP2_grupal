@@ -128,6 +128,23 @@ public class Pais {
         return this.jugador == jugador;
     }
 
+    public List<Pais> getPaisesParaAtacar() {
+        List<Pais> paisesParaAtacar = new ArrayList<>();
+        for (Pais pais : limitrofes)
+            try {
+                this.puedeAtacarAPais(pais);
+                paisesParaAtacar.add(pais);
+            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException e ) {
+                // oh no, anyways
+            }
+        return paisesParaAtacar;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 }
 
 
