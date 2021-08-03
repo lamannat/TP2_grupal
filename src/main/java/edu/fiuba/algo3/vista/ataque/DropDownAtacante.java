@@ -13,15 +13,17 @@ public class DropDownAtacante extends ComboBox implements Observer {
     public DropDownAtacante(Juego juego, DropDownDefensor dropDownAtacables){
         this.juego = juego;
 
-        Jugador jugador = juego.jugadorActual();
+//        Jugador jugador = juego.jugadorActual();
+//
+//        ObservableList<String> opciones = FXCollections.observableArrayList();
+//
+//        for (Pais pais: jugador.getPaisesConquistados())
+//            opciones.add(pais.toString());
+//
+//        this.getItems().clear();
+//        this.getItems().addAll(opciones);
 
-        ObservableList<String> opciones = FXCollections.observableArrayList();
-
-        for (Pais pais: jugador.getPaisesConquistados())
-            opciones.add(pais.toString());
-
-        this.getItems().clear();
-        this.getItems().addAll(opciones);
+        this.asignarPaisesAtacantes();
 
         this.setOnAction(e -> {
             Pais paisAtacante = juego.getPaisPorNombre((String)this.getValue());
@@ -33,15 +35,13 @@ public class DropDownAtacante extends ComboBox implements Observer {
                 atacables.add(pais.toString());
 
             dropDownAtacables.getItems().clear();
-            dropDownAtacables.getItems().addAll(atacables);
+            dropDownAtacables.getItems().addAll(atacables.sorted());
             dropDownAtacables.setPaisAtacante(paisAtacante);
 
         });
     }
 
-
-    @Override
-    public void change() {
+    private void asignarPaisesAtacantes() {
         Jugador jugador = juego.jugadorActual();
 
         ObservableList<String> opciones = FXCollections.observableArrayList();
@@ -50,6 +50,11 @@ public class DropDownAtacante extends ComboBox implements Observer {
             opciones.add(pais.toString());
 
         this.getItems().clear();
-        this.getItems().addAll(opciones);
+        this.getItems().addAll(opciones.sorted());// FIXME
+    }
+
+    @Override
+    public void change() {
+        this.asignarPaisesAtacantes();
     }
 }

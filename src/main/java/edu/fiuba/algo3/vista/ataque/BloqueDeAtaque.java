@@ -8,27 +8,23 @@ import javafx.scene.layout.VBox;
 public class BloqueDeAtaque extends VBox implements Observer {
 
     private Juego juego;
-    private DropDownAtacante paisParaAtacar;
-    private DropDownDefensor paisQueSePuedeAtacar;
 
     public BloqueDeAtaque(Juego juego) {
 
         BotonAtacar botonAtacar = new BotonAtacar(juego);
-        paisQueSePuedeAtacar = new DropDownDefensor(juego,botonAtacar);
-        paisParaAtacar = new DropDownAtacante(juego, paisQueSePuedeAtacar);
+        DropDownDefensor paisQueSePuedeAtacar = new DropDownDefensor(juego, botonAtacar);
+        DropDownAtacante paisParaAtacar = new DropDownAtacante(juego, paisQueSePuedeAtacar);
 
         Batalla batalla = juego.getBatalla();
         batalla.addObserver(paisParaAtacar);
         batalla.addObserver(paisQueSePuedeAtacar);
         juego.addObserverAPaises(paisParaAtacar);
         juego.addObserverAPaises(paisQueSePuedeAtacar);
-        this.getChildren().addAll(paisParaAtacar,paisQueSePuedeAtacar,botonAtacar);
-
+        this.getChildren().addAll(paisParaAtacar, paisQueSePuedeAtacar,botonAtacar);
     }
 
     @Override
     public void change() {
-
-
     }
+
 }

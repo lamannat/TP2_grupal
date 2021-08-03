@@ -11,7 +11,7 @@ public class Pais implements Observable{
     private final List<Pais> limitrofes;
     private final List<Ficha> fichas;
     private Jugador jugador;
-    private List<Observer> observers;
+    private final List<Observer> observers;
 
     private final static int cantidadMaximaDeDados = 3;
 

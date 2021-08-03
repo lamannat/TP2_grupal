@@ -3,12 +3,15 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
+import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -31,15 +34,23 @@ public class VistaJuego extends Escena {
         this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
 
         HBox estados = new HBox();
-        estados.setStyle("-fx-background-color: #3030b6");
-        Label estadoTitulo = new Label("Ataqueeeeeee");
+        estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
+        Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
+        estadoTitulo.setScaleX(2);
+        estadoTitulo.setScaleY(2);
+        estadoTitulo.setTextFill(Color.BLACK);
         estados.getChildren().add(estadoTitulo);
+        estados.setAlignment(Pos.CENTER);
+        estados.setScaleX(3);
+        estados.setScaleY(3);
 
+        BloqueDeIncorporacion bloqueIncorporacion = new BloqueDeIncorporacion(juego);
         BloqueDeAtaque bloqueDeAtaque = new BloqueDeAtaque(juego);
 
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
         padre.setRight(bloqueDeAtaque);
+        padre.setLeft(bloqueIncorporacion);
 
 
 //        padre.setStyle("-fx-background-color: black");
