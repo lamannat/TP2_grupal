@@ -67,8 +67,8 @@ public class JuegoTest {
         juego.seleccionarRonda(primeraRonda);
         juego.comenzarRonda();
 
-        assertEquals(Valentin.contarTotalFichas(), 30);
-        assertEquals(Juan.contarTotalFichas(), 30);
+        assertEquals(30, Valentin.contarTotalFichas());
+        assertEquals(30, Juan.contarTotalFichas());
     }
 
     @Test
@@ -92,8 +92,8 @@ public class JuegoTest {
         juego.siguienteRonda();
         juego.comenzarRonda();
 
-        assertEquals(Valentin.contarTotalFichas(), 33);
-        assertEquals(Juan.contarTotalFichas(), 33);
+        assertEquals(33, Valentin.contarTotalFichas());
+        assertEquals(33, Juan.contarTotalFichas());
     }
 
     private List<Continente> listaDelContienteAsia() {

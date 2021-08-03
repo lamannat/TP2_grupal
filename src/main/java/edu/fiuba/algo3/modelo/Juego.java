@@ -29,15 +29,18 @@ public class Juego implements Observable {
 
     // suponer q esto no existe
     public void comenzarRonda(){
-        Jugador cortarEn = turno.jugadorActual();
-        rondaActual.comenzarLaRonda(cortarEn);
 
-        Jugador jugador= turno.jugadorActual();
+        Jugador ultimoJugador = turno.jugadorActual();
+        turno.avanzarJugador();
+        Jugador jugadorActual = turno.jugadorActual();
 
-        while(cortarEn != jugador){
-            rondaActual.comenzarLaRonda(jugador);
-            jugador = turno.jugadorActual();
+        while(ultimoJugador != jugadorActual){
+            rondaActual.comenzarLaRonda(jugadorActual);
+            turno.avanzarJugador();
+            jugadorActual = turno.jugadorActual();
         }
+
+        rondaActual.comenzarLaRonda(jugadorActual); //se ejecuta una vez mas por el ultimo jugador que no se ejecuto en el while
     }
 
     public Jugador jugadorActual() {
@@ -64,6 +67,7 @@ public class Juego implements Observable {
     public void darleFichasAJugador(Jugador jugador, int cantFichas) {
         //falta lo del input
         jugador.darFichas(jugador.generarFichas(cantFichas));
+
     }
 
     public void jugadorReclamaPorPaises(Jugador jugador) {
