@@ -8,15 +8,7 @@ public class BloqueDeIncorporacion extends VBox implements Observer {
     private Juego juego;
     public BloqueDeIncorporacion(Juego juego) {
         this.juego = juego;
-        BotonIncorporar incorporar = new BotonIncorporar(juego);
-        incorporar.setText("Incorporar");
-        DropDownCantidadFichas cantidadFichas = new DropDownCantidadFichas(juego,incorporar);
-        DropDownPaisElegido paisElegido = new DropDownPaisElegido(juego,incorporar, cantidadFichas);
-
-
-        juego.jugadorActual().addObserver(cantidadFichas);
-        juego.jugadorActual().addObserver(paisElegido);
-        this.getChildren().addAll(paisElegido, cantidadFichas, incorporar);
+        actualizar();
     }
 
     @Override
@@ -29,7 +21,6 @@ public class BloqueDeIncorporacion extends VBox implements Observer {
         incorporar.setText("Incorporar");
         DropDownCantidadFichas cantidadFichas = new DropDownCantidadFichas(juego,incorporar);
         DropDownPaisElegido paisElegido = new DropDownPaisElegido(juego,incorporar, cantidadFichas);
-
 
         juego.jugadorActual().addObserver(cantidadFichas);
         juego.jugadorActual().addObserver(paisElegido);

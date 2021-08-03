@@ -10,7 +10,15 @@ public class BloqueDeAtaque extends VBox implements Observer {
     private Juego juego;
 
     public BloqueDeAtaque(Juego juego) {
+        this.juego = juego;
+        actualizar();
+    }
 
+    @Override
+    public void change() {
+    }
+
+    public void actualizar() {
         BotonAtacar botonAtacar = new BotonAtacar(juego);
         DropDownDefensor paisQueSePuedeAtacar = new DropDownDefensor(juego, botonAtacar);
         DropDownAtacante paisParaAtacar = new DropDownAtacante(juego, paisQueSePuedeAtacar);
@@ -20,11 +28,8 @@ public class BloqueDeAtaque extends VBox implements Observer {
         batalla.addObserver(paisQueSePuedeAtacar);
         juego.addObserverAPaises(paisParaAtacar);
         juego.addObserverAPaises(paisQueSePuedeAtacar);
+
+        this.getChildren().clear();
         this.getChildren().addAll(paisParaAtacar, paisQueSePuedeAtacar,botonAtacar);
     }
-
-    @Override
-    public void change() {
-    }
-
 }

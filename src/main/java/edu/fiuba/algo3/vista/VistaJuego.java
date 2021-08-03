@@ -105,9 +105,11 @@ public class VistaJuego extends Escena implements Observer{
                 this.bloqueIncorporacion.setVisible(true);
                 break;
             case "Ataque":
+                this.bloqueDeAtaque.actualizar();
                 this.bloqueDeAtaque.setVisible(true);
                 break;
             case "Movimiento":
+                this.bloqueDeMovimiento.actualizar();
                 this.bloqueDeMovimiento.setVisible(true);
                 break;
             case "SolicitarCarta":

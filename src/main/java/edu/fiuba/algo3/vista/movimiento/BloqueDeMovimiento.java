@@ -10,7 +10,15 @@ public class BloqueDeMovimiento extends VBox implements Observer {
 
     public BloqueDeMovimiento (Juego juego) {
         this.juego = juego;
+        actualizar();
+    }
 
+    @Override
+    public void change() {
+
+    }
+
+    public void actualizar() {
         BotonMoverTropas moverTropas = new BotonMoverTropas(juego);
         moverTropas.setText("Mover tropas");
         DropDownPaisDestino paisDestino = new DropDownPaisDestino(juego, moverTropas);
@@ -20,11 +28,8 @@ public class BloqueDeMovimiento extends VBox implements Observer {
         juego.jugadorActual().addObserver(cantidadFichas);
         juego.jugadorActual().addObserver(paisElegido);
         juego.jugadorActual().addObserver(paisDestino);
+
+        this.getChildren().clear();
         this.getChildren().addAll(paisElegido, cantidadFichas, paisDestino, moverTropas);
-    }
-
-    @Override
-    public void change() {
-
     }
 }

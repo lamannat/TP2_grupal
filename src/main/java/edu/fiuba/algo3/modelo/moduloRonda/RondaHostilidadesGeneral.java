@@ -21,8 +21,8 @@ public class RondaHostilidadesGeneral extends Ronda{
 
     public void comenzarLaRonda(Jugador jugador){
         acciones.get(numeroAccion).ejecutar(jugador);
-        numeroAccion++;
         this.notifyObservers();
+        numeroAccion++;
     }
 
     public Ronda siguienteRonda(){
