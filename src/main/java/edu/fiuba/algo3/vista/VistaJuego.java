@@ -4,7 +4,6 @@ import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.moduloRonda.Accion;
 import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
-import edu.fiuba.algo3.modelo.moduloRonda.RondaAgregarCincoFichas;
 import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
@@ -13,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -45,16 +45,13 @@ public class VistaJuego extends Escena implements Observer{
         this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
 
         estados = new HBox();
-        estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
+        estados.setPrefHeight(100);
+        estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
-        estadoTitulo.setScaleX(2);
-        estadoTitulo.setScaleY(2);
         estadoTitulo.setTextFill(Color.BLACK);
         estados.getChildren().add(estadoTitulo);
         estados.setAlignment(Pos.CENTER);
-        estados.setScaleX(3);
-        estados.setScaleY(3);
 
         this.bloqueIncorporacion = new BloqueDeIncorporacion(juego);
         this.bloqueDeAtaque = new BloqueDeAtaque(juego);
@@ -78,12 +75,28 @@ public class VistaJuego extends Escena implements Observer{
 //        padre.setStyle("-fx-background-color: black");
     }
 
-    private ImageView setearMapa(){
-        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+    private AnchorPane setearMapa(){
+        /*File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView(image);
 
-        return iv;
+        return iv;*/
+
+        AnchorPane contenedorMapa = new AnchorPane();
+        contenedorMapa.setPrefHeight(540);
+        contenedorMapa.setPrefWidth(960);
+
+        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+        Image image = new Image(file.toURI().toString());
+        ImageView iv = new ImageView();
+        iv.setPreserveRatio(false);
+        iv.fitWidthProperty().bind(contenedorMapa.widthProperty());
+        iv.fitHeightProperty().bind(contenedorMapa.heightProperty());
+        iv.setImage(image);
+        contenedorMapa.getChildren().add(iv);
+        contenedorMapa.setStyle("-fx-background-color: red");
+
+        return contenedorMapa;
     }
 
 
@@ -115,7 +128,7 @@ public class VistaJuego extends Escena implements Observer{
             case "SolicitarCarta":
                 break;
         }
-        this.estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
+        this.estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = (Label)(this.estados.getChildren().get(0));
         estadoTitulo.setText("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
