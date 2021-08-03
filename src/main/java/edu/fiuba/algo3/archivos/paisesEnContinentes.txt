@@ -1,6 +1,6 @@
-America del sur,Argentina,Chile,Uruguay,Brasil,Peru,Colombia
-America del norte,Mexico,California,Oregon,Nueva York,Terranova,Labrador,Groenlandia,Canada,Yukon,Alaska
-Europa,Islandia,Gran Bretaña,España,Francia,Italia,Alemania,Polonia,Rusia,Suecia
-Africa,Sahara,Etiopia,Egipto,Zaire,Sudafrica,Madagascar
-Oceania,Australia,Java,Borneo,Sumatra
-Asia,Arabia,Israel,Turquia,Iran,Aral,India,Malasia,China,Gobi,Mongolia,Siberia,Taymir,Tartaria,Kamchatka,Japon
+America del sur,3,Argentina,Chile,Uruguay,Brasil,Peru,Colombia
+America del norte,5,Mexico,California,Oregon,Nueva York,Terranova,Labrador,Groenlandia,Canada,Yukon,Alaska
+Europa,5,Islandia,Gran Bretaña,España,Francia,Italia,Alemania,Polonia,Rusia,Suecia
+Africa,3,Sahara,Etiopia,Egipto,Zaire,Sudafrica,Madagascar
+Oceania,2,Australia,Java,Borneo,Sumatra
+Asia,7,Arabia,Israel,Turquia,Iran,Aral,India,Malasia,China,Gobi,Mongolia,Siberia,Taymir,Tartaria,Kamchatka,Japon

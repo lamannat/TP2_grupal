@@ -35,11 +35,6 @@ public class Juego implements Observable {
         return tablero.getPaisPorNombre(nombre);
     }
 
-
-//    public void siguienteRonda(){
-//        this.rondaActual = this.rondaActual.siguienteRonda();
-//    }
-
     public void avanzar(Observer observer){ // 0, ataque, 1, mover, 2, solicitar, 0
         if (this.rondaActual.terminaste()){
             if (this.turno.ultimoJugador()){
@@ -51,22 +46,6 @@ public class Juego implements Observable {
             this.turno.avanzarJugador();
         }
         this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
-    }
-
-//    public void darleFichasAJugador(Jugador jugador, int cantFichas) {
-//        //falta lo del input
-//        jugador.darFichas(jugador.generarFichas(cantFichas));
-//
-//    }
-
-    public void jugadorReclamaPorPaises(Jugador jugador) {
-    }
-
-    public void jugadorReclamaPorContinentes(Jugador jugador) {
-    }
-
-    public void jugadorReclamaPorTarjetas(Jugador jugador) {
-        jugador.hacerCanjePorCarta();
     }
 
     public void cartaParaJugador(Jugador jugador) {
@@ -107,4 +86,7 @@ public class Juego implements Observable {
     }
 
 
+    public int fichasPorContinente(Jugador jugador) {
+        return tablero.fichasPorContinente(jugador);
+    }
 }

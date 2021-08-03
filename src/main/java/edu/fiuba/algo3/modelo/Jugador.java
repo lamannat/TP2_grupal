@@ -99,10 +99,8 @@ public class Jugador implements Observable {
 
     public List<Ficha> generarFichas(Integer cantFichas){
         List<Ficha> fichas = new ArrayList<>();
-
         for (int i = 0; i < cantFichas; i++)
             fichas.add(new Ficha(color));
-
         return fichas;
     }
 
@@ -165,5 +163,13 @@ public class Jugador implements Observable {
 
     public void merecesConseguirUnaCarta() {
         mereceCarta = true;
+    }
+
+    public int cantidadFichasGanadas(Juego juego) {
+        int fichasPorPaises = (int) Math.min(Math.floor(paisesConquistados.size()/2), 3);
+        int fichasPorCartas = this.canjeador.canjearCartas();
+        int fichasPorContinentes = juego.fichasPorContinente(this);
+
+        return fichasPorCartas + fichasPorPaises + fichasPorContinentes;
     }
 }

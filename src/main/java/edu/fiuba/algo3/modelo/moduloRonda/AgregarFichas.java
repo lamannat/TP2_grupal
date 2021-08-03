@@ -16,7 +16,7 @@ public class AgregarFichas implements Accion{
     public void ejecutar(Jugador jugador) {
 
 //        min(3, cantPais/2);
-        int cantidadFichasTotal = /* jugador.cantidadFichasGanadas(juego) + */ cantFichas;
+        int cantidadFichasTotal = jugador.cantidadFichasGanadas(juego) + cantFichas;
 
         jugador.darFichas(jugador.generarFichas(cantidadFichasTotal));
     }

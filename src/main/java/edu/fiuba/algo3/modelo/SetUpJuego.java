@@ -124,7 +124,8 @@ public class SetUpJuego implements Observable {
         for (List<String> lineaContinente : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
             Continente continente = new Continente(lineaContinente.get(0));
             continentes.add(continente);
-            for (int i = 1; i < lineaContinente.size(); i++)
+            continente.setFichasPorConquistado(Integer.parseInt(lineaContinente.get(1)));
+            for (int i = 2; i < lineaContinente.size(); i++)
             {
                 Pais pais = new Pais(lineaContinente.get(i));
                 paises.add(pais);

@@ -58,4 +58,12 @@ public class Tablero {
             continente.addObserverAPaises(observer);
         }
     }
+
+    public int fichasPorContinente(Jugador jugador) {
+        int fichasTotales = 0;
+        for (Continente continente : continentes)
+            if (continente.conquistadoPorJugador(jugador))
+                fichasTotales += continente.getFichasPorConquistado();
+        return fichasTotales;
+    }
 }

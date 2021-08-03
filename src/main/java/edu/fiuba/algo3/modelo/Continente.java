@@ -8,10 +8,12 @@ public class Continente {
 
     private final List<Pais> paises;
     private final String nombre;
+    private int fichasPorConquistado;
 
     public Continente(String nombre) {
         this.nombre = nombre;
         this.paises = new ArrayList<>();
+        this.fichasPorConquistado = 0;
     }
 
     public void agregarPais(Pais pais) {
@@ -24,6 +26,14 @@ public class Continente {
 
     public boolean conquistadoPorJugador(Jugador jugador) {
         return paises.stream().allMatch(paisActual -> paisActual.conquistadoPorJugador(jugador));
+    }
+
+    public void setFichasPorConquistado(int cantidadFichas) {
+        fichasPorConquistado = cantidadFichas;
+    }
+
+    public int getFichasPorConquistado() {
+        return fichasPorConquistado;
     }
 
     public boolean conquistoCantidadDePaises(Jugador unJugador, int cantidad) {
