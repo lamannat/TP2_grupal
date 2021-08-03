@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -64,11 +65,12 @@ public class VistaJuego extends Escena implements Observer{
 
         BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
 
+        StackPane acciones = new StackPane();
+        acciones.getChildren().addAll(bloqueDeMovimiento, bloqueDeAtaque, bloqueIncorporacion);
+
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
-//        padre.setRight(bloqueDeAtaque);
-        padre.setRight(bloqueDeMovimiento);
-        padre.setLeft(bloqueIncorporacion);
+        padre.setRight(acciones);
         padre.setBottom(botonSiguienteTurno);
 
         this.juego.agregarObserverARondaActual(this);
@@ -108,7 +110,8 @@ public class VistaJuego extends Escena implements Observer{
             case "Movimiento":
                 this.bloqueDeMovimiento.setVisible(true);
                 break;
-
+            case "SolicitarCarta":
+                break;
         }
         this.estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
         Label estadoTitulo = (Label)(this.estados.getChildren().get(0));

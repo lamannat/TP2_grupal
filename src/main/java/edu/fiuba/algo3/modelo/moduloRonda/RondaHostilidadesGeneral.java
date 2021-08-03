@@ -6,41 +6,24 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Observer;
 
 public class RondaHostilidadesGeneral extends Ronda{
+
     private final Juego juego;
+    private int numeroAccion;
+
     public RondaHostilidadesGeneral(Juego juego) {
         this.juego = juego;
+        acciones.add(new AgregarFichas(0, juego));
+        acciones.add(new Atacar());
+        acciones.add(new Movimiento());
+        acciones.add(new SolicitarCarta());
+        numeroAccion = 0;
     }
 
     public void comenzarLaRonda(Jugador jugador){
-//        for (Accion accionActual: acciones ){
-//            accionActual.ejecutar(jugador);
-//        }
-//        this.incorporarEjercitos(jugador);
-//        this.atacar(jugador);
-//        this.reagrupar(jugador);
-//        this.solicitarCarta(jugador);
+        acciones.get(numeroAccion).ejecutar(jugador);
+        numeroAccion++;
+        this.notifyObservers();
     }
-
-//    private void incorporarEjercitos(Jugador jugador){
-//        this.juego.jugadorReclamaPorPaises(jugador);
-//        this.juego.jugadorReclamaPorContinentes(jugador);
-//        this.juego.jugadorReclamaPorTarjetas(jugador);
-//    }
-//
-//    private void atacar(Jugador jugador){
-//        jugador.comienzaElAtaque(juego.getBatalla());
-//    }
-//
-//    private void reagrupar(Jugador jugador){
-//        jugador.reagruparFuerzas();
-//    }
-//
-//    private void solicitarCarta(Jugador jugador){
-//        Carta carta = this.juego.cartaParaJugador(jugador);
-//        if (carta != null){
-//            jugador.solicitarCarta(carta);
-//        }
-//    }
 
     public Ronda siguienteRonda(){
         return new RondaHostilidadesGeneral(this.juego);
@@ -48,12 +31,17 @@ public class RondaHostilidadesGeneral extends Ronda{
 
     @Override
     public boolean terminaste() {
-        return false;
+        return numeroAccion == acciones.size();
+    }
+
+    @Override
+    public void resetearAcciones() {
+        numeroAccion = 0;
     }
 
     @Override
     public Accion dameFase() {
-        return null;
+        return acciones.get(numeroAccion);
     }
 
 }

@@ -27,22 +27,6 @@ public class Juego implements Observable {
         rondaActual = ronda;
     }
 
-//    // suponer q esto no existe
-//    public void comenzarRonda(){
-//
-//        Jugador ultimoJugador = turno.jugadorActual();
-//        turno.avanzarJugador();
-//        Jugador jugadorActual = turno.jugadorActual();
-//
-//        while(ultimoJugador != jugadorActual){
-//            rondaActual.comenzarLaRonda(jugadorActual);
-//            turno.avanzarJugador();
-//            jugadorActual = turno.jugadorActual();
-//        }
-//
-//        rondaActual.comenzarLaRonda(jugadorActual); //se ejecuta una vez mas por el ultimo jugador que no se ejecuto en el while
-//    }
-
     public Jugador jugadorActual() {
         return turno.jugadorActual();
     }
@@ -52,16 +36,18 @@ public class Juego implements Observable {
     }
 
 
-    public void siguienteRonda(){
-        this.rondaActual = this.rondaActual.siguienteRonda();
-    }
+//    public void siguienteRonda(){
+//        this.rondaActual = this.rondaActual.siguienteRonda();
+//    }
 
-    public void avanzar(Observer observer){
+    public void avanzar(Observer observer){ // 0, ataque, 1, mover, 2, solicitar, 0
         if (this.rondaActual.terminaste()){
             if (this.turno.ultimoJugador()){
+                System.out.println("Se cambio de ronda RPH");
                 this.rondaActual = this.rondaActual.siguienteRonda();
                 this.rondaActual.addObserver(observer);
             }
+            this.rondaActual.resetearAcciones();
             this.turno.avanzarJugador();
         }
         this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());

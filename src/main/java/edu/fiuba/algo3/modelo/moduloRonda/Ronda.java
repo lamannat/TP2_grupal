@@ -22,6 +22,8 @@ public abstract class Ronda implements Observable {
 
     public abstract boolean terminaste();
 
+    public abstract void resetearAcciones();
+
     @Override
     public void addObserver(Observer observer) {
         observadores.add(observer);

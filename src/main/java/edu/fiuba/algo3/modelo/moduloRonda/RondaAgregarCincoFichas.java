@@ -10,11 +10,15 @@ public class RondaAgregarCincoFichas extends RondaAgregarFichas {
     public RondaAgregarCincoFichas(Juego juego){
         this.juego = juego;
         cantFichas = 5;
-        acciones.add(new AgregarFichas(5));
+        acciones.add(new AgregarFichas(5, juego));
     }
 
     public Ronda siguienteRonda(){
         return new RondaAgregarTresFichas(this.juego);
+    }
+
+    @Override
+    public void resetearAcciones() {
     }
 
     @Override

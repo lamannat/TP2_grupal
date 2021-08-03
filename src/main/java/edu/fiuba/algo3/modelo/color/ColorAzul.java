@@ -8,4 +8,8 @@ public class ColorAzul extends Color{
         this.nombre = "Azul";
     }
 
+    @Override
+    public String getColorText(){
+        return "#000000";
+    }
 }
