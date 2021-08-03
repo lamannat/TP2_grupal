@@ -2,9 +2,10 @@ package edu.fiuba.algo3.vista.movimiento;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.vista.BloqueAccion;
 import javafx.scene.layout.VBox;
 
-public class BloqueDeMovimiento extends VBox implements Observer {
+public class BloqueDeMovimiento extends BloqueAccion {
 
     private Juego juego;
 

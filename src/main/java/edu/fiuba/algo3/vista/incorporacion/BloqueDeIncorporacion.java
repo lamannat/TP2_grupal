@@ -2,9 +2,10 @@ package edu.fiuba.algo3.vista.incorporacion;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.vista.BloqueAccion;
 import javafx.scene.layout.VBox;
 
-public class BloqueDeIncorporacion extends VBox implements Observer {
+public class BloqueDeIncorporacion extends BloqueAccion {
     private Juego juego;
     public BloqueDeIncorporacion(Juego juego) {
         this.juego = juego;

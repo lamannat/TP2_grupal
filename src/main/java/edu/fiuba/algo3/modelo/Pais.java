@@ -93,7 +93,6 @@ public class Pais implements Observable{
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
 
-
         unaBatalla.ejercitoAtacaAEjercito(ejercitoAtacante, ejercitoDefensor);
 
         this.agregarFichas(ejercitoAtacante.fichasRestantes());
@@ -103,6 +102,7 @@ public class Pais implements Observable{
             this.moverTropa(paisDefensor);
             paisDefensor.meConquisto(this.jugador);
             System.out.println(this.nombre + " conquisto a " + paisDefensor.nombre);
+            this.jugador.merecesConseguirUnaCarta();
         }
 
         notifyObservers();

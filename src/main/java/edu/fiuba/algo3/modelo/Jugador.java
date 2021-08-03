@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Jugador implements Observable {
@@ -13,7 +12,7 @@ public class Jugador implements Observable {
     private Color color;
     private final List<Pais> paisesConquistados;
     private final Canjeador canjeador;
-    private boolean conquisteEnRonda;
+    private boolean mereceCarta;
     private final List<Ficha> fichasReservadas;
     private final List<Objetivo> objetivos;
     private List<Observer> observers;
@@ -26,7 +25,7 @@ public class Jugador implements Observable {
         this.fichasReservadas = new ArrayList<>();
         this.objetivos = new ArrayList<>();
         this.canjeador = canjeador;
-        conquisteEnRonda = false;// ver posiblemente hacer esto en batalla/pais/algo no se
+        mereceCarta = false;// ver posiblemente hacer esto en batalla/pais/algo no se
         this.observers = new ArrayList<>();
     }
 
@@ -56,20 +55,13 @@ public class Jugador implements Observable {
         paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
     }
 
-    public void comienzaElAtaque(Batalla unaBatalla) {
-        // aca deberia estar interactuando con la GUI
-    }
-
-    public void reagruparFuerzas() {
-    }
-
     public void solicitarCarta(Carta carta) {
-        //cuando hiciste una conquista y te tinen que dar UNA carta
+        mereceCarta = false;
         canjeador.agregarCartaPais(carta);
     }
 
     public boolean merecesCarta() {
-        return conquisteEnRonda;
+        return mereceCarta;
     }
 
     public void hacerCanjePorCarta(){
@@ -169,5 +161,9 @@ public class Jugador implements Observable {
     @Override
     public void removeObserver(Observer observer) {
         observers.remove(observer);
+    }
+
+    public void merecesConseguirUnaCarta() {
+        mereceCarta = true;
     }
 }

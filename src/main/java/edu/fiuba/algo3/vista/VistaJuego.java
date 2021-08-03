@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.moduloRonda.RondaAgregarCincoFichas;
 import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
+import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -20,15 +21,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VistaJuego extends Escena implements Observer{
 
     private final BorderPane padre;
     private final SetUpJuego setUp;
     private Juego juego;
-    private BloqueDeIncorporacion bloqueIncorporacion;
-    private BloqueDeAtaque bloqueDeAtaque;
-    private BloqueDeMovimiento bloqueDeMovimiento;
+    private Map<String, BloqueAccion> bloqueDeAccion;
     private HBox estados;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
@@ -56,17 +57,20 @@ public class VistaJuego extends Escena implements Observer{
         estados.setScaleX(3);
         estados.setScaleY(3);
 
-        this.bloqueIncorporacion = new BloqueDeIncorporacion(juego);
-        this.bloqueDeAtaque = new BloqueDeAtaque(juego);
-        this.bloqueDeMovimiento = new BloqueDeMovimiento(juego);
-        bloqueIncorporacion.setVisible(false);
-        bloqueDeAtaque.setVisible(false);
-        bloqueDeMovimiento.setVisible(false);
+        bloqueDeAccion = new HashMap<>();
+
+        bloqueDeAccion.put("AgregarFichas", new BloqueDeIncorporacion(juego));
+        bloqueDeAccion.put("Ataque", new BloqueDeAtaque(juego));
+        bloqueDeAccion.put("Movimiento", new BloqueDeMovimiento(juego));
+        bloqueDeAccion.put("SolicitarCarta", new BloqueSolicitarCarta(juego));
+
+        for (BloqueAccion bloque : bloqueDeAccion.values())
+            bloque.setVisible(false);
 
         BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
 
         StackPane acciones = new StackPane();
-        acciones.getChildren().addAll(bloqueDeMovimiento, bloqueDeAtaque, bloqueIncorporacion);
+        acciones.getChildren().addAll(bloqueDeAccion.values());
 
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
@@ -74,8 +78,6 @@ public class VistaJuego extends Escena implements Observer{
         padre.setBottom(botonSiguienteTurno);
 
         this.juego.agregarObserverARondaActual(this);
-
-//        padre.setStyle("-fx-background-color: black");
     }
 
     private ImageView setearMapa(){
@@ -89,32 +91,20 @@ public class VistaJuego extends Escena implements Observer{
 
     @Override
     public void change() {
-//        String nombreRonda = juego.dameNombreRonda();
-//        if (nombreRonda == "RondaAgregarCincoFichas")
 
         Ronda ronda = juego.dameRonda();
         Accion fase = ronda.dameFase();
 
-        this.bloqueIncorporacion.setVisible(false);
-        this.bloqueDeAtaque.setVisible(false);
-        this.bloqueDeMovimiento.setVisible(false);
+        for (BloqueAccion bloque : bloqueDeAccion.values())
+            bloque.setVisible(false);
 
-        switch (fase.ID()){
-            case "AgregarFichas":
-                this.bloqueIncorporacion.actualizar();
-                this.bloqueIncorporacion.setVisible(true);
-                break;
-            case "Ataque":
-                this.bloqueDeAtaque.actualizar();
-                this.bloqueDeAtaque.setVisible(true);
-                break;
-            case "Movimiento":
-                this.bloqueDeMovimiento.actualizar();
-                this.bloqueDeMovimiento.setVisible(true);
-                break;
-            case "SolicitarCarta":
-                break;
+        BloqueAccion bloque = bloqueDeAccion.get(fase.ID());
+
+        if (bloque != null) {
+            bloque.actualizar();
+            bloque.setVisible(true);
         }
+
         this.estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
         Label estadoTitulo = (Label)(this.estados.getChildren().get(0));
         estadoTitulo.setText("Turno Jugador: " + juego.jugadorActual().getNombre());

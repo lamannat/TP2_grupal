@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.vista.ataque;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vista.BloqueAccion;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 
-public class BloqueDeAtaque extends VBox implements Observer {
+public class BloqueDeAtaque extends BloqueAccion {
 
     private Juego juego;
 

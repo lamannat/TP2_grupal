@@ -69,10 +69,9 @@ public class Juego implements Observable {
         jugador.hacerCanjePorCarta();
     }
 
-    public Carta cartaParaJugador(Jugador jugador) {
+    public void cartaParaJugador(Jugador jugador) {
         if (jugador.merecesCarta())
-            return mazo.sacarCartaAleatoria();
-       return null;
+            jugador.solicitarCarta(mazo.sacarCartaAleatoria());
     }
 
     public Batalla getBatalla() {
