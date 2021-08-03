@@ -45,9 +45,12 @@ public class Juego implements Observable {
     }
 
     public Pais getPaisPorNombre(String nombre) {
+        return tablero.getPaisPorNombre(nombre);
+    }
+
+    public void actualizarPaisActual(String nombre){
         paisActual = tablero.getPaisPorNombre(nombre);
         notifyObservers();
-        return paisActual;
     }
 
     public Pais getPaisActual() {
@@ -92,5 +95,10 @@ public class Juego implements Observable {
     @Override
     public void notifyObservers() {
         observadores.forEach(Observer::change);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observadores.remove(observer);
     }
 }

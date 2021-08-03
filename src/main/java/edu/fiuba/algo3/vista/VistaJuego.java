@@ -2,23 +2,16 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.moduloRonda.Turno;
-import javafx.scene.Group;
+import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.List;
 
 public class VistaJuego extends Escena {
 

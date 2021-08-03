@@ -18,7 +18,7 @@ public class DropDownDeAtacanteEventHandler implements EventHandler<ActionEvent>
     @Override
     public void handle(ActionEvent actionEvent) {
         String paisAtacante = (String) paisParaAtacar.getValue();
-        juego.getPaisPorNombre(paisAtacante);
+        juego.actualizarPaisActual(paisAtacante);
 //        System.out.println("Pais elegido: " + paisAtacante);
     }
 }

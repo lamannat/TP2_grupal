@@ -124,7 +124,7 @@ public class Jugador {
         return objetivos.stream().anyMatch(Objetivo::cumplido);
     }
 
-    public List<Pais> getPaisesConquitados() {
+    public List<Pais> getPaisesConquistados() {
         List<Pais> paises = new ArrayList<>();
         for (Pais pais : paisesConquistados)
             if (pais.fichasSuficientes())

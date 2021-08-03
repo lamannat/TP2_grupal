@@ -36,6 +36,11 @@ public class SetUpJuego implements Observable {
         observers.forEach(Observer::change);
     }
 
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
     public void asignarCantidadJugadores(int cantidad) {
         this.cantidadJugadores = cantidad;
         this.notifyObservers();
