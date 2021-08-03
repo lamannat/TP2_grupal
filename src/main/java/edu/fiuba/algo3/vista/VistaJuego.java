@@ -13,10 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -69,10 +66,14 @@ public class VistaJuego extends Escena implements Observer{
         StackPane acciones = new StackPane();
         acciones.getChildren().addAll(bloqueDeAccion.values());
 
+        StackPane info = new StackPane();
+        info.getChildren().addAll(acciones, botonSiguienteTurno);
+        info.setAlignment(acciones, Pos.TOP_CENTER);
+        info.setAlignment(botonSiguienteTurno, Pos.BOTTOM_CENTER);
+
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
-        padre.setRight(acciones);
-        padre.setBottom(botonSiguienteTurno);
+        padre.setRight(info);
 
         this.juego.agregarObserverARondaActual(this);
     }
@@ -88,7 +89,7 @@ public class VistaJuego extends Escena implements Observer{
         contenedorMapa.setPrefHeight(540);
         contenedorMapa.setPrefWidth(960);
 
-        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.png");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
