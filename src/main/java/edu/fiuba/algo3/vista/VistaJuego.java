@@ -27,6 +27,9 @@ public class VistaJuego extends Escena {
     public void mostrar(Stage ventana) {
         Juego juego = setUp.dameJuego();
 
+        this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
+
         HBox estados = new HBox();
         estados.setStyle("-fx-background-color: #3030b6");
         Label estadoTitulo = new Label("Ataqueeeeeee");

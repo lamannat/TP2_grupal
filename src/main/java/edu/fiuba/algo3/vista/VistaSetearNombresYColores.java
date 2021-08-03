@@ -33,6 +33,9 @@ public class VistaSetearNombresYColores extends Escena implements Observer {
     public void mostrar(Stage ventana) {
         padre.getChildren().clear();
 
+        this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
+
         //cantJugadores = juego.cantJugadores();
 
         BotonSiguiente botonSiguienteEscena = new BotonSiguiente(ventana, this.controladorDeEscena);

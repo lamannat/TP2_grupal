@@ -51,7 +51,7 @@ public class App extends Application {
 
         SetUpJuego inicio = new SetUpJuego();
 
-        ControladorDeEscena controladorDeEscena = new ControladorDeEscena();
+        ControladorDeEscena controladorDeEscena = new ControladorDeEscena(1280, 720);
         controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(50), controladorDeEscena));
         controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena, inicio));
         VistaSetearNombresYColores vistaSetearNombresYColores = new VistaSetearNombresYColores(new VBox(250), controladorDeEscena, inicio);
@@ -65,8 +65,8 @@ public class App extends Application {
         sceneTitulo.mostrar(ventana);
 
         ventana.setTitle("A.L.T.E.G.O");
+        ventana.setFullScreen(false);
         ventana.setScene(sceneTitulo);
-        ventana.setMaximized(true);
 
         ventana.show();
     }

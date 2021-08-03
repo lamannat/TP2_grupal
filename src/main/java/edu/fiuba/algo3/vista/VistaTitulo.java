@@ -31,6 +31,9 @@ public class VistaTitulo extends Escena {
         this.padre.getChildren().clear();
         padre.setStyle("-fx-background-color: #ffcc3d;");
 
+        this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
+
         // ETIQUETAS
         Label label1 = new Label("A.L.");
         Label label2 = new Label("O");

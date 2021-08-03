@@ -29,6 +29,9 @@ public class VistaSetearCantidadJugadores extends Escena {
     public void mostrar(Stage ventana) {
         padre.getChildren().clear();
 
+        this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
+
         BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguiente.setVisible(false);
 
