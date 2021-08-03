@@ -28,7 +28,7 @@ public class VistaJuego extends Escena implements Observer{
     private BloqueDeIncorporacion bloqueIncorporacion;
     private BloqueDeAtaque bloqueDeAtaque;
     private BloqueDeMovimiento bloqueDeMovimiento;
-    private Label estadoTitulo;
+    private HBox estados;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -43,9 +43,10 @@ public class VistaJuego extends Escena implements Observer{
         this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
         this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
 
-        HBox estados = new HBox();
+        estados = new HBox();
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
-        estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
+        Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
+        estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
         estadoTitulo.setScaleX(2);
         estadoTitulo.setScaleY(2);
         estadoTitulo.setTextFill(Color.BLACK);
@@ -109,7 +110,10 @@ public class VistaJuego extends Escena implements Observer{
                 break;
 
         }
-        this.estadoTitulo.setText("Turno Jugador: " + juego.jugadorActual().getNombre());
+        this.estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
+        Label estadoTitulo = (Label)(this.estados.getChildren().get(0));
+        estadoTitulo.setText("Turno Jugador: " + juego.jugadorActual().getNombre());
+        estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
 
     }
 }

@@ -12,7 +12,6 @@ public class AgregarFichas implements Accion{
     @Override
     public void ejecutar(Jugador jugador) {
         jugador.darFichas(jugador.generarFichas(cantFichas));
-        System.out.println(cantFichas);
     }
 
     @Override
