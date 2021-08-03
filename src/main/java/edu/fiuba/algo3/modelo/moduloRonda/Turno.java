@@ -19,4 +19,8 @@ public class Turno {
     }
 
     public void avanzarJugador() { indice = (indice + 1) % jugadores.size(); }
+
+    public boolean ultimoJugador() {
+        return indice == jugadores.size()-1;
+    }
 }

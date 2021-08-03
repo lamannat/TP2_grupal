@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.moduloRonda.*;
+import edu.fiuba.algo3.vista.VistaJuego;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,6 @@ public class Juego implements Observable {
     private final Batalla batalla;
     private final Mazo mazo;
     private final List<Observer> observadores;
-    private Pais paisActual;
 
     public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
@@ -27,21 +27,21 @@ public class Juego implements Observable {
         rondaActual = ronda;
     }
 
-    // suponer q esto no existe
-    public void comenzarRonda(){
-
-        Jugador ultimoJugador = turno.jugadorActual();
-        turno.avanzarJugador();
-        Jugador jugadorActual = turno.jugadorActual();
-
-        while(ultimoJugador != jugadorActual){
-            rondaActual.comenzarLaRonda(jugadorActual);
-            turno.avanzarJugador();
-            jugadorActual = turno.jugadorActual();
-        }
-
-        rondaActual.comenzarLaRonda(jugadorActual); //se ejecuta una vez mas por el ultimo jugador que no se ejecuto en el while
-    }
+//    // suponer q esto no existe
+//    public void comenzarRonda(){
+//
+//        Jugador ultimoJugador = turno.jugadorActual();
+//        turno.avanzarJugador();
+//        Jugador jugadorActual = turno.jugadorActual();
+//
+//        while(ultimoJugador != jugadorActual){
+//            rondaActual.comenzarLaRonda(jugadorActual);
+//            turno.avanzarJugador();
+//            jugadorActual = turno.jugadorActual();
+//        }
+//
+//        rondaActual.comenzarLaRonda(jugadorActual); //se ejecuta una vez mas por el ultimo jugador que no se ejecuto en el while
+//    }
 
     public Jugador jugadorActual() {
         return turno.jugadorActual();
@@ -51,24 +51,27 @@ public class Juego implements Observable {
         return tablero.getPaisPorNombre(nombre);
     }
 
-    public void actualizarPaisActual(String nombre){
-        paisActual = tablero.getPaisPorNombre(nombre);
-        notifyObservers();
-    }
-
-    public Pais getPaisActual() {
-        return paisActual;
-    }
 
     public void siguienteRonda(){
         this.rondaActual = this.rondaActual.siguienteRonda();
     }
 
-    public void darleFichasAJugador(Jugador jugador, int cantFichas) {
-        //falta lo del input
-        jugador.darFichas(jugador.generarFichas(cantFichas));
-
+    public void avanzar(Observer observer){
+        if (this.rondaActual.terminaste()){
+            if (this.turno.ultimoJugador()){
+                this.rondaActual = this.rondaActual.siguienteRonda();
+                this.rondaActual.addObserver(observer);
+            }
+            this.turno.avanzarJugador();
+        }
+        this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
     }
+
+//    public void darleFichasAJugador(Jugador jugador, int cantFichas) {
+//        //falta lo del input
+//        jugador.darFichas(jugador.generarFichas(cantFichas));
+//
+//    }
 
     public void jugadorReclamaPorPaises(Jugador jugador) {
     }
@@ -90,6 +93,10 @@ public class Juego implements Observable {
         return this.batalla;
     }
 
+    public Ronda dameRonda() {
+        return this.rondaActual;
+    }
+
 
     @Override
     public void addObserver(Observer observer) {
@@ -109,5 +116,10 @@ public class Juego implements Observable {
     public void addObserverAPaises(Observer observer){
         this.tablero.addObserverAPaises(observer);
     }
+
+    public void agregarObserverARondaActual(Observer observer) {
+        this.rondaActual.addObserver(observer);
+    }
+
 
 }

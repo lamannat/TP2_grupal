@@ -102,6 +102,7 @@ public class Jugador implements Observable {
 
     public void darFichas(List<Ficha> fichas) {
         this.fichasReservadas.addAll(fichas);
+        System.out.println("fichas en reserva: "+this.fichasReservadas.size());
     }
 
     public List<Ficha> generarFichas(Integer cantFichas){
