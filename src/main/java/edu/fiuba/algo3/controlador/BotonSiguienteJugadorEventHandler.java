@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.vista.BotonDeColor;
 import javafx.event.ActionEvent;
@@ -15,23 +15,23 @@ import java.util.ArrayList;
 
 public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEvent> {
 
-    private final Stage ventana;
     private final TextField inputUsuario;
     private final Label label;
     private final ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton;
     private final Button botonSiguiente;
     private int cantidadActualJugadores;
     private int cantidadTotalJugadores;
+    private SetUpJuego setUp;
 
 
-    public BotonSiguienteJugadorEventHandler(Stage unaVentana, ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente) {
-        this.ventana = unaVentana;
+    public BotonSiguienteJugadorEventHandler(ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente, SetUpJuego setUp) {
         this.listaNombreYBoton = listaNombreYBoton;
         this.inputUsuario = texto;
         this.label = label;
         this.cantidadActualJugadores = 0;
         this.cantidadTotalJugadores = cantidadTotalJugadores;
         this.botonSiguiente = botonSiguiente;
+        this.setUp = setUp;
     }
 
     @Override
@@ -56,6 +56,8 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
 
             Color color = boton.getColor();
             String nombre = par.getKey();
+
+            setUp.agregarJugador(nombre, color);
 
             //this.juego.setearNombreYColor(nombre, color);
 

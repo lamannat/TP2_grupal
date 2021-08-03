@@ -4,9 +4,10 @@ import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class Jugador {
+public class Jugador implements Observable {
 
     private String nombre;
     private Color color;
@@ -15,6 +16,7 @@ public class Jugador {
     private boolean conquisteEnRonda;
     private final List<Ficha> fichasReservadas;
     private final List<Objetivo> objetivos;
+    private List<Observer> observers;
 
     public Jugador(String nombre, Color color, Canjeador canjeador) {
         //despues vamos a editar los constructores
@@ -24,20 +26,12 @@ public class Jugador {
         this.fichasReservadas = new ArrayList<>();
         this.objetivos = new ArrayList<>();
         this.canjeador = canjeador;
-        conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
+        conquisteEnRonda = false;// ver posiblemente hacer esto en batalla/pais/algo no se
+        this.observers = new ArrayList<>();
     }
 
-    public Jugador(Canjeador canjeador) {
-        this.paisesConquistados = new ArrayList<>();
-        this.fichasReservadas = new ArrayList<>();
-        this.objetivos = new ArrayList<>();
-        this.canjeador = canjeador;
-        conquisteEnRonda = false; // ver posiblemente hacer esto en batalla/pais/algo no se
-    }
-
-    public void setJugador(String nombre, Color color) {
-        this.nombre = nombre;
-        this.color = color;
+    public String getNombre() {
+        return nombre;
     }
 
     public void agregarPais(Pais pais){
@@ -119,11 +113,51 @@ public class Jugador {
         return fichas;
     }
 
-    public boolean ganador(int minimoDePaises) {
+    public boolean superaCantidadDePaises(int minimoDePaises) {
         return this.paisesConquistados.size() >= minimoDePaises;
     }
 
     public boolean seguisJugando() {
         return paisesConquistados.size() > 0;
+    }
+
+    public void agregarObjetivo(Objetivo objetivo) { objetivos.add(objetivo); }
+
+    public boolean ganador() {
+        return objetivos.stream().anyMatch(Objetivo::cumplido);
+    }
+
+    public List<Pais> getPaisesConquistados() {
+        List<Pais> paises = new ArrayList<>();
+        for (Pais pais : paisesConquistados)
+            if (pais.fichasSuficientes())
+                paises.add(pais);
+        return paises;
+    }
+
+    public void agregarFichasReservadasEnPais(Pais pais, Integer cantidad) {
+        for (int i = 0; i < cantidad ; i++) {
+            pais.agregarFicha(fichasReservadas.remove(0));
+        }
+        System.out.println("No seas trampos@");
+    }
+
+    public Integer cantidadFichasReservadas() {
+        return fichasReservadas.size();
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(Observer::change);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
     }
 }

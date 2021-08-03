@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Continente {
@@ -30,6 +31,20 @@ public class Continente {
     }
 
     public Pais obtenerPaisNoAsignado() {
-        return paises.stream().filter(limitrofe -> !limitrofe.estaAsignado()).findFirst().orElse(null);
+        Collections.shuffle(paises);
+        return paises.stream().filter(limitrofe -> !limitrofe.estaAsignado()).findAny().orElse(null);
+    }
+
+    public Pais getPaisPorNombre(String nombre) {
+        for (Pais pais : paises)
+            if (pais.tieneNombre(nombre))
+                return pais;
+        return null;
+    }
+
+    public void addObserverAPaises(Observer observer){
+        for (Pais pais : paises){
+            pais.addObserver(observer);
+        }
     }
 }

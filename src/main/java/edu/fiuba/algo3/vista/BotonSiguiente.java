@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class BotonSiguiente extends Button {
+
     public BotonSiguiente(Stage ventana, ControladorDeEscena controladorDeEscena) {
         this.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, controladorDeEscena));
         this.setScaleX(2);
@@ -17,4 +18,5 @@ public class BotonSiguiente extends Button {
         this.setText("Siguiente");
         this.setAlignment(Pos.BOTTOM_RIGHT);
     }
+
 }

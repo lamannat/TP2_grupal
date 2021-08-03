@@ -36,7 +36,7 @@ public class ObjetivoTest {
     @Test
     public void jugadorConquistaContinente(){
         Continente continente = new Continente("Continente");
-        Jugador jugador = new Jugador(new Canjeador(new Mazo()));
+        Jugador jugador = new Jugador("Jugador piola", new ColorVerde(),  new Canjeador(new Mazo()));
         Pais pais = new Pais("Pais");
 
         continente.agregarPais(pais);
@@ -50,7 +50,7 @@ public class ObjetivoTest {
     @Test
     public void jugadorNoConquistaContinente(){
         Continente continente = new Continente("Continente");
-        Jugador jugador = new Jugador(new Canjeador(new Mazo()));
+        Jugador jugador = new Jugador("Jugador piola", new ColorVerde(),  new Canjeador(new Mazo()));
         Pais pais = new Pais("Pais");
 
         continente.agregarPais(pais);
@@ -62,7 +62,7 @@ public class ObjetivoTest {
 
     @Test
     public void jugadorNoCumpleConObjetivoEliminarJugador(){
-        Jugador paraEliminar = new Jugador(new Canjeador(new Mazo()));
+        Jugador paraEliminar = new Jugador("Jugador piola", new ColorVerde(),  new Canjeador(new Mazo()));
         ObjetivoEliminarJugador objetivoEliminarJugador = new ObjetivoEliminarJugador(paraEliminar);
 
         paraEliminar.agregarPais(new Pais("Pais"));
@@ -72,7 +72,7 @@ public class ObjetivoTest {
 
     @Test
     public void jugadorCumpleConObjetivoEliminarJugador(){
-        Jugador paraEliminar = new Jugador(new Canjeador(new Mazo()));
+        Jugador paraEliminar = new Jugador("Jugador piola", new ColorVerde(),  new Canjeador(new Mazo()));
         ObjetivoEliminarJugador objetivoEliminarJugador = new ObjetivoEliminarJugador(paraEliminar);
 
         assertTrue(objetivoEliminarJugador.cumplido());
@@ -81,7 +81,7 @@ public class ObjetivoTest {
     @Test
     public void jugadorCumpleObjetivoCantidadPaisesEnContinente(){
         Continente continente = new Continente("Continente");
-        Jugador jugador = new Jugador(new Canjeador(new Mazo()));
+        Jugador jugador = new Jugador("Jugador piola", new ColorVerde(),  new Canjeador(new Mazo()));
         Pais pais1 = new Pais("Pais1");
         Pais pais2 = new Pais("Pais2");
 
@@ -99,7 +99,7 @@ public class ObjetivoTest {
     @Test
     public void jugadorNoCumpleObjetivoCantidadPaisesEnContinente(){
         Continente continente = new Continente("Continente");
-        Jugador jugador = new Jugador(new Canjeador(new Mazo()));
+        Jugador jugador = new Jugador("Jugador piola", new ColorVerde(),  new Canjeador(new Mazo()));
         Pais pais1 = new Pais("Pais1");
         Pais pais2 = new Pais("Pais2");
         Pais pais3 = new Pais("Pais3");

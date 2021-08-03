@@ -1,45 +1,59 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
-import edu.fiuba.algo3.modelo.Juego;
-import javafx.scene.Group;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
+import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 public class VistaJuego extends Escena {
 
-    private final VBox padre;
+    private final BorderPane padre;
+    private final SetUpJuego setUp;
 
-    public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena) {
+    public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
-        this.padre = (VBox) padre;
+        this.padre = (BorderPane) padre;
+        this.setUp = setUp;
     }
 
     public void mostrar(Stage ventana) {
-        //this.juego.asignarPaises();
+        Juego juego = setUp.dameJuego();
+
+        this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
 
         HBox estados = new HBox();
+        estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo());
+        Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
+        estadoTitulo.setScaleX(2);
+        estadoTitulo.setScaleY(2);
+        estadoTitulo.setTextFill(Color.BLACK);
+        estados.getChildren().add(estadoTitulo);
+        estados.setAlignment(Pos.CENTER);
+        estados.setScaleX(3);
+        estados.setScaleY(3);
 
-        VBox mapaObjetivos = new VBox();
-        mapaObjetivos.getChildren().add(this.setearMapa());
+        BloqueDeIncorporacion bloqueIncorporacion = new BloqueDeIncorporacion(juego);
+        BloqueDeAtaque bloqueDeAtaque = new BloqueDeAtaque(juego);
 
-        HBox principal = new HBox();
+        padre.setTop(estados);
+        padre.setCenter(this.setearMapa());
+        padre.setRight(bloqueDeAtaque);
+        padre.setLeft(bloqueIncorporacion);
 
-        principal.getChildren().add(mapaObjetivos); //agrger info 1 y 2
 
-        padre.getChildren().addAll(estados,principal);
-
-        padre.setStyle("-fx-background-color: black");
+//        padre.setStyle("-fx-background-color: black");
     }
 
     private ImageView setearMapa(){

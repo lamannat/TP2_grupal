@@ -82,5 +82,4 @@ public class JugadorTest {
 
         assertEquals(4,j.contarTotalFichas());
     }
-
 }

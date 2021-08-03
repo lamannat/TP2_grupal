@@ -5,12 +5,13 @@ import edu.fiuba.algo3.modelo.color.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pais {
+public class Pais implements Observable{
 
     private final String nombre;
     private final List<Pais> limitrofes;
     private final List<Ficha> fichas;
     private Jugador jugador;
+    private final List<Observer> observers;
 
     private final static int cantidadMaximaDeDados = 3;
 
@@ -19,6 +20,7 @@ public class Pais {
         this.limitrofes = new ArrayList<>();
         this.fichas = new ArrayList<>();
         this.jugador = null;
+        this.observers = new ArrayList<>();
     }
 
     public void agregarPaisLimitrofe(Pais pais){
@@ -63,9 +65,9 @@ public class Pais {
 //        return continente.tienePais(this);
 //    }
 
-//    public boolean tieneNombre(String unNombre){
-//        return this.nombre.equals(unNombre);
-//    }
+    public boolean tieneNombre(String unNombre){
+        return this.nombre.equals(unNombre);
+    }
 
     private EjercitoDeBatalla ejercitoParaDefensa()
     {
@@ -88,6 +90,8 @@ public class Pais {
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
+        System.out.println(this.nombre + " ataca a " + paisDefensor.nombre);
+
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
 
@@ -100,7 +104,10 @@ public class Pais {
         if (paisDefensor.fueConquistado()) {
             this.moverTropas(paisDefensor);
             paisDefensor.meConquisto(this.jugador);
+            System.out.println(this.nombre + " conquisto a " + paisDefensor.nombre);
         }
+
+        notifyObservers();
     }
 
     private void meConquisto(Jugador unJugador) {
@@ -128,6 +135,37 @@ public class Pais {
         return this.jugador == jugador;
     }
 
+    public List<Pais> getPaisesParaAtacar() {
+        List<Pais> paisesParaAtacar = new ArrayList<>();
+        for (Pais pais : limitrofes)
+            try {
+                this.puedeAtacarAPais(pais);
+                paisesParaAtacar.add(pais);
+            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException e ) {
+                // oh no, anyways
+            }
+        return paisesParaAtacar;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(Observer::change);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
 }
 
 

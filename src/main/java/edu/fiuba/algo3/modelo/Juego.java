@@ -1,60 +1,63 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.moduloRonda.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Juego {
+public class Juego implements Observable {
     private final Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
     private final Batalla batalla;
     private final Mazo mazo;
-    private Canjeador tipoCanjeador;
+    private final List<Observer> observadores;
+    private Pais paisActual;
 
-    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo, Canjeador canjeador) {
-        this.turno = turno;
-        this.tablero = tablero;
-        this.batalla = unaBatalla;
-        this.mazo = unMazo;
-        this.tipoCanjeador = canjeador;
-    }
-
-    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) { // este se tiene que ir
+    public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
         this.tablero = tablero;
         this.batalla = unaBatalla;
         this.mazo = unMazo;
         this.tablero.asignarPaises(this.turno);
-    }
-
-    public void setearJugadores(int cantidadJugadores) {
-        List<Jugador> jugadores = new ArrayList<>();
-        for (int i = 0; i < cantidadJugadores; i++)
-            jugadores.add(new Jugador(tipoCanjeador.getInstanciaNueva()));
-        turno.setearJugadores(jugadores);
-    }
-
-    public int cantJugadores() {
-        return turno.cantJugadores();
+        this.observadores = new ArrayList<>();
     }
 
     public void seleccionarRonda(Ronda ronda) {
         rondaActual = ronda;
     }
 
+    // suponer q esto no existe
     public void comenzarRonda(){
-        Jugador cortarEn = turno.jugadorActual();
-        rondaActual.comenzarLaRonda(cortarEn);
 
-        Jugador jugador= turno.jugadorActual();
+        Jugador ultimoJugador = turno.jugadorActual();
+        turno.avanzarJugador();
+        Jugador jugadorActual = turno.jugadorActual();
 
-        while(cortarEn != jugador){
-            rondaActual.comenzarLaRonda(jugador);
-            jugador = turno.jugadorActual();
+        while(ultimoJugador != jugadorActual){
+            rondaActual.comenzarLaRonda(jugadorActual);
+            turno.avanzarJugador();
+            jugadorActual = turno.jugadorActual();
         }
+
+        rondaActual.comenzarLaRonda(jugadorActual); //se ejecuta una vez mas por el ultimo jugador que no se ejecuto en el while
+    }
+
+    public Jugador jugadorActual() {
+        return turno.jugadorActual();
+    }
+
+    public Pais getPaisPorNombre(String nombre) {
+        return tablero.getPaisPorNombre(nombre);
+    }
+
+    public void actualizarPaisActual(String nombre){
+        paisActual = tablero.getPaisPorNombre(nombre);
+        notifyObservers();
+    }
+
+    public Pais getPaisActual() {
+        return paisActual;
     }
 
     public void siguienteRonda(){
@@ -62,11 +65,9 @@ public class Juego {
     }
 
     public void darleFichasAJugador(Jugador jugador, int cantFichas) {
-        //preguntar por paises, devuelve lista de paises
-//        jugador.colocarFichas(fichas);
-
         //falta lo del input
         jugador.darFichas(jugador.generarFichas(cantFichas));
+
     }
 
     public void jugadorReclamaPorPaises(Jugador jugador) {
@@ -89,12 +90,24 @@ public class Juego {
         return this.batalla;
     }
 
-    public void setearNombreYColor(String nombre, Color color) {
-        Jugador jugador = turno.jugadorActual();
-        jugador.setJugador(nombre, color);
+
+    @Override
+    public void addObserver(Observer observer) {
+        observadores.add(observer);
     }
 
-    public void asignarPaises() {
-        this.tablero.asignarPaises(this.turno);
+    @Override
+    public void notifyObservers() {
+        observadores.forEach(Observer::change);
     }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observadores.remove(observer);
+    }
+
+    public void addObserverAPaises(Observer observer){
+        this.tablero.addObserverAPaises(observer);
+    }
+
 }
