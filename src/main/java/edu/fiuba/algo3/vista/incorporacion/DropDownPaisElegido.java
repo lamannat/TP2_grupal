@@ -11,7 +11,7 @@ import javafx.scene.control.ComboBox;
 public class DropDownPaisElegido extends ComboBox implements Observer {
     private Juego juego;
 
-    public DropDownPaisElegido(Juego juego, BotonIncorporar incorporar) {
+    public DropDownPaisElegido(Juego juego, BotonIncorporar incorporar, ComboBox dropDownCantidadFichas) {
         this.juego = juego;
         Jugador jugador = juego.jugadorActual();
 
@@ -27,8 +27,18 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
             Pais paisIncorporable = this.juego.getPaisPorNombre((String)this.getValue());
             if (paisIncorporable == null)
                 return;
+
+            ObservableList<String> cantidadIncorporable = FXCollections.observableArrayList();
+
+            for (Integer i = 1; i <= jugador.cantidadFichasReservadas(); i++)
+                cantidadIncorporable.add(i.toString());
+
+            dropDownCantidadFichas.getItems().clear();
+            dropDownCantidadFichas.getItems().addAll(cantidadIncorporable);
+
+
             incorporar.setPaisIncorporador(paisIncorporable);
-            System.out.println("Voy a incorporar Fichas En:" + paisIncorporable);
+            System.out.println( jugador.getNombre() + "incorporar Fichas En:" + paisIncorporable);
         });
     }
 

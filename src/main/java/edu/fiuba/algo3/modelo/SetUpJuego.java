@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.modelo.moduloRonda.RondaAgregarCincoFichas;
 import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import edu.fiuba.algo3.modelo.objetivos.*;
 import edu.fiuba.algo3.modelo.simbolo.Comodin;
@@ -19,7 +20,7 @@ public class SetUpJuego implements Observable {
     private final List<Pair<String, Color>> nombresYColores;
     private int cantidadJugadores;
     private final String OBJETIVO_ELIMINACION = "DESTRUIR";
-    private final String OBJETIVO_DOMINACION = "OCUPAR";
+//    private final String OBJETIVO_DOMINACION = "OCUPAR";   ver si uso
 
     public SetUpJuego() {
         observers = new ArrayList<>();
@@ -76,7 +77,10 @@ public class SetUpJuego implements Observable {
 
         this.agregarObjetivos(continentes,jugadores);
 
-        return new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
+        Juego juego = new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
+        juego.seleccionarRonda(new RondaAgregarCincoFichas(juego));
+
+        return juego;
     }
 
     private List<Carta>  agregarCartas(List<Pais> paises) {

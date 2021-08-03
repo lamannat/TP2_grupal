@@ -10,4 +10,7 @@ public abstract class Color {
 
     public String getNombre(){ return this.nombre;}
 
+    public String getColorText() {
+        return "#ffffff";
+    }
 }

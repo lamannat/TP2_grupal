@@ -3,41 +3,44 @@ package edu.fiuba.algo3.modelo.moduloRonda;
 import edu.fiuba.algo3.modelo.Carta;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Observer;
 
-public class RondaPrimeraHostilidades implements Ronda {
+public class RondaPrimeraHostilidades extends Ronda {
+
     private final Juego juego;
-//    private final List<Accion> acciones;
+    private int numeroAccion;
 
     public RondaPrimeraHostilidades(Juego juego) {
         this.juego = juego;
-
+        acciones.add(new Atacar());
+        acciones.add(new Movimiento());
+        acciones.add(new SolicitarCarta());
+        numeroAccion = 0;
     }
 
     public void comenzarLaRonda(Jugador jugador){
-//        for (Accion accionActual: acciones ){
-//            accionActual.ejecutar(jugador);
-//        }
-        this.atacar(jugador);
-        this.reagrupar(jugador);
-        this.solicitarCarta(jugador);
-    }
-
-    private void atacar(Jugador jugador){
-        jugador.comienzaElAtaque(this.juego.getBatalla());
-    }
-
-    private void reagrupar(Jugador jugador){
-        jugador.reagruparFuerzas();
-    }
-
-    private void solicitarCarta(Jugador jugador) {
-        Carta carta = this.juego.cartaParaJugador(jugador);
-        if (carta != null)
-            jugador.solicitarCarta(carta);
+        acciones.get(numeroAccion).ejecutar(jugador);
+        this.notifyObservers();
+        numeroAccion++;
     }
 
     public Ronda siguienteRonda(){
         return new RondaHostilidadesGeneral(this.juego);
+    }
+
+    @Override
+    public boolean terminaste() {
+        return numeroAccion == acciones.size();
+    }
+
+    @Override
+    public void resetearAcciones() {
+        numeroAccion = 0;
+    }
+
+    @Override
+    public Accion dameFase() {
+        return acciones.get(numeroAccion);
     }
 
 }

@@ -114,6 +114,5 @@ public class VistaSetearNombresYColores extends Escena implements Observer {
     @Override
     public void change() {
         cantJugadores = setUp.getCantidadJugadores();
-        System.out.println("Estoy en change de VSNC --> " + cantJugadores);
     }
 }

@@ -15,27 +15,27 @@ import static org.mockito.Mockito.*;
 
 public class RondaPrimeraHostilidadesTest {
 
-    @Test
-    public void juegadorAtacaReagrupaYSolicitaCarta() {
-        JugadorPrueba jugador = new JugadorPrueba("Nombre", new ColorVerde(), new Canjeador(new Mazo()));
-
-        List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(jugador);
-        Turno turno = new Turno(jugadores);
-        Batalla batalla = new Batalla(new DadoEstandar());
-        Mazo mazo = new Mazo();
-        Carta carta = new Carta(new Pais("Pais"), new SimboloNormal("Simbolo"));
-        mazo.agregarCarta(carta);
-        Juego juego = new Juego(new Tablero(), turno, batalla, mazo);
-
-        RondaPrimeraHostilidades ronda = new RondaPrimeraHostilidades(juego);
-        juego.seleccionarRonda(ronda);
-
-        juego.comenzarRonda();
-
-        assertEquals(jugador.comiezaElAtaque, 1);
-        assertEquals(jugador.reagruparFuerzas, 1);
-        assertEquals(jugador.solicitarCartas, 1);
-    }
+//    @Test
+//    public void juegadorAtacaReagrupaYSolicitaCarta() {
+//        JugadorPrueba jugador = new JugadorPrueba("Nombre", new ColorVerde(), new Canjeador(new Mazo()));
+//
+//        List<Jugador> jugadores = new ArrayList<>();
+//        jugadores.add(jugador);
+//        Turno turno = new Turno(jugadores);
+//        Batalla batalla = new Batalla(new DadoEstandar());
+//        Mazo mazo = new Mazo();
+//        Carta carta = new Carta(new Pais("Pais"), new SimboloNormal("Simbolo"));
+//        mazo.agregarCarta(carta);
+//        Juego juego = new Juego(new Tablero(), turno, batalla, mazo);
+//
+//        RondaPrimeraHostilidades ronda = new RondaPrimeraHostilidades(juego);
+//        juego.seleccionarRonda(ronda);
+//
+//        juego.comenzarRonda();
+//
+//        assertEquals(jugador.comiezaElAtaque, 1);
+//        assertEquals(jugador.reagruparFuerzas, 1);
+//        assertEquals(jugador.solicitarCartas, 1);
+//    }
 
 }

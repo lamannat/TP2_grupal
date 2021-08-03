@@ -8,4 +8,9 @@ public class ColorAmarillo extends Color{
         this.nombre = "Amarillo";
     }
 
+    @Override
+    public String getColorText(){
+        return "#000000";
+    }
+
 }

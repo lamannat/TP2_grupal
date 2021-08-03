@@ -47,54 +47,54 @@ public class JuegoTest {
         assertEquals(Juan.contarTotalFichas(), 25);
     }
 
-    @Test
-    public void DespuesDeLaPrimeraRondaLosDosJugadoresTienen30Fichas(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
-        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
-        List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(Valentin);
-        jugadores.add(Juan);
-
-        Tablero tablero = new Tablero();
-        for (Continente continente : listaDeContientes())
-            tablero.agregarContinente(continente);
-        Turno turno = new Turno(jugadores);
-
-        Batalla batalla = new Batalla(new DadoEstandar());
-
-        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
-        Ronda primeraRonda = new RondaAgregarCincoFichas(juego);
-        juego.seleccionarRonda(primeraRonda);
-        juego.comenzarRonda();
-
-        assertEquals(30, Valentin.contarTotalFichas());
-        assertEquals(30, Juan.contarTotalFichas());
-    }
-
-    @Test
-    public void DespuesDeLaSegundaRondaLosDosJugadoresTienen33Fichas(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
-        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
-        List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(Valentin);
-        jugadores.add(Juan);
-
-        Tablero tablero = new Tablero();
-        for (Continente continente : listaDeContientes())
-            tablero.agregarContinente(continente);
-        Turno turno = new Turno(jugadores);
-        Batalla batalla = new Batalla(new DadoEstandar());
-
-        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
-        Ronda primeraRonda = new RondaAgregarCincoFichas(juego);
-        juego.seleccionarRonda(primeraRonda);
-        juego.comenzarRonda();
-        juego.siguienteRonda();
-        juego.comenzarRonda();
-
-        assertEquals(33, Valentin.contarTotalFichas());
-        assertEquals(33, Juan.contarTotalFichas());
-    }
+//    @Test
+//    public void DespuesDeLaPrimeraRondaLosDosJugadoresTienen30Fichas(){
+//        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
+//        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
+//        List<Jugador> jugadores = new ArrayList<>();
+//        jugadores.add(Valentin);
+//        jugadores.add(Juan);
+//
+//        Tablero tablero = new Tablero();
+//        for (Continente continente : listaDeContientes())
+//            tablero.agregarContinente(continente);
+//        Turno turno = new Turno(jugadores);
+//
+//        Batalla batalla = new Batalla(new DadoEstandar());
+//
+//        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
+//        Ronda primeraRonda = new RondaAgregarCincoFichas(juego);
+//        juego.seleccionarRonda(primeraRonda);
+//        juego.comenzarRonda();
+//
+//        assertEquals(30, Valentin.contarTotalFichas());
+//        assertEquals(30, Juan.contarTotalFichas());
+//    }
+//
+//    @Test
+//    public void DespuesDeLaSegundaRondaLosDosJugadoresTienen33Fichas(){
+//        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
+//        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
+//        List<Jugador> jugadores = new ArrayList<>();
+//        jugadores.add(Valentin);
+//        jugadores.add(Juan);
+//
+//        Tablero tablero = new Tablero();
+//        for (Continente continente : listaDeContientes())
+//            tablero.agregarContinente(continente);
+//        Turno turno = new Turno(jugadores);
+//        Batalla batalla = new Batalla(new DadoEstandar());
+//
+//        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
+//        Ronda primeraRonda = new RondaAgregarCincoFichas(juego);
+//        juego.seleccionarRonda(primeraRonda);
+//        juego.comenzarRonda();
+//        juego.siguienteRonda();
+//        juego.comenzarRonda();
+//
+//        assertEquals(33, Valentin.contarTotalFichas());
+//        assertEquals(33, Juan.contarTotalFichas());
+//    }
 
     private List<Continente> listaDelContienteAsia() {
         List<Continente> continentes = new ArrayList<>();

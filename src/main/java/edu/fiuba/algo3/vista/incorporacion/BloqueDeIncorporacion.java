@@ -7,19 +7,24 @@ import javafx.scene.layout.VBox;
 public class BloqueDeIncorporacion extends VBox implements Observer {
     private Juego juego;
     public BloqueDeIncorporacion(Juego juego) {
-
-        BotonIncorporar incorporar = new BotonIncorporar(juego);
-        incorporar.setText("Incorporar");
-        DropDownPaisElegido paisElegido = new DropDownPaisElegido(juego,incorporar);
-        DropDownCantidadFichas cantidadFichas = new DropDownCantidadFichas(juego,incorporar);
-
-        juego.jugadorActual().addObserver(cantidadFichas);
-        juego.jugadorActual().addObserver(paisElegido);
-        this.getChildren().addAll(paisElegido, cantidadFichas, incorporar);
+        this.juego = juego;
+        actualizar();
     }
 
     @Override
     public void change() {
 
+    }
+
+    public void actualizar() {
+        BotonIncorporar incorporar = new BotonIncorporar(juego);
+        incorporar.setText("Incorporar");
+        DropDownCantidadFichas cantidadFichas = new DropDownCantidadFichas(juego,incorporar);
+        DropDownPaisElegido paisElegido = new DropDownPaisElegido(juego,incorporar, cantidadFichas);
+
+        juego.jugadorActual().addObserver(cantidadFichas);
+        juego.jugadorActual().addObserver(paisElegido);
+        this.getChildren().clear();
+        this.getChildren().addAll(paisElegido, cantidadFichas, incorporar);
     }
 }
