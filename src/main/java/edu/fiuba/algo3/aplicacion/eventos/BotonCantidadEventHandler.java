@@ -24,5 +24,6 @@ public class BotonCantidadEventHandler implements EventHandler<ActionEvent> {
         File estilo = new File ("src/main/java/edu/fiuba/algo3/aplicacion/css/name-screen.css");
         escena.getStylesheets().add(estilo.toURI().toString());
         app.setScene(escena);
+        app.getSetup().setCantidadJugadores(this.cantidad);
     }
 }

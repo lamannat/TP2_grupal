@@ -14,7 +14,6 @@ public class VistaIngresarJugadores extends StackPane {
         super();
 
         VBox contenedorPrincipal = new VBox();
-        System.out.println("llegue a empezar a crear la vista");
         for(int i = 0; i < cantidad; i++){
             Label etiquetaJugadorI = new Label();
             etiquetaJugadorI.setText("Jugador " + (i+1) +":");

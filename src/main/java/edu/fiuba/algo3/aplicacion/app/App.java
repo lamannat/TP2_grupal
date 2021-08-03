@@ -26,6 +26,7 @@ public class App extends Application {
     private Stage ventana;
     private int resolucionAlto = 720;
     private int resolucionAncho = 1280;
+    private SetupJuego setup;
     Scene sceneTitulo, sceneCantJugadores, sceneNombresColores;
     Button botonVolver;
 
@@ -34,7 +35,7 @@ public class App extends Application {
 
         ventana = stage;
         ventana.setTitle("A.L.T.E.G.O. - FIUBA");
-        SetupJuego setup = new SetupJuego();
+        this.setup = new SetupJuego();
         VistaInicio vistainicio = new VistaInicio(this);
         Scene escena = new Scene(vistainicio);
         ventana.setFullScreen(false);
@@ -59,5 +60,9 @@ public class App extends Application {
 
     public void setScene(Scene escena){
         this.ventana.setScene(escena);
+    }
+
+    public SetupJuego getSetup(){
+        return this.setup;
     }
 }
