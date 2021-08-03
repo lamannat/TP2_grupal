@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.color.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,10 +59,6 @@ public class Pais implements Observable{
         return pais.conquistadoPorJugador(this.jugador);
     }
 
-//    public boolean perteneceAContinente(Continente continente){
-//        return continente.tienePais(this);
-//    }
-
     public boolean tieneNombre(String unNombre){
         return this.nombre.equals(unNombre);
     }
@@ -87,6 +81,10 @@ public class Pais implements Observable{
         return new EjercitoDeBatalla(ejercito);
     }
 
+    public Integer fichasParaMover() {
+        return Math.min(this.fichas.size() - 1, cantidadMaximaDeDados);
+    }
+
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
@@ -102,7 +100,7 @@ public class Pais implements Observable{
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
 
         if (paisDefensor.fueConquistado()) {
-            this.moverTropas(paisDefensor);
+            this.moverTropa(paisDefensor);
             paisDefensor.meConquisto(this.jugador);
             System.out.println(this.nombre + " conquisto a " + paisDefensor.nombre);
         }
@@ -119,7 +117,7 @@ public class Pais implements Observable{
         return fichas.isEmpty();
     }
 
-    private void moverTropas(Pais paisDestino) {
+    public void moverTropa(Pais paisDestino) {
         paisDestino.agregarFicha(this.fichas.remove(0));
     }
 
@@ -145,6 +143,14 @@ public class Pais implements Observable{
                 // oh no, anyways
             }
         return paisesParaAtacar;
+    }
+
+    public List<Pais> getPaisesAleados() {
+        List<Pais> paises = new ArrayList<>();
+        for (Pais pais : this.limitrofes)
+            if (pais.esAliado(this))
+                paises.add(pais);
+        return paises;
     }
 
     @Override

@@ -140,11 +140,15 @@ public class Jugador implements Observable {
     }
 
     public void agregarFichasReservadasEnPais(Pais pais, Integer cantidad) {
-        for (int i = 0; i < cantidad ; i++) {
+        for (int i = 0; i < cantidad ; i++)
             pais.agregarFicha(fichasReservadas.remove(0));
-        }
         notifyObservers();
-//        System.out.println("No seas trampos@");
+    }
+
+    public void moverTropasAPais(Pais actual, Pais destino, Integer cantidad) {
+        for (int i = 0; i < cantidad ; i++)
+            actual.moverTropa(destino);
+        notifyObservers();
     }
 
     public Integer cantidadFichasReservadas() {

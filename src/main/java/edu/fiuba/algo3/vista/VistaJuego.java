@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
+import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -45,11 +46,13 @@ public class VistaJuego extends Escena {
         estados.setScaleY(3);
 
         BloqueDeIncorporacion bloqueIncorporacion = new BloqueDeIncorporacion(juego);
-        BloqueDeAtaque bloqueDeAtaque = new BloqueDeAtaque(juego);
+//        BloqueDeAtaque bloqueDeAtaque = new BloqueDeAtaque(juego);
+        BloqueDeMovimiento bloqueDeMovimiento = new BloqueDeMovimiento(juego);
 
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
-        padre.setRight(bloqueDeAtaque);
+//        padre.setRight(bloqueDeAtaque);
+        padre.setRight(bloqueDeMovimiento);
         padre.setLeft(bloqueIncorporacion);
 
 
