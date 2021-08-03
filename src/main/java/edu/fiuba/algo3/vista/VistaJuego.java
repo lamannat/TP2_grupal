@@ -89,7 +89,7 @@ public class VistaJuego extends Escena implements Observer{
         contenedorMapa.setPrefHeight(540);
         contenedorMapa.setPrefWidth(960);
 
-        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.png");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
