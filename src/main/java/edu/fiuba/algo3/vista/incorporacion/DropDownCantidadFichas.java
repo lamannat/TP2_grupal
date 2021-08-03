@@ -15,18 +15,20 @@ public class DropDownCantidadFichas extends ComboBox implements Observer {
         // Esto no va acá
         Jugador jugadorActual = juego.jugadorActual();
         jugadorActual.darFichas(jugadorActual.generarFichas(5));
-        System.out.println(jugadorActual.getNombre() + "agregué fichas" );
+//        System.out.println(jugadorActual.getNombre() + "agregué fichas" );
 
         ObservableList<String> cantidadIncorporable = FXCollections.observableArrayList();
 
-        for (Integer i = 1; i <= jugadorActual.cantidadFichasReservadas(); i++) {
+        for (Integer i = 1; i <= jugadorActual.cantidadFichasReservadas(); i++)
             cantidadIncorporable.add(i.toString());
-        }
 
         this.getItems().clear();
         this.getItems().addAll(cantidadIncorporable);
 
         this.setOnAction(e -> {
+            if (this.getValue() == null || Integer.parseInt((String)this.getValue()) <= 0)
+                return;
+
             incorporar.setCantidadDeFichas(Integer.parseInt((String)this.getValue()));
         });
     }
@@ -38,12 +40,10 @@ public class DropDownCantidadFichas extends ComboBox implements Observer {
 
         ObservableList<String> cantidadIncorporable = FXCollections.observableArrayList();
 
-        for (Integer i = 1; i <= jugadorActual.cantidadFichasReservadas() ; i++) {
+        for (Integer i = 1; i <= jugadorActual.cantidadFichasReservadas() ; i++)
             cantidadIncorporable.add(i.toString());
-        }
 
         this.getItems().clear();
         this.getItems().addAll(cantidadIncorporable);
-
     }
 }

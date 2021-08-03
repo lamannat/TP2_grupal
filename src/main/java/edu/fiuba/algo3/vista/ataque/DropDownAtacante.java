@@ -46,7 +46,7 @@ public class DropDownAtacante extends ComboBox implements Observer {
 
         ObservableList<String> opciones = FXCollections.observableArrayList();
 
-        for (Pais pais: jugador.getPaisesConquistados())
+        for (Pais pais: jugador.getPaisAtacantes())
             opciones.add(pais.toString());
 
         this.getItems().clear();

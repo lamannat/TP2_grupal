@@ -15,10 +15,12 @@ public class BotonIncorporar extends Button {
         this.juego = juego;
 
         this.setOnAction(e -> {
-            if(paisIncorporador == null || cantidadDeFichas == null) {
+            if(paisIncorporador == null || cantidadDeFichas == null)
                 return;
-            }
-            juego.jugadorActual().agregarFichasReservadasEnPais(paisIncorporador,cantidadDeFichas);
+
+            this.juego.jugadorActual().agregarFichasReservadasEnPais(paisIncorporador,cantidadDeFichas);
+            paisIncorporador = null;
+            cantidadDeFichas = null;
         });
     }
 

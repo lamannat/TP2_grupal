@@ -5,13 +5,16 @@ import javafx.scene.control.Button;
 
 public class BotonAtacar extends Button {
 
-    private Pais paisAtacante;
-    private Pais paisDefensor;
+    private Pais paisAtacante = null;
+    private Pais paisDefensor = null;
 
     public BotonAtacar(Juego juego){
         this.setText("Atacar");
 
         this.setOnAction(e-> {
+            if (paisAtacante == null || paisDefensor == null)
+                return;
+
             try {
                 paisAtacante.paisAtacaAPais(paisDefensor,juego.getBatalla());
             } catch (FichasInsuficientesException fic) {

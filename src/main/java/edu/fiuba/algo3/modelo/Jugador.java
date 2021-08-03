@@ -127,7 +127,7 @@ public class Jugador implements Observable {
         return objetivos.stream().anyMatch(Objetivo::cumplido);
     }
 
-    public List<Pais> getPaisesConquistados() {
+    public List<Pais> getPaisAtacantes() {
         List<Pais> paises = new ArrayList<>();
         for (Pais pais : paisesConquistados)
             if (pais.fichasSuficientes())
@@ -135,11 +135,16 @@ public class Jugador implements Observable {
         return paises;
     }
 
+    public List<Pais> getPaisesConquistados() {
+        return paisesConquistados;
+    }
+
     public void agregarFichasReservadasEnPais(Pais pais, Integer cantidad) {
         for (int i = 0; i < cantidad ; i++) {
             pais.agregarFicha(fichasReservadas.remove(0));
         }
-        System.out.println("No seas trampos@");
+        notifyObservers();
+//        System.out.println("No seas trampos@");
     }
 
     public Integer cantidadFichasReservadas() {

@@ -12,6 +12,7 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
     private Juego juego;
 
     public DropDownPaisElegido(Juego juego, BotonIncorporar incorporar) {
+        this.juego = juego;
         Jugador jugador = juego.jugadorActual();
 
         ObservableList<String> incorporables = FXCollections.observableArrayList();
@@ -23,7 +24,7 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
         this.getItems().addAll(incorporables.sorted());
 
         this.setOnAction(e -> {
-            Pais paisIncorporable = juego.getPaisPorNombre((String)this.getValue());
+            Pais paisIncorporable = this.juego.getPaisPorNombre((String)this.getValue());
             if (paisIncorporable == null)
                 return;
             incorporar.setPaisIncorporador(paisIncorporable);
@@ -32,5 +33,14 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
     }
 
     @Override
-    public void change() { this.getItems().clear(); }
+    public void change() {
+        Jugador jugador = juego.jugadorActual();
+
+        ObservableList<String> incorporables = FXCollections.observableArrayList();
+
+        for (Pais pais: jugador.getPaisesConquistados())
+            incorporables.add(pais.toString());
+        this.getItems().clear();
+        this.getItems().addAll(incorporables.sorted());
+    }
 }

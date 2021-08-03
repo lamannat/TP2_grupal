@@ -38,7 +38,7 @@ public class Tablero {
         while (paisParaAsignar != null) {
             Jugador jugadorActual = turno.jugadorActual();
             jugadorActual.agregarPais(paisParaAsignar);
-            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(2)); // cambiar feo
+            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(1)); // cambiar feo
             paisParaAsignar = obtenerPaisNoAsignado();
             turno.avanzarJugador();
         }
