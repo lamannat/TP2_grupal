@@ -35,7 +35,7 @@ public class App extends Application {
         ventana = stage;
         ventana.setTitle("A.L.T.E.G.O. - FIUBA");
         SetupJuego setup = new SetupJuego();
-        VistaInicio vistainicio = new VistaInicio(this.ventana, this.resolucionAncho, this.resolucionAlto);
+        VistaInicio vistainicio = new VistaInicio(this);
         Scene escena = new Scene(vistainicio);
         ventana.setFullScreen(false);
         File estilo = new File ("src/main/java/edu/fiuba/algo3/aplicacion/css/start-screen.css");
@@ -49,13 +49,15 @@ public class App extends Application {
         launch();
     }
 
-    /*public void ingresarJugadores() {
+    public int getResolucionAncho(){
+        return this.resolucionAncho;
+    }
 
-        StackPane layout = new StackPane();
+    public int getResolucionAlto(){
+        return this.resolucionAlto;
+    }
 
-    }*/
-
-    public Stage getStage() {
-        return this.ventana;
+    public void setScene(Scene escena){
+        this.ventana.setScene(escena);
     }
 }

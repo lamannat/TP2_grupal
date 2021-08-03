@@ -11,19 +11,18 @@ import java.io.File;
 
 
 public class PantallaNombresBotonAtrasEventHandler implements EventHandler<ActionEvent> {
-	private Stage ventana;
-	
-	public PantallaNombresBotonAtrasEventHandler(Stage ventana) {
+	private App app;
+	public PantallaNombresBotonAtrasEventHandler(App app) {
 
-		this.ventana = ventana;
+		this.app = app;
 	}
 	
 	@Override
 	public void handle(ActionEvent actionEvent) {
-		Scene escena = new Scene(new VistaInicio(this.ventana, 1280, 720));
+		Scene escena = new Scene(new VistaInicio(app));
 		File estilo = new File ("src/main/java/edu/fiuba/algo3/aplicacion/css/start-screen.css");
 		escena.getStylesheets().add(estilo.toURI().toString());
-		ventana.setScene(escena);
+		app.setScene(escena);
 	}
 
 }

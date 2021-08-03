@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class VistaInicio extends StackPane {
 
-    public VistaInicio(Stage ventana, int resolucionAncho, int resolucionAlto){
+    public VistaInicio(App app){
         super();
         Label titulo = new Label();
         Label integrantes = new Label();
@@ -29,14 +29,14 @@ public class VistaInicio extends StackPane {
 
         salir.setOnAction(new BotonSalirEventHandler());
 
-        comenzar.setOnAction(new BotonComenzarEventHandler(ventana));
+        comenzar.setOnAction(new BotonComenzarEventHandler(app));
 
         contenedorVertical.getChildren().addAll(comenzar,salir);
         contenedorVertical.setSpacing(20);
         contenedorVertical.setPadding(new Insets(240,0,0,50));
 
-        this.setPrefWidth(resolucionAncho);
-        this.setPrefHeight(resolucionAlto);
+        this.setPrefWidth(app.getResolucionAncho());
+        this.setPrefHeight(app.getResolucionAlto());
         this.getChildren().addAll(titulo, integrantes, contenedorVertical);
         this.setPadding(new Insets(10));
     }

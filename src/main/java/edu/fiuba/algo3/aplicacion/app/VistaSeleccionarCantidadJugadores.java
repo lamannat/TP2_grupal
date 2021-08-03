@@ -16,16 +16,16 @@ import java.io.File;
 
 public class VistaSeleccionarCantidadJugadores extends StackPane {
 
-    public VistaSeleccionarCantidadJugadores(Stage ventana, int resolucionAncho, int resolucionAlto){
+    public VistaSeleccionarCantidadJugadores(App app){
 
         super();
 
         Label etiquetaIngreseCantidadDeJugadores = new Label();
-        Button etiquetaNumero2 = new Button("2");
-        Button etiquetaNumero3 = new Button("3");
-        Button etiquetaNumero4 = new Button("4");
-        Button etiquetaNumero5 = new Button("5");
-        Button etiquetaNumero6 = new Button("6");
+        Button etiquetaNumero2 = new BotonCantidad(app, 2, "2");
+        Button etiquetaNumero3 = new BotonCantidad(app, 3, "3");
+        Button etiquetaNumero4 = new BotonCantidad(app, 4, "4");
+        Button etiquetaNumero5 = new BotonCantidad(app, 5, "5");
+        Button etiquetaNumero6 = new BotonCantidad(app, 6, "6");
         Label etiquetaError= new Label();
         Button botonAtras = new Button("Atras");
 
@@ -63,17 +63,12 @@ public class VistaSeleccionarCantidadJugadores extends StackPane {
 
         //eventos
 
-        botonAtras.setOnAction(new PantallaNombresBotonAtrasEventHandler(ventana));
+        botonAtras.setOnAction(new PantallaNombresBotonAtrasEventHandler(app));
 
         StackPane.setAlignment(this, Pos.CENTER );
         StackPane.setAlignment(botonAtras,Pos.BOTTOM_LEFT);
 
-        this.setPrefWidth(resolucionAncho);
-        this.setPrefHeight(resolucionAlto);
-
-        Scene escena = new Scene(this);
-        File estilo = new File ("src/main/java/edu/fiuba/algo3/aplicacion/css/name-screen.css");
-        escena.getStylesheets().add(estilo.toURI().toString());
-        ventana.setScene(escena);
+        this.setPrefWidth(app.getResolucionAncho());
+        this.setPrefHeight(app.getResolucionAlto());
     }
 }

@@ -6,11 +6,11 @@ import javafx.scene.control.Button;
 public class BotonCantidad extends Button {
     private int cantidad;
 
-    public BotonCantidad(int cantidad, String text){
+    public BotonCantidad(App app, int cantidad, String text){
         super();
         this.cantidad = cantidad;
         this.setText(text);
-        this.setOnAction(new BotonCantidadEventHandler(cantidad));
+        this.setOnAction(new BotonCantidadEventHandler(app, cantidad));
     }
 
 
