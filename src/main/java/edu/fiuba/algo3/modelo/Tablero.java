@@ -38,7 +38,7 @@ public class Tablero {
         while (paisParaAsignar != null) {
             Jugador jugadorActual = turno.jugadorActual();
             jugadorActual.agregarPais(paisParaAsignar);
-            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(1)); // cambiar feo
+            paisParaAsignar.agregarFichas(jugadorActual.generarFichas(2)); // cambiar feo
             paisParaAsignar = obtenerPaisNoAsignado();
             turno.avanzarJugador();
         }
@@ -51,5 +51,11 @@ public class Tablero {
                 return pais;
         }
         return null;
+    }
+
+    public void addObserverAPaises(Observer observer){
+        for (Continente continente : continentes) {
+            continente.addObserverAPaises(observer);
+        }
     }
 }

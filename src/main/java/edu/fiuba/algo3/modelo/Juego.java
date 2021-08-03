@@ -105,4 +105,9 @@ public class Juego implements Observable {
     public void removeObserver(Observer observer) {
         observadores.remove(observer);
     }
+
+    public void addObserverAPaises(Observer observer){
+        this.tablero.addObserverAPaises(observer);
+    }
+
 }

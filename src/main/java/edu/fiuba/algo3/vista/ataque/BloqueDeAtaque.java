@@ -20,7 +20,8 @@ public class BloqueDeAtaque extends VBox implements Observer {
         Batalla batalla = juego.getBatalla();
         batalla.addObserver(paisParaAtacar);
         batalla.addObserver(paisQueSePuedeAtacar);
-
+        juego.addObserverAPaises(paisParaAtacar);
+        juego.addObserverAPaises(paisQueSePuedeAtacar);
         this.getChildren().addAll(paisParaAtacar,paisQueSePuedeAtacar,botonAtacar);
 
     }
