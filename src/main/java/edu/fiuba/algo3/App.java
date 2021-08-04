@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -36,6 +37,7 @@ public class App extends Application {
 
         VistaJuego vistaJuego = new VistaJuego(new BorderPane(), controladorDeEscena, inicio);
         controladorDeEscena.agregarEscena(vistaJuego);
+        controladorDeEscena.agregarEscena(new VistaTerminoElJuego(new VBox(), controladorDeEscena, inicio));
 
         Escena sceneTitulo = controladorDeEscena.siguienteEscena();
         sceneTitulo.mostrar(ventana);
