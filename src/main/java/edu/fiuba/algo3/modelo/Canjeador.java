@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.cartas.Carta;
+import edu.fiuba.algo3.modelo.cartas.Mazo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class Canjeador {
@@ -18,7 +20,9 @@ public class Canjeador {
         this.numeroDeCanje = 0;
     }
 
-    public void agregarCartaPais(Carta carta) { cartas.add(carta); }
+    public void agregarCartaPais(Carta carta) {
+        cartas.add(carta);
+    }
 
     private boolean hayPatronDeIguales() {
         for (Carta cartaActual : this.cartas) {
@@ -26,7 +30,7 @@ public class Canjeador {
             if (listaIguales.size() >= cantidadCartasConPatron) {
                 for (Carta unaCarta : listaIguales){
                     cartas.remove(unaCarta);
-                    mazo.agregarCarta(unaCarta);
+                    unaCarta.devolverAlMazo(mazo);
                 }
                 return true;
             }
@@ -42,7 +46,7 @@ public class Canjeador {
                 if (listaDiferentes.size() >= cantidadCartasConPatron) {
                     for (Carta unaCarta : listaDiferentes) {
                         cartas.remove(unaCarta);
-                        mazo.agregarCarta(unaCarta);
+                        unaCarta.devolverAlMazo(mazo);
                     }
                     return true;
                 }
@@ -60,6 +64,7 @@ public class Canjeador {
         if (!hayPatronDeIguales() && !hayPatronDeDiferentes())
             return 0;
         this.numeroDeCanje++;
+
         return decidirNumeroFichas();
     }
 
@@ -71,8 +76,9 @@ public class Canjeador {
         }
     }
 
-    public Canjeador getInstanciaNueva() {
-        return new Canjeador(mazo);
+    public void canjearConTarjetaPais(List<Pais> paisesDelJugador, Jugador jugador) {
+        for (Pais pais : paisesDelJugador)
+            for (Carta carta : cartas)
+                pais.agregarFichas(jugador.generarFichas(carta.fichasPorPais(pais)));
     }
-
 }

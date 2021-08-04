@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.*;
 import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import org.junit.jupiter.api.Test;

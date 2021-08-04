@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.cartas.Carta;
+import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorRojo;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
 import edu.fiuba.algo3.modelo.simbolo.*;

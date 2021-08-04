@@ -36,6 +36,7 @@ public class Pais implements Observable{
     
     public void agregarFichas(List<Ficha> fichas) {
         this.fichas.addAll(fichas);
+        notifyObservers();
     }
 
     public void agregarFicha(Ficha ficha) {
@@ -102,15 +103,15 @@ public class Pais implements Observable{
         if (paisDefensor.fueConquistado()) {
             this.moverTropa(paisDefensor);
             paisDefensor.meConquisto(this.jugador);
-            this.jugador.merecesConseguirUnaCarta();
         }
-
         notifyObservers();
     }
 
     private void meConquisto(Jugador unJugador) {
         this.jugador.quitarPais(this);
         unJugador.agregarPais(this);
+        unJugador.merecesConseguirUnaCarta();
+        unJugador.agregaFichasPorCartas();
         notifyObservers();
     }
 
