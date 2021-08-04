@@ -56,11 +56,16 @@ public class VistaJuego extends Escena implements Observer{
         estados.setMinSize(1280, 90);
         estados.setMaxSize(1280, 90);
 
+        //boton de objetivo
+        BotonObjetivo botonObjetivo = new BotonObjetivo(juego);
+
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
-        estados.getChildren().add(estadoTitulo);
+        estados.getChildren().addAll(estadoTitulo, botonObjetivo); //////////cambio
         estados.setAlignment(Pos.CENTER);
+        estados.setSpacing(50);///////////////cambio
+
 
         bloqueDeAccion = new HashMap<>();
 

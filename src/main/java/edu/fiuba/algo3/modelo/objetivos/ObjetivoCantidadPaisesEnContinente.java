@@ -18,4 +18,10 @@ public class ObjetivoCantidadPaisesEnContinente implements Objetivo{
     public boolean cumplido() {
         return this.continente.conquistoCantidadDePaises(this.jugador, this.cantidad);
     }
+
+    @Override
+    public String toString(){
+        String o = "Ocupar " + cantidad + " paises de " + continente.getNombre();
+        return o;
+    }
 }

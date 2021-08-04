@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoCompuesto;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 
 import java.util.ArrayList;
@@ -177,5 +178,9 @@ public class Jugador implements Observable {
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public Objetivo getObjetivoCompuesto() {
+        return objetivos.get(1);
     }
 }

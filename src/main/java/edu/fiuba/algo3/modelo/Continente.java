@@ -57,4 +57,8 @@ public class Continente {
             pais.addObserver(observer);
         }
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

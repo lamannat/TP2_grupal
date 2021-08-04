@@ -13,4 +13,10 @@ public class ObjetivoEliminarJugador implements Objetivo {
     public boolean cumplido() {
         return !this.paraEliminar.seguisJugando();
     }
+
+    @Override
+    public String toString(){
+        String o = "Destruir el ejercito " + paraEliminar.getColor().getNombre();
+        return o;
+    }
 }
