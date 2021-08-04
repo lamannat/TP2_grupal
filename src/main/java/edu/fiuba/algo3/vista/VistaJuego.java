@@ -31,6 +31,8 @@ public class VistaJuego extends Escena implements Observer{
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
     private HBox estados;
+    private double ANCHO = 1120.0;
+    private double ALTO = 630.0;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -44,15 +46,26 @@ public class VistaJuego extends Escena implements Observer{
 
         this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
         this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
+        this.padre.setMinWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setMinHeight(controladorDeEscena.getResolucionAlto());
+        this.padre.setMaxWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setMaxHeight(controladorDeEscena.getResolucionAlto());
 
         estados = new HBox();
-        estados.setPrefHeight(100);
+        estados.setPrefSize(1280, 90);
+        estados.setMinSize(1280, 90);
+        estados.setMaxSize(1280, 90);
+
+        //boton de objetivo
+        BotonObjetivo botonObjetivo = new BotonObjetivo(juego);
+
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
-        estadoTitulo.setTextFill(Color.BLACK);
-        estados.getChildren().add(estadoTitulo);
+        estados.getChildren().addAll(estadoTitulo, botonObjetivo); //////////cambio
         estados.setAlignment(Pos.CENTER);
+        estados.setSpacing(50);///////////////cambio
+
 
         bloqueDeAccion = new HashMap<>();
 
@@ -74,9 +87,12 @@ public class VistaJuego extends Escena implements Observer{
         info.setAlignment(acciones, Pos.TOP_CENTER);
         info.setAlignment(botonSiguienteTurno, Pos.BOTTOM_CENTER);
 
+
         padre.setTop(estados);
-        padre.setCenter(this.setearMapa());
+        padre.setLeft(this.setearMapa());
         padre.setRight(info);
+
+        padre.setStyle("-fx-background-color: #272727");
 
         this.juego.agregarObserverARondaActual(this);
     }
@@ -89,17 +105,17 @@ public class VistaJuego extends Escena implements Observer{
         return iv;*/
 
         AnchorPane contenedorMapa = new AnchorPane();
-        contenedorMapa.setMaxHeight(720);
-        contenedorMapa.setMaxWidth(1280);
-        contenedorMapa.setPrefHeight(720);
-        contenedorMapa.setPrefWidth(1280);
+        contenedorMapa.setMaxHeight(ALTO);
+        contenedorMapa.setMaxWidth(ANCHO);
+        contenedorMapa.setPrefHeight(ALTO);
+        contenedorMapa.setPrefWidth(ANCHO);
 
         File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
-        iv.fitWidthProperty().set(1280);
-        iv.fitHeightProperty().set(720);
+        iv.fitWidthProperty().set(ANCHO);
+        iv.fitHeightProperty().set(ALTO);
         iv.setImage(image);
 
         contenedorMapa.getChildren().add(setFichas());
@@ -118,7 +134,9 @@ public class VistaJuego extends Escena implements Observer{
 
         for (List<String> linea : LeerArchivo.leerArchivo("mapa.txt")) {
             VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0));
-            int x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
+            double x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
+            x *= ANCHO / 1280.0;
+            y *= ALTO / 720.0;
             boton.setLayoutX(x);
             boton.setLayoutY(y);
             fichas.getChildren().add(boton);
@@ -131,8 +149,8 @@ public class VistaJuego extends Escena implements Observer{
 
         AnchorPane fichasGuia  = new AnchorPane();
 
-        for(int i = 0; i < 1280; i+=25){
-            for(int j = 0; j < 720; j+=50){
+        for(int i = 0; i < ALTO; i+=25){
+            for(int j = 0; j < ANCHO; j+=50){
                 Button botonGuia = new Button();
                 botonGuia.setTooltip(new Tooltip(String.valueOf(i) + " " + String.valueOf(j)));
                 botonGuia.setLayoutX(i);

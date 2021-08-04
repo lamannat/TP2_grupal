@@ -21,7 +21,7 @@ public class JuegoTest {
             Continente continente = new Continente(continenteYPaises.get(0));
             continentes.add(continente);
 
-            for (int i = 1; i < continenteYPaises.size(); i++)
+            for (int i = 2; i < continenteYPaises.size(); i++)
                 continente.agregarPais(new Pais(continenteYPaises.get(i)));
         }
         return continentes;
@@ -43,8 +43,8 @@ public class JuegoTest {
 
         Juego juego = new Juego(tablero, turno, batalla,new Mazo());
 
-        assertEquals(Valentin.contarTotalFichas(), 25);
-        assertEquals(Juan.contarTotalFichas(), 25);
+        assertEquals(25, Valentin.contarTotalFichas());
+        assertEquals(25, Juan.contarTotalFichas());
     }
 
 //    @Test

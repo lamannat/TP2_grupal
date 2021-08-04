@@ -24,7 +24,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         ventana = stage;
-
+        
         SetUpJuego inicio = new SetUpJuego();
 
         ControladorDeEscena controladorDeEscena = new ControladorDeEscena(1280, 720);

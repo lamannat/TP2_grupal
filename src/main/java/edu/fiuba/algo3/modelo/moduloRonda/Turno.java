@@ -23,4 +23,8 @@ public class Turno {
     public boolean ultimoJugador() {
         return indice == jugadores.size()-1;
     }
+
+    public void resetear() {
+        indice = 0;
+    }
 }

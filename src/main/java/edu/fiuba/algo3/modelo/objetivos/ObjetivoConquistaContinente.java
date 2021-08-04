@@ -16,4 +16,10 @@ public class ObjetivoConquistaContinente implements Objetivo{
     public boolean cumplido() {
         return this.continente.conquistadoPorJugador(this.jugador);
     }
+
+    @Override
+    public String toString(){
+        String o = "Ocupar " + continente.getNombre();
+        return o;
+    }
 }

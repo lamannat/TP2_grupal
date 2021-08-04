@@ -42,6 +42,7 @@ public class Tablero {
             paisParaAsignar = obtenerPaisNoAsignado();
             turno.avanzarJugador();
         }
+        turno.resetear();
     }
 
     public Pais getPaisPorNombre(String nombre) {
