@@ -17,6 +17,7 @@ public class BloqueDeAtaque extends BloqueAccion {
 
     @Override
     public void change() {
+        // actualizar();
     }
 
     public void actualizar() {

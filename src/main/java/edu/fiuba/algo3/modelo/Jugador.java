@@ -173,4 +173,9 @@ public class Jugador implements Observable {
 
         return fichasPorCartas + fichasPorPaises + fichasPorContinentes;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

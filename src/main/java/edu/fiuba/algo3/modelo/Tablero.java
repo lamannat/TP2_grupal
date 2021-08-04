@@ -40,9 +40,9 @@ public class Tablero {
             jugadorActual.agregarPais(paisParaAsignar);
             paisParaAsignar.agregarFichas(jugadorActual.generarFichas(1));
             paisParaAsignar = obtenerPaisNoAsignado();
-            System.out.println(jugadorActual + " " + paisParaAsignar);
             turno.avanzarJugador();
         }
+        turno.resetear();
     }
 
     public Pais getPaisPorNombre(String nombre) {

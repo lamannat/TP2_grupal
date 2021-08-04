@@ -46,10 +46,10 @@ public class Juego implements Observable {
             this.turno.avanzarJugador();
         }
         this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
-        if (this.turno.jugadorActual().ganador()) {
-//            jugadorGano = true;
-            System.out.println("Yey");
-        }
+//        if (this.turno.jugadorActual().ganador()) {
+////            jugadorGano = true;
+//            System.out.println("Yey");
+//        }
     }
 
     public void cartaParaJugador(Jugador jugador) {
