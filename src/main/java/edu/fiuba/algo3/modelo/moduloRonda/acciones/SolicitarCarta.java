@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
 public class SolicitarCarta implements Accion {
     @Override
     public void ejecutar(Jugador jugador) {
-
     }
 
     @Override

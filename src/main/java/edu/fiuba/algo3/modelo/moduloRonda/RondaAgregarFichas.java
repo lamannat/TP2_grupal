@@ -7,7 +7,11 @@ public abstract class RondaAgregarFichas extends Ronda{
 
     protected Juego juego;
     protected static int cantFichas;
-    private boolean terminado = false;
+    private boolean terminado;
+
+    public RondaAgregarFichas() {
+        terminado = false;
+    }
 
     public void comenzarLaRonda(Jugador jugador) {
         this.acciones.get(0).ejecutar(jugador);

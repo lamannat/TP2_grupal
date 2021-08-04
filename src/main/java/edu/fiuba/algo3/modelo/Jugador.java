@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
-import edu.fiuba.algo3.modelo.objetivos.ObjetivoCompuesto;
-import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +59,7 @@ public class Jugador implements Observable {
     public void solicitarCarta(Carta carta) {
         mereceCarta = false;
         canjeador.agregarCartaPais(carta);
+        agregaFichasPorCartas();
     }
 
     public boolean merecesCarta() {
@@ -146,6 +146,24 @@ public class Jugador implements Observable {
         return fichasReservadas.size();
     }
 
+    public void merecesConseguirUnaCarta() {
+        mereceCarta = true;
+    }
+
+    public int cantidadFichasGanadas(Juego juego) {
+        float cantPaisesConquistado = this.paisesConquistados.size();
+        int fichasPorPaises = (int) Math.max(Math.floor(cantPaisesConquistado/2), 3);
+        int fichasPorCartas = this.canjeador.canjearCartas();
+        int fichasPorContinentes = juego.fichasPorContinente(this);
+
+        return fichasPorCartas + fichasPorPaises + fichasPorContinentes;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
@@ -161,26 +179,11 @@ public class Jugador implements Observable {
         observers.remove(observer);
     }
 
-    public void merecesConseguirUnaCarta() {
-        mereceCarta = true;
-    }
-
-    public int cantidadFichasGanadas(Juego juego) {
-
-        float cantPaisesConquistado = this.paisesConquistados.size();
-        int fichasPorPaises = (int) Math.max(Math.floor(cantPaisesConquistado/2), 3);
-        int fichasPorCartas = this.canjeador.canjearCartas();
-        int fichasPorContinentes = juego.fichasPorContinente(this);
-
-        return fichasPorCartas + fichasPorPaises + fichasPorContinentes;
-    }
-
-    @Override
-    public String toString() {
-        return nombre;
-    }
-
     public Objetivo getObjetivoCompuesto() {
         return objetivos.get(1);
+    }
+
+    public void agregaFichasPorCartas() {
+        canjeador.canjearConTarjetaPais(paisesConquistados, this);
     }
 }
