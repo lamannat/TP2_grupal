@@ -31,6 +31,8 @@ public class VistaJuego extends Escena implements Observer{
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
     private HBox estados;
+    private int ANCHO = 540;
+    private int LARGO = 960;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -89,17 +91,17 @@ public class VistaJuego extends Escena implements Observer{
         return iv;*/
 
         AnchorPane contenedorMapa = new AnchorPane();
-        contenedorMapa.setMaxHeight(720);
-        contenedorMapa.setMaxWidth(1280);
-        contenedorMapa.setPrefHeight(720);
-        contenedorMapa.setPrefWidth(1280);
+        contenedorMapa.setMaxHeight(ANCHO);
+        contenedorMapa.setMaxWidth(LARGO);
+        contenedorMapa.setPrefHeight(ANCHO);
+        contenedorMapa.setPrefWidth(LARGO);
 
         File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
-        iv.fitWidthProperty().set(1280);
-        iv.fitHeightProperty().set(720);
+        iv.fitWidthProperty().set(LARGO);
+        iv.fitHeightProperty().set(ANCHO);
         iv.setImage(image);
 
         contenedorMapa.getChildren().add(setFichas());
@@ -131,8 +133,8 @@ public class VistaJuego extends Escena implements Observer{
 
         AnchorPane fichasGuia  = new AnchorPane();
 
-        for(int i = 0; i < 1280; i+=25){
-            for(int j = 0; j < 720; j+=50){
+        for(int i = 0; i < LARGO; i+=25){
+            for(int j = 0; j < ANCHO; j+=50){
                 Button botonGuia = new Button();
                 botonGuia.setTooltip(new Tooltip(String.valueOf(i) + " " + String.valueOf(j)));
                 botonGuia.setLayoutX(i);
