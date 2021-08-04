@@ -20,7 +20,7 @@ public class TableroTest {
             Continente continente = new Continente(continenteYPaises.get(0));
             continentes.add(continente);
 
-            for (int i = 1; i < continenteYPaises.size(); i++)
+            for (int i = 2; i < continenteYPaises.size(); i++)
                 continente.agregarPais(new Pais(continenteYPaises.get(i)));
         }
         return continentes;

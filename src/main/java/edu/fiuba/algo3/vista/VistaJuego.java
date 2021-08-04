@@ -82,8 +82,9 @@ public class VistaJuego extends Escena implements Observer{
         info.setAlignment(acciones, Pos.TOP_CENTER);
         info.setAlignment(botonSiguienteTurno, Pos.BOTTOM_CENTER);
 
+
         padre.setTop(estados);
-        padre.setCenter(this.setearMapa());
+        padre.setLeft(this.setearMapa());
         padre.setRight(info);
 
         padre.setStyle("-fx-background-color: #272727");
