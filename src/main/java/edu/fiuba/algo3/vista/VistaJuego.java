@@ -31,8 +31,8 @@ public class VistaJuego extends Escena implements Observer{
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
     private HBox estados;
-    private double ANCHO = 960.0;
-    private double ALTO = 540.0;
+    private double ANCHO = 1120.0;
+    private double ALTO = 630.0;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -46,9 +46,16 @@ public class VistaJuego extends Escena implements Observer{
 
         this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
         this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
+        this.padre.setMinWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setMinHeight(controladorDeEscena.getResolucionAlto());
+        this.padre.setMaxWidth(controladorDeEscena.getResolucionAncho());
+        this.padre.setMaxHeight(controladorDeEscena.getResolucionAlto());
 
         estados = new HBox();
-        estados.setPrefHeight(100);
+        estados.setPrefSize(1280, 90);
+        estados.setMinSize(1280, 90);
+        estados.setMaxSize(1280, 90);
+
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));

@@ -22,21 +22,14 @@ public class VistaBotonPais extends Button implements Observer {
         this.setTooltip(new Tooltip(paisAsociado.toString()));
         this.setText(String.valueOf(paisAsociado.cantidadFichas()));
         this.setTextFill(Color.valueOf(paisAsociado.getColor().getColorText()));
-        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 10");
+        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 12");
 
-        this.setMaxWidth(18);
-        this.setMinWidth(18);
-
-        this.setMaxHeight(18);
-        this.setMinHeight(18);
-
-        this.setPrefWidth(18);
-        this.setPrefHeight(18);
     }
 
     @Override
     public void change() {
         this.setText(String.valueOf(paisAsociado.cantidadFichas()));
-        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 10");
+        this.setTextFill(Color.valueOf(paisAsociado.getColor().getColorText()));
+        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 12");
     }
 }
