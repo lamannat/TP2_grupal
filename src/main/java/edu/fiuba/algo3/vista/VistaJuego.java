@@ -33,6 +33,7 @@ public class VistaJuego extends Escena implements Observer{
     private HBox estados;
     private double ANCHO = 1120.0;
     private double ALTO = 630.0;
+    private BotonObjetivo botonObjetivo; //////////
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -57,7 +58,8 @@ public class VistaJuego extends Escena implements Observer{
         estados.setMaxSize(1280, 90);
 
         //boton de objetivo
-        BotonObjetivo botonObjetivo = new BotonObjetivo(juego);
+        this.botonObjetivo = new BotonObjetivo();
+        this.botonObjetivo.actualizar(juego.jugadorActual());
 
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
@@ -183,6 +185,7 @@ public class VistaJuego extends Escena implements Observer{
         Label estadoTitulo = (Label)(this.estados.getChildren().get(0));
         estadoTitulo.setText("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
+        this.botonObjetivo.actualizar(juego.jugadorActual());
 
     }
 }
