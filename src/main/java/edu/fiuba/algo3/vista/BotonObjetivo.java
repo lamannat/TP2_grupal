@@ -16,20 +16,19 @@ public class BotonObjetivo extends Button {
 
     public BotonObjetivo(){
         this.setText("Objetivo");
+        this.setStyle("-fx-focus-color: transparent;");
 
 
         this.setOnAction(e -> {
             Label label = new Label(listaObjetivos);
-            label.setPrefSize(300,300);
-            label.setMaxSize(300,300);
-            label.setMinSize(200,200);
             label.setTextFill(Color.WHITE);
+            label.setStyle("-fx-font-size: 20");
 
             StackPane layout = new StackPane();
             layout.getChildren().add(label);
             layout.setStyle("-fx-background-color: #272727");
 
-            Scene nuevaEscena = new Scene(layout, 400,300);
+            Scene nuevaEscena = new Scene(layout, 450,300);
 
             // New window (Stage)
             Stage nuevaVentana = new Stage();
