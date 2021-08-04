@@ -13,6 +13,7 @@ public class Juego implements Observable {
     private final Batalla batalla;
     private final Mazo mazo;
     private final List<Observer> observadores;
+    private Jugador jugadorGanador;
 
     public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
@@ -21,7 +22,7 @@ public class Juego implements Observable {
         this.mazo = unMazo;
         this.tablero.asignarPaises(this.turno);
         this.observadores = new ArrayList<>();
-//        this.jugadorGano = false;
+        this.jugadorGanador = null;
     }
 
     public void seleccionarRonda(Ronda ronda) {
@@ -45,10 +46,11 @@ public class Juego implements Observable {
             this.rondaActual.resetearAcciones();
             this.turno.avanzarJugador();
         }
-        this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
         if (this.turno.jugadorActual().ganador()) {
-//            jugadorGano = true;
-            System.out.println("Yey");
+            jugadorGanador = this.turno.jugadorActual();
+            notifyObservers();
+        } else {
+            this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
         }
     }
 
@@ -92,5 +94,9 @@ public class Juego implements Observable {
 
     public int fichasPorContinente(Jugador jugador) {
         return tablero.fichasPorContinente(jugador);
+    }
+
+    public Jugador getJugadorGanador() {
+        return jugadorGanador;
     }
 }

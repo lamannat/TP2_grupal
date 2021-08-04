@@ -21,10 +21,12 @@ public class SetUpJuego implements Observable {
     private int cantidadJugadores;
     private final String OBJETIVO_ELIMINACION = "DESTRUIR";
 //    private final String OBJETIVO_DOMINACION = "OCUPAR";   ver si uso
+    private Juego juego;
 
     public SetUpJuego() {
-        observers = new ArrayList<>();
-        nombresYColores = new ArrayList<>();
+        this.observers = new ArrayList<>();
+        this.nombresYColores = new ArrayList<>();
+        this.juego = null;
     }
 
     @Override
@@ -57,6 +59,9 @@ public class SetUpJuego implements Observable {
 
     public Juego dameJuego() {
 
+        if (this.juego != null)
+            return this.juego;
+
         Mazo mazo = new Mazo();
         List<Jugador> jugadores = new ArrayList<>();
         for (Pair<String, Color> jugador : nombresYColores)
@@ -77,10 +82,10 @@ public class SetUpJuego implements Observable {
 
         this.agregarObjetivos(continentes,jugadores);
 
-        Juego juego = new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
-        juego.seleccionarRonda(new RondaAgregarCincoFichas(juego));
+        this.juego = new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
+        this.juego.seleccionarRonda(new RondaAgregarCincoFichas(juego));
 
-        return juego;
+        return this.juego;
     }
 
     private List<Carta>  agregarCartas(List<Pais> paises) {

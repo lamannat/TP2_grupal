@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
@@ -8,6 +9,7 @@ import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -31,6 +33,7 @@ public class VistaJuego extends Escena implements Observer{
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
     private HBox estados;
+    private Stage ventana;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -39,7 +42,9 @@ public class VistaJuego extends Escena implements Observer{
     }
 
     public void mostrar(Stage ventana) {
+        this.ventana = ventana;
         this.juego = setUp.dameJuego();
+        this.juego.addObserver(this);
         juego.agregarObserverARondaActual(this);
 
         this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
@@ -77,6 +82,7 @@ public class VistaJuego extends Escena implements Observer{
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
         padre.setRight(info);
+        padre.setStyle("-fx-background-color: #272727");
 
         this.juego.agregarObserverARondaActual(this);
     }
@@ -144,9 +150,15 @@ public class VistaJuego extends Escena implements Observer{
         return fichasGuia;
     }
 
-
     @Override
     public void change() {
+
+        Jugador jugadorGanador = juego.getJugadorGanador();
+        if (jugadorGanador != null) {
+            BotonSiguienteEscenaEventHandler algo = new BotonSiguienteEscenaEventHandler(this.ventana, this.controladorDeEscena);
+            algo.handle(new ActionEvent());
+            return;
+        }
 
         Ronda ronda = juego.dameRonda();
         Accion fase = ronda.dameFase();
