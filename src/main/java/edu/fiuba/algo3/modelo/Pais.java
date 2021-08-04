@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.color.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class Pais implements Observable{
 
     public void agregarFicha(Ficha ficha) {
         this.fichas.add(ficha);
+        notifyObservers();
     }
 
     private void puedeAtacarAPais(Pais pais) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
@@ -111,6 +114,7 @@ public class Pais implements Observable{
     private void meConquisto(Jugador unJugador) {
         this.jugador.quitarPais(this);
         unJugador.agregarPais(this);
+        notifyObservers();
     }
 
     private boolean fueConquistado() {
@@ -151,6 +155,10 @@ public class Pais implements Observable{
             if (pais.esAliado(this))
                 paises.add(pais);
         return paises;
+    }
+
+    public Color getColor(){
+        return this.jugador.getColor();
     }
 
     @Override

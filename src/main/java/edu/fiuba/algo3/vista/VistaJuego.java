@@ -10,7 +10,9 @@ import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -18,7 +20,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VistaJuego extends Escena implements Observer{
@@ -86,20 +90,81 @@ public class VistaJuego extends Escena implements Observer{
         return iv;*/
 
         AnchorPane contenedorMapa = new AnchorPane();
-        contenedorMapa.setPrefHeight(540);
-        contenedorMapa.setPrefWidth(960);
+        contenedorMapa.setMaxHeight(720);
+        contenedorMapa.setMaxWidth(1280);
+        contenedorMapa.setPrefHeight(720);
+        contenedorMapa.setPrefWidth(1280);
 
-        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.png");
+        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
-        iv.fitWidthProperty().bind(contenedorMapa.widthProperty());
-        iv.fitHeightProperty().bind(contenedorMapa.heightProperty());
+        iv.fitWidthProperty().set(1280);
+        iv.fitHeightProperty().set(720);
         iv.setImage(image);
+
+        contenedorMapa.getChildren().add(setFichas());
+
         contenedorMapa.getChildren().add(iv);
-        contenedorMapa.setStyle("-fx-background-color: red");
+        contenedorMapa.getChildren().add(setFichas());
+        //contenedorMapa.getChildren().add(setFichasGuia());
+        contenedorMapa.setStyle("-fx-background-color: #72745d");
 
         return contenedorMapa;
+    }
+
+    private AnchorPane setFichas() {
+
+        AnchorPane fichas = new AnchorPane();
+
+        VistaBotonPais botonArgentina = new VistaBotonPais(this.juego, "Argentina");
+        botonArgentina.setLayoutX(400);
+        botonArgentina.setLayoutY(550);
+        fichas.getChildren().add(botonArgentina);
+
+        VistaBotonPais botonChile = new VistaBotonPais(this.juego, "Chile");
+        botonChile.setLayoutX(360);
+        botonChile.setLayoutY(550);
+        fichas.getChildren().add(botonChile);
+
+        VistaBotonPais botonUruguay = new VistaBotonPais(this.juego, "Uruguay");
+        botonUruguay.setLayoutX(460);
+        botonUruguay.setLayoutY(525);
+        fichas.getChildren().add(botonUruguay);
+
+        VistaBotonPais botonBrasil = new VistaBotonPais(this.juego, "Brasil");
+        botonBrasil.setLayoutX(450);
+        botonBrasil.setLayoutY(450);
+        fichas.getChildren().add(botonBrasil);
+
+        VistaBotonPais botonPeru = new VistaBotonPais(this.juego, "Peru");
+        botonPeru.setLayoutX(360);
+        botonPeru.setLayoutY(475);
+        fichas.getChildren().add(botonPeru);
+
+        VistaBotonPais botonColombia = new VistaBotonPais(this.juego, "Colombia");
+        botonColombia.setLayoutX(355);
+        botonColombia.setLayoutY(425);
+        fichas.getChildren().add(botonColombia);
+
+        return fichas;
+    }
+
+    private AnchorPane setFichasGuia(){
+
+        AnchorPane fichasGuia  = new AnchorPane();
+
+        for(int i = 0; i < 1280; i+=25){
+            for(int j = 0; j < 720; j+=50){
+                Button botonGuia = new Button();
+                botonGuia.setTooltip(new Tooltip(String.valueOf(i) + " " + String.valueOf(j)));
+                botonGuia.setLayoutX(i);
+                botonGuia.setLayoutY(j);
+                fichasGuia.getChildren().add(botonGuia);
+            }
+        }
+
+        return fichasGuia;
     }
 
 
