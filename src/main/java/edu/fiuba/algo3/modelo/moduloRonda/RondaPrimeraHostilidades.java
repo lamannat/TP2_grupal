@@ -18,3 +18,11 @@ public class RondaPrimeraHostilidades extends RondaHostilidades {
         return new RondaHostilidadesGeneral(this.juego);
     }
 }
+/*
+ * 5 fichas
+ * 3 fichas
+ * Ronda hostilidades
+ * Ronda Incorporacion
+ * Ronda hostilidades
+ * Ronda Incorporacion
+ */
