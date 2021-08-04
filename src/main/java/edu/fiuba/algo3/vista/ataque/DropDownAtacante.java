@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class DropDownAtacante extends ComboBox implements Observer {
 
@@ -14,6 +16,7 @@ public class DropDownAtacante extends ComboBox implements Observer {
         this.juego = juego;
 
         this.asignarPaisesAtacantes();
+        this.setPromptText("Pais atacante");
 
         this.setOnAction(e -> {
             Pais paisAtacante = juego.getPaisPorNombre((String)this.getValue());

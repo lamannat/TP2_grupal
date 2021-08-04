@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class DropDownDefensor extends ComboBox implements Observer {
 
@@ -11,6 +13,7 @@ public class DropDownDefensor extends ComboBox implements Observer {
 
     public DropDownDefensor(Juego juego, BotonAtacar botonEnviar){
 
+        this.setPromptText("Pais a atacar");
 
         this.setOnAction(e-> {
 

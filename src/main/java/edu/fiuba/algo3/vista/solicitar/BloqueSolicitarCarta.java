@@ -5,6 +5,9 @@ import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.vista.BloqueAccion;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+
+import java.util.Collections;
 
 public class BloqueSolicitarCarta extends BloqueAccion {
 
@@ -17,6 +20,7 @@ public class BloqueSolicitarCarta extends BloqueAccion {
 
     public void actualizar() {
         Label estadoDeCarta = new Label("No conquisto en esta ronda");
+        estadoDeCarta.setTextFill(Color.WHITE);
         if (juego.jugadorActual().merecesCarta())
             estadoDeCarta.setText("Mereces carta yey");
         Label cartaGanada = new Label();
