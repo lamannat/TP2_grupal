@@ -59,13 +59,14 @@ public class SetUpJuego implements Observable {
 
     public Juego dameJuego() {
 
-        if (this.juego != null)
-            return this.juego;
+        if (this.juego != null) {
+            Juego juegoViejo = this.juego;
+            this.juego = null;
+            return juegoViejo;
+        }
 
         Mazo mazo = new Mazo();
-        List<Jugador> jugadores = new ArrayList<>();
-        for (Pair<String, Color> jugador : nombresYColores)
-            jugadores.add(new Jugador(jugador.getKey(), jugador.getValue(), new Canjeador(mazo)));
+        List<Jugador> jugadores = listaDeJugadores(mazo);
 
         Turno turno = new Turno(jugadores);
         Tablero tablero = new Tablero();
@@ -77,7 +78,7 @@ public class SetUpJuego implements Observable {
         for (Continente continente : continentes)
             tablero.agregarContinente(continente);
 
-        for (Carta carta :  agregarCartas(paises))
+        for (Carta carta : agregarCartas(paises))
             mazo.agregarCarta(carta);
 
         this.agregarObjetivos(continentes,jugadores);
@@ -86,6 +87,24 @@ public class SetUpJuego implements Observable {
         this.juego.seleccionarRonda(new RondaAgregarCincoFichas(juego));
 
         return this.juego;
+    }
+
+    private List<Jugador> listaDeJugadores(Mazo mazo) {
+        List<Jugador> jugadores = new ArrayList<>();
+
+        for (Pair<String, Color> jugador : nombresYColores)
+            jugadores.add(new Jugador(jugador.getKey(), jugador.getValue(), new Canjeador(mazo)));
+
+        List<Integer> dadosTirados = new ArrayList<>();
+        for (int i = 0; i < jugadores.size(); i++)
+            dadosTirados.add(ThreadLocalRandom.current().nextInt(0, 6));
+        Integer indiceMasBajo = 0;
+        for (int i = 0; i < dadosTirados.size(); i++)
+            if (dadosTirados.get(0) > dadosTirados.get(i))
+                indiceMasBajo = i;
+        for (int i = 0; i < indiceMasBajo; i++)
+            jugadores.add(jugadores.remove(0));
+        return jugadores;
     }
 
     private List<Carta>  agregarCartas(List<Pais> paises) {

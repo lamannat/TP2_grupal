@@ -59,6 +59,8 @@ public class Jugador implements Observable {
 
     public void solicitarCarta(Carta carta) {
         mereceCarta = false;
+        if (paisesConquistados.stream().anyMatch(carta::tienePais))
+            this.fichasReservadas.addAll(this.generarFichas(2)); // cambiar este numero magico
         canjeador.agregarCartaPais(carta);
     }
 

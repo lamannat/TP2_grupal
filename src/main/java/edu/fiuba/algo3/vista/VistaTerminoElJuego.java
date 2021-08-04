@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.SetUpJuego;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -47,7 +48,20 @@ public class VistaTerminoElJuego extends Escena {
         iv.setPreserveRatio(false);
         iv.setImage(image);
 
-        padre.getChildren().addAll(ganador, iv, subTitulo);
+        HBox cajaFinal = new HBox();
+
+        BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, controladorDeEscena);
+        botonSiguiente.setText("Volver a jugar");
+        Button botonExit = new Button("Salir");
+        botonExit.setOnAction(e -> {
+            ventana.close();
+        });
+
+        cajaFinal.getChildren().addAll(botonSiguiente, botonExit);
+        cajaFinal.setAlignment(Pos.CENTER);
+
+        padre.getChildren().clear();
+        padre.getChildren().addAll(ganador, iv, subTitulo, cajaFinal);
         padre.setStyle("-fx-background-color: " + jugador.getColor().getCodigo());
         padre.setAlignment(Pos.CENTER);
 
