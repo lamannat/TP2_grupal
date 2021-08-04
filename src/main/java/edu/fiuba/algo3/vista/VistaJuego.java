@@ -31,8 +31,8 @@ public class VistaJuego extends Escena implements Observer{
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
     private HBox estados;
-    private int ANCHO = 540;
-    private int LARGO = 960;
+    private double ANCHO = 960.0;
+    private double ALTO = 540.0;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -91,17 +91,17 @@ public class VistaJuego extends Escena implements Observer{
         return iv;*/
 
         AnchorPane contenedorMapa = new AnchorPane();
-        contenedorMapa.setMaxHeight(ANCHO);
-        contenedorMapa.setMaxWidth(LARGO);
-        contenedorMapa.setPrefHeight(ANCHO);
-        contenedorMapa.setPrefWidth(LARGO);
+        contenedorMapa.setMaxHeight(ALTO);
+        contenedorMapa.setMaxWidth(ANCHO);
+        contenedorMapa.setPrefHeight(ALTO);
+        contenedorMapa.setPrefWidth(ANCHO);
 
         File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
-        iv.fitWidthProperty().set(LARGO);
-        iv.fitHeightProperty().set(ANCHO);
+        iv.fitWidthProperty().set(ANCHO);
+        iv.fitHeightProperty().set(ALTO);
         iv.setImage(image);
 
         contenedorMapa.getChildren().add(setFichas());
@@ -120,7 +120,9 @@ public class VistaJuego extends Escena implements Observer{
 
         for (List<String> linea : LeerArchivo.leerArchivo("mapa.txt")) {
             VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0));
-            int x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
+            double x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
+            x *= ANCHO / 1280.0;
+            y *= ALTO / 720.0;
             boton.setLayoutX(x);
             boton.setLayoutY(y);
             fichas.getChildren().add(boton);
@@ -133,7 +135,7 @@ public class VistaJuego extends Escena implements Observer{
 
         AnchorPane fichasGuia  = new AnchorPane();
 
-        for(int i = 0; i < LARGO; i+=25){
+        for(int i = 0; i < ALTO; i+=25){
             for(int j = 0; j < ANCHO; j+=50){
                 Button botonGuia = new Button();
                 botonGuia.setTooltip(new Tooltip(String.valueOf(i) + " " + String.valueOf(j)));
