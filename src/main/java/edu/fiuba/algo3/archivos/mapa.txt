@@ -1,0 +1,6 @@
+Argentina,400,550
+Chile,360,550
+Uruguay,460,525
+Brasil,450,450
+Peru,360,475
+Colombia,355,425
