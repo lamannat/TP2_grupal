@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VistaJuego extends Escena implements Observer{
@@ -115,35 +116,13 @@ public class VistaJuego extends Escena implements Observer{
 
         AnchorPane fichas = new AnchorPane();
 
-        VistaBotonPais botonArgentina = new VistaBotonPais(this.juego, "Argentina");
-        botonArgentina.setLayoutX(400);
-        botonArgentina.setLayoutY(550);
-        fichas.getChildren().add(botonArgentina);
-
-        VistaBotonPais botonChile = new VistaBotonPais(this.juego, "Chile");
-        botonChile.setLayoutX(360);
-        botonChile.setLayoutY(550);
-        fichas.getChildren().add(botonChile);
-
-        VistaBotonPais botonUruguay = new VistaBotonPais(this.juego, "Uruguay");
-        botonUruguay.setLayoutX(460);
-        botonUruguay.setLayoutY(525);
-        fichas.getChildren().add(botonUruguay);
-
-        VistaBotonPais botonBrasil = new VistaBotonPais(this.juego, "Brasil");
-        botonBrasil.setLayoutX(450);
-        botonBrasil.setLayoutY(450);
-        fichas.getChildren().add(botonBrasil);
-
-        VistaBotonPais botonPeru = new VistaBotonPais(this.juego, "Peru");
-        botonPeru.setLayoutX(360);
-        botonPeru.setLayoutY(475);
-        fichas.getChildren().add(botonPeru);
-
-        VistaBotonPais botonColombia = new VistaBotonPais(this.juego, "Colombia");
-        botonColombia.setLayoutX(355);
-        botonColombia.setLayoutY(425);
-        fichas.getChildren().add(botonColombia);
+        for (List<String> linea : LeerArchivo.leerArchivo("mapa.txt")) {
+            VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0));
+            int x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
+            boton.setLayoutX(x);
+            boton.setLayoutY(y);
+            fichas.getChildren().add(boton);
+        }
 
         return fichas;
     }
