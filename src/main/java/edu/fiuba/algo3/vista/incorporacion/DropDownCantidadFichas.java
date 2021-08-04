@@ -12,11 +12,6 @@ public class DropDownCantidadFichas extends ComboBox implements Observer {
 
     public DropDownCantidadFichas(Juego juego, BotonIncorporar incorporar) {
         this.juego = juego;
-        // Esto no va acá
-        Jugador jugadorActual = juego.jugadorActual();
-//        jugadorActual.darFichas(jugadorActual.generarFichas(5));
-//        System.out.println(jugadorActual.getNombre() + "agregué fichas" );
-
 
         this.setOnAction(e -> {
             if (this.getValue() == null || Integer.parseInt((String)this.getValue()) <= 0)

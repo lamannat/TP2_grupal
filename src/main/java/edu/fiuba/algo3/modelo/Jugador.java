@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
+import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Jugador implements Observable {
         this.fichasReservadas = new ArrayList<>();
         this.objetivos = new ArrayList<>();
         this.canjeador = canjeador;
-        mereceCarta = false;// ver posiblemente hacer esto en batalla/pais/algo no se
+        mereceCarta = false;
         this.observers = new ArrayList<>();
     }
 
@@ -87,14 +88,12 @@ public class Jugador implements Observable {
         return total;
     }
 
-    public void quitarPais(Pais pais) {
-        // deberia estar ese pais
-        this.paisesConquistados.remove(pais);
+    public boolean quitarPais(Pais pais) {
+        return this.paisesConquistados.remove(pais);
     }
 
     public void darFichas(List<Ficha> fichas) {
         this.fichasReservadas.addAll(fichas);
-        System.out.println("fichas en reserva: "+this.fichasReservadas.size());
     }
 
     public List<Ficha> generarFichas(Integer cantFichas){
@@ -166,7 +165,9 @@ public class Jugador implements Observable {
     }
 
     public int cantidadFichasGanadas(Juego juego) {
-        int fichasPorPaises = (int) Math.min(Math.floor(paisesConquistados.size()/2), 3);
+
+        float cantPaisesConquistado = this.paisesConquistados.size();
+        int fichasPorPaises = (int) Math.max(Math.floor(cantPaisesConquistado/2), 3);
         int fichasPorCartas = this.canjeador.canjearCartas();
         int fichasPorContinentes = juego.fichasPorContinente(this);
 

@@ -21,6 +21,7 @@ public class Juego implements Observable {
         this.mazo = unMazo;
         this.tablero.asignarPaises(this.turno);
         this.observadores = new ArrayList<>();
+//        this.jugadorGano = false;
     }
 
     public void seleccionarRonda(Ronda ronda) {
@@ -35,10 +36,9 @@ public class Juego implements Observable {
         return tablero.getPaisPorNombre(nombre);
     }
 
-    public void avanzar(Observer observer){ // 0, ataque, 1, mover, 2, solicitar, 0
+    public void avanzar(Observer observer){
         if (this.rondaActual.terminaste()){
             if (this.turno.ultimoJugador()){
-                System.out.println("Se cambio de ronda RPH");
                 this.rondaActual = this.rondaActual.siguienteRonda();
                 this.rondaActual.addObserver(observer);
             }
@@ -46,6 +46,10 @@ public class Juego implements Observable {
             this.turno.avanzarJugador();
         }
         this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
+        if (this.turno.jugadorActual().ganador()) {
+//            jugadorGano = true;
+            System.out.println("Yey");
+        }
     }
 
     public void cartaParaJugador(Jugador jugador) {

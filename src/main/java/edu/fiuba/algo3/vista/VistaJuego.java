@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.moduloRonda.Accion;
+import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
 import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
 import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
@@ -20,9 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class VistaJuego extends Escena implements Observer{

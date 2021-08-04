@@ -19,14 +19,10 @@ public class Batalla implements Observable {
         TiradaDeDados tiradaDefensor = this.dado.tirarDado(defensor.cantidadDeFichas());
 
         while (!tiradaAtacante.tiradaVacia() && !tiradaDefensor.tiradaVacia()) {
-            if (tiradaAtacante.primerResultadoMayor(tiradaDefensor)) {
+            if (tiradaAtacante.primerResultadoMayor(tiradaDefensor))
                 defensor.pierdeFicha();
-                System.out.println("defensor pierde ficha");
-            }
-            else {
+            else
                 atacante.pierdeFicha();
-                System.out.println("atacante pierde ficha");
-            }
         }
         this.notifyObservers();
     }

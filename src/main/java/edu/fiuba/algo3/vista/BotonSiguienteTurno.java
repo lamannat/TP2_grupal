@@ -11,8 +11,6 @@ public class BotonSiguienteTurno extends Button {
 
         this.setOnAction(e->{
             juego.avanzar(observer);
-
-
             this.setText("Siguiente");
         });
     }

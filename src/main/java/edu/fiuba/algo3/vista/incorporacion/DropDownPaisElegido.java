@@ -38,7 +38,6 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
 
 
             incorporar.setPaisIncorporador(paisIncorporable);
-            System.out.println( jugador.getNombre() + "incorporar Fichas En:" + paisIncorporable);
         });
     }
 

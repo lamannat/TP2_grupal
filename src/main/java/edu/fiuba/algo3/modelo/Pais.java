@@ -91,8 +91,6 @@ public class Pais implements Observable{
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         puedeAtacarAPais(paisDefensor);
 
-        System.out.println(this.nombre + " ataca a " + paisDefensor.nombre);
-
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
 
@@ -104,7 +102,6 @@ public class Pais implements Observable{
         if (paisDefensor.fueConquistado()) {
             this.moverTropa(paisDefensor);
             paisDefensor.meConquisto(this.jugador);
-            System.out.println(this.nombre + " conquisto a " + paisDefensor.nombre);
             this.jugador.merecesConseguirUnaCarta();
         }
 
