@@ -14,7 +14,7 @@ public class RondaAgregarTresFichas extends RondaAgregarFichas {
 
 
     public Ronda siguienteRonda(){
-        return new RondaPrimeraHostilidades(this.juego);
+        return new RondaHostilidades(this.juego);
     }
 
     @Override
