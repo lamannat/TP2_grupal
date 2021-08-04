@@ -52,7 +52,6 @@ public class VistaJuego extends Escena implements Observer{
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
         Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
         estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
-        estadoTitulo.setTextFill(Color.BLACK);
         estados.getChildren().add(estadoTitulo);
         estados.setAlignment(Pos.CENTER);
 
@@ -79,6 +78,8 @@ public class VistaJuego extends Escena implements Observer{
         padre.setTop(estados);
         padre.setCenter(this.setearMapa());
         padre.setRight(info);
+
+        padre.setStyle("-fx-background-color: #272727");
 
         this.juego.agregarObserverARondaActual(this);
     }
