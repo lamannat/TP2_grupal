@@ -7,12 +7,15 @@ import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 import edu.fiuba.algo3.modelo.objetivos.ObjetivoCompuesto;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class BotonObjetivo extends Button {
     String listaObjetivos = "";
@@ -20,7 +23,6 @@ public class BotonObjetivo extends Button {
     public BotonObjetivo(){
         this.setText("Objetivo");
         this.setStyle("-fx-focus-color: transparent;");
-
 
         this.setOnAction(e -> {
             Label label = new Label(listaObjetivos);
@@ -38,7 +40,7 @@ public class BotonObjetivo extends Button {
             nuevaVentana.setTitle("Objetivos");
             nuevaVentana.setScene(nuevaEscena);
 
-            nuevaVentana.setAlwaysOnTop(true);
+            nuevaVentana.initStyle(StageStyle.UNDECORATED);
             nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
 
             nuevaVentana.show();
