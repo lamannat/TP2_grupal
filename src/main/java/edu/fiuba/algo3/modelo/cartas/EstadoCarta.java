@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.cartas;
 
-public abstract class EstadoCarta {
+public interface EstadoCarta {
 
-    public abstract boolean esCanjeable();
+    boolean esCanjeable();
 
 }

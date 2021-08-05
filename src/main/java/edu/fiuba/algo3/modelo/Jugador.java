@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.modelo.fichas.Ficha;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.ArrayList;
@@ -185,5 +186,10 @@ public class Jugador implements Observable {
 
     public void agregaFichasPorCartas() {
         canjeador.canjearConTarjetaPais(paisesConquistados, this);
+    }
+
+    public void prepararTropas() {
+        for (Pais pais : paisesConquistados)
+            pais.prepararTropas();
     }
 }
