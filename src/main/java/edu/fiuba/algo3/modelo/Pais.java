@@ -57,6 +57,10 @@ public class Pais implements Observable{
     }
 
     public boolean fichasSuficientes() {
+        return this.fichas.size() > 1;
+    }
+
+    public boolean fichasSuficientesParaMover() {
         return this.fichas.stream().filter(Ficha::puedeTransferise).count() > 1;
     }
 

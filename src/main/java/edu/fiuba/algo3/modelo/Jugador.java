@@ -127,6 +127,14 @@ public class Jugador implements Observable {
         return paises;
     }
 
+    public List<Pais> getPaisDeReagrupamiento() {
+        List<Pais> paises = new ArrayList<>();
+        for (Pais pais : paisesConquistados)
+            if (pais.fichasSuficientesParaMover())
+                paises.add(pais);
+        return paises;
+    }
+
     public List<Pais> getPaisesConquistados() {
         return paisesConquistados;
     }
