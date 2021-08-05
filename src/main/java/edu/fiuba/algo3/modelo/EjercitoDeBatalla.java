@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.fichas.Ficha;
+
 import java.util.List;
 
 public class EjercitoDeBatalla {

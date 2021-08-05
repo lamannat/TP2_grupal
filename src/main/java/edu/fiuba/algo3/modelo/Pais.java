@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.modelo.fichas.Ficha;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,13 @@ public class Pais implements Observable{
     }
     
     public void agregarFichas(List<Ficha> fichas) {
+        fichas.forEach(Ficha::recibida);
         this.fichas.addAll(fichas);
         notifyObservers();
     }
 
     public void agregarFicha(Ficha ficha) {
+        ficha.recibida();
         this.fichas.add(ficha);
         notifyObservers();
     }
@@ -55,6 +58,10 @@ public class Pais implements Observable{
 
     public boolean fichasSuficientes() {
         return this.fichas.size() > 1;
+    }
+
+    public boolean fichasSuficientesParaMover() {
+        return this.fichas.stream().filter(Ficha::puedeTransferise).count() > 1;
     }
 
     public boolean tienePaisLimitrofe(Pais pais) { return limitrofes.stream().anyMatch(estePais -> estePais == pais); }
@@ -86,7 +93,12 @@ public class Pais implements Observable{
     }
 
     public Integer fichasParaMover() {
-        return Math.min(this.fichas.size() - 1, cantidadMaximaDeDados);
+        return (int) this.fichas.stream().filter(Ficha::puedeTransferise).count() - 1;
+    }
+
+    public void prepararTropas() {
+        for (Ficha ficha : fichas)
+            ficha.resetear();
     }
 
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {

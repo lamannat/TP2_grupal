@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.color.ColorNegro;
+import edu.fiuba.algo3.modelo.fichas.Ficha;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -42,7 +42,7 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
 
     private void asignarPaisesDelJugador() {
         ObservableList<String> paisesDelJugador = FXCollections.observableArrayList();
-        for (Pais pais: juego.jugadorActual().getPaisAtacantes())
+        for (Pais pais: juego.jugadorActual().getPaisDeReagrupamiento())
             paisesDelJugador.add(pais.toString());
 
         this.getItems().clear();
