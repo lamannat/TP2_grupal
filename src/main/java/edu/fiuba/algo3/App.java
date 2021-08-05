@@ -25,7 +25,7 @@ public class App extends javafx.application.Application {
     @Override
     public void start(Stage stage) {
         ventana = stage;
-
+        ventana.setResizable(false);
         SetUpJuego inicio = new SetUpJuego();
 
         ControladorDeEscena controladorDeEscena = new ControladorDeEscena(1280, 720);

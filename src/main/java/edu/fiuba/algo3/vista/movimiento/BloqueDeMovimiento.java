@@ -12,6 +12,8 @@ public class BloqueDeMovimiento extends BloqueAccion {
     public BloqueDeMovimiento (Juego juego) {
         this.juego = juego;
         actualizar();
+        this.setId("bloqueDeMovimiento");
+        this.getStyleClass().add("bloqueDeAccion");
     }
 
     @Override

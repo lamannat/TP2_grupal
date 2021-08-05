@@ -13,6 +13,8 @@ public class BloqueSolicitarCarta extends BloqueAccion {
     public BloqueSolicitarCarta(Juego juego) {
         this.juego = juego;
         actualizar();
+        this.setId("bloqueSolicitarCarta");
+        this.getStyleClass().add("bloqueDeAccion");
     }
 
     public void actualizar() {

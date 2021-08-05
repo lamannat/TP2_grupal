@@ -10,6 +10,8 @@ public class BloqueDeIncorporacion extends BloqueAccion {
     public BloqueDeIncorporacion(Juego juego) {
         this.juego = juego;
         actualizar();
+        this.setId("bloqueDeIncorporacion");
+        this.getStyleClass().add("bloqueDeAccion");
     }
 
     @Override

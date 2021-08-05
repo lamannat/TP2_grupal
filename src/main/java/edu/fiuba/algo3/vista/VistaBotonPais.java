@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 public class VistaBotonPais extends Button implements Observer {
 
@@ -14,15 +15,18 @@ public class VistaBotonPais extends Button implements Observer {
 
     public VistaBotonPais(Juego juego, String nombrePais){
         super();
+        this.getStylesheets().add("estiloBotonPais.css");
         this.paisAsociado = juego.getPaisPorNombre(nombrePais);
         if (paisAsociado == null)
             return;
 
         juego.addObserverAPaises(this);
-        this.setTooltip(new Tooltip(paisAsociado.toString()));
+        Tooltip unTooltip = new Tooltip(paisAsociado.toString());
+        unTooltip.setShowDelay(Duration.millis(100));
+        this.setTooltip(unTooltip);
         this.setText(String.valueOf(paisAsociado.cantidadFichas()));
         this.setTextFill(Color.valueOf(paisAsociado.getColor().getColorText()));
-        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 12");
+        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo());
 
     }
 

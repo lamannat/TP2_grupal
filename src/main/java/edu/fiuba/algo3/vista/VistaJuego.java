@@ -102,6 +102,8 @@ public class VistaJuego extends Escena implements Observer{
 
         padre.setStyle("-fx-background-color: #272727");
 
+
+
         this.juego.agregarObserverARondaActual(this);
     }
 

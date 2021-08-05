@@ -13,6 +13,8 @@ public class BloqueDeAtaque extends BloqueAccion {
     public BloqueDeAtaque(Juego juego) {
         this.juego = juego;
         actualizar();
+        this.setId("bloqueDeAtaque");
+        this.getStyleClass().add("bloqueDeAccion");
     }
 
     @Override
