@@ -86,7 +86,7 @@ public class Pais implements Observable{
     }
 
     public Integer fichasParaMover() {
-        return Math.min(this.fichas.size() - 1, cantidadMaximaDeDados);
+        return this.fichas.size() - 1;
     }
 
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
