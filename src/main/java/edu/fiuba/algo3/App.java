@@ -18,14 +18,14 @@ import javafx.stage.Stage;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends javafx.application.Application {
 
     Stage ventana;
 
     @Override
     public void start(Stage stage) {
         ventana = stage;
-        
+
         SetUpJuego inicio = new SetUpJuego();
 
         ControladorDeEscena controladorDeEscena = new ControladorDeEscena(1280, 720);
