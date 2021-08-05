@@ -57,7 +57,7 @@ public class Pais implements Observable{
     }
 
     public boolean fichasSuficientes() {
-        return this.fichas.size() > 1;
+        return this.fichas.stream().filter(Ficha::puedeTransferise).count() > 1;
     }
 
     public boolean tienePaisLimitrofe(Pais pais) { return limitrofes.stream().anyMatch(estePais -> estePais == pais); }
