@@ -192,6 +192,10 @@ public class Jugador implements Observable {
         return objetivos.get(1);
     }
 
+    public List<Objetivo> getObjetivos() {
+        return objetivos;
+    }
+
     public void agregaFichasPorCartas() {
         canjeador.canjearConTarjetaPais(paisesConquistados, this);
     }
