@@ -63,6 +63,7 @@ public class Jugador implements Observable {
         mereceCarta = false;
         canjeador.agregarCartaPais(carta);
         agregaFichasPorCartas();
+        notifyObservers();
     }
 
     public boolean merecesCarta() {
@@ -210,5 +211,9 @@ public class Jugador implements Observable {
     public void prepararTropas() {
         for (Pais pais : paisesConquistados)
             pais.prepararTropas();
+    }
+
+    public List<Carta> getCartas() {
+        return this.canjeador.getCartas();
     }
 }

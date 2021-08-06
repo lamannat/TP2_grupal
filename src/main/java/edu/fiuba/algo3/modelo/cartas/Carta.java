@@ -33,4 +33,12 @@ public class Carta {
     public String toString() {
         return pais.toString();
     }
+
+    public Pais getPais() {
+        return this.pais;
+    }
+
+    public Simbolo getSimbolo() {
+        return this.simbolo;
+    }
 }

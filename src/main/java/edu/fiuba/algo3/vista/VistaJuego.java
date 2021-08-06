@@ -21,6 +21,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Spliterators;
 
 public class VistaJuego extends Escena implements Observer{
 
@@ -33,6 +34,7 @@ public class VistaJuego extends Escena implements Observer{
     private double ALTO = 630.0;
     private BotonObjetivo botonObjetivo;
     private Stage ventana;
+    private BotonCarta botonCartas;
 
     public VistaJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
@@ -54,13 +56,6 @@ public class VistaJuego extends Escena implements Observer{
         this.padre.setMaxHeight(controladorDeEscena.getResolucionAlto());
 
         estados = new BarraDeEstado(juego);
-        estados.actualizar();
-
-        //boton de objetivo
-        this.botonObjetivo = new BotonObjetivo(ventana);
-        this.botonObjetivo.actualizar(juego.jugadorActual());
-//        estados.getChildren().addAll( botonObjetivo); //////////cambio
-
 
         bloqueDeAccion = new HashMap<>();
         bloqueDeAccion.put("incorporar fichas", new BloqueDeIncorporacion(juego));
@@ -81,15 +76,24 @@ public class VistaJuego extends Escena implements Observer{
         info.setAlignment(acciones, Pos.TOP_CENTER);
         info.setAlignment(botonSiguienteTurno, Pos.BOTTOM_CENTER);
 
+        AnchorPane mapa = this.setearMapa();
+
+        // boton objetivo
+        this.botonObjetivo = new BotonObjetivo(ventana, juego);
+        this.botonObjetivo.setLayoutX(20);
+        this.botonObjetivo.setLayoutY(ALTO - 45);
+
+        // boton de las cartas
+        this.botonCartas = new BotonCarta(ventana, juego);
+        this.botonCartas.setLayoutX(100);
+        this.botonCartas.setLayoutY(ALTO - 45);
+
+        mapa.getChildren().addAll(this.botonObjetivo, this.botonCartas);
 
         padre.setTop(estados);
-        padre.setLeft(this.setearMapa());
+        padre.setLeft(mapa);
         padre.setRight(info);
         padre.setStyle("-fx-background-color: #272727");
-
-        padre.setStyle("-fx-background-color: #272727");
-
-
 
         this.juego.agregarObserverARondaActual(this);
     }
@@ -101,7 +105,7 @@ public class VistaJuego extends Escena implements Observer{
         contenedorMapa.setPrefHeight(ALTO);
         contenedorMapa.setPrefWidth(ANCHO);
 
-        File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
+        File file = new File("src/main/resources/mapaTEg.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
@@ -159,7 +163,5 @@ public class VistaJuego extends Escena implements Observer{
         }
 
         this.estados.actualizar();
-        this.botonObjetivo.actualizar(juego.jugadorActual());
-
     }
 }
