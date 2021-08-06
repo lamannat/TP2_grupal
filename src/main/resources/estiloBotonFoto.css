@@ -1,7 +1,7 @@
 .button{
     -fx-padding: 5;
     -fx-display:flex;
-    -fx-border-color: #e2e2e2;
+    -fx-border-color: #ffcc3d;
     -fx-border-width: 2;
 
     -fx-min-width: 65px;
@@ -12,11 +12,10 @@
     -fx-focus-color: transparent;
 
     -fx-background-radius: 0;
-    -fx-background-color: #000;
+    -fx-background-color: #272727;
     -fx-font-size: 50px;
     -fx-justify-content:center;
     -fx-align-items:center;
-    -fx-text-fill: #ffcc3d;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
@@ -28,3 +27,4 @@
     -fx-border-color: #898989;
     -fx-background-color: #424242;
 }
+

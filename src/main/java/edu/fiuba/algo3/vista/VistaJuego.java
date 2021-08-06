@@ -85,13 +85,13 @@ public class VistaJuego extends Escena implements Observer{
         this.botonObjetivo = new BotonObjetivo(ventana, juego);
         this.botonObjetivo.setLayoutX(20);
         this.botonObjetivo.setLayoutY(ALTO - 50);
-        this.botonObjetivo.getStylesheets().add("estiloBotonObjetivo.css");
+        this.botonObjetivo.getStylesheets().add("estiloBotonFoto.css");
 
         // boton de las cartas
         this.botonCartas = new BotonCarta(ventana, juego);
-        this.botonCartas.setLayoutX(150);
-        this.botonCartas.setLayoutY(ALTO - 200);
-        this.botonCartas.getStylesheets().add("estiloBotonObjetivo.css");
+        this.botonCartas.setLayoutX(105);
+        this.botonCartas.setLayoutY(ALTO - 50);
+        this.botonCartas.getStylesheets().add("estiloBotonFoto.css");
 
         mapa.getChildren().addAll(this.botonObjetivo, this.botonCartas);
 

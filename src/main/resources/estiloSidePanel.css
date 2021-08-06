@@ -52,3 +52,7 @@
     -fx-border-color: #898989;
     -fx-background-color: #424242;
 }
+
+.menu-bar {
+  -fx-background-color: derive(#FF1d1d,20%); // your color here
+}

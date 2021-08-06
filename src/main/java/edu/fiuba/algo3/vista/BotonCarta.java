@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.cartas.Carta;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
@@ -25,8 +27,13 @@ public class BotonCarta extends Button {
     public BotonCarta(Stage ventana, Juego juego) {
         this.juego = juego;
         this.cartas = new ArrayList<>();
-        this.setText("Carta");
-        this.setStyle("-fx-focus-color: transparent;");
+
+        Image img = new Image("logo_dar_carta.png");
+        ImageView view = new ImageView(img);
+        view.setFitHeight(50);
+        view.setFitWidth(50);
+        view.setPreserveRatio(true);
+        this.setGraphic(view);
 
         this.setOnAction(e -> {
 
