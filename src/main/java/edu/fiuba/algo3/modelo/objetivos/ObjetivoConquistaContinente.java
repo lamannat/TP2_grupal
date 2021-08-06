@@ -18,8 +18,7 @@ public class ObjetivoConquistaContinente implements Objetivo{
     }
 
     @Override
-    public String toString(){
-        String o = "Ocupar " + continente.getNombre();
-        return o;
+    public String toString() {
+        return "Ocupar " + continente.getNombre();
     }
 }
