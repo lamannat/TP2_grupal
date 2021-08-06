@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -31,8 +32,8 @@ public class VistaBatalla implements Observer {
         this.paisDefensor = paisDefensor;
 
         this.nuevaVentana = new Stage();
+        nuevaVentana.initModality(Modality.APPLICATION_MODAL);
         nuevaVentana.initStyle(StageStyle.UNDECORATED);
-        nuevaVentana.setAlwaysOnTop(true);
 
         this.botonBatalla = new BotonBatalla(paisDefensor,paisAtacante,nuevaVentana);
 

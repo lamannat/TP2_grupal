@@ -67,6 +67,7 @@ public class VistaJuego extends Escena implements Observer{
             bloque.setVisible(false);
 
         BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
+//        botonSiguienteTurno.getStylesheets().add("estiloBotonSiguiente.css");
 
         StackPane acciones = new StackPane();
         acciones.getChildren().addAll(bloqueDeAccion.values());
