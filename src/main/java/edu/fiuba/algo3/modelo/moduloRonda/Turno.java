@@ -18,6 +18,10 @@ public class Turno {
         return jugadores.get(indice);
     }
 
+    public Jugador jugadorSiguiente() {
+        return jugadores.get((indice + 1) % jugadores.size());
+    }
+
     public void avanzarJugador() { indice = (indice + 1) % jugadores.size(); }
 
     public boolean ultimoJugador() {

@@ -41,13 +41,11 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
             this.label.setText("Ya eligio la cantidad suficiente de jugadores, aprete Siguiente");
             this.label.setTextFill(javafx.scene.paint.Color.RED);
             this.inputUsuario.requestFocus();
-            System.out.println("hay error v2");
 
         } else if (this.listaNombreYBoton.isEmpty()) {
             this.label.setText("Debe ingresar un color");
             this.label.setTextFill(javafx.scene.paint.Color.RED);
             this.inputUsuario.requestFocus();
-            System.out.println("hay error");
 
         } else {
             Pair<String,BotonDeColor> par = listaNombreYBoton.get(0);
@@ -58,8 +56,6 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
             String nombre = par.getKey();
 
             setUp.agregarJugador(nombre, color);
-
-            //this.juego.setearNombreYColor(nombre, color);
 
             listaNombreYBoton.clear();
             this.inputUsuario.clear();

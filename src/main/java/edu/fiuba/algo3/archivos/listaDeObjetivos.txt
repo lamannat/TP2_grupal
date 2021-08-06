@@ -1,0 +1,13 @@
+ocupar continente:Africa,ocupacion parcial:America del norte;5,ocupacion parcial:Europa;4
+ocupar continente:Asia,ocupacion parcial:America del sur;2
+ocupar continente:Europa,ocupacion parcial:Asia;4,ocupacion parcial:America del sur;2
+ocupar continente:America del norte,ocupacion parcial:Oceania;2,ocupacion parcial:Asia;4
+ocupacion parcial:Oceania;2,ocupacion parcial:Africa;2,ocupacion parcial:America del sur;2,ocupacion parcial:Europa;3,ocupacion parcial:America del norte;4,ocupacion parcial:Asia;3
+ocupar continente:Oceania,ocupar continente:America del norte,ocupacion parcial:Europa;2
+ocupar continente:America del sur,ocupar continente:Africa,ocupacion parcial:America del norte,5
+destruir:Amarillo
+destruir:Azul
+destruir:Negro
+destruir:Verde
+destruir:Magenta
+destruir:Rojo
