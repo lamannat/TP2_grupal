@@ -1,0 +1,14 @@
+.button{
+    -fx-padding: 5;
+    -fx-border-width: 2;
+    -fx-background-radius: 5px;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-max-width: 50px;
+    -fx-max-height: 50px;
+    -fx-border-color: #e2e2e2;
+    -fx-background-color: #000000;
+    -fx-font-size: 50px;
+    -fx-text-fill: #ffcc3d;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
