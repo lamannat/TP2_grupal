@@ -7,7 +7,8 @@ import javafx.scene.control.Label;
 public class BotonSolicitarCarta extends Button {
 
     public BotonSolicitarCarta(Juego juego) {
-        this.setText("Dale pedime");
+        this.setText("Solicitar\nTarjeta");
+        this.setId("botonSolicitarCarta");
 
         this.setOnAction(e -> {
             Jugador jugador = juego.jugadorActual();
