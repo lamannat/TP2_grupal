@@ -1,12 +1,6 @@
 package edu.fiuba.algo3.vista.movimiento;
 
-import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.incorporacion.BotonIncorporar;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 
 public class DropDownCantidadFichas extends ComboBox implements Observer {

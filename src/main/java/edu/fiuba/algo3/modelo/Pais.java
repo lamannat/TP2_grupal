@@ -113,7 +113,7 @@ public class Pais implements Observable{
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
 
         if (paisDefensor.fueConquistado()) {
-            this.moverTropa(paisDefensor);
+//            this.moverTropa(paisDefensor);
             paisDefensor.meConquisto(this.jugador);
         }
         notifyObservers();
@@ -131,8 +131,13 @@ public class Pais implements Observable{
         notifyObservers();
     }
 
-    private boolean fueConquistado() {
+    public boolean fueConquistado() {
         return fichas.isEmpty();
+    }
+
+    public void moverTropas(Pais paisDestino, int cantidad) {
+        for (int i = 0; i<cantidad ; i++)
+            this.moverTropa(paisDestino);
     }
 
     public void moverTropa(Pais paisDestino) {
@@ -141,6 +146,10 @@ public class Pais implements Observable{
 
     public int cantidadFichas(){
         return fichas.size();
+    }
+
+    public int fichasDespuesDeConquista(){
+        return Math.min(this.fichas.size()-1,3);
     }
 
     public boolean estaAsignado() {
