@@ -8,7 +8,6 @@ public class BotonSiguienteTurno extends Button {
 
     public BotonSiguienteTurno(Juego juego, Observer observer){
         this.setText("Jugar");
-
         this.setOnAction(e->{
             juego.avanzar(observer);
             this.setText("Siguiente");

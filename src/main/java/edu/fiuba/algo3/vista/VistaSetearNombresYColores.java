@@ -36,8 +36,6 @@ public class VistaSetearNombresYColores extends Escena implements Observer {
         this.padre.setPrefWidth(controladorDeEscena.getResolucionAncho());
         this.padre.setPrefHeight(controladorDeEscena.getResolucionAlto());
 
-        //cantJugadores = juego.cantJugadores();
-
         BotonSiguiente botonSiguienteEscena = new BotonSiguiente(ventana, this.controladorDeEscena);
         botonSiguienteEscena.setVisible(false);
 
@@ -46,67 +44,31 @@ public class VistaSetearNombresYColores extends Escena implements Observer {
 
         TextField texto = new TextField();
         texto.setPromptText("Ingrese el nombre del Jugador");
-        texto.setScaleX(2);
-        texto.setScaleY(2);
+        texto.setStyle("-fx-font-size: 30px;");
 
         Label label = new Label();
         label.setTextFill(Color.WHITE);
-        label.setScaleX(3);
-        label.setScaleY(3);
+        label.setStyle("-fx-font-size: 40px;");
 
         Button botonSiguiente = new Button();
         botonSiguiente.setText("Siguiente Jugador");
-        botonSiguiente.setTextFill(Color.BLACK);
-        botonSiguiente.setStyle("-fx-background-color: white");
-        botonSiguiente.setScaleX(3);
-        botonSiguiente.setScaleY(3);
+        botonSiguiente.getStylesheets().add("estiloBotonSiguienteJugador.css");
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 
         botonSiguiente.setOnAction(new BotonSiguienteJugadorEventHandler(listaNombreYBoton, texto, label, cantJugadores, botonSiguienteEscena, setUp));
 
-        hboxTexto.setSpacing(320.0);
+        hboxTexto.setSpacing(120.0);
         hboxTexto.setAlignment(Pos.CENTER);
         hboxTexto.getChildren().addAll(texto,botonSiguiente);
         HBox hboxColores = new HBox();
         hboxColores.setStyle("-fx-background-color: #272727");
 
-        //seteamos botones de colores
-        BotonDeColor botonColorAzul = new BotonDeColor(new ColorAzul());
-        BotonDeColor botonColorRojo = new BotonDeColor(new ColorRojo());
-        BotonDeColor botonColorVerde = new BotonDeColor(new ColorVerde());
-        BotonDeColor botonColorMagenta = new BotonDeColor(new ColorMagenta());
-        BotonDeColor botonColorNegro = new BotonDeColor(new ColorNegro());
-        BotonDeColor botonColorAmarillo = new BotonDeColor(new ColorAmarillo());
+        BotoneraColores botoneraColores = new BotoneraColores(texto,label,listaNombreYBoton);
 
-        botonColorAzul.setTextFill(Color.WHITE);
-        botonColorRojo.setTextFill(Color.WHITE);
-        botonColorVerde.setTextFill(Color.WHITE);
-        botonColorMagenta.setTextFill(Color.WHITE);
-        botonColorNegro.setTextFill(Color.WHITE);
-        botonColorAmarillo.setTextFill(Color.BLACK);
-
-        BotonColorEventHandler botonAzulEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
-        botonColorAzul.enAccion(botonAzulEventHandler);
-        BotonColorEventHandler botonRojoEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
-        botonColorRojo.enAccion(botonRojoEventHandler);
-        BotonColorEventHandler botonVerdeEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
-        botonColorVerde.enAccion(botonVerdeEventHandler);
-        BotonColorEventHandler botonMagentaEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
-        botonColorMagenta.enAccion(botonMagentaEventHandler);
-        BotonColorEventHandler botonNegroEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
-        botonColorNegro.enAccion(botonNegroEventHandler);
-        BotonColorEventHandler botonAmarilloEventHandler = new BotonColorEventHandler(texto,label,listaNombreYBoton);
-        botonColorAmarillo.enAccion(botonAmarilloEventHandler);
-
-        hboxColores.getChildren().addAll(botonColorAzul,botonColorAmarillo,botonColorMagenta,botonColorNegro,botonColorRojo,botonColorVerde);
-        hboxColores.setAlignment(Pos.CENTER);
-        hboxColores.setSpacing(100);
-
-//        VBox vbox = new VBox();
         padre.setAlignment(Pos.CENTER);
-        padre.setSpacing(100.0);
-        padre.getChildren().addAll(hboxTexto, hboxColores, label, botonSiguienteEscena);
+        padre.setSpacing(80.0);
+        padre.getChildren().addAll(hboxTexto, botoneraColores, label, botonSiguienteEscena);
         padre.setMinSize(110.0,110.0);
         padre.setStyle("-fx-background-color: #272727");
     }

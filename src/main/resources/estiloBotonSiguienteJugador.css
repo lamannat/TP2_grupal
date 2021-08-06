@@ -1,0 +1,28 @@
+.button{
+    -fx-padding: 5;
+    -fx-display:flex;
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+
+    -fx-min-width: 400px;
+    -fx-min-height: 80px;
+    -fx-max-width: 400px;
+    -fx-max-height: 80px;
+
+    -fx-background-radius: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-size: 40px;
+    -fx-justify-content:center;
+    -fx-align-items:center;
+    -fx-text-fill: #000000;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover{
+    -fx-background-color: #DEDEDE;
+}
+
+.button:pressed{
+    -fx-border-color: #898989;
+    -fx-background-color: #424242;
+}
