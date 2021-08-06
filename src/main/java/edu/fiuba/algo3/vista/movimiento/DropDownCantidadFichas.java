@@ -14,6 +14,8 @@ public class DropDownCantidadFichas extends ComboBox implements Observer {
 
     public DropDownCantidadFichas(BotonMoverTropas moverTropas) {
 
+        this.setPromptText("N° Fichas");
+
         this.setOnAction(e -> {
             if (this.getValue() == null || Integer.parseInt((String)this.getValue()) <= 0)
                 return;
