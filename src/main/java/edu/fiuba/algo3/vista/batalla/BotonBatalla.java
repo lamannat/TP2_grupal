@@ -15,7 +15,7 @@ public class BotonBatalla extends Button {
         this.setOnAction(e -> {
             if (cantFichas == null)
                 return;
-            paisAtacante.moverTropas(paisDefensor,cantFichas-1);
+            paisAtacante.moverTropas(paisDefensor,cantFichas);
             nuevaVentana.close();
         });
     }

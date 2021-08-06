@@ -21,12 +21,13 @@ public class BotonAtacar extends Button {
                 paisDefensor.addObserver(vistaBatalla);
                 paisAtacante.paisAtacaAPais(paisDefensor,juego.getBatalla());
             } catch (FichasInsuficientesException fic) {
-                fic.printStackTrace();
+//                fic.printStackTrace();
             } catch (NoEsLimitrofeException lim) {
-                lim.printStackTrace();
+//                lim.printStackTrace();
             } catch (AtaqueAPaisAliadoException at) {
-                at.printStackTrace();
+//                at.printStackTrace();
             }
+            paisDefensor.removeObserver(vistaBatalla);
         });
     }
 

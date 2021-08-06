@@ -51,6 +51,9 @@ public class VistaBatalla implements Observer {
     @Override
     public void change() {
 
+        if(!paisDefensor.fueConquistado())
+            return;
+
         VBox layout = new VBox();
         layout.getChildren().clear();
         Label labelConquista = new Label(paisAtacante.toString() + " conquisto a " + paisDefensor.toString());
