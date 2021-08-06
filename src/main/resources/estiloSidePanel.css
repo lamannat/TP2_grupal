@@ -1,7 +1,7 @@
 
 .bloqueDeAccion{
     -fx-spacing: 20;
-    -fx-padding: 20px;
+    -fx-padding: 10px;
     -fx-alignment: TOP_CENTER;
 }
 
@@ -21,7 +21,7 @@
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #1d1d1d;
-    -fx-font-size: 12pt;
+    -fx-font-size: 10pt;
     -fx-text-fill: #d8d8d8;
     -fx-accent: #898989;
 }
