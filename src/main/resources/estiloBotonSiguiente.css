@@ -1,18 +1,21 @@
 .button{
     -fx-padding: 5;
+    -fx-display:flex;
+    -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
-    -fx-background-radius: 5px;
 
-    -fx-min-width: 80px;
+    -fx-min-width: 250px;
     -fx-min-height: 80px;
-    -fx-max-width: 80px;
+    -fx-max-width: 250px;
     -fx-max-height: 80px;
 
-    -fx-border-color: #e2e2e2;
+    -fx-background-radius: 0;
     -fx-background-color: #000000;
-    -fx-font-size: 50px;
+    -fx-font-size: 40px;
+    -fx-justify-content:center;
+    -fx-align-items:center;
     -fx-text-fill: #ffcc3d;
-    -fx-background-insets: 0 0 0 0, 0, 0.1, 0.2;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover{

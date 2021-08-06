@@ -50,9 +50,7 @@ public class VistaTitulo extends Escena {
         ImageView logo = new ImageView(image);
 
         // BOTON JUGAR
-        BotonSiguiente botonJugar = new BotonSiguiente(ventana, controladorDeEscena);
-        botonJugar.getStylesheets().add("estiloBotonJugar.css");
-
+        BotonJugar botonJugar = new BotonJugar(ventana, controladorDeEscena);
 
         // LAYOUT SECUNDARIO
         HBox titulo = new HBox();

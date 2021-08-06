@@ -39,5 +39,4 @@
 .bloqueDeAccion .button:pressed{
     -fx-border-color: #898989;
     -fx-background-color: #424242;
-
 }

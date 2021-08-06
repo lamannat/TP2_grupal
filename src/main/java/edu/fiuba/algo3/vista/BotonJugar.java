@@ -1,4 +1,18 @@
 package edu.fiuba.algo3.vista;
 
-public class BotonJugar {
+import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
+import edu.fiuba.algo3.controlador.ControladorDeEscena;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+
+public class BotonJugar extends Button {
+
+    public BotonJugar(Stage ventana, ControladorDeEscena controladorDeEscena) {
+        this.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, controladorDeEscena));
+        this.setText("Jugar");
+        this.getStylesheets().add("estiloBotonSiguiente.css");
+        this.setAlignment(Pos.CENTER);
+    }
 }

@@ -41,7 +41,7 @@ public class VistaSetearCantidadJugadores extends Escena {
         padre.setAlignment(Pos.CENTER);
         padre.setSpacing(100.0);
 
-        Label textoCantidadJugadores = new Label("Elegir Cantidad \n de Jugadores");
+        Label textoCantidadJugadores = new Label("¿Cuántos Juegan?");
         textoCantidadJugadores.setStyle("-fx-font-size: 100px;");
         textoCantidadJugadores.setTextFill(Color.valueOf("#ffcc3d"));
         textoCantidadJugadores.setAlignment(Pos.CENTER);

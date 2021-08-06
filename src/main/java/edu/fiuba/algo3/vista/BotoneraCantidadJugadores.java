@@ -32,9 +32,6 @@ public class BotoneraCantidadJugadores extends HBox {
 
             boton.getStylesheets().add("estiloBotonCantidadJugadores.css");
 
-            boton.setMaxWidth(50);
-            boton.setMaxHeight(50);
-
             boton.setOnAction(new BotonCantidadEventHandler(setUp, numero, botonSiguiente));
 
             boton.setOnMouseClicked(e-> {
@@ -43,7 +40,7 @@ public class BotoneraCantidadJugadores extends HBox {
             });
         }
 
-        this.setSpacing(200.0);
+        this.setSpacing(100.0);
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(botones);
     }
