@@ -16,6 +16,11 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+#botonSolicitarCarta {
+    -fx-padding: 10px;
+    -fx-text-alignment: CENTER;
+}
+
 .bloqueDeAccion .combo-box  {
     -fx-border-color: #e2e2e2;
     -fx-background-radius: 0;

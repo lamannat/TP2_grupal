@@ -18,9 +18,9 @@ public class BloqueSolicitarCarta extends BloqueAccion {
     }
 
     public void actualizar() {
-        Label estadoDeCarta = new Label("No conquisto en esta ronda");
+        Label estadoDeCarta = new Label("No conquisto\nen esta ronda");
         if (juego.jugadorActual().merecesCarta())
-            estadoDeCarta.setText("Mereces carta yey");
+            estadoDeCarta.setText("Mereces carta\nyey :D");
         Label cartaGanada = new Label();
         BotonSolicitarCarta botonSolicitarCarta = new BotonSolicitarCarta(juego);
 
