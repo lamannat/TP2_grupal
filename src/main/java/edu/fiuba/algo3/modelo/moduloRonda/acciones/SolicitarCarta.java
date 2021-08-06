@@ -10,6 +10,6 @@ public class SolicitarCarta implements Accion {
 
     @Override
     public String ID() {
-        return "SolicitarCarta";
+        return "solicitar carta";
     }
 }

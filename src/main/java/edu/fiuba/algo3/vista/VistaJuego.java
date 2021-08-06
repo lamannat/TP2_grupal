@@ -12,13 +12,9 @@ import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -32,7 +28,7 @@ public class VistaJuego extends Escena implements Observer{
     private final SetUpJuego setUp;
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
-    private HBox estados;
+    private BarraDeEstado estados;
     private double ANCHO = 1120.0;
     private double ALTO = 630.0;
     private BotonObjetivo botonObjetivo;
@@ -57,29 +53,20 @@ public class VistaJuego extends Escena implements Observer{
         this.padre.setMaxWidth(controladorDeEscena.getResolucionAncho());
         this.padre.setMaxHeight(controladorDeEscena.getResolucionAlto());
 
-        estados = new HBox();
-        estados.setPrefSize(1280, 90);
-        estados.setMinSize(1280, 90);
-        estados.setMaxSize(1280, 90);
+        estados = new BarraDeEstado(juego);
+        estados.actualizar();
 
         //boton de objetivo
         this.botonObjetivo = new BotonObjetivo(ventana);
         this.botonObjetivo.actualizar(juego.jugadorActual());
-
-        estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
-        Label estadoTitulo = new Label("Turno Jugador: " + juego.jugadorActual().getNombre());
-        estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
-        estados.getChildren().addAll(estadoTitulo, botonObjetivo); //////////cambio
-        estados.setAlignment(Pos.CENTER);
-        estados.setSpacing(50);///////////////cambio
+//        estados.getChildren().addAll( botonObjetivo); //////////cambio
 
 
         bloqueDeAccion = new HashMap<>();
-
-        bloqueDeAccion.put("AgregarFichas", new BloqueDeIncorporacion(juego));
-        bloqueDeAccion.put("Ataque", new BloqueDeAtaque(juego));
-        bloqueDeAccion.put("Movimiento", new BloqueDeMovimiento(juego));
-        bloqueDeAccion.put("SolicitarCarta", new BloqueSolicitarCarta(juego));
+        bloqueDeAccion.put("incorporar fichas", new BloqueDeIncorporacion(juego));
+        bloqueDeAccion.put("atacar", new BloqueDeAtaque(juego));
+        bloqueDeAccion.put("reagrupar", new BloqueDeMovimiento(juego));
+        bloqueDeAccion.put("solicitar carta", new BloqueSolicitarCarta(juego));
 
         for (BloqueAccion bloque : bloqueDeAccion.values())
             bloque.setVisible(false);
@@ -108,12 +95,6 @@ public class VistaJuego extends Escena implements Observer{
     }
 
     private AnchorPane setearMapa(){
-        /*File file = new File("src/main/java/edu/fiuba/algo3/archivos/mapaTEg.jpg");
-        Image image = new Image(file.toURI().toString());
-        ImageView iv = new ImageView(image);
-
-        return iv;*/
-
         AnchorPane contenedorMapa = new AnchorPane();
         contenedorMapa.setMaxHeight(ALTO);
         contenedorMapa.setMaxWidth(ANCHO);
@@ -132,7 +113,6 @@ public class VistaJuego extends Escena implements Observer{
 
         contenedorMapa.getChildren().add(iv);
         contenedorMapa.getChildren().add(setFichas());
-        //contenedorMapa.getChildren().add(setFichasGuia());
         contenedorMapa.setStyle("-fx-background-color: #72745d");
 
         return contenedorMapa;
@@ -153,23 +133,6 @@ public class VistaJuego extends Escena implements Observer{
         }
 
         return fichas;
-    }
-
-    private AnchorPane setFichasGuia(){
-
-        AnchorPane fichasGuia  = new AnchorPane();
-
-        for(int i = 0; i < ALTO; i+=25){
-            for(int j = 0; j < ANCHO; j+=50){
-                Button botonGuia = new Button();
-                botonGuia.setTooltip(new Tooltip(String.valueOf(i) + " " + String.valueOf(j)));
-                botonGuia.setLayoutX(i);
-                botonGuia.setLayoutY(j);
-                fichasGuia.getChildren().add(botonGuia);
-            }
-        }
-
-        return fichasGuia;
     }
 
     @Override
@@ -195,10 +158,7 @@ public class VistaJuego extends Escena implements Observer{
             bloque.setVisible(true);
         }
 
-        this.estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");
-        Label estadoTitulo = (Label)(this.estados.getChildren().get(0));
-        estadoTitulo.setText("Turno Jugador: " + juego.jugadorActual().getNombre());
-        estadoTitulo.setTextFill(Color.valueOf(juego.jugadorActual().getColor().getColorText()));
+        this.estados.actualizar();
         this.botonObjetivo.actualizar(juego.jugadorActual());
 
     }

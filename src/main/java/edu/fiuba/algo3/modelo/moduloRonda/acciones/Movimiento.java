@@ -11,6 +11,6 @@ public class Movimiento implements Accion {
 
     @Override
     public String ID() {
-        return "Movimiento";
+        return "reagrupar";
     }
 }
