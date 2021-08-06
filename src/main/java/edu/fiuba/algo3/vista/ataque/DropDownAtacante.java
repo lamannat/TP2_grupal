@@ -12,7 +12,7 @@ public class DropDownAtacante extends ComboBox implements Observer {
 
     public DropDownAtacante(Juego juego, DropDownDefensor dropDownAtacables){
         this.juego = juego;
-
+        this.setPromptText("Pais Atacante");
         this.asignarPaisesAtacantes();
 
         this.setOnAction(e -> {

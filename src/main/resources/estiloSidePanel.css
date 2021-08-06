@@ -1,6 +1,8 @@
 
 .bloqueDeAccion{
-    -fx-spacing: 10;
+    -fx-spacing: 20;
+    -fx-padding: 20px;
+    -fx-alignment: TOP_CENTER;
 }
 
 .bloqueDeAccion .button  {
@@ -22,6 +24,12 @@
     -fx-font-size: 12pt;
     -fx-text-fill: #d8d8d8;
     -fx-accent: #898989;
+}
+
+.bloqueDeAccion .label {
+    -fx-text-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d8d8d8;
 }
 
 .combo-box .list-cell{
