@@ -12,13 +12,9 @@ import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -32,7 +28,7 @@ public class VistaJuego extends Escena implements Observer{
     private final SetUpJuego setUp;
     private Juego juego;
     private Map<String, BloqueAccion> bloqueDeAccion;
-    private EstadoComunista estados;
+    private BarraDeEstado estados;
     private double ANCHO = 1120.0;
     private double ALTO = 630.0;
     private BotonObjetivo botonObjetivo;
@@ -57,7 +53,7 @@ public class VistaJuego extends Escena implements Observer{
         this.padre.setMaxWidth(controladorDeEscena.getResolucionAncho());
         this.padre.setMaxHeight(controladorDeEscena.getResolucionAlto());
 
-        estados = new EstadoComunista(juego);
+        estados = new BarraDeEstado(juego);
         estados.actualizar();
 
         //boton de objetivo

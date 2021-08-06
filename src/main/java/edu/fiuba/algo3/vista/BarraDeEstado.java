@@ -7,11 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-public class EstadoComunista extends HBox implements Observer {
+public class BarraDeEstado extends HBox implements Observer {
 
     private Juego juego;
 
-    public EstadoComunista(Juego juego) {
+    public BarraDeEstado(Juego juego) {
         this.juego = juego;
         this.actualizar();
     }
