@@ -17,6 +17,6 @@ public class AgregarFichas implements Accion {
 
     @Override
     public String ID() {
-        return "AgregarFichas";
+        return "incorporar fichas";
     }
 }
