@@ -11,6 +11,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -24,8 +26,15 @@ public class BotonObjetivo extends Button {
 
     public BotonObjetivo(Stage ventana, Juego juego){
         this.juego = juego;
-        this.setText("Objetivo");
-        this.setStyle("-fx-focus-color: transparent;");
+//        this.setText("Objetivo");
+
+        Image img = new Image("logo_objetivos.png");
+        ImageView view = new ImageView(img);
+        view.setFitHeight(50);
+        view.setFitWidth(50);
+        view.setPreserveRatio(true);
+        this.setGraphic(view);
+
 
         this.setOnAction(e -> {
             this.actualizar();

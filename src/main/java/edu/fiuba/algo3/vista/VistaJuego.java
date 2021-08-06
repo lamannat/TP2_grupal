@@ -10,6 +10,7 @@ import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -67,7 +68,8 @@ public class VistaJuego extends Escena implements Observer{
             bloque.setVisible(false);
 
         BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
-//        botonSiguienteTurno.getStylesheets().add("estiloBotonSiguiente.css");
+        botonSiguienteTurno.getStylesheets().add("estiloBotonSiguienteTurno.css");
+        botonSiguienteTurno.setAlignment(Pos.CENTER);
 
         StackPane acciones = new StackPane();
         acciones.getChildren().addAll(bloqueDeAccion.values());
@@ -82,12 +84,14 @@ public class VistaJuego extends Escena implements Observer{
         // boton objetivo
         this.botonObjetivo = new BotonObjetivo(ventana, juego);
         this.botonObjetivo.setLayoutX(20);
-        this.botonObjetivo.setLayoutY(ALTO - 45);
+        this.botonObjetivo.setLayoutY(ALTO - 50);
+        this.botonObjetivo.getStylesheets().add("estiloBotonObjetivo.css");
 
         // boton de las cartas
         this.botonCartas = new BotonCarta(ventana, juego);
-        this.botonCartas.setLayoutX(100);
-        this.botonCartas.setLayoutY(ALTO - 45);
+        this.botonCartas.setLayoutX(150);
+        this.botonCartas.setLayoutY(ALTO - 200);
+        this.botonCartas.getStylesheets().add("estiloBotonObjetivo.css");
 
         mapa.getChildren().addAll(this.botonObjetivo, this.botonCartas);
 

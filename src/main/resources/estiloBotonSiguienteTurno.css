@@ -1,0 +1,33 @@
+.button{
+    -fx-padding: 5;
+    -fx-margin: 100px;
+    -fx-display:flex;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+
+    -fx-min-width: 130px;
+    -fx-min-height: 45px;
+    -fx-max-width: 130px;
+    -fx-max-height: 45px;
+
+    -fx-border-color: #ffcc3d;
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffcc3d;
+
+    -fx-background-radius: 0;
+    -fx-font-size: 20px;
+    -fx-justify-content:center;
+    -fx-align-items:center;
+
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover{
+    -fx-border-color: #424242;
+    -fx-text-fill: #fff;
+}
+
+.button:pressed{
+    -fx-border-color: #898989;
+    -fx-background-color: #424242;
+}

@@ -61,6 +61,7 @@ public class VistaBatalla implements Observer {
         labelConquista.setTextFill(Color.WHITE);
 
         Label elegirTropas = new Label("Elegi cuantas tropas pasar");
+        elegirTropas.setTextFill(Color.WHITE);
 
         Scene nuevaEscena = new Scene(layout, 450,300);
         layout.setStyle("-fx-background-color: #272727");
