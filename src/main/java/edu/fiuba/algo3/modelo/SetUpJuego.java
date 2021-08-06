@@ -180,11 +180,11 @@ public class SetUpJuego implements Observable {
 
             for (String lineaObjetivo : lineaObjetivos) {
                 List<String> objetivo = new ArrayList<>(List.of(lineaObjetivo.split(":")));
-                Objetivo subObjetivo;
+                Objetivo subObjetivo = null;
                 switch (objetivo.remove(0)) {
                     case "ocupar continente": subObjetivo = conquistarContiente(continentes, jugadorActual, objetivo); break;
                     case "ocupacion parcial": subObjetivo = conquistarParteDeContinente(continentes, jugadorActual, objetivo); break;
-                    default: subObjetivo = destruirJugador(jugadorActual, turno, objetivo); break;
+                    case "destruir": subObjetivo = destruirJugador(jugadorActual, turno, objetivo); break;
                 }
                 if (subObjetivo != null)
                     subObjetivos.add(subObjetivo);

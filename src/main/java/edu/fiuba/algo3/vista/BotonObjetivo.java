@@ -20,7 +20,7 @@ import javafx.stage.StageStyle;
 public class BotonObjetivo extends Button {
     String listaObjetivos = "";
 
-    public BotonObjetivo(){
+    public BotonObjetivo(Stage ventana){
         this.setText("Objetivo");
         this.setStyle("-fx-focus-color: transparent;");
 
@@ -41,6 +41,9 @@ public class BotonObjetivo extends Button {
             nuevaVentana.setScene(nuevaEscena);
 
             nuevaVentana.initStyle(StageStyle.UNDECORATED);
+            nuevaVentana.setX(ventana.getX() + 415 );
+            nuevaVentana.setY(ventana.getY() + 260 );
+
             nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
 
             nuevaVentana.show();
