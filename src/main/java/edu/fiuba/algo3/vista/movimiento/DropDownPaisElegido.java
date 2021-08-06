@@ -12,6 +12,9 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
     private Juego juego;
 
     public DropDownPaisElegido(Juego juego, DropDownPaisDestino dropDownPaisDestino, DropDownCantidadFichas cantidadFichas, BotonMoverTropas moverTropas) {
+
+        this.setPromptText("Origen");
+
         this.juego = juego;
 
         asignarPaisesDelJugador();

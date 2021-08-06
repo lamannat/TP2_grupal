@@ -10,6 +10,6 @@ public class Atacar implements Accion {
 
     @Override
     public String ID() {
-        return "Ataque";
+        return "atacar";
     }
 }

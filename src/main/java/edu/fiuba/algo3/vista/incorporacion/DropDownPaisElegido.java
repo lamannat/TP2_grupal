@@ -13,6 +13,7 @@ public class DropDownPaisElegido extends ComboBox implements Observer {
 
     public DropDownPaisElegido(Juego juego, BotonIncorporar incorporar, ComboBox dropDownCantidadFichas) {
         this.juego = juego;
+        this.setPromptText("Pais Destino");
         Jugador jugador = juego.jugadorActual();
 
         ObservableList<String> incorporables = FXCollections.observableArrayList();

@@ -81,4 +81,8 @@ public class Canjeador {
             for (Carta carta : cartas)
                 pais.agregarFichas(jugador.generarFichas(carta.fichasPorPais(pais)));
     }
+
+    public List<Carta> getCartas() {
+        return cartas;
+    }
 }

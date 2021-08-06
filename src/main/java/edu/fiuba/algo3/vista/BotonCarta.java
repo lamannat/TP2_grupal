@@ -3,40 +3,38 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.objetivos.Objetivo;
-import edu.fiuba.algo3.modelo.objetivos.ObjetivoCompuesto;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
+import edu.fiuba.algo3.modelo.cartas.Carta;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class BotonObjetivo extends Button {
+import java.util.ArrayList;
+import java.util.List;
 
-    private String listaObjetivos = "";
+public class BotonCarta extends Button {
+
+    private List<VistaCarta> cartas;
     private Juego juego;
+//    String listaObjetivos = "Esto no son los objetivos o.0";
 
-    public BotonObjetivo(Stage ventana, Juego juego){
+    public BotonCarta(Stage ventana, Juego juego) {
         this.juego = juego;
-        this.setText("Objetivo");
+        this.cartas = new ArrayList<>();
+        this.setText("Carta");
         this.setStyle("-fx-focus-color: transparent;");
 
         this.setOnAction(e -> {
+
             this.actualizar();
 
-            Label label = new Label(listaObjetivos);
-            label.setTextFill(Color.WHITE);
-            label.setStyle("-fx-font-size: 20");
-
-            StackPane layout = new StackPane();
-            layout.getChildren().add(label);
+            TilePane layout = new TilePane();
             layout.setStyle("-fx-background-color: #272727");
+            layout.getChildren().addAll(cartas);
 
             Scene nuevaEscena = new Scene(layout, 450,300);
 
@@ -52,11 +50,12 @@ public class BotonObjetivo extends Button {
 
             nuevaVentana.show();
         });
+
     }
 
-    public void actualizar(){
-        this.listaObjetivos = "";
-        for (Objetivo objetivo : juego.jugadorActual().getObjetivos())
-            this.listaObjetivos += objetivo.toString() + "\n\n";
+    public void actualizar() {
+        this.cartas = new ArrayList<>();
+        for (Carta carta : juego.jugadorActual().getCartas())
+            cartas.add(new VistaCarta(carta));
     }
 }

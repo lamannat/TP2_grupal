@@ -11,6 +11,7 @@ public class DropDownDefensor extends ComboBox implements Observer {
 
     public DropDownDefensor(Juego juego, BotonAtacar botonEnviar){
 
+        this.setPromptText("Defensor");
 
         this.setOnAction(e-> {
 

@@ -18,11 +18,17 @@ public class BloqueSolicitarCarta extends BloqueAccion {
     }
 
     public void actualizar() {
-        Label estadoDeCarta = new Label("No conquisto en esta ronda");
-        if (juego.jugadorActual().merecesCarta())
-            estadoDeCarta.setText("Mereces carta yey");
-        Label cartaGanada = new Label();
+
         BotonSolicitarCarta botonSolicitarCarta = new BotonSolicitarCarta(juego);
+        botonSolicitarCarta.setVisible(false);
+
+        Label estadoDeCarta = new Label("No conquisto\nen esta ronda");
+        if (juego.jugadorActual().merecesCarta()) {
+            estadoDeCarta.setText("Mereces carta\nyey :D");
+            botonSolicitarCarta.setVisible(true);
+        }
+
+        Label cartaGanada = new Label();
 
         this.getChildren().clear();
         this.getChildren().addAll(estadoDeCarta, botonSolicitarCarta, cartaGanada);

@@ -11,6 +11,9 @@ import javafx.scene.control.ComboBox;
 public class DropDownPaisDestino extends ComboBox implements Observer {
 
     public DropDownPaisDestino(Juego juego, BotonMoverTropas moverTropas) {
+
+        this.setPromptText("Destino");
+
         this.setOnAction(e -> {
             Pais paisDestino = juego.getPaisPorNombre((String)this.getValue());
             if (paisDestino == null)
