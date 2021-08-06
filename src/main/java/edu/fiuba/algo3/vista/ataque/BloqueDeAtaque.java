@@ -2,11 +2,7 @@ package edu.fiuba.algo3.vista.ataque;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.BloqueAccion;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 public class BloqueDeAtaque extends BloqueAccion {
 
@@ -37,6 +33,8 @@ public class BloqueDeAtaque extends BloqueAccion {
 
         Label labelPaisAtacar = new Label("Elija pais\ncon cual atacar");
         Label labelPaisDefensor = new Label("Elija pais\na cual atacar");
+
+
 
         this.getChildren().clear();
         this.getChildren().addAll(labelPaisAtacar,paisParaAtacar,labelPaisDefensor, paisQueSePuedeAtacar,botonAtacar);

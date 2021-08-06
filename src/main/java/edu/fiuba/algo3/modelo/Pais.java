@@ -135,12 +135,21 @@ public class Pais implements Observable{
         return fichas.isEmpty();
     }
 
+    public void moverTropas(Pais paisDestino, int cantidad) {
+        for (int i = 0; i<cantidad ; i++)
+            this.moverTropa(paisDestino);
+    }
+
     public void moverTropa(Pais paisDestino) {
         paisDestino.agregarFicha(this.fichas.remove(0));
     }
 
     public int cantidadFichas(){
         return fichas.size();
+    }
+
+    public int fichasDespuesDeConquista(){
+        return Math.min(this.fichas.size(),3);
     }
 
     public boolean estaAsignado() {
