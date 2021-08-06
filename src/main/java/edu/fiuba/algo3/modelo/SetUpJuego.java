@@ -226,40 +226,6 @@ public class SetUpJuego implements Observable {
         return new ObjetivoConquistaContinente(continente, jugadorActual);
     }
 
-    private void agregarObjetivos(List<Continente> continentes,List<Jugador> jugadores) {
-        List<List<String>> objetivosNoAsignados = LeerArchivo.leerArchivo("objetivos.txt");
-
-        for (Jugador jugadorActual: jugadores) {
-            List<Objetivo> subObjetivos = new ArrayList<>();
-            jugadorActual.agregarObjetivo(new ObjetivoComun(jugadorActual));
-
-            int indiceRandom = ThreadLocalRandom.current().nextInt(0, objetivosNoAsignados.size());
-            List<String> objetivoActual = objetivosNoAsignados.remove(indiceRandom);
-
-            if (objetivoActual.get(0).equals(OBJETIVO_ELIMINACION)) {
-                Jugador jugadorRandom = jugadores.get(ThreadLocalRandom.current().nextInt(0, jugadores.size()));
-                ObjetivoEliminarJugador objetivoEliminarJugador = new ObjetivoEliminarJugador(jugadorRandom);
-                subObjetivos.add(objetivoEliminarJugador);
-            }
-
-            else {
-                for (int i = 1; i < objetivoActual.size(); i+=2) {
-                    Continente continente = this.buscarContinente(continentes,objetivoActual.get(i));
-                    Integer cantidadPaises = Integer.parseInt(objetivoActual.get(i+1));
-                    Objetivo obj;
-                    if(cantidadPaises > 0) {
-                        obj = new ObjetivoCantidadPaisesEnContinente(continente, jugadorActual, cantidadPaises);
-                    }
-                    else {
-                        obj = new ObjetivoConquistaContinente(continente, jugadorActual);
-                    }
-                    subObjetivos.add(obj);
-                }
-            }
-            jugadorActual.agregarObjetivo(new ObjetivoCompuesto(subObjetivos));
-        }
-    }
-
     private Continente buscarContinente(List<Continente> continentes, String nombreContinente) {
         for (Continente continente : continentes)
             if (continente.tieneNombre(nombreContinente))
