@@ -87,7 +87,7 @@ public class SetUpJuego implements Observable {
         for (Carta carta : agregarCartas(paises))
             mazo.agregarCarta(carta);
 
-        this.agregarObjetivos(continentes,jugadores);
+        this.agregarObjetivos(continentes, turno);
 
         this.juego = new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
         this.juego.seleccionarRonda(new RondaAgregarCincoFichas(juego));
@@ -166,38 +166,63 @@ public class SetUpJuego implements Observable {
         return continentes;
     }
 
-    private void agregarObjetivos(List<Continente> continentes,List<Jugador> jugadores) {
-        List<List<String>> objetivosNoAsignados = LeerArchivo.leerArchivo("objetivos.txt");
+    private void agregarObjetivos(List<Continente> continentes, Turno turno) {
+        List<List<String>> objetivosNoAsignados = LeerArchivo.leerArchivo("listaDeObjetivos.txt");
+        Jugador primerJugador = turno.jugadorActual();
 
-        for (Jugador jugadorActual: jugadores) {
-            List<Objetivo> subObjetivos = new ArrayList<>();
+        do {
+            Jugador jugadorActual = turno.jugadorActual();
             jugadorActual.agregarObjetivo(new ObjetivoComun(jugadorActual));
 
-            int indiceRandom = ThreadLocalRandom.current().nextInt(0, objetivosNoAsignados.size());
-            List<String> objetivoActual = objetivosNoAsignados.remove(indiceRandom);
+            List<String> lineaObjetivos = objetivosNoAsignados.remove(ThreadLocalRandom.current().nextInt(objetivosNoAsignados.size()));
+            List<Objetivo> subObjetivos = new ArrayList<>();
 
-            if (objetivoActual.get(0).equals(OBJETIVO_ELIMINACION)) {
-                Jugador jugadorRandom = jugadores.get(ThreadLocalRandom.current().nextInt(0, jugadores.size()));
-                ObjetivoEliminarJugador objetivoEliminarJugador = new ObjetivoEliminarJugador(jugadorRandom);
-                subObjetivos.add(objetivoEliminarJugador);
-            }
-
-            else {
-                for (int i = 1; i < objetivoActual.size(); i+=2) {
-                    Continente continente = this.buscarContinente(continentes,objetivoActual.get(i));
-                    Integer cantidadPaises = Integer.parseInt(objetivoActual.get(i+1));
-                    Objetivo obj;
-                    if(cantidadPaises > 0) {
-                        obj = new ObjetivoCantidadPaisesEnContinente(continente, jugadorActual, cantidadPaises);
-                    }
-                    else {
-                        obj = new ObjetivoConquistaContinente(continente, jugadorActual);
-                    }
-                    subObjetivos.add(obj);
+            for (String lineaObjetivo : lineaObjetivos) {
+                List<String> objetivo = new ArrayList<>(List.of(lineaObjetivo.split(":")));
+                Objetivo subObjetivo = null;
+                switch (objetivo.remove(0)) {
+                    case "ocupar continente": subObjetivo = conquistarContiente(continentes, jugadorActual, objetivo); break;
+                    case "ocupacion parcial": subObjetivo = conquistarParteDeContinente(continentes, jugadorActual, objetivo); break;
+                    case "destruir": subObjetivo = destruirJugador(jugadorActual, turno, objetivo); break;
                 }
+                if (subObjetivo != null)
+                    subObjetivos.add(subObjetivo);
             }
             jugadorActual.agregarObjetivo(new ObjetivoCompuesto(subObjetivos));
+
+            turno.avanzarJugador();
+        } while (turno.jugadorActual() != primerJugador);
+    }
+
+    private Objetivo destruirJugador(Jugador jugadorActual, Turno turno, List<String> objetivo) {
+        String nombreColor = objetivo.get(0);
+
+        Jugador jugadorAEliminar = null;
+        turno.avanzarJugador();
+        while (jugadorActual != turno.jugadorActual()) {
+            if (turno.jugadorActual().getColor().getNombre().equals(nombreColor))
+                jugadorAEliminar = turno.jugadorActual();
+            turno.avanzarJugador();
         }
+        if (jugadorAEliminar == null)
+            jugadorAEliminar = turno.jugadorSiguiente();
+        return new ObjetivoEliminarJugador(jugadorActual, jugadorAEliminar);
+    }
+
+    private Objetivo conquistarParteDeContinente(List<Continente> continentes, Jugador jugadorActual, List<String> objetivo) {
+        List<String> detalles = List.of(objetivo.get(0).split(";"));
+        Continente continente = buscarContinente(continentes, detalles.get(0));
+        int cantidad = Integer.parseInt(detalles.get(1));
+        if (continente == null || cantidad < 1)
+            return null;
+        return new ObjetivoCantidadPaisesEnContinente(continente, jugadorActual, cantidad);
+    }
+
+    private Objetivo conquistarContiente(List<Continente> continentes, Jugador jugadorActual, List<String> objetivo) {
+        Continente continente = buscarContinente(continentes, objetivo.get(0));
+        if (continente == null)
+            return null;
+        return new ObjetivoConquistaContinente(continente, jugadorActual);
     }
 
     private Continente buscarContinente(List<Continente> continentes, String nombreContinente) {

@@ -21,7 +21,6 @@ public class ObjetivoCantidadPaisesEnContinente implements Objetivo{
 
     @Override
     public String toString(){
-        String o = "Ocupar " + cantidad + " paises de " + continente.getNombre();
-        return o;
+        return "Ocupar " + cantidad + " paises de " + continente.getNombre();
     }
 }

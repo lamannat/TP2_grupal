@@ -18,6 +18,7 @@ public class Jugador implements Observable {
     private final List<Ficha> fichasReservadas;
     private final List<Objetivo> objetivos;
     private List<Observer> observers;
+    private Jugador jugadorAsesino;
 
     public Jugador(String nombre, Color color, Canjeador canjeador) {
         //despues vamos a editar los constructores
@@ -29,6 +30,7 @@ public class Jugador implements Observable {
         this.canjeador = canjeador;
         mereceCarta = false;
         this.observers = new ArrayList<>();
+        this.jugadorAsesino = null;
     }
 
     public String getNombre() {
@@ -113,6 +115,15 @@ public class Jugador implements Observable {
         return paisesConquistados.size() > 0;
     }
 
+    public boolean perdistePorJugador(Jugador jugador) {
+        return this.jugadorAsesino == jugador;
+    }
+
+    public void setAsesino(Jugador jugador) {
+        if (paisesConquistados.size() <= 0)
+            this.jugadorAsesino = jugador;
+    }
+
     public void agregarObjetivo(Objetivo objetivo) { objetivos.add(objetivo); }
 
     public boolean ganador() {
@@ -188,8 +199,8 @@ public class Jugador implements Observable {
         observers.remove(observer);
     }
 
-    public Objetivo getObjetivoCompuesto() {
-        return objetivos.get(1);
+    public List<Objetivo> getObjetivos() {
+        return objetivos;
     }
 
     public void agregaFichasPorCartas() {

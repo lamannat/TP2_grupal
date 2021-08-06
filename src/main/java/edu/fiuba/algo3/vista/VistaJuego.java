@@ -63,7 +63,7 @@ public class VistaJuego extends Escena implements Observer{
         estados.setMaxSize(1280, 90);
 
         //boton de objetivo
-        this.botonObjetivo = new BotonObjetivo();
+        this.botonObjetivo = new BotonObjetivo(ventana);
         this.botonObjetivo.actualizar(juego.jugadorActual());
 
         estados.setStyle("-fx-background-color: " + juego.jugadorActual().getColor().getCodigo() + "; -fx-font-size: 30");

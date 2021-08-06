@@ -12,4 +12,9 @@ public class ObjetivoComun implements Objetivo{
 
     @Override
     public boolean cumplido(){ return jugador.superaCantidadDePaises(minimoDePaises);}
+
+    @Override
+    public String toString() {
+        return "OBJETIVO COMUN: \n- Ocupar " + minimoDePaises + " paises";
+    }
 }
