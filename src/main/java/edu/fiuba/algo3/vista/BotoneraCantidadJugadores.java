@@ -30,12 +30,7 @@ public class BotoneraCantidadJugadores extends HBox {
             Button boton = botones.get(i);
             int numero = i + 2;
 
-            boton.setScaleX(3);
-            boton.setScaleY(3);
-
-            boton.setStyle("-fx-background-color: black");
-            boton.setTextFill(Color.WHITE);
-            boton.setAlignment(Pos.CENTER);
+            boton.getStylesheets().add("estiloBotonCantidadJugadores.css");
 
             boton.setOnAction(new BotonCantidadEventHandler(setUp, numero, botonSiguiente));
 
@@ -45,16 +40,16 @@ public class BotoneraCantidadJugadores extends HBox {
             });
         }
 
-        this.setSpacing(200.0);
+        this.setSpacing(100.0);
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(botones);
     }
 
     private void estiloBotonDefault(Button unBoton) {
-        unBoton.setStyle("-fx-background-color: black");
+        unBoton.setStyle("-fx-border-color: #e2e2e2;");
     }
 
     private void estiloBotonSeleccionado(Button unBoton) {
-        unBoton.setStyle("-fx-border-color: #ffcc3d;-fx-background-color: #000000");
+        unBoton.setStyle("-fx-border-color: #ffcc3d;");
     }
 }

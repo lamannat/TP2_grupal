@@ -1,0 +1,25 @@
+.button{
+    -fx-padding: 5;
+    -fx-border-width: 2;
+    -fx-background-radius: 5px;
+
+    -fx-min-width: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-max-height: 80px;
+
+    -fx-border-color: #e2e2e2;
+    -fx-background-color: #000000;
+    -fx-font-size: 50px;
+    -fx-text-fill: #ffcc3d;
+    -fx-background-insets: 0 0 0 0, 0, 0.1, 0.2;
+}
+
+.button:hover{
+    -fx-background-color: #424242;
+}
+
+.button:pressed{
+    -fx-border-color: #898989;
+    -fx-background-color: #424242;
+}

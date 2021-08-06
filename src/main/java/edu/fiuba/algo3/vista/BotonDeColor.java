@@ -13,10 +13,12 @@ public class BotonDeColor extends Button {
     public BotonDeColor(Color unColor){
         this.color = unColor;
         this.setText(color.getNombre());
-        this.setStyle("-fx-background-color: " + color.getCodigo());
-        this.setScaleX(2);
-        this.setScaleY(2);
+        this.getStylesheets().add("estiloBotonColor.css");
+        this.setStyle("-fx-text-fill: " + color.getColorText());
+        this.setStyle("-fx-background-color: " + color.getCodigo() + ";-fx-text-fill:" + color.getColorText());
     }
+
+
 
     public void enAccion(BotonColorEventHandler eventHandler){
         eventHandler.setColor(color);
