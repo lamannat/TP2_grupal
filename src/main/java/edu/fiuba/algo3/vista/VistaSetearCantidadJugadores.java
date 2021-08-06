@@ -37,15 +37,14 @@ public class VistaSetearCantidadJugadores extends Escena {
 
         BotoneraCantidadJugadores botonera = new BotoneraCantidadJugadores(botonSiguiente, setUp);
 
-//        VBox vbox = new VBox();
         padre.setStyle("-fx-background-color: #272727");
         padre.setAlignment(Pos.CENTER);
-        padre.setSpacing(200.0);
+        padre.setSpacing(100.0);
 
-        Label textoCantidadJugadores = new Label("¿Cuántos juegan?");
-        textoCantidadJugadores.setScaleX(10);
-        textoCantidadJugadores.setScaleY(10);
-        textoCantidadJugadores.setTextFill(Color.YELLOW);
+        Label textoCantidadJugadores = new Label("Elegir Cantidad \n de Jugadores");
+        textoCantidadJugadores.setStyle("-fx-font-size: 100px;");
+        textoCantidadJugadores.setTextFill(Color.valueOf("#ffcc3d"));
+        textoCantidadJugadores.setAlignment(Pos.CENTER);
 
         padre.getChildren().addAll(textoCantidadJugadores, botonera, botonSiguiente);
     }

@@ -39,15 +39,10 @@ public class VistaTitulo extends Escena {
         Label label2 = new Label("O");
         label1.setTextFill(Color.BLACK);
         label2.setTextFill(Color.BLACK);
-        label1.setScaleX(5);
-        label1.setScaleY(5);
-        label2.setScaleX(5);
-        label2.setScaleY(5);
-        label1.setPadding(new Insets(120));
-        label2.setPadding(new Insets(70));
-        label1.setStyle("-fx-font-size: 34px;");
-        label2.setStyle("-fx-font-size: 34px;");
-
+        label1.setStyle("-fx-font-size: 150px;");
+        label2.setStyle("-fx-font-size: 150px;");
+        label1.setPadding(new Insets(30));
+        label2.setPadding(new Insets(30));
 
         // FOTO
         //File file = new File(("src/main/java/edu/fiuba/algo3/archivos/logo_teg.png"));
@@ -56,12 +51,7 @@ public class VistaTitulo extends Escena {
 
         // BOTON JUGAR
         BotonSiguiente botonJugar = new BotonSiguiente(ventana, controladorDeEscena);
-        botonJugar.setText("Jugar");
-        //botonJugar.setPadding(new Insets(-50,250,0,0));
-        botonJugar.setScaleX(3);
-        botonJugar.setScaleY(3);
-        botonJugar.setStyle("-fx-background-color:black");
-        botonJugar.setTextFill(Color.WHITE);
+        botonJugar.getStylesheets().add("estiloBotonJugar.css");
 
 
         // LAYOUT SECUNDARIO
