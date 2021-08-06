@@ -122,8 +122,12 @@ public class Pais implements Observable{
     private void meConquisto(Jugador unJugador) {
         this.jugador.quitarPais(this);
         unJugador.agregarPais(this);
+
         unJugador.merecesConseguirUnaCarta();
         unJugador.agregaFichasPorCartas();
+
+        this.jugador.setAsesino(unJugador);
+
         notifyObservers();
     }
 

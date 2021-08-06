@@ -87,7 +87,6 @@ public class SetUpJuego implements Observable {
         for (Carta carta : agregarCartas(paises))
             mazo.agregarCarta(carta);
 
-//        this.agregarObjetivos(continentes, jugadores);
         this.agregarObjetivos(continentes, turno);
 
         this.juego = new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
@@ -207,7 +206,7 @@ public class SetUpJuego implements Observable {
         }
         if (jugadorAEliminar == null)
             jugadorAEliminar = turno.jugadorSiguiente();
-        return new ObjetivoEliminarJugador(jugadorAEliminar);
+        return new ObjetivoEliminarJugador(jugadorActual, jugadorAEliminar);
     }
 
     private Objetivo conquistarParteDeContinente(List<Continente> continentes, Jugador jugadorActual, List<String> objetivo) {

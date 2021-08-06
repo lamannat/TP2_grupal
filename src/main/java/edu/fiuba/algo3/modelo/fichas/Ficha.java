@@ -8,7 +8,7 @@ public class Ficha {
 
     public Ficha(Color color) {
         this.color = color;
-        estadoFicha = new EstadoFichaParaMover();
+        resetear();
     }
 
     public void resetear() {
