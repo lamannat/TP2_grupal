@@ -9,7 +9,7 @@ import edu.fiuba.algo3.vista.bloqueAccion.BloqueAccion;
 import edu.fiuba.algo3.vista.bloqueAccion.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.bloqueAccion.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
-import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
+import edu.fiuba.algo3.vista.bloqueAccion.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.solicitar;
+package edu.fiuba.algo3.vista.bloqueAccion.solicitar;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.bloqueAccion.BloqueAccion;

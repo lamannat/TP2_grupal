@@ -1,8 +1,7 @@
-package edu.fiuba.algo3.vista.solicitar;
+package edu.fiuba.algo3.vista.bloqueAccion.solicitar;
 
 import edu.fiuba.algo3.modelo.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 
 public class BotonSolicitarCarta extends Button {
 
