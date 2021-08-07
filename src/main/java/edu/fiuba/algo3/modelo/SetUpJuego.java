@@ -86,7 +86,7 @@ public class SetUpJuego implements Observable {
 
 
         for (Carta carta : agregarCartas(paises)) {
-            if (carta.getPais() == paises.get(31)){ //////////SACARRRR
+            if (carta.getPais() == paises.get(18) || carta.getPais() == paises.get(24)){ //////////SACARRRR
                 turno.jugadorActual().solicitarCarta(carta);
             }
             mazo.agregarCarta(carta);

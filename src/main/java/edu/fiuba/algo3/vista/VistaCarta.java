@@ -19,21 +19,33 @@ public class VistaCarta extends VBox {
         Pais paisAMostrar = carta.getPais();
         Simbolo simboloAMostrar = carta.getSimbolo();
 
-        Image img = new Image("logo_objetivos.png");
+        Image img = new Image(simboloAMostrar.toString() + ".png");
         ImageView view = new ImageView(img);
-        view.setFitHeight(50);
-        view.setFitWidth(50);
+        view.setFitHeight(150);
+        view.setFitWidth(150);
         view.setPreserveRatio(true);
 
-        Rectangle rectangulo = new Rectangle(0,0,150,180);
-
-        rectangulo.setFill(Color.WHITE);
+        view.setStyle("-fx-border-color: #000;" +
+                      "-fx-border-style: solid;" +
+                      "-fx-border-width: 1;");
 
         Label nombrePais = new Label(paisAMostrar.toString());
         nombrePais.setTextFill(Color.BLACK);
-        nombrePais.setAlignment(Pos.CENTER);
+        nombrePais.setStyle("-fx-background-color: #fff;");
+
+        VBox epigrafe = new VBox();
+
+        Label estadoCarta = new Label(carta.getEstado().toString());
+        estadoCarta.setTextFill(Color.WHITE);
+        estadoCarta.setStyle("-fx-font-weight: bold;");
+
+        epigrafe.getChildren().add(estadoCarta);
+        epigrafe.setStyle("-fx-background-color: #272727;");
+        epigrafe.setAlignment(Pos.CENTER);
 
         this.setStyle("-fx-background-color: #fff;");
-        this.getChildren().addAll(view,nombrePais);
+
+        this.getChildren().addAll(view,nombrePais,epigrafe);
+        this.setAlignment(Pos.CENTER);
     }
 }

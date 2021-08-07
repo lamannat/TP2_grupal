@@ -8,4 +8,9 @@ public class EstadoBocaArriba implements EstadoCarta {
     public boolean esCanjeable() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Declarada";
+    }
 }

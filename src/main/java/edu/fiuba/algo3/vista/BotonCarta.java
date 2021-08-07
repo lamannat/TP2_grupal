@@ -47,23 +47,25 @@ public class BotonCarta extends Button {
             this.actualizar();
 
             TilePane layout = new TilePane();
-            layout.setStyle("-fx-background-color: #272727");
             layout.getChildren().addAll(cartas);
+            layout.setHgap(10);
+            layout.setVgap(10);
 
-            Scene nuevaEscena = new Scene(layout, 450,300);
+            Scene nuevaEscena = new Scene(layout, 775,200);
 
             layout.setStyle("-fx-background-color: #272727;" +
                     "-fx-border-color: #ffcc3d;\n" +
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
+
             // New window (Stage)
             Stage nuevaVentana = new Stage();
             nuevaVentana.setScene(nuevaEscena);
 
             nuevaVentana.initStyle(StageStyle.UNDECORATED);
-            nuevaVentana.setX(ventana.getX() + 415 );
-            nuevaVentana.setY(ventana.getY() + 260 );
+            nuevaVentana.setX(ventana.getX() + 190 );
+            nuevaVentana.setY(ventana.getY() + 270 );
 
             nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
 
