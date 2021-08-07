@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.incorporacion;
+package edu.fiuba.algo3.vista.bloqueAccion.incorporacion;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;

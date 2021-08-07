@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador.accionesHandlers;
+package edu.fiuba.algo3.controlador.accionesHandlers.ataque;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;

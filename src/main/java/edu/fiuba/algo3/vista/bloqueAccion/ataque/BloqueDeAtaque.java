@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.bloqueAccion.ataque;
 
-import edu.fiuba.algo3.controlador.accionesHandlers.DropDownPaisDefensorEventHandler;
-import edu.fiuba.algo3.controlador.accionesHandlers.DropDownPaisElegidoEventHandler;
+import edu.fiuba.algo3.controlador.accionesHandlers.ataque.DropDownPaisDefensorEventHandler;
+import edu.fiuba.algo3.controlador.accionesHandlers.ataque.DropDownPaisElegidoEventHandler;
 import edu.fiuba.algo3.modelo.Batalla;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;

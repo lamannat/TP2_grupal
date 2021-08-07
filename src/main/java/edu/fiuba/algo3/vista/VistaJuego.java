@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
 import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
 import edu.fiuba.algo3.vista.bloqueAccion.BloqueAccion;
 import edu.fiuba.algo3.vista.bloqueAccion.ataque.BloqueDeAtaque;
-import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
+import edu.fiuba.algo3.vista.bloqueAccion.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
