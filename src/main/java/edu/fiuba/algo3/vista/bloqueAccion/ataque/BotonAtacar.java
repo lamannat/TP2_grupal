@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.bloqueAccion.ataque;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.vista.batalla.VistaBatalla;
+import edu.fiuba.algo3.vista.bloqueAccion.batalla.VistaBatalla;
 import javafx.scene.control.Button;
 
 public class BotonAtacar extends Button {
@@ -25,11 +25,6 @@ public class BotonAtacar extends Button {
 
             paisDefensor.removeObserver(vistaBatalla);
         });
-    }
-
-    public void setPaisAtacanteYDefensor(Pais paisAtacante, Pais paisDefensor) {
-        this.paisAtacante = paisAtacante;
-        this.paisDefensor = paisDefensor;
     }
 
     public void setPaisAtacante(Pais paisAtacante) {

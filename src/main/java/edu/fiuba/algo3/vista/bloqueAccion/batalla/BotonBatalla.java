@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.batalla;
+package edu.fiuba.algo3.vista.bloqueAccion.batalla;
 
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.control.Button;
