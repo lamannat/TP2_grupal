@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.bloqueAccion;
 
 import edu.fiuba.algo3.modelo.Observer;
 import javafx.scene.layout.VBox;

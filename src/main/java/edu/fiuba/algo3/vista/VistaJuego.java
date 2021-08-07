@@ -5,15 +5,14 @@ import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
 import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
-import edu.fiuba.algo3.vista.ataque.BloqueDeAtaque;
+import edu.fiuba.algo3.vista.bloqueAccion.BloqueAccion;
+import edu.fiuba.algo3.vista.bloqueAccion.ataque.BloqueDeAtaque;
 import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -23,7 +22,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Spliterators;
 
 public class VistaJuego extends Escena implements Observer{
 

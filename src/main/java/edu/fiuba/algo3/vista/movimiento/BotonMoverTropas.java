@@ -6,21 +6,26 @@ import javafx.scene.control.Button;
 
 public class BotonMoverTropas extends Button {
 
-    private Pais paisConFichas = null;
-    private Pais paisDestino = null;
-    private Integer cantidad = null;
+    private Pais paisConFichas;
+    private Pais paisDestino;
+    private Integer cantidad;
 
     public BotonMoverTropas(Juego juego) {
+        resetear();
         this.setOnAction(e -> {
             if(paisConFichas == null || paisDestino == null || cantidad == null)
                 return;
 
             juego.jugadorActual().moverTropasAPais(paisConFichas, paisDestino, cantidad);
 
-            paisConFichas = null;
-            paisDestino = null;
-            cantidad = null;
+           resetear();
         });
+    }
+
+    private void resetear() {
+        paisConFichas = null;
+        paisDestino = null;
+        cantidad = null;
     }
 
     public void setPaisConFichas(Pais paisConFichas) {
