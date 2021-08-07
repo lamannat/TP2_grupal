@@ -84,8 +84,13 @@ public class SetUpJuego implements Observable {
         for (Continente continente : continentes)
             tablero.agregarContinente(continente);
 
-        for (Carta carta : agregarCartas(paises))
+
+        for (Carta carta : agregarCartas(paises)) {
+            if (carta.getPais() == paises.get(31)){ //////////SACARRRR
+                turno.jugadorActual().solicitarCarta(carta);
+            }
             mazo.agregarCarta(carta);
+        }
 
         this.agregarObjetivos(continentes, turno);
 
