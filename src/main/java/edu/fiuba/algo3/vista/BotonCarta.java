@@ -31,8 +31,9 @@ public class BotonCarta extends Button {
         this.cartas = new ArrayList<>();
 
         Tooltip unTooltip = new Tooltip("Cartas País");
-        unTooltip.setShowDelay(Duration.millis(200));
+        unTooltip.setShowDelay(Duration.millis(10));
         this.setTooltip(unTooltip);
+        this.getStyleClass().addAll("botonFoto", "hoverOscuro");
 
         Image img = new Image("logo_dar_carta.png");
         ImageView view = new ImageView(img);

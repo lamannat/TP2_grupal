@@ -15,7 +15,7 @@ public class VistaBotonPais extends Button implements Observer {
 
     public VistaBotonPais(Juego juego, String nombrePais){
         super();
-        this.getStylesheets().add("estiloBotonPais.css");
+        this.getStyleClass().add("botonPais");
         this.paisAsociado = juego.getPaisPorNombre(nombrePais);
         if (paisAsociado == null)
             return;

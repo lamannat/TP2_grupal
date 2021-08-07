@@ -31,8 +31,9 @@ public class BotonObjetivo extends Button {
 //        this.setText("Objetivo");
 
         Tooltip unTooltip = new Tooltip("Objetivo Secreto");
-        unTooltip.setShowDelay(Duration.millis(100));
+        unTooltip.setShowDelay(Duration.millis(10));
         this.setTooltip(unTooltip);
+        this.getStyleClass().addAll("botonFoto", "hoverOscuro");
 
         Image img = new Image("logo_objetivos.png");
         ImageView view = new ImageView(img);

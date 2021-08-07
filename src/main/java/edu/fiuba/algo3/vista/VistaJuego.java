@@ -69,7 +69,7 @@ public class VistaJuego extends Escena implements Observer{
             bloque.setVisible(false);
 
         BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
-        botonSiguienteTurno.getStylesheets().add("estiloBotonSiguienteTurno.css");
+        botonSiguienteTurno.getStyleClass().addAll("botonSiguienteTurno", "hoverOscuro");
         botonSiguienteTurno.setAlignment(Pos.CENTER);
 
         StackPane acciones = new StackPane();
@@ -86,13 +86,11 @@ public class VistaJuego extends Escena implements Observer{
         this.botonObjetivo = new BotonObjetivo(ventana, juego);
         this.botonObjetivo.setLayoutX(20);
         this.botonObjetivo.setLayoutY(ALTO - 80);
-        this.botonObjetivo.getStylesheets().add("estiloBotonFoto.css");
 
         // boton de las cartas
         this.botonCartas = new BotonCarta(ventana, juego);
         this.botonCartas.setLayoutX(105);
         this.botonCartas.setLayoutY(ALTO - 80);
-        this.botonCartas.getStylesheets().add("estiloBotonFoto.css");
 
         mapa.getChildren().addAll(this.botonObjetivo, this.botonCartas);
 

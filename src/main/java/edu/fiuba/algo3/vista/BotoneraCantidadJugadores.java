@@ -30,7 +30,7 @@ public class BotoneraCantidadJugadores extends HBox {
             Button boton = botones.get(i);
             int numero = i + 2;
 
-            boton.getStylesheets().add("estiloBotonCantidadJugadores.css");
+            boton.getStyleClass().add("cantidadDeJugadores");
 
             boton.setOnAction(new BotonCantidadEventHandler(setUp, numero, botonSiguiente));
 
