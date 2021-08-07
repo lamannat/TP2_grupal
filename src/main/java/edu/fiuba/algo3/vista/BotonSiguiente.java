@@ -12,7 +12,7 @@ public class BotonSiguiente extends Button {
     public BotonSiguiente(Stage ventana, ControladorDeEscena controladorDeEscena) {
         this.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, controladorDeEscena));
         this.setText("Siguiente");
-        this.getStylesheets().add("estiloBotonSiguiente.css");
+        this.getStyleClass().addAll("botonSiguiente");
         this.setAlignment(Pos.CENTER);
     }
 

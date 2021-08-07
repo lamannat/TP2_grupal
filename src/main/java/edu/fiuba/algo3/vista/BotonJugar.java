@@ -12,7 +12,7 @@ public class BotonJugar extends Button {
     public BotonJugar(Stage ventana, ControladorDeEscena controladorDeEscena) {
         this.setOnAction(new BotonSiguienteEscenaEventHandler(ventana, controladorDeEscena));
         this.setText("Jugar");
-        this.getStylesheets().add("estiloBotonJugar.css");
+        this.getStyleClass().addAll("botonJuego", "hoverOscuro");
         this.setAlignment(Pos.CENTER);
     }
 }

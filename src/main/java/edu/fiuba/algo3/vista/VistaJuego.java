@@ -10,8 +10,10 @@ import edu.fiuba.algo3.vista.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -67,7 +69,8 @@ public class VistaJuego extends Escena implements Observer{
             bloque.setVisible(false);
 
         BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
-//        botonSiguienteTurno.getStylesheets().add("estiloBotonSiguiente.css");
+        botonSiguienteTurno.getStyleClass().addAll("botonSiguienteTurno", "hoverOscuro");
+        botonSiguienteTurno.setAlignment(Pos.CENTER);
 
         StackPane acciones = new StackPane();
         acciones.getChildren().addAll(bloqueDeAccion.values());
@@ -82,12 +85,12 @@ public class VistaJuego extends Escena implements Observer{
         // boton objetivo
         this.botonObjetivo = new BotonObjetivo(ventana, juego);
         this.botonObjetivo.setLayoutX(20);
-        this.botonObjetivo.setLayoutY(ALTO - 45);
+        this.botonObjetivo.setLayoutY(ALTO - 80);
 
         // boton de las cartas
         this.botonCartas = new BotonCarta(ventana, juego);
-        this.botonCartas.setLayoutX(100);
-        this.botonCartas.setLayoutY(ALTO - 45);
+        this.botonCartas.setLayoutX(105);
+        this.botonCartas.setLayoutY(ALTO - 80);
 
         mapa.getChildren().addAll(this.botonObjetivo, this.botonCartas);
 
@@ -118,7 +121,10 @@ public class VistaJuego extends Escena implements Observer{
 
         contenedorMapa.getChildren().add(iv);
         contenedorMapa.getChildren().add(setFichas());
-        contenedorMapa.setStyle("-fx-background-color: #72745d");
+        contenedorMapa.setStyle("-fx-background-color: #ffcc3d;" +
+                "-fx-border-color: #ffcc3d;\n" +
+                "-fx-border-style: solid;\n" +
+                "-fx-border-width: 1;");
 
         return contenedorMapa;
     }

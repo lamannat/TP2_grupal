@@ -52,7 +52,7 @@ public class VistaSetearNombresYColores extends Escena implements Observer {
 
         Button botonSiguiente = new Button();
         botonSiguiente.setText("Siguiente Jugador");
-        botonSiguiente.getStylesheets().add("estiloBotonSiguienteJugador.css");
+        botonSiguiente.getStyleClass().addAll("botonSiguienteJugador");
 
         ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton = new ArrayList<>();
 

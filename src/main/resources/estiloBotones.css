@@ -1,0 +1,130 @@
+.button {
+    -fx-padding: 5;
+    -fx-display: flex;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2;
+
+    -fx-justify-content:center;
+    -fx-align-items:center;
+
+    -fx-background-color: #272727;
+    -fx-border-color: #e2e2e2;
+}
+
+.button:hover {
+    -fx-background-color: #424242;
+    -fx-border-color: #ffcc3d;
+    -fx-text-fill: #e2e2e2;
+}
+
+.button:pressed {
+    -fx-background-color: #424242;
+    -fx-border-color: #ffcc3d;
+    -fx-text-fill: #e2e2e2;
+}
+
+.cantidadDeJugadores {
+    -fx-min-width: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-max-height: 80px;
+    -fx-text-fill: #ffcc3d;
+
+    -fx-font-size: 50px;
+    -fx-background-insets: 0 0 0 0, 0, 0.1, 0.2;
+}
+
+.elegirColores {
+    -fx-min-width: 130px;
+    -fx-min-height: 70px;
+    -fx-max-width: 130px;
+    -fx-max-height: 70px;
+
+    -fx-font-size: 23px;
+}
+
+.botonJuego, .botonSiguiente {
+    -fx-min-width: 225px;
+    -fx-min-height: 80px;
+    -fx-max-width: 225px;
+    -fx-max-height: 80px;
+
+    -fx-font-size: 50px;
+}
+
+.botonSiguiente {
+    -fx-font-size: 36px;
+}
+
+.botonSiguienteJugador {
+    -fx-min-width: 400px;
+    -fx-min-height: 80px;
+    -fx-max-width: 400px;
+    -fx-max-height: 80px;
+
+    -fx-background-color: #ffffff;
+    -fx-font-size: 40px;
+    -fx-text-fill: #000000;
+
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.botonSiguienteTurno {
+    -fx-min-width: 130px;
+    -fx-min-height: 45px;
+    -fx-max-width: 130px;
+    -fx-max-height: 45px;
+
+    -fx-border-color: #ffcc3d;
+
+    -fx-font-size: 20px;
+}
+
+.botonFoto {
+    -fx-border-color: #ffcc3d;
+
+    -fx-min-width: 65px;
+    -fx-min-height: 65px;
+    -fx-max-width: 65px;
+    -fx-max-height: 65px;
+
+    -fx-focus-color: transparent;
+}
+
+.botonJuego, .botonSiguiente, .elegirColores, .botonSiguienteTurno, .botonFoto {
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+    -fx-text-fill: #ffcc3d;
+}
+
+.hoverOscuro:hover{
+    -fx-background-color: #424242;
+    -fx-border-color: #898989;
+    -fx-text-fill: #fff;
+}
+
+.hoverOscuro:pressed{
+    -fx-background-color: #424242;
+    -fx-border-color: #898989;
+    -fx-text-fill: #fff;
+}
+
+.botonPais {
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-background-radius: 5em;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-max-width: 30px;
+    -fx-max-height: 30px;
+    -fx-border-color: transparent;
+}
+
+.botonPais:hover {
+    -fx-border-color: transparent;
+}
+
+.botonPais:pressed {
+    -fx-border-color: transparent;
+}

@@ -41,4 +41,6 @@ public class Carta {
     public Simbolo getSimbolo() {
         return this.simbolo;
     }
+
+    public EstadoCarta getEstado() { return estadoCarta; }
 }
