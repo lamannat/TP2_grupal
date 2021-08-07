@@ -62,9 +62,12 @@
     -fx-max-width: 400px;
     -fx-max-height: 80px;
 
-    /*-fx-background-color: #ffffff;*/
+    -fx-background-color: #ffffff;
     -fx-font-size: 40px;
-    /*-fx-text-fill: #000000;*/
+    -fx-text-fill: #000000;
+
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
 }
 
 .botonSiguienteTurno {
@@ -87,12 +90,9 @@
     -fx-max-height: 65px;
 
     -fx-focus-color: transparent;
-
-    -fx-background-radius: 0;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-.botonJuego, .botonSiguiente, .elegirColores, .botonSiguienteJugador, .botonSiguienteTurno {
+.botonJuego, .botonSiguiente, .elegirColores, .botonSiguienteTurno, .botonFoto {
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
     -fx-background-radius: 0;
     -fx-text-fill: #ffcc3d;
