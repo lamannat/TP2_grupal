@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.movimiento;
+package edu.fiuba.algo3.vista.bloqueAccion.movimiento;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;

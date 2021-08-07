@@ -1,18 +1,12 @@
 package edu.fiuba.algo3.vista.batalla;
 
-import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
-import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.movimiento.BotonMoverTropas;
-import edu.fiuba.algo3.vista.movimiento.DropDownCantidadFichas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;

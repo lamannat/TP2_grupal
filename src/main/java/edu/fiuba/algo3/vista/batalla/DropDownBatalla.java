@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.vista.batalla;
 
-import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.vista.movimiento.BotonMoverTropas;
 import javafx.scene.control.ComboBox;
 
 public class DropDownBatalla extends ComboBox {

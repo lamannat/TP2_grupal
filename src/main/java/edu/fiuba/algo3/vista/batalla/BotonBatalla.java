@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.batalla;
 
 import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.movimiento.DropDownCantidadFichas;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
