@@ -1,7 +1,7 @@
-package edu.fiuba.algo3.vista.ataque;
+package edu.fiuba.algo3.vista.bloqueAccion.ataque;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.vista.batalla.VistaBatalla;
+import edu.fiuba.algo3.vista.bloqueAccion.batalla.VistaBatalla;
 import javafx.scene.control.Button;
 
 public class BotonAtacar extends Button {
@@ -17,23 +17,21 @@ public class BotonAtacar extends Button {
                 return;
 
             VistaBatalla vistaBatalla = new VistaBatalla(paisAtacante,paisDefensor);
+            paisDefensor.addObserver(vistaBatalla);
+
             try {
-                paisDefensor.addObserver(vistaBatalla);
                 paisAtacante.paisAtacaAPais(paisDefensor,juego.getBatalla());
-            } catch (FichasInsuficientesException fic) {
-//                fic.printStackTrace();
-            } catch (NoEsLimitrofeException lim) {
-//                lim.printStackTrace();
-            } catch (AtaqueAPaisAliadoException at) {
-//                at.printStackTrace();
-            }
+            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ignored) {}
+
             paisDefensor.removeObserver(vistaBatalla);
         });
     }
 
-    public void setPaisAtacanteYDefensor(Pais paisAtacante, Pais paisDefensor) {
+    public void setPaisAtacante(Pais paisAtacante) {
         this.paisAtacante = paisAtacante;
-        this.paisDefensor = paisDefensor;
+    }
 
+    public void setPaisDefensor(Pais paisDefensor) {
+        this.paisDefensor = paisDefensor;
     }
 }

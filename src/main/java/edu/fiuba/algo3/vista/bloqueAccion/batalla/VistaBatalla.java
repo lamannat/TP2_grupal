@@ -1,18 +1,14 @@
-package edu.fiuba.algo3.vista.batalla;
+package edu.fiuba.algo3.vista.bloqueAccion.batalla;
 
-import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
-import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.controlador.accionesHandlers.batalla.DropDownBatallaEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.movimiento.BotonMoverTropas;
-import edu.fiuba.algo3.vista.movimiento.DropDownCantidadFichas;
+import edu.fiuba.algo3.vista.bloqueAccion.DropDownAccion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -20,11 +16,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class VistaBatalla implements Observer {
-    private Pais paisAtacante;
-    private Pais paisDefensor;
-    private BotonBatalla botonBatalla;
-    private DropDownBatalla dropDown;
-    private Stage nuevaVentana;
+    private final Pais paisAtacante;
+    private final Pais paisDefensor;
+    private final BotonBatalla botonBatalla;
+    private final DropDownAccion dropDown;
+    private final Stage nuevaVentana;
 
 
     public VistaBatalla(Pais paisAtacante, Pais paisDefensor){
@@ -37,7 +33,8 @@ public class VistaBatalla implements Observer {
 
         this.botonBatalla = new BotonBatalla(paisDefensor,paisAtacante,nuevaVentana);
 
-        this.dropDown = new DropDownBatalla(botonBatalla);
+        this.dropDown = new DropDownAccion("N° Fichas");
+        this.dropDown.enAccion(new DropDownBatallaEventHandler(dropDown, botonBatalla));
 
         ObservableList<String> cantidadAMover = FXCollections.observableArrayList();
 
@@ -74,12 +71,7 @@ public class VistaBatalla implements Observer {
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(labelConquista,elegirTropas,dropDown,botonBatalla);
 
-
         nuevaVentana.setScene(nuevaEscena);
-//        nuevaVentana.setX(ventana.getX() + 415 );
-//        nuevaVentana.setY(ventana.getY() + 260 );
-
-//        nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
         nuevaVentana.show();
     }
 }

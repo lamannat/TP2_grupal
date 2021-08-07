@@ -1,10 +1,8 @@
-package edu.fiuba.algo3.vista.solicitar;
+package edu.fiuba.algo3.vista.bloqueAccion.solicitar;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.vista.BloqueAccion;
+import edu.fiuba.algo3.vista.bloqueAccion.BloqueAccion;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
 public class BloqueSolicitarCarta extends BloqueAccion {
 
