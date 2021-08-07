@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.cartas.Carta;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -14,6 +15,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,10 @@ public class BotonCarta extends Button {
     public BotonCarta(Stage ventana, Juego juego) {
         this.juego = juego;
         this.cartas = new ArrayList<>();
+
+        Tooltip unTooltip = new Tooltip("Cartas País");
+        unTooltip.setShowDelay(Duration.millis(200));
+        this.setTooltip(unTooltip);
 
         Image img = new Image("logo_dar_carta.png");
         ImageView view = new ImageView(img);
@@ -44,6 +50,11 @@ public class BotonCarta extends Button {
             layout.getChildren().addAll(cartas);
 
             Scene nuevaEscena = new Scene(layout, 450,300);
+
+            layout.setStyle("-fx-background-color: #272727;" +
+                    "-fx-border-color: #ffcc3d;\n" +
+                    "-fx-border-style: solid;\n" +
+                    "-fx-border-width: 5;");
 
             // New window (Stage)
             Stage nuevaVentana = new Stage();

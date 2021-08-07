@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class BotonObjetivo extends Button {
 
@@ -27,6 +29,10 @@ public class BotonObjetivo extends Button {
     public BotonObjetivo(Stage ventana, Juego juego){
         this.juego = juego;
 //        this.setText("Objetivo");
+
+        Tooltip unTooltip = new Tooltip("Objetivo Secreto");
+        unTooltip.setShowDelay(Duration.millis(100));
+        this.setTooltip(unTooltip);
 
         Image img = new Image("logo_objetivos.png");
         ImageView view = new ImageView(img);
@@ -48,6 +54,11 @@ public class BotonObjetivo extends Button {
             layout.setStyle("-fx-background-color: #272727");
 
             Scene nuevaEscena = new Scene(layout, 450,300);
+
+            layout.setStyle("-fx-background-color: #272727;" +
+                    "-fx-border-color: #ffcc3d;\n" +
+                    "-fx-border-style: solid;\n" +
+                    "-fx-border-width: 5;");
 
             // New window (Stage)
             Stage nuevaVentana = new Stage();

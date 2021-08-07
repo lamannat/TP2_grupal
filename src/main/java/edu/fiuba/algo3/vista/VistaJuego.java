@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -84,13 +85,13 @@ public class VistaJuego extends Escena implements Observer{
         // boton objetivo
         this.botonObjetivo = new BotonObjetivo(ventana, juego);
         this.botonObjetivo.setLayoutX(20);
-        this.botonObjetivo.setLayoutY(ALTO - 50);
+        this.botonObjetivo.setLayoutY(ALTO - 80);
         this.botonObjetivo.getStylesheets().add("estiloBotonFoto.css");
 
         // boton de las cartas
         this.botonCartas = new BotonCarta(ventana, juego);
         this.botonCartas.setLayoutX(105);
-        this.botonCartas.setLayoutY(ALTO - 50);
+        this.botonCartas.setLayoutY(ALTO - 80);
         this.botonCartas.getStylesheets().add("estiloBotonFoto.css");
 
         mapa.getChildren().addAll(this.botonObjetivo, this.botonCartas);
@@ -122,7 +123,7 @@ public class VistaJuego extends Escena implements Observer{
 
         contenedorMapa.getChildren().add(iv);
         contenedorMapa.getChildren().add(setFichas());
-        contenedorMapa.setStyle("-fx-background-color: #72745d");
+        contenedorMapa.setStyle("-fx-background-color: #ffcc3d;");
 
         return contenedorMapa;
     }
