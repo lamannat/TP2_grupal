@@ -24,7 +24,6 @@ public class RondaHostilidades extends Ronda {
     public void comenzarLaRonda(Jugador jugador) {
         acciones.get(numeroAccion).ejecutar(jugador);
         this.notifyObservers();
-        numeroAccion++;
     }
 
     @Override
@@ -34,6 +33,7 @@ public class RondaHostilidades extends Ronda {
 
     @Override
     public boolean terminaste() {
+        numeroAccion++;
         return numeroAccion == acciones.size();
     }
 

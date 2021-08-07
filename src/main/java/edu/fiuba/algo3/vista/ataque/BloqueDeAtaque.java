@@ -34,9 +34,14 @@ public class BloqueDeAtaque extends BloqueAccion {
         Label labelPaisAtacar = new Label("Elija pais\ncon cual atacar");
         Label labelPaisDefensor = new Label("Elija pais\na cual atacar");
 
-
-
         this.getChildren().clear();
         this.getChildren().addAll(labelPaisAtacar,paisParaAtacar,labelPaisDefensor, paisQueSePuedeAtacar,botonAtacar);
+    }
+
+    public void setDropDown(Pais paisASetear){
+
+        System.out.println("se recibio el pais en el bloque de ataque, pais: "+ paisASetear.toString() + "\n");
+
+              System.out.println("se completo el metodo en bloque de ataque");
     }
 }

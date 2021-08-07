@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.movimiento;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.vista.BloqueAccion;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -38,5 +39,13 @@ public class BloqueDeMovimiento extends BloqueAccion {
 
         this.getChildren().clear();
         this.getChildren().addAll(labelElegido,paisElegido, labelFichas,cantidadFichas, labelDestino,paisDestino, moverTropas);
+    }
+
+    public void setDropDown(Pais paisASetear){
+
+        System.out.println("se recibio el pais en el bloque de reagrupacion, pais: "+ paisASetear.toString()+ "\n");
+
+        System.out.println("se completo el metodo en bloque de reagrupacion");
+
     }
 }

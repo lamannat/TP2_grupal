@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.incorporacion;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.vista.BloqueAccion;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -33,5 +34,13 @@ public class BloqueDeIncorporacion extends BloqueAccion {
         juego.jugadorActual().addObserver(paisElegido);
         this.getChildren().clear();
         this.getChildren().addAll(labelDestino,paisElegido, labelCantidadFichas,cantidadFichas, incorporar);
+    }
+
+    public void setDropDown(Pais paisASetear){
+
+        System.out.println("se recibio el pais en el bloque de incorporacion, pais: "+ paisASetear.toString()+ "\n");
+
+        System.out.println("se completo el metodo en bloque de incorporacion");
+
     }
 }

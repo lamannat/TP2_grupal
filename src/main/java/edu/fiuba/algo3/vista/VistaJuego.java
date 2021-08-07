@@ -21,7 +21,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Spliterators;
 
 public class VistaJuego extends Escena implements Observer{
 
@@ -128,7 +127,7 @@ public class VistaJuego extends Escena implements Observer{
         AnchorPane fichas = new AnchorPane();
 
         for (List<String> linea : LeerArchivo.leerArchivo("mapa.txt")) {
-            VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0));
+            VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0), this);
             double x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
             x *= ANCHO / 1280.0;
             y *= ALTO / 720.0;
@@ -164,5 +163,20 @@ public class VistaJuego extends Escena implements Observer{
         }
 
         this.estados.actualizar();
+    }
+
+    public void setDropDown (Pais paisASetear){
+
+        System.out.println("se envio el pais al bloque correspondiente");
+        BloqueAccion bloque = getBloqueActual();
+        bloque.setDropDown(paisASetear);
+    }
+
+    private BloqueAccion getBloqueActual(){
+
+        Ronda ronda = juego.dameRonda();
+        Accion fase = ronda.dameFase();
+        BloqueAccion bloque = bloqueDeAccion.get(fase.ID());
+        return bloque;
     }
 }
