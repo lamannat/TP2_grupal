@@ -123,7 +123,10 @@ public class VistaJuego extends Escena implements Observer{
 
         contenedorMapa.getChildren().add(iv);
         contenedorMapa.getChildren().add(setFichas());
-        contenedorMapa.setStyle("-fx-background-color: #ffcc3d;");
+        contenedorMapa.setStyle("-fx-background-color: #ffcc3d;" +
+                "-fx-border-color: #ffcc3d;\n" +
+                "-fx-border-style: solid;\n" +
+                "-fx-border-width: 1;");
 
         return contenedorMapa;
     }
