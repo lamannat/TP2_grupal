@@ -8,16 +8,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Popup extends Stage {
-
-    private final Stage ventanaPrincipal;
     private final Pane layout;
     private int v;
     private int v1;
-    private double x;
-    private double y;
+    private double x = 0;
+    private double y = 0;
+    private String stylesheet = "";
 
-    public Popup(Stage ventanaPrincipal, Pane layout){
-        this.ventanaPrincipal = ventanaPrincipal;
+    public Popup(Pane layout){
         this.layout = layout;
     }
     
@@ -31,17 +29,27 @@ public class Popup extends Stage {
         this.y = y;
     }
 
+    public void setStylesheet(String stylesheet){
+        this.stylesheet = stylesheet;
+    }
+
     public void crearPopup(){
         // New window (Stage)
         Scene nuevaEscena = new Scene(layout,v,v1);
-        this.setScene(nuevaEscena);
 
         this.initStyle(StageStyle.UNDECORATED);
-        this.setX(x);
-        this.setY(y);
+
+        if (x != 0 && y != 0){
+            this.setX(x);
+            this.setY(y);
+        }
+
+        if (stylesheet != "")
+            nuevaEscena.getStylesheets().addAll(stylesheet);
 
         this.focusedProperty().addListener(new ListenerVentanaDesenfocada(this));
 
+        this.setScene(nuevaEscena);
         this.show();
     }
 

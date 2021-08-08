@@ -76,7 +76,7 @@ public class VistaTitulo extends Escena {
                     "-fx-border-width: 5;");
 
             //POPUP
-            Popup popup = new Popup(ventana, layout);
+            Popup popup = new Popup(layout);
             popup.setDimensiones(450,300);
             popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
             popup.crearPopup();

@@ -62,7 +62,7 @@ public class BotonObjetivo extends Button {
 //            Scene nuevaEscena = new Scene(layout, 450,300);
 
             //POPUP
-            Popup popup = new Popup(ventana, layout);
+            Popup popup = new Popup(layout);
             popup.setDimensiones(450,300);
             popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
             popup.crearPopup();

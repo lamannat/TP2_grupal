@@ -59,7 +59,7 @@ public class BotonCarta extends Button {
                     "-fx-border-width: 5;");
 
             //Popup
-            Popup popup = new Popup(ventana, layout);
+            Popup popup = new Popup(layout);
             popup.setDimensiones(775,200);
             popup.setDistanciaAPrincipal(ventana.getX() + 190,ventana.getY() + 270);
             popup.crearPopup();
