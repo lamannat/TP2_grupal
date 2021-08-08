@@ -1,17 +1,20 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.moduloRonda;
 
+import edu.fiuba.algo3.modelo.Canjeador;
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.modelo.fichas.Ficha;
+
+import java.util.List;
 
 public class JugadorPrueba extends Jugador {
 
-    public int solicitarCartas;
-    public int jugadorReclamaPorTarjetas;
+    public int seLeDieronCartas;
 
     public JugadorPrueba(String nombre, Color color, Canjeador canjeador) {
         super(nombre, color, canjeador);
-        solicitarCartas = 0;
-        jugadorReclamaPorTarjetas = 0;
+        seLeDieronCartas = 0;
     }
 
     public boolean merecesCarta() {
@@ -19,12 +22,7 @@ public class JugadorPrueba extends Jugador {
     }
 
     @Override
-    public void solicitarCarta(Carta carta) {
-        solicitarCartas++;
-    }
-
-    @Override
-    public void hacerCanjePorCarta() {
-        jugadorReclamaPorTarjetas++;
+    public void darFichas(List<Ficha> fichas) {
+        seLeDieronCartas++;
     }
 }

@@ -3,12 +3,12 @@ package edu.fiuba.algo3.modelo.moduloRonda;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorAmarillo;
+import edu.fiuba.algo3.modelo.color.ColorAzul;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 public class RondaIncorporacionTest {
 
@@ -38,7 +38,11 @@ public class RondaIncorporacionTest {
     @Test
     public void seLeDanFichasAlJugador() {
         Juego juego = juegoVacio();
-        Jugador jugador = mock(Jugador.class);
+        JugadorPrueba jugador = new JugadorPrueba("Mejor que mock", new ColorAzul(), new Canjeador(new Mazo()));
         RondaIncorporacion ronda = new RondaIncorporacion(juego);
+
+        ronda.comenzarLaRonda(jugador);
+
+        assertEquals(1, jugador.seLeDieronCartas);
     }
 }
