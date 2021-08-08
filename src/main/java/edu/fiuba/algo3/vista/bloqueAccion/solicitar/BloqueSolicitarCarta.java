@@ -16,7 +16,7 @@ public class BloqueSolicitarCarta extends BloqueAccion {
     }
 
     public void setDropDown(Pais paisASetear) {
-        System.out.println("set combobox pedir carta con: "+ paisASetear.toString());
+
     }
 
     public void actualizar() {

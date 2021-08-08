@@ -20,7 +20,6 @@ public class BotonPaisEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        System.out.println("se envio el pais a vista juego");
         this.vistaJuego.setDropDown(this.pais);
     }
 }
