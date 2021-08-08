@@ -25,6 +25,9 @@ public class DropDownPaisElegidoEventHandler implements EventHandler<ActionEvent
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        String selected = (String)dropDownElegirPais.getValue();
+
+
         Pais paisAtacante = juego.getPaisPorNombre((String)dropDownElegirPais.getValue());
         if (paisAtacante == null)
             return;

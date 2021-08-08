@@ -48,7 +48,6 @@
     -fx-min-height: 80px;
     -fx-max-width: 225px;
     -fx-max-height: 80px;
-
     -fx-font-size: 50px;
 }
 
@@ -114,6 +113,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 10px;
     -fx-background-radius: 5em;
+    -fx-border-radius: 5em;
     -fx-min-width: 30px;
     -fx-min-height: 30px;
     -fx-max-width: 30px;
@@ -122,9 +122,27 @@
 }
 
 .botonPais:hover {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 5em;
+    -fx-min-width: 35px;
+    -fx-min-height: 35px;
+    -fx-max-width: 35px;
+    -fx-max-height: 35px;
     -fx-border-color: transparent;
 }
 
 .botonPais:pressed {
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-background-radius: 5em;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-max-width: 30px;
+    -fx-max-height: 30px;
     -fx-border-color: transparent;
+}
+
+.botonPais:focused{
+    -fx-border-color: #ffcc3d;
 }

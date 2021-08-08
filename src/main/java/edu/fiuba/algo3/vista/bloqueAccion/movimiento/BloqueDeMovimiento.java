@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 public class BloqueDeMovimiento extends BloqueAccion {
 
     private Juego juego;
+    private DropDownAccion dropDownPaisesOrigen;
 
     public BloqueDeMovimiento (Juego juego) {
         this.juego = juego;
@@ -24,6 +25,10 @@ public class BloqueDeMovimiento extends BloqueAccion {
     @Override
     public void change() {
         actualizar();
+    }
+
+    public void setDropDown(Pais paisASetear) {
+        dropDownPaisesOrigen.setPais(paisASetear);
     }
 
     public void actualizar() {
@@ -52,7 +57,7 @@ public class BloqueDeMovimiento extends BloqueAccion {
             paisElegido.getItems().addAll(paisesDelJugador.sorted());
         });
         paisElegido.enAccion(new DropDownPaisElegidoMovimientoEventHandler(juego, paisElegido, cantidadFichas, paisDestino, moverTropas));
-
+        dropDownPaisesOrigen = paisElegido;
         Label labelDestino = new Label("Elegi pais a donde\nmover fichas");
         Label labelFichas = new Label("Elegi n° de Fichas");
         Label labelElegido = new Label("Elegi pais a cual\nsacarle fichas");

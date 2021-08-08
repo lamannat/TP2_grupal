@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 
 public class BloqueDeIncorporacion extends BloqueAccion {
     private Juego juego;
+    private DropDownAccion dropDownPaisesParaIncorporar;
     public BloqueDeIncorporacion(Juego juego) {
         this.juego = juego;
         actualizar();
@@ -22,6 +23,10 @@ public class BloqueDeIncorporacion extends BloqueAccion {
     @Override
     public void change() {
         this.actualizar();
+    }
+
+    public void setDropDown(Pais paisASetear) {
+        dropDownPaisesParaIncorporar.setPais(paisASetear);
     }
 
     public void actualizar() {
@@ -54,7 +59,7 @@ public class BloqueDeIncorporacion extends BloqueAccion {
             paisElegido.getItems().addAll(incorporables.sorted());
         });
         paisElegido.enAccion(new DropDownPaisIncorporacionEventHandler(juego, paisElegido, cantidadFichas, incorporar));
-
+        dropDownPaisesParaIncorporar = paisElegido;
         Label labelDestino = new Label("Elija pais\ndestino");
         Label labelCantidadFichas = new Label("Elija cantidad\nde fichas");
 

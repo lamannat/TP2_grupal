@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.bloqueAccion.solicitar;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.vista.bloqueAccion.BloqueAccion;
 import javafx.scene.control.Label;
 
@@ -12,6 +13,10 @@ public class BloqueSolicitarCarta extends BloqueAccion {
         this.juego = juego;
         actualizar();
         this.setId("bloqueSolicitarCarta");
+    }
+
+    public void setDropDown(Pais paisASetear) {
+        System.out.println("set combobox pedir carta con: "+ paisASetear.toString());
     }
 
     public void actualizar() {
