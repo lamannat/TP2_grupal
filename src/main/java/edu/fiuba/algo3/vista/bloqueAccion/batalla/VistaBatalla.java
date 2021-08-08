@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.bloqueAccion.batalla;
 import edu.fiuba.algo3.controlador.accionesHandlers.batalla.DropDownBatallaEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.vista.Popup;
 import edu.fiuba.algo3.vista.bloqueAccion.DropDownAccion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,18 +61,23 @@ public class VistaBatalla implements Observer {
         Label elegirTropas = new Label("Elegi cuantas tropas pasar");
         elegirTropas.setTextFill(Color.WHITE);
 
-        Scene nuevaEscena = new Scene(layout, 450,300);
+//        Scene nuevaEscena = new Scene(layout, 450,300);
         layout.setStyle("-fx-background-color: #272727;" +
                         "-fx-border-color: #ffcc3d;\n" +
                         "-fx-border-style: solid;\n" +
                         "-fx-border-width: 5;");
         layout.getStyleClass().add("bloqueDeAccion");
-        nuevaEscena.getStylesheets().addAll("estiloSidePanel.css");
+//        nuevaEscena.getStylesheets().addAll("estiloSidePanel.css");
 
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(labelConquista,elegirTropas,dropDown,botonBatalla);
 
-        nuevaVentana.setScene(nuevaEscena);
-        nuevaVentana.show();
+        Popup popup = new Popup(layout);
+        popup.setDimensiones(450,300);
+        popup.setStylesheet("estiloSidePanel.css");
+        popup.crearPopup();
+
+//        nuevaVentana.setScene(nuevaEscena);
+//        nuevaVentana.show();
     }
 }

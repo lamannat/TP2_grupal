@@ -51,25 +51,31 @@ public class BotonCarta extends Button {
             layout.setHgap(10);
             layout.setVgap(10);
 
-            Scene nuevaEscena = new Scene(layout, 775,200);
+//            Scene nuevaEscena = new Scene(layout, 775,200);
 
             layout.setStyle("-fx-background-color: #272727;" +
                     "-fx-border-color: #ffcc3d;\n" +
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
+            //Popup
+            Popup popup = new Popup(layout);
+            popup.setDimensiones(775,200);
+            popup.setDistanciaAPrincipal(ventana.getX() + 190,ventana.getY() + 270);
+            popup.crearPopup();
+
 
             // New window (Stage)
-            Stage nuevaVentana = new Stage();
-            nuevaVentana.setScene(nuevaEscena);
-
-            nuevaVentana.initStyle(StageStyle.UNDECORATED);
-            nuevaVentana.setX(ventana.getX() + 190 );
-            nuevaVentana.setY(ventana.getY() + 270 );
-
-            nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
-
-            nuevaVentana.show();
+//            Stage nuevaVentana = new Stage();
+//            nuevaVentana.setScene(nuevaEscena);
+//
+//            nuevaVentana.initStyle(StageStyle.UNDECORATED);
+//            nuevaVentana.setX(ventana.getX() + 190 );
+//            nuevaVentana.setY(ventana.getY() + 270 );
+//
+//            nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
+//
+//            nuevaVentana.show();
         });
 
     }
