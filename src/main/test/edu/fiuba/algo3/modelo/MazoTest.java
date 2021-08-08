@@ -65,5 +65,26 @@ public class MazoTest {
         assertTrue(mazo.contienteCarta(carta3));
     }
 
+    @Test
+    public void noSePuedeCanjearDosVecesLaMismaCarta() {
+        Pais pais = new Pais("Argentina");
+        Carta carta = new Carta(pais, new SimboloNormal("Globo"));
 
+        assertEquals(2, carta.fichasPorPais(pais));
+        assertEquals(0, carta.fichasPorPais(pais));
+    }
+
+    @Test
+    public void cartaSeCanjeaVuelveAlMazoYSePuedeCanjearPorSegundaVez() {
+        Mazo mazo = new Mazo();
+        Pais pais = new Pais("Argentina");
+        Carta carta = new Carta(pais, new SimboloNormal("Globo"));
+
+        assertEquals(2, carta.fichasPorPais(pais));
+
+        carta.devolverAlMazo(mazo);
+        carta = mazo.sacarCartaAleatoria();
+
+        assertEquals(2, carta.fichasPorPais(pais));
+    }
 }
