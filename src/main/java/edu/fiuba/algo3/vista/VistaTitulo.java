@@ -56,6 +56,7 @@ public class VistaTitulo extends Escena {
 
         // BOTON ABOUT
         Button botonAbout = new Button("About");
+        botonAbout.getStyleClass().addAll("botonJuego", "hoverOscuro");
         botonAbout.setOnAction(e-> {
 
             Label integrantes = new Label("Integrantes");
@@ -74,10 +75,11 @@ public class VistaTitulo extends Escena {
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
-            Scene nuevaEscena = new Scene(layout, 450,300);
-
             //POPUP
-            Popup popup = new Popup(nuevaEscena, ventana);
+            Popup popup = new Popup(ventana, layout);
+            popup.setDimensiones(450,300);
+            popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
+            popup.crearPopup();
 
         });
 

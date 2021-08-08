@@ -59,10 +59,13 @@ public class BotonObjetivo extends Button {
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
-            Scene nuevaEscena = new Scene(layout, 450,300);
+//            Scene nuevaEscena = new Scene(layout, 450,300);
 
             //POPUP
-            Popup popup = new Popup(nuevaEscena, ventana);
+            Popup popup = new Popup(ventana, layout);
+            popup.setDimensiones(450,300);
+            popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
+            popup.crearPopup();
 
             // New window (Stage)
 //            Stage nuevaVentana = new Stage();
