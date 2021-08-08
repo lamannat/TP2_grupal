@@ -20,6 +20,10 @@ public abstract class RondaAgregarFichas extends Ronda{
     }
 
     @Override
+    public void resetearAcciones() {
+    }
+
+    @Override
     public boolean terminaste(){
         return terminado;
     }

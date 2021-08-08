@@ -18,10 +18,6 @@ public class RondaAgregarTresFichas extends RondaAgregarFichas {
     }
 
     @Override
-    public void resetearAcciones() {
-    }
-
-    @Override
     public Accion dameFase() {
         return acciones.get(0);
     }
