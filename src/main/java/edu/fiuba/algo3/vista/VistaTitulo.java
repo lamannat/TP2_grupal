@@ -6,11 +6,13 @@ import edu.fiuba.algo3.modelo.Observer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -52,12 +54,45 @@ public class VistaTitulo extends Escena {
         // BOTON JUGAR
         BotonJugar botonJugar = new BotonJugar(ventana, controladorDeEscena);
 
+        // BOTON ABOUT
+        Button botonAbout = new Button("About");
+        botonAbout.setOnAction(e-> {
+
+            Label integrantes = new Label("Integrantes");
+            integrantes.setTextFill(Color.WHITE);
+            integrantes.setStyle("-fx-font-size: 30");
+
+            Label nomsIntegrantes = new Label("-Tobias Lamanna\n-Juan Ignacio Biancuzzo\n-Dolores Levi\n-Valentín Santander");
+            nomsIntegrantes.setTextFill(Color.WHITE);
+            nomsIntegrantes.setStyle("-fx-font-size: 20");
+
+            VBox layout = new VBox();
+            layout.getChildren().addAll(integrantes,nomsIntegrantes);
+
+            layout.setStyle("-fx-background-color: #272727;" +
+                    "-fx-border-color: #ffcc3d;\n" +
+                    "-fx-border-style: solid;\n" +
+                    "-fx-border-width: 5;");
+
+            Scene nuevaEscena = new Scene(layout, 450,300);
+
+            //POPUP
+            Popup popup = new Popup(nuevaEscena, ventana);
+
+        });
+
+        //HBox para los botones
+        HBox botones = new HBox();
+        botones.getChildren().addAll(botonJugar,botonAbout);
+        botones.setAlignment(Pos.CENTER);
+        botones.setSpacing(20.0);
+
         // LAYOUT SECUNDARIO
         HBox titulo = new HBox();
         titulo.setAlignment(Pos.CENTER);
         titulo.getChildren().addAll(label1,logo,label2);
 
         padre.setAlignment(Pos.CENTER);
-        padre.getChildren().addAll(titulo, botonJugar);
+        padre.getChildren().addAll(titulo, botones);
     }
 }

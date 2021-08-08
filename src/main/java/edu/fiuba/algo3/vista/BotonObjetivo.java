@@ -54,24 +54,27 @@ public class BotonObjetivo extends Button {
             layout.getChildren().add(label);
             layout.setStyle("-fx-background-color: #272727");
 
-            Scene nuevaEscena = new Scene(layout, 450,300);
-
             layout.setStyle("-fx-background-color: #272727;" +
                     "-fx-border-color: #ffcc3d;\n" +
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
+            Scene nuevaEscena = new Scene(layout, 450,300);
+
+            //POPUP
+            Popup popup = new Popup(nuevaEscena, ventana);
+
             // New window (Stage)
-            Stage nuevaVentana = new Stage();
-            nuevaVentana.setScene(nuevaEscena);
-
-            nuevaVentana.initStyle(StageStyle.UNDECORATED);
-            nuevaVentana.setX(ventana.getX() + 415 );
-            nuevaVentana.setY(ventana.getY() + 260 );
-
-            nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
-
-            nuevaVentana.show();
+//            Stage nuevaVentana = new Stage();
+//            nuevaVentana.setScene(nuevaEscena);
+//
+//            nuevaVentana.initStyle(StageStyle.UNDECORATED);
+//            nuevaVentana.setX(ventana.getX() + 415 );
+//            nuevaVentana.setY(ventana.getY() + 260 );
+//
+//            nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
+//
+//            nuevaVentana.show();
         });
     }
 
