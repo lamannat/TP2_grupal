@@ -4,8 +4,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.Color;
-import edu.fiuba.algo3.modelo.moduloRonda.RondaAgregarCincoFichas;
-import edu.fiuba.algo3.modelo.moduloRonda.Turno;
+import edu.fiuba.algo3.modelo.moduloRonda.*;
 import edu.fiuba.algo3.modelo.objetivos.*;
 import edu.fiuba.algo3.modelo.simbolo.Comodin;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
@@ -85,16 +84,30 @@ public class SetUpJuego implements Observable {
             tablero.agregarContinente(continente);
 
 
-        for (Carta carta : agregarCartas(paises)) {
+        for (Carta carta : agregarCartas(paises))
             mazo.agregarCarta(carta);
-        }
+
 
         this.agregarObjetivos(continentes, turno);
 
         this.juego = new Juego(tablero, turno, new Batalla(new DadoEstandar()), mazo);
-        this.juego.seleccionarRonda(new RondaAgregarCincoFichas(juego));
+        this.juego.seleccionarRonda(this.generarRondasVinculadas());
 
         return this.juego;
+    }
+
+    private Ronda generarRondasVinculadas() {
+        RondaAgregarCincoFichas rondaAgregarCincoFichas = new RondaAgregarCincoFichas();
+        RondaAgregarTresFichas rondaAgregarTresFichas = new RondaAgregarTresFichas();
+        RondaHostilidades rondaHostilidades = new RondaHostilidades();
+        RondaIncorporacion rondaIncorporacion = new RondaIncorporacion(this.juego);
+
+        rondaAgregarCincoFichas.setSiguienteRonda(rondaAgregarTresFichas);
+        rondaAgregarTresFichas.setSiguienteRonda(rondaHostilidades);
+        rondaHostilidades.setSiguienteRonda(rondaIncorporacion);
+        rondaIncorporacion.setSiguienteRonda(rondaHostilidades);
+
+        return rondaAgregarCincoFichas;
     }
 
     private List<Jugador> listaDeJugadores(Mazo mazo) {

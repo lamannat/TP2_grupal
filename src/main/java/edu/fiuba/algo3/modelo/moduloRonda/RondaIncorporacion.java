@@ -7,11 +7,9 @@ import edu.fiuba.algo3.modelo.moduloRonda.acciones.Incorporacion;
 
 public class RondaIncorporacion extends Ronda {
 
-    private Juego juego;
     private boolean terminado;
 
     public RondaIncorporacion(Juego juego) {
-        this.juego = juego;
         acciones.add(new Incorporacion(juego));
         terminado = false;
     }
@@ -21,11 +19,6 @@ public class RondaIncorporacion extends Ronda {
         this.acciones.get(0).ejecutar(jugador);
         terminado = true;
         this.notifyObservers();
-    }
-
-    @Override
-    public Ronda siguienteRonda() {
-        return new RondaHostilidades(juego);
     }
 
     @Override

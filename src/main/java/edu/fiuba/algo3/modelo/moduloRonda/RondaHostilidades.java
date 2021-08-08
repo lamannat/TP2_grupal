@@ -9,11 +9,9 @@ import edu.fiuba.algo3.modelo.moduloRonda.acciones.SolicitarCarta;
 
 public class RondaHostilidades extends Ronda {
 
-    protected final Juego juego;
-    protected int numeroAccion;
+    private int numeroAccion;
 
-    public RondaHostilidades(Juego juego) {
-        this.juego = juego;
+    public RondaHostilidades() {
         this.numeroAccion = 0;
         acciones.add(new Atacar());
         acciones.add(new Movimiento());
@@ -25,11 +23,6 @@ public class RondaHostilidades extends Ronda {
         acciones.get(numeroAccion).ejecutar(jugador);
         this.notifyObservers();
         numeroAccion++;
-    }
-
-    @Override
-    public Ronda siguienteRonda() {
-        return new RondaIncorporacion(juego);
     }
 
     @Override

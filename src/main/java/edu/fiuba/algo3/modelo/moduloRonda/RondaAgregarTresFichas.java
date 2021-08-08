@@ -6,15 +6,9 @@ import edu.fiuba.algo3.modelo.moduloRonda.acciones.AgregarFichas;
 
 public class RondaAgregarTresFichas extends RondaAgregarFichas {
 
-    public RondaAgregarTresFichas(Juego juego) {
-        this.juego = juego;
+    public RondaAgregarTresFichas() {
         cantFichas = 3;
         acciones.add(new AgregarFichas(3));
-    }
-
-
-    public Ronda siguienteRonda(){
-        return new RondaHostilidades(this.juego);
     }
 
     @Override

@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 public abstract class RondaAgregarFichas extends Ronda{
 
-    protected Juego juego;
     protected static int cantFichas;
     private boolean terminado;
 

@@ -11,19 +11,27 @@ import java.util.List;
 public abstract class Ronda implements Observable {
     protected List<Observer> observadores;
     protected List<Accion> acciones;
+    protected Ronda ronda;
 
     public Ronda(){
         this.observadores = new ArrayList<>();
         this.acciones = new ArrayList<>();
+        this.ronda = null;
     }
 
     public abstract void comenzarLaRonda(Jugador jugador);
 
-    public abstract Ronda siguienteRonda();
-
     public abstract boolean terminaste();
 
     public abstract void resetearAcciones();
+
+    public void setSiguienteRonda(Ronda ronda) {
+        this.ronda = ronda;
+    }
+
+    public Ronda siguienteRonda() {
+        return ronda;
+    }
 
     @Override
     public void addObserver(Observer observer) {
