@@ -22,7 +22,13 @@ public class Turno {
         return jugadores.get((indice + 1) % jugadores.size());
     }
 
-    public void avanzarJugador() { indice = (indice + 1) % jugadores.size(); }
+    public void avanzarJugador() {
+        while (!this.jugadorSiguiente().seguisJugando()){
+            Jugador jugadorSiguiente = this.jugadorSiguiente();
+            jugadores.remove(jugadorSiguiente);
+        }
+        indice = (indice + 1) % jugadores.size();
+    }
 
     public boolean ultimoJugador() {
         return indice == jugadores.size()-1;

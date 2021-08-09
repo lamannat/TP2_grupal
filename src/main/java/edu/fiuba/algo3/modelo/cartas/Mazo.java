@@ -12,7 +12,7 @@ public class Mazo {
         this.cartas = new ArrayList<>();
     }
 
-    public boolean contienteCarta(Carta unaCarta) {
+    public boolean contieneCarta(Carta unaCarta) {
         return cartas.contains(unaCarta);
     }
 

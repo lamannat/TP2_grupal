@@ -15,9 +15,9 @@ public class MazoTest {
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("Globo"));
 
         Mazo mazo = new Mazo();
-        assertFalse(mazo.contienteCarta(carta1));
+        assertFalse(mazo.contieneCarta(carta1));
         mazo.agregarCarta(carta1);
-        assertTrue(mazo.contienteCarta(carta1));
+        assertTrue(mazo.contieneCarta(carta1));
     }
 
     @Test
@@ -27,8 +27,8 @@ public class MazoTest {
         Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("Barco"));
 
         mazo.agregarCarta(carta1);
-        assertTrue(mazo.contienteCarta(carta1));
-        assertFalse(mazo.contienteCarta(carta2));
+        assertTrue(mazo.contieneCarta(carta1));
+        assertFalse(mazo.contieneCarta(carta2));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class MazoTest {
 
         mazo.sacarCartaAleatoria();
 
-        assertFalse(mazo.contienteCarta(carta1) && mazo.contienteCarta(carta2) && mazo.contienteCarta(carta3));
+        assertFalse(mazo.contieneCarta(carta1) && mazo.contieneCarta(carta2) && mazo.contieneCarta(carta3));
     }
 
     @Test
@@ -60,9 +60,9 @@ public class MazoTest {
 
         mazo.sacarCarta(carta2);
 
-        assertTrue(mazo.contienteCarta(carta1));
-        assertFalse(mazo.contienteCarta(carta2));
-        assertTrue(mazo.contienteCarta(carta3));
+        assertTrue(mazo.contieneCarta(carta1));
+        assertFalse(mazo.contieneCarta(carta2));
+        assertTrue(mazo.contieneCarta(carta3));
     }
 
     @Test

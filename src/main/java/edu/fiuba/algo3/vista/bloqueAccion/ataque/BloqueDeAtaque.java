@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 public class BloqueDeAtaque extends BloqueAccion {
 
     private Juego juego;
+    private DropDownAccion dropDownAtacantes;
 
     public BloqueDeAtaque(Juego juego) {
         this.juego = juego;
@@ -24,6 +25,12 @@ public class BloqueDeAtaque extends BloqueAccion {
     @Override
     public void change() {
         actualizar();
+    }
+
+    @Override
+    public void setDropDown(Pais paisASetear) {
+
+        dropDownAtacantes.setPais(paisASetear);
     }
 
     public void actualizar() {
@@ -45,6 +52,8 @@ public class BloqueDeAtaque extends BloqueAccion {
             paisParaAtacar.getItems().addAll(opciones.sorted());
         });
         paisParaAtacar.enAccion(new DropDownPaisElegidoEventHandler(juego, paisParaAtacar, paisDefensor, botonAtacar));
+
+        dropDownAtacantes = paisParaAtacar;
 
         Batalla batalla = juego.getBatalla();
         batalla.addObserver(paisParaAtacar);
