@@ -44,8 +44,8 @@ public class TableroTest {
 
         tablero.asignarPaises(turno);
 
-        assertEquals(25, Juance.cuantosPaisesConquistados());
-        assertEquals(25, Valentin.cuantosPaisesConquistados());
+        assertEquals(25, Juance.getPaisesIniciales().size());
+        assertEquals(25, Valentin.getPaisesIniciales().size());
     }
 
     @Test
@@ -67,9 +67,9 @@ public class TableroTest {
 
         tablero.asignarPaises(turno);
 
-        Integer paisesValentin = Valentin.cuantosPaisesConquistados();
-        Integer paisesJuance = Juance.cuantosPaisesConquistados();
-        Integer paisesTobias = Tobias.cuantosPaisesConquistados();
+        Integer paisesValentin = Valentin.getPaisesIniciales().size();
+        Integer paisesJuance = Juance.getPaisesIniciales().size();
+        Integer paisesTobias = Tobias.getPaisesIniciales().size();
 
         assertTrue(paisesValentin == 16 || paisesValentin == 17);
         assertTrue(paisesJuance == 16 || paisesJuance == 17);

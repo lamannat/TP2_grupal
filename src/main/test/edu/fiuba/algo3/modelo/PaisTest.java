@@ -26,8 +26,8 @@ public class PaisTest {
     public void paisEmpiezaSinFichasPuedeAtacarSiSeLeAgregaDosFichas(){
         Pais pais = new Pais("Temeria");
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorAzul()));
-        fichas.add(new Ficha(new ColorAzul()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
 
         pais.agregarFichas(fichas);
         assertTrue(pais.fichasSuficientes());
@@ -209,8 +209,8 @@ public class PaisTest {
         paisAtacante.agregarPaisLimitrofe(paisDefensor);
 
         for (int i = 0; i < 2; i++){
-            paisAtacante.agregarFicha(new Ficha( new ColorVerde()));
-            paisDefensor.agregarFicha(new Ficha( new ColorAmarillo()));
+            paisAtacante.agregarFicha(new Ficha());
+            paisDefensor.agregarFicha(new Ficha());
         }
 
         try {

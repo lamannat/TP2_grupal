@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.SetUpJuego;
 import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;

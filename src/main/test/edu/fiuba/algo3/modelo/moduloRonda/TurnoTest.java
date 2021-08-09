@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 public class TurnoTest {
 
@@ -65,5 +66,64 @@ public class TurnoTest {
             turno.avanzarJugador();
 
         assertEquals(primerJugador, turno.jugadorSiguiente());
+    }
+
+    @Test
+    public void seEliminaAlUltimoYElSiguienteDeAnteUltimoEsElPrimero(){
+        List<Jugador> jugadores = new ArrayList<>();
+        Jugador primero = new Jugador("Primero", new ColorVerde(), new Canjeador(new Mazo()));
+        Jugador anteUltimo = new Jugador("AnteUltimo", new ColorVerde(), new Canjeador(new Mazo()));
+        Jugador ultimo = new Jugador("Ultimo", new ColorVerde(), new Canjeador(new Mazo()));
+
+        jugadores.add(primero);
+        jugadores.add(anteUltimo);
+        jugadores.add(ultimo);
+
+        Turno turno = new Turno(jugadores);
+
+        ultimo.setAsesino(primero);
+        turno.avanzarJugador();
+        turno.avanzarJugador();
+        assertEquals(primero,turno.jugadorActual());
+    }
+
+    @Test
+    public void seEliminaPrimeroYElSiguienteDeUltimoEsSegundo(){
+        List<Jugador> jugadores = new ArrayList<>();
+        Jugador primero = new Jugador("Primero", new ColorVerde(), new Canjeador(new Mazo()));
+        Jugador segundo = new Jugador("Segundo", new ColorVerde(), new Canjeador(new Mazo()));
+        Jugador ultimo = new Jugador("Ultimo", new ColorVerde(), new Canjeador(new Mazo()));
+
+        jugadores.add(primero);
+        jugadores.add(segundo);
+        jugadores.add(ultimo);
+
+        primero.setAsesino(ultimo);
+
+        Turno turno = new Turno(jugadores);
+
+        assertEquals(segundo,turno.jugadorActual());
+        turno.avanzarJugador();
+        turno.avanzarJugador();
+        assertEquals(segundo,turno.jugadorActual());
+    }
+
+    @Test
+    public void seEliminaSegundoYElSiguienteDePrimeroEsElUltimo(){
+        List<Jugador> jugadores = new ArrayList<>();
+        Jugador primero = new Jugador("Primero", new ColorVerde(), new Canjeador(new Mazo()));
+        Jugador segundo = new Jugador("Segundo", new ColorVerde(), new Canjeador(new Mazo()));
+        Jugador ultimo = new Jugador("Ultimo", new ColorVerde(), new Canjeador(new Mazo()));
+
+        jugadores.add(primero);
+        jugadores.add(segundo);
+        jugadores.add(ultimo);
+
+        segundo.setAsesino(ultimo);
+
+        Turno turno = new Turno(jugadores);
+
+        turno.avanzarJugador();
+        assertEquals(ultimo,turno.jugadorActual());
     }
 }

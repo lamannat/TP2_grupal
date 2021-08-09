@@ -52,7 +52,7 @@ public class BloqueDeIncorporacion extends BloqueAccion {
             Jugador jugador = juego.jugadorActual();
 
             ObservableList<String> incorporables = FXCollections.observableArrayList();
-            for (Pais pais: jugador.getPaisesConquistados())
+            for (Pais pais: jugador.getPaisesIniciales())
                 incorporables.add(pais.toString());
 
             paisElegido.getItems().clear();

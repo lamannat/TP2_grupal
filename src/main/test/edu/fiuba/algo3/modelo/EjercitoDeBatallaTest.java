@@ -14,9 +14,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasDevuelveTresFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         int fichasRestantes = ejercitoDeBatalla.fichasRestantes().size();
@@ -27,9 +27,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasTieneTresFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         int fichasTotales = ejercitoDeBatalla.cantidadDeFichas();
@@ -40,9 +40,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasYPierdeUnaDevuelveDosFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         ejercitoDeBatalla.pierdeFicha();
@@ -54,9 +54,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasYPierdeYTieneDosFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         ejercitoDeBatalla.pierdeFicha();

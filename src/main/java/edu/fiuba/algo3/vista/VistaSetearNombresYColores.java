@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.SetUpJuego;
 import edu.fiuba.algo3.controlador.*;
-import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.modelo.SetUpJuego;
-import edu.fiuba.algo3.modelo.color.*;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;

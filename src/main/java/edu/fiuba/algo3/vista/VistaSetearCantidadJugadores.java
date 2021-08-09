@@ -1,16 +1,10 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonCantidadEventHandler;
-import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
+import edu.fiuba.algo3.SetUpJuego;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
-import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Observable;
-import edu.fiuba.algo3.modelo.SetUpJuego;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;

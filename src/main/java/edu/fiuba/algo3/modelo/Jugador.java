@@ -12,9 +12,10 @@ public class Jugador implements Observable {
 
     private String nombre;
     private Color color;
-    private final List<Pais> paisesConquistados;
+    private final List<Pais> paisesIniciales;
     private final Canjeador canjeador;
     private boolean mereceCarta;
+    private List<Pais> paisesConquistados;
     private final List<Ficha> fichasReservadas;
     private final List<Objetivo> objetivos;
     private List<Observer> observers;
@@ -24,11 +25,12 @@ public class Jugador implements Observable {
         //despues vamos a editar los constructores
         this.nombre = nombre;
         this.color = color;
-        this.paisesConquistados = new ArrayList<>();
+        this.paisesIniciales = new ArrayList<>();
         this.fichasReservadas = new ArrayList<>();
         this.objetivos = new ArrayList<>();
         this.canjeador = canjeador;
-        mereceCarta = false;
+        this.mereceCarta = false;
+        this.paisesConquistados = new ArrayList<>();
         this.observers = new ArrayList<>();
         this.jugadorAsesino = null;
     }
@@ -39,7 +41,7 @@ public class Jugador implements Observable {
 
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
-        this.paisesConquistados.add(pais);
+        this.paisesIniciales.add(pais);
     }
 
     public void setObjetivo(Objetivo objetivo){
@@ -47,13 +49,13 @@ public class Jugador implements Observable {
     }
 
 
-    public int cuantosPaisesConquistados(){
-        return paisesConquistados.size();
-    }
+//    public int cuantosPaisesConquistados(){
+//        return paisesIniciales.size();
+//    }
 
 
     public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor,Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        if (!paisesConquistados.contains(paisAtacante)) {
+        if (!paisesIniciales.contains(paisAtacante)) {
         // return PaisNoEncontradoExcepcion --> Puede Estar en Juego
         }
         paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
@@ -68,6 +70,14 @@ public class Jugador implements Observable {
 
     public boolean merecesCarta() {
         return mereceCarta;
+    }
+
+    public void merecesConseguirUnaCarta(int minPaisesConquistados) {
+        this.mereceCarta = (this.paisesConquistados.size() >= minPaisesConquistados);
+    }
+
+    public void resetearPaisesConquistados(){
+        this.paisesConquistados.clear();
     }
 
     public void hacerCanjePorCarta(){
@@ -87,14 +97,14 @@ public class Jugador implements Observable {
     public int contarTotalFichas(){
         int total = this.fichasReservadas.size();
 
-        for (Pais pais : paisesConquistados)
+        for (Pais pais : paisesIniciales)
             total += pais.cantidadFichas();
 
         return total;
     }
 
     public boolean quitarPais(Pais pais) {
-        return this.paisesConquistados.remove(pais);
+        return this.paisesIniciales.remove(pais);
     }
 
     public void darFichas(List<Ficha> fichas) {
@@ -104,16 +114,16 @@ public class Jugador implements Observable {
     public List<Ficha> generarFichas(Integer cantFichas){
         List<Ficha> fichas = new ArrayList<>();
         for (int i = 0; i < cantFichas; i++)
-            fichas.add(new Ficha(color));
+            fichas.add(new Ficha());
         return fichas;
     }
 
     public boolean superaCantidadDePaises(int minimoDePaises) {
-        return this.paisesConquistados.size() >= minimoDePaises;
+        return this.paisesIniciales.size() >= minimoDePaises;
     }
 
     public boolean seguisJugando() {
-        return paisesConquistados.size() > 0;
+        return this.jugadorAsesino == null;
     }
 
     public boolean perdistePorJugador(Jugador jugador) {
@@ -121,7 +131,7 @@ public class Jugador implements Observable {
     }
 
     public void setAsesino(Jugador jugador) {
-        if (paisesConquistados.size() <= 0)
+        if (paisesIniciales.size() <= 0)
             this.jugadorAsesino = jugador;
     }
 
@@ -133,7 +143,7 @@ public class Jugador implements Observable {
 
     public List<Pais> getPaisAtacantes() {
         List<Pais> paises = new ArrayList<>();
-        for (Pais pais : paisesConquistados)
+        for (Pais pais : paisesIniciales)
             if (pais.fichasSuficientes())
                 paises.add(pais);
         return paises;
@@ -141,14 +151,14 @@ public class Jugador implements Observable {
 
     public List<Pais> getPaisDeReagrupamiento() {
         List<Pais> paises = new ArrayList<>();
-        for (Pais pais : paisesConquistados)
+        for (Pais pais : paisesIniciales)
             if (pais.fichasSuficientesParaMover())
                 paises.add(pais);
         return paises;
     }
 
-    public List<Pais> getPaisesConquistados() {
-        return paisesConquistados;
+    public List<Pais> getPaisesIniciales() {
+        return paisesIniciales;
     }
 
     public void agregarFichasReservadasEnPais(Pais pais, Integer cantidad) {
@@ -167,12 +177,8 @@ public class Jugador implements Observable {
         return fichasReservadas.size();
     }
 
-    public void merecesConseguirUnaCarta() {
-        mereceCarta = true;
-    }
-
     public int cantidadFichasGanadas(Juego juego) {
-        float cantPaisesConquistado = this.paisesConquistados.size();
+        float cantPaisesConquistado = this.paisesIniciales.size();
         int fichasPorPaises = (int) Math.max(Math.floor(cantPaisesConquistado/2), 3);
         int fichasPorCartas = this.canjeador.canjearCartas();
         int fichasPorContinentes = juego.fichasPorContinente(this);
@@ -205,15 +211,19 @@ public class Jugador implements Observable {
     }
 
     public void agregaFichasPorCartas() {
-        canjeador.canjearConCartaPais(paisesConquistados, this);
+        canjeador.canjearConCartaPais(paisesIniciales, this);
     }
 
     public void prepararTropas() {
-        for (Pais pais : paisesConquistados)
+        for (Pais pais : paisesIniciales)
             pais.prepararTropas();
     }
 
     public List<Carta> getCartas() {
         return this.canjeador.getCartas();
+    }
+
+    public void conquistate(Pais pais) {
+        this.paisesConquistados.add(pais);
     }
 }

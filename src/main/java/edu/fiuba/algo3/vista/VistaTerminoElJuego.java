@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.SetUpJuego;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.SetUpJuego;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;

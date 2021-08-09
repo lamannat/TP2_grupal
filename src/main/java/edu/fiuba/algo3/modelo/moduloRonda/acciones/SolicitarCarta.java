@@ -1,11 +1,20 @@
 package edu.fiuba.algo3.modelo.moduloRonda.acciones;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
 
 public class SolicitarCarta implements Accion {
+
+    private final int minPaisesConquistados;
+
+    public SolicitarCarta(int minPaisesConquistados){
+        this.minPaisesConquistados = minPaisesConquistados;
+    }
+
     @Override
     public void ejecutar(Jugador jugador) {
+//        Boolean cumple = jugador.con
+        jugador.merecesConseguirUnaCarta(minPaisesConquistados);
+
     }
 
     @Override
