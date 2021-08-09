@@ -26,7 +26,7 @@ public class JugadorTest {
         jugador.agregarPais(pais2);
         jugador.agregarPais(pais3);
 
-        assertEquals(jugador.cuantosPaisesConquistados(),3);
+        assertEquals(jugador.getPaisesIniciales().size(),3);
     }
 
     @Test

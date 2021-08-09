@@ -123,7 +123,7 @@ public class Pais implements Observable{
         this.jugador.quitarPais(this);
         unJugador.agregarPais(this);
 
-        unJugador.merecesConseguirUnaCarta();
+        unJugador.conquistate(this);
         unJugador.agregaFichasPorCartas();
 
         this.jugador.setAsesino(unJugador);

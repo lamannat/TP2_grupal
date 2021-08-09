@@ -106,7 +106,7 @@ public class SetUpJuego implements Observable {
         Ronda rondaHostilidades = new Ronda();
         rondaHostilidades.agregarAccion(new Atacar());
         rondaHostilidades.agregarAccion(new Movimiento());
-        rondaHostilidades.agregarAccion(new SolicitarCarta());
+        rondaHostilidades.agregarAccion(new SolicitarCarta(1));
 
         Ronda rondaIncorporacion = new Ronda();
         rondaIncorporacion.agregarAccion(new Incorporacion(this.juego));

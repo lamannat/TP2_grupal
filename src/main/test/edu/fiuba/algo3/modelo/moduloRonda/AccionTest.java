@@ -1,15 +1,23 @@
 package edu.fiuba.algo3.modelo.moduloRonda;
 
+import edu.fiuba.algo3.modelo.Canjeador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.cartas.Mazo;
+import edu.fiuba.algo3.modelo.color.ColorAmarillo;
 import edu.fiuba.algo3.modelo.fichas.Ficha;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.AgregarFichas;
+import edu.fiuba.algo3.modelo.moduloRonda.acciones.Atacar;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.Movimiento;
+import edu.fiuba.algo3.modelo.moduloRonda.acciones.SolicitarCarta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class AccionTest {
@@ -57,5 +65,45 @@ public class AccionTest {
         accion.ejecutar(jugador);
 
         verify(jugador,times(1)).darFichas(fichas);
+    }
+
+    @Test
+    public void enAtacarJugadorReseteaListaDePaisesConquistados(){
+        Jugador jugador = new Jugador(":D", new ColorAmarillo(), new Canjeador(new Mazo()));
+        jugador.conquistate(new Pais(":)"));
+        jugador.conquistate(new Pais(":("));
+        jugador.merecesConseguirUnaCarta(1);
+
+        assertTrue(jugador.merecesCarta());
+
+        Atacar accion = new Atacar();
+        accion.ejecutar(jugador);
+
+        jugador.merecesConseguirUnaCarta(1);
+        assertFalse(jugador.merecesCarta());
+    }
+
+    @Test
+    public void enSolicitarCartaJugadorTieneDosPaisesYNecesitaUnPaisParaMerecerCarta(){
+        Jugador jugador = new Jugador(":D", new ColorAmarillo(), new Canjeador(new Mazo()));
+        jugador.conquistate(new Pais(":P"));
+        jugador.conquistate(new Pais(":/"));
+
+        SolicitarCarta accion = new SolicitarCarta(1);
+        accion.ejecutar(jugador);
+
+        assertTrue(jugador.merecesCarta());
+    }
+
+    @Test
+    public void enSolicitarCartaJugadorTieneDosPaisesYNecesitaTresPaisesParaMerecerCarta(){
+        Jugador jugador = new Jugador(":D", new ColorAmarillo(), new Canjeador(new Mazo()));
+        jugador.conquistate(new Pais(":|"));
+        jugador.conquistate(new Pais("o.O"));
+
+        SolicitarCarta accion = new SolicitarCarta(3);
+        accion.ejecutar(jugador);
+
+        assertFalse(jugador.merecesCarta());
     }
 }
