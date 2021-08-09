@@ -19,4 +19,5 @@ public class AgregarFichas implements Accion {
     public String ID() {
         return "incorporar fichas";
     }
+
 }

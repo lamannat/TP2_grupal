@@ -14,56 +14,66 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
+import javafx.scene.media.AudioClip;
+
 
 import java.io.File;
+import java.nio.file.Paths;
 
 public class VistaTerminoElJuego extends Escena {
 
     private SetUpJuego setUp;
     private final VBox padre;
+    private MediaPlayer player;
 
     public VistaTerminoElJuego(Parent padre, ControladorDeEscena controladorDeEscena, SetUpJuego setUp) {
         super(padre, controladorDeEscena);
         this.padre = (VBox) padre;
         this.setUp = setUp;
+        Media media = new Media(Paths.get("src/main/resources/ganador.mp3").toUri().toString());
+        MediaPlayer player = new MediaPlayer(media);
+        player.setVolume(0.3);
+        this.player = player;
     }
 
     @Override
     public void mostrar(Stage ventana) {
+        this.player.play();
+
         Juego juego = this.setUp.dameJuego();
         Jugador jugador = juego.getJugadorGanador();
 
         padre.setPrefSize(1280, 720);
 
+        Label felicidades = new Label("¡FELICIDADES!");
+        felicidades.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
+        felicidades.setStyle("-fx-font-size: 150px");
+
         Label ganador = new Label(jugador.getNombre());
-        ganador.setStyle("-fx-font-size: 30");
+        ganador.setStyle("-fx-font-size: 130px");
         ganador.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
 
-        Label subTitulo = new Label("yey");
-        subTitulo.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
+        Label hasGanado = new Label("¡Has Ganado La Partida!");
+        hasGanado.setStyle("-fx-font-size: 80px");
+        hasGanado.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
 
-        File file = new File("src/main/java/edu/fiuba/algo3/archivos/Ganastesss.png");
-        Image image = new Image(file.toURI().toString());
-        ImageView iv = new ImageView();
-        iv.setPreserveRatio(false);
-        iv.setImage(image);
-
-        HBox cajaFinal = new HBox();
+        HBox botones = new HBox(80);
 
         BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, controladorDeEscena);
         botonSiguiente.setText("Volver a jugar");
-        Button botonExit = new Button("Salir");
-        botonExit.setOnAction(e -> {
-            ventana.close();
-        });
+        botonSiguiente.getStyleClass().add("botonVolverAJugar");
 
-        cajaFinal.getChildren().addAll(botonSiguiente, botonExit);
-        cajaFinal.setAlignment(Pos.CENTER);
+        BotonSalir botonSalir = new BotonSalir(ventana);
+
+        botones.getChildren().addAll(botonSiguiente, botonSalir);
+        botones.setAlignment(Pos.CENTER);
 
         padre.getChildren().clear();
-        padre.getChildren().addAll(ganador, iv, subTitulo, cajaFinal);
+        padre.getChildren().addAll(felicidades,ganador,hasGanado,botones);
         padre.setStyle("-fx-background-color: " + jugador.getColor().getCodigo());
         padre.setAlignment(Pos.CENTER);
-
+        padre.setSpacing(30);
     }
 }

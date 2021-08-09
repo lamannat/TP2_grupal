@@ -34,6 +34,7 @@ public class Ronda implements Observable {
     }
 
     public boolean terminaste() {
+        this.avanzar();
         return numeroAccion == acciones.size();
     }
 
