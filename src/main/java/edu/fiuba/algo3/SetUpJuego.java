@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3;
 
 
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.Color;
@@ -19,8 +20,6 @@ public class SetUpJuego implements Observable {
     private List<Observer> observers;
     private List<Pair<String, Color>> nombresYColores;
     private int cantidadJugadores;
-    private final String OBJETIVO_ELIMINACION = "DESTRUIR";
-//    private final String OBJETIVO_DOMINACION = "OCUPAR";   ver si uso
     private Juego juego;
 
     public SetUpJuego() {
@@ -148,7 +147,7 @@ public class SetUpJuego implements Observable {
             String nombre = lineaCartas.get(1);
 
             Carta carta;
-            if (nombre.equals("Comodin"))
+            if (nombre.equals("comodin"))
                 carta = new Carta(paisActual, new Comodin(nombre));
             else
                 carta = new Carta(paisActual, new SimboloNormal(nombre));

@@ -104,7 +104,7 @@ public class Jugador implements Observable {
     public List<Ficha> generarFichas(Integer cantFichas){
         List<Ficha> fichas = new ArrayList<>();
         for (int i = 0; i < cantFichas; i++)
-            fichas.add(new Ficha(color));
+            fichas.add(new Ficha());
         return fichas;
     }
 
