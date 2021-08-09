@@ -113,7 +113,7 @@ public class Jugador implements Observable {
     }
 
     public boolean seguisJugando() {
-        return paisesConquistados.size() > 0;
+        return this.jugadorAsesino == null;
     }
 
     public boolean perdistePorJugador(Jugador jugador) {

@@ -55,11 +55,6 @@ public class BotonCarta extends Button {
 
             layout.setAlignment(Pos.CENTER);
 
-<<<<<<< HEAD
-            Scene nuevaEscena = new Scene(layout,530,400);
-=======
-//            Scene nuevaEscena = new Scene(layout, 775,200);
->>>>>>> a4a45b114e18a3e103de05546d6b8b17cf2b0790
 
             layout.setStyle("-fx-background-color: #272727;" +
                     "-fx-border-color: #ffcc3d;\n" +
@@ -71,17 +66,6 @@ public class BotonCarta extends Button {
             popup.setDimensiones(775,200);
             popup.setDistanciaAPrincipal(ventana.getX() + 190,ventana.getY() + 270);
             popup.crearPopup();
-
-<<<<<<< HEAD
-            // New window (Stage)
-            Stage nuevaVentana = new Stage();
-            nuevaVentana.setScene(nuevaEscena);
-
-            nuevaVentana.initStyle(StageStyle.UNDECORATED);
-            nuevaVentana.setX(ventana.getX() + ventana.getWidth()/2 - nuevaEscena.getWidth()/2 );
-            nuevaVentana.setY(ventana.getY() + ventana.getHeight()/2 - nuevaEscena.getHeight()/2 );
-=======
->>>>>>> a4a45b114e18a3e103de05546d6b8b17cf2b0790
 
             // New window (Stage)
 //            Stage nuevaVentana = new Stage();
