@@ -4,8 +4,10 @@ import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.cartas.Carta;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -30,7 +32,7 @@ public class BotonCarta extends Button {
         this.juego = juego;
         this.cartas = new ArrayList<>();
 
-        Tooltip unTooltip = new Tooltip("Cartas País");
+        Tooltip unTooltip = new Tooltip("Cartas PaÃ­s");
         unTooltip.setShowDelay(Duration.millis(10));
         this.setTooltip(unTooltip);
         this.getStyleClass().addAll("botonFoto", "hoverOscuro");
@@ -48,10 +50,12 @@ public class BotonCarta extends Button {
 
             TilePane layout = new TilePane();
             layout.getChildren().addAll(cartas);
-            layout.setHgap(10);
-            layout.setVgap(10);
+            layout.setHgap(30);
+            layout.setVgap(20);
 
-            Scene nuevaEscena = new Scene(layout, 775,200);
+            layout.setAlignment(Pos.CENTER);
+
+            Scene nuevaEscena = new Scene(layout,530,400);
 
             layout.setStyle("-fx-background-color: #272727;" +
                     "-fx-border-color: #ffcc3d;\n" +
@@ -64,8 +68,8 @@ public class BotonCarta extends Button {
             nuevaVentana.setScene(nuevaEscena);
 
             nuevaVentana.initStyle(StageStyle.UNDECORATED);
-            nuevaVentana.setX(ventana.getX() + 190 );
-            nuevaVentana.setY(ventana.getY() + 270 );
+            nuevaVentana.setX(ventana.getX() + ventana.getWidth()/2 - nuevaEscena.getWidth()/2 );
+            nuevaVentana.setY(ventana.getY() + ventana.getHeight()/2 - nuevaEscena.getHeight()/2 );
 
             nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
 

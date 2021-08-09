@@ -8,22 +8,56 @@ import edu.fiuba.algo3.modelo.moduloRonda.acciones.Accion;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Ronda implements Observable {
+public class Ronda implements Observable {
+
     protected List<Observer> observadores;
     protected List<Accion> acciones;
+    protected Ronda ronda;
+    protected int numeroAccion;
 
-    public Ronda(){
+    public Ronda() {
         this.observadores = new ArrayList<>();
         this.acciones = new ArrayList<>();
+        this.ronda = null;
+        this.numeroAccion = 0;
     }
 
-    public abstract void comenzarLaRonda(Jugador jugador);
+    public void agregarAccion(Accion accion) {
+        this.acciones.add(accion);
+    }
 
-    public abstract Ronda siguienteRonda();
+    public void comenzarLaRonda(Jugador jugador) {
+        if (acciones.size() < 1 || numeroAccion > acciones.size())
+            return;
+        this.acciones.get(this.numeroAccion).ejecutar(jugador);
+        this.notifyObservers();
+    }
 
-    public abstract boolean terminaste();
+    public boolean terminaste() {
+        return numeroAccion == acciones.size();
+    }
 
-    public abstract void resetearAcciones();
+    public void avanzar() {
+        numeroAccion++;
+    }
+
+    public void resetearAcciones() {
+        this.numeroAccion = 0;
+    }
+
+    public void setSiguienteRonda(Ronda ronda) {
+        this.ronda = ronda;
+    }
+
+    public Ronda siguienteRonda() {
+        return ronda;
+    }
+
+    public Accion dameFase() {
+        if (acciones.size() < 1)
+            return null;
+        return this.acciones.get(this.numeroAccion);
+    }
 
     @Override
     public void addObserver(Observer observer) {
@@ -39,6 +73,4 @@ public abstract class Ronda implements Observable {
     public void removeObserver(Observer observer) {
         observadores.remove(observer);
     }
-
-    public abstract Accion dameFase();
 }

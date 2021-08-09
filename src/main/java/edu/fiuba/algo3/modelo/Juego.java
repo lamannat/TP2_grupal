@@ -51,6 +51,7 @@ public class Juego implements Observable {
             notifyObservers();
         } else {
             this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
+            this.rondaActual.avanzar();
         }
     }
 

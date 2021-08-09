@@ -172,7 +172,7 @@ public class Pais implements Observable{
         return paisesParaAtacar;
     }
 
-    public List<Pais> getPaisesAleados() {
+    public List<Pais> getPaisesAliados() {
         List<Pais> paises = new ArrayList<>();
         for (Pais pais : this.limitrofes)
             if (pais.esAliado(this))
