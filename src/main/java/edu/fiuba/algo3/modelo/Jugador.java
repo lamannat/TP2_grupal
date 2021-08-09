@@ -205,7 +205,7 @@ public class Jugador implements Observable {
     }
 
     public void agregaFichasPorCartas() {
-        canjeador.canjearConTarjetaPais(paisesConquistados, this);
+        canjeador.canjearConCartaPais(paisesConquistados, this);
     }
 
     public void prepararTropas() {

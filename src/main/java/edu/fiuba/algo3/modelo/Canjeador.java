@@ -76,7 +76,7 @@ public class Canjeador {
         }
     }
 
-    public void canjearConTarjetaPais(List<Pais> paisesDelJugador, Jugador jugador) {
+    public void canjearConCartaPais(List<Pais> paisesDelJugador, Jugador jugador) {
         for (Pais pais : paisesDelJugador)
             for (Carta carta : cartas)
                 pais.agregarFichas(jugador.generarFichas(carta.fichasPorPais(pais)));

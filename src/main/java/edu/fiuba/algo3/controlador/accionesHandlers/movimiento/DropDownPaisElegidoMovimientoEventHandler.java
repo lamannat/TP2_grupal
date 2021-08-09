@@ -33,7 +33,7 @@ public class DropDownPaisElegidoMovimientoEventHandler implements EventHandler {
         moverTropas.setPaisConFichas(paisElegido);
 
         ObservableList<String> paisesDestino = FXCollections.observableArrayList();
-        for (Pais pais : paisElegido.getPaisesAleados())
+        for (Pais pais : paisElegido.getPaisesAliados())
             paisesDestino.add(pais.toString());
 
         paisDestino.getItems().clear();
