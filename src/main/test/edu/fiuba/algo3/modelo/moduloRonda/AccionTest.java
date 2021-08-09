@@ -7,10 +7,7 @@ import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorAmarillo;
 import edu.fiuba.algo3.modelo.fichas.Ficha;
-import edu.fiuba.algo3.modelo.moduloRonda.acciones.AgregarFichas;
-import edu.fiuba.algo3.modelo.moduloRonda.acciones.Atacar;
-import edu.fiuba.algo3.modelo.moduloRonda.acciones.Movimiento;
-import edu.fiuba.algo3.modelo.moduloRonda.acciones.SolicitarCarta;
+import edu.fiuba.algo3.modelo.moduloRonda.acciones.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -52,7 +49,7 @@ public class AccionTest {
     public void enIncorporacionJugadorAgregaFichasGanadas(){
         Jugador jugador = mock(Jugador.class);
         Juego juego = mock(Juego.class);
-        AgregarFichas accion = new AgregarFichas(3);
+        Incorporacion accion = new Incorporacion(juego);
 
         List<Ficha> fichas = new ArrayList<>();
         fichas.add(new Ficha());
