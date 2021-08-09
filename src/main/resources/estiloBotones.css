@@ -146,3 +146,18 @@
 .botonPais:focused{
     -fx-border-color: #ffcc3d;
 }
+
+.botonAbout {
+    -fx-background-color: #ffcc3d;
+    -fx-background-radius: 25;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-max-width: 50px;
+    -fx-max-height: 50px;
+    -fx-border-color: transparent;
+}
+
+.botonAbout:hover {
+    -fx-background-color: #424242;
+    -fx-border-color: transparent;
+}
