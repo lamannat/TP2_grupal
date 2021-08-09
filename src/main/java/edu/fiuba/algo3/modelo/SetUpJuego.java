@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.moduloRonda.*;
+import edu.fiuba.algo3.modelo.moduloRonda.acciones.*;
 import edu.fiuba.algo3.modelo.objetivos.*;
 import edu.fiuba.algo3.modelo.simbolo.Comodin;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
@@ -97,10 +98,19 @@ public class SetUpJuego implements Observable {
     }
 
     private Ronda generarRondasVinculadas() {
-        RondaAgregarCincoFichas rondaAgregarCincoFichas = new RondaAgregarCincoFichas();
-        RondaAgregarTresFichas rondaAgregarTresFichas = new RondaAgregarTresFichas();
-        RondaHostilidades rondaHostilidades = new RondaHostilidades();
-        RondaIncorporacion rondaIncorporacion = new RondaIncorporacion(this.juego);
+        Ronda rondaAgregarCincoFichas = new Ronda();
+        rondaAgregarCincoFichas.agregarAccion(new AgregarFichas(5));
+
+        Ronda rondaAgregarTresFichas = new Ronda();
+        rondaAgregarTresFichas.agregarAccion(new AgregarFichas(3));
+
+        Ronda rondaHostilidades = new Ronda();
+        rondaHostilidades.agregarAccion(new Atacar());
+        rondaHostilidades.agregarAccion(new Movimiento());
+        rondaHostilidades.agregarAccion(new SolicitarCarta());
+
+        Ronda rondaIncorporacion = new Ronda();
+        rondaIncorporacion.agregarAccion(new Incorporacion(this.juego));
 
         rondaAgregarCincoFichas.setSiguienteRonda(rondaAgregarTresFichas);
         rondaAgregarTresFichas.setSiguienteRonda(rondaHostilidades);
