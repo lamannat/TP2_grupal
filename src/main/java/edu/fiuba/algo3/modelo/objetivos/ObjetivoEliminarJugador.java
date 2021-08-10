@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 public class ObjetivoEliminarJugador implements Objetivo {
 
-    private Jugador jugador;
-    private Jugador paraEliminar;
+    private final Jugador jugador;
+    private final Jugador paraEliminar;
 
     public ObjetivoEliminarJugador(Jugador jugador, Jugador paraEliminar){
         this.jugador = jugador;
@@ -18,8 +18,7 @@ public class ObjetivoEliminarJugador implements Objetivo {
     }
 
     @Override
-    public String toString(){
-        String o = "Destruir el ejercito " + paraEliminar.getColor().getNombre();
-        return o;
+    public String toString() {
+        return "Destruir el ejercito " + paraEliminar.getColor().getNombre();
     }
 }

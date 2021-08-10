@@ -49,9 +49,6 @@ public class Jugador implements Observable {
     }
 
     public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        if (!paisesIniciales.contains(paisAtacante)) {
-        // return PaisNoEncontradoExcepcion --> Puede Estar en Juego
-        }
         paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
     }
 
@@ -80,7 +77,6 @@ public class Jugador implements Observable {
     }
 
     public void colocarFichasEnPais(List<Ficha> fichas, Pais pais){
-        //verificacion de que pais le pertenece ya se hizo
         pais.agregarFichas(fichas);
     }
 

@@ -5,8 +5,8 @@ import java.util.List;
 
 
 public class Batalla implements Observable {
-    private Dado dado;
-    private List<Observer> oberservadores;
+    private final Dado dado;
+    private final List<Observer> oberservadores;
 
     public Batalla(Dado unDado){
         this.dado = unDado;

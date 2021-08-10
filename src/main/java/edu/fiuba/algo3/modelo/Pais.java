@@ -48,12 +48,12 @@ public class Pais implements Observable{
     }
 
     private void puedeAtacarAPais(Pais pais) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        boolean fichasSuficientes = this.fichasSuficientes();
-        if (!fichasSuficientes) { throw new FichasInsuficientesException(); }
-        boolean esLimitrofe = this.tienePaisLimitrofe(pais);
-        if (!esLimitrofe) { throw new NoEsLimitrofeException(); }
-        boolean esAliado = esAliado(pais);
-        if (esAliado) { throw new AtaqueAPaisAliadoException(); }
+        if (!this.fichasSuficientes())
+            throw new FichasInsuficientesException();
+        if (!this.tienePaisLimitrofe(pais))
+            throw new NoEsLimitrofeException();
+        if (esAliado(pais))
+            throw new AtaqueAPaisAliadoException();
     }
 
     public boolean fichasSuficientes() {
@@ -64,7 +64,9 @@ public class Pais implements Observable{
         return this.fichas.stream().filter(Ficha::puedeTransferise).count() > 1;
     }
 
-    public boolean tienePaisLimitrofe(Pais pais) { return limitrofes.stream().anyMatch(estePais -> estePais == pais); }
+    public boolean tienePaisLimitrofe(Pais pais) {
+        return limitrofes.stream().anyMatch(estePais -> estePais == pais);
+    }
 
     public boolean esAliado(Pais pais){
         return pais.conquistadoPorJugador(this.jugador);
@@ -74,8 +76,7 @@ public class Pais implements Observable{
         return this.nombre.equals(unNombre);
     }
 
-    private EjercitoDeBatalla ejercitoParaDefensa()
-    {
+    private EjercitoDeBatalla ejercitoParaDefensa() {
         List<Ficha> ejercito = new ArrayList<>();
         Integer cantidadDeFichas = Math.min(this.fichas.size(), cantidadMaximaDeDados);
         for (int i = 0; i < cantidadDeFichas; i++)
@@ -83,8 +84,7 @@ public class Pais implements Observable{
         return new EjercitoDeBatalla(ejercito);
     }
 
-    private EjercitoDeBatalla ejercitoParaAtaque()
-    {
+    private EjercitoDeBatalla ejercitoParaAtaque() {
         List<Ficha> ejercito = new ArrayList<>();
         Integer cantidadDeFichas = Math.min(this.fichas.size() - 1, cantidadMaximaDeDados);
         for (int i = 0; i < cantidadDeFichas; i++)
@@ -97,8 +97,7 @@ public class Pais implements Observable{
     }
 
     public void prepararTropas() {
-        for (Ficha ficha : fichas)
-            ficha.resetear();
+        fichas.forEach(Ficha::resetear);
     }
 
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
@@ -112,10 +111,9 @@ public class Pais implements Observable{
         this.agregarFichas(ejercitoAtacante.fichasRestantes());
         paisDefensor.agregarFichas(ejercitoDefensor.fichasRestantes());
 
-        if (paisDefensor.fueConquistado()) {
-//            this.moverTropa(paisDefensor);
+        if (paisDefensor.fueConquistado())
             paisDefensor.meConquisto(this.jugador);
-        }
+
         notifyObservers();
     }
 
@@ -136,7 +134,7 @@ public class Pais implements Observable{
     }
 
     public void moverTropas(Pais paisDestino, int cantidad) {
-        for (int i = 0; i<cantidad ; i++)
+        for (int i = 0; i < cantidad ; i++)
             this.moverTropa(paisDestino);
     }
 
@@ -166,18 +164,12 @@ public class Pais implements Observable{
             try {
                 this.puedeAtacarAPais(pais);
                 paisesParaAtacar.add(pais);
-            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException e ) {
-                // oh no, anyways
-            }
+            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ignored) {}
         return paisesParaAtacar;
     }
 
     public List<Pais> getPaisesAliados() {
-        List<Pais> paises = new ArrayList<>();
-        for (Pais pais : this.limitrofes)
-            if (pais.esAliado(this))
-                paises.add(pais);
-        return paises;
+        return (List<Pais>) limitrofes.stream().filter(pais -> pais.esAliado(this));
     }
 
     public Color getColor(){

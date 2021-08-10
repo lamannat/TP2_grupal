@@ -4,7 +4,7 @@ public class ColorAmarillo extends Color{
 
     public ColorAmarillo()
     {
-        this.codigo = "#d4ca1c"; /* #ee7733 */
+        this.codigo = "#d4ca1c";
         this.nombre = "Amarillo";
     }
 

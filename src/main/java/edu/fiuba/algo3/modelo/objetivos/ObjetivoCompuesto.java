@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.objetivos;
 import java.util.List;
 
 public class ObjetivoCompuesto implements Objetivo{
-    private List<Objetivo> objetivos;
+    private final List<Objetivo> objetivos;
 
     public ObjetivoCompuesto(List<Objetivo> objetivos) {
         this.objetivos = objetivos;
@@ -15,13 +15,7 @@ public class ObjetivoCompuesto implements Objetivo{
     }
 
     @Override
-    public String toString(){
-        String objetivoCompuesto = "OBJETIVOS:\n";
-
-        for (Objetivo objetivo: objetivos){
-            objetivoCompuesto += "- " + objetivo.toString() + "\n";
-        }
-
-        return objetivoCompuesto;
+    public String toString() {
+        return objetivos.stream().reduce("OBJETIVOS:\n", (total, especifico) -> total + "- " + especifico.toString() + "\n", String::concat);
     }
 }

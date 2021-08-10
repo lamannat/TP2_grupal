@@ -17,7 +17,6 @@ public class Turno {
         return jugadores.get(indice);
     }
 
-    //aca todos los jugadores estan vivos
     public Jugador jugadorSiguiente() {
         return jugadores.get((indice + 1) % jugadores.size());
     }
@@ -27,7 +26,6 @@ public class Turno {
         while (!jugadorSiguiente.seguisJugando()){
             indice = (indice + 1) % jugadores.size();
             jugadorSiguiente = this.jugadorSiguiente();
-
         }
         indice = (indice + 1) % jugadores.size();
     }

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.fichas.Ficha;
 import java.util.List;
 
 public class EjercitoDeBatalla {
+
     private final List<Ficha> fichas;
 
     public EjercitoDeBatalla(List<Ficha> fichas) {
@@ -15,8 +16,7 @@ public class EjercitoDeBatalla {
         return fichas.size();
     }
 
-    public void pierdeFicha()
-    {
+    public void pierdeFicha() {
         if (!fichas.isEmpty())
             fichas.remove(0);
     }

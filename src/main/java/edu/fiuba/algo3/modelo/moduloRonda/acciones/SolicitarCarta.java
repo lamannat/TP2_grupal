@@ -12,9 +12,7 @@ public class SolicitarCarta implements Accion {
 
     @Override
     public void ejecutar(Jugador jugador) {
-//        Boolean cumple = jugador.con
         jugador.merecesConseguirUnaCarta(minPaisesConquistados);
-
     }
 
     @Override
