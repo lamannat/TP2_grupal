@@ -7,11 +7,9 @@ import edu.fiuba.algo3.modelo.color.ColorVerde;
 import edu.fiuba.algo3.modelo.moduloRonda.ObjetivoDePrueba;
 import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
-import edu.fiuba.algo3.modelo.objetivos.ObjetivoComun;
-import edu.fiuba.algo3.modelo.simbolo.*;
+import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

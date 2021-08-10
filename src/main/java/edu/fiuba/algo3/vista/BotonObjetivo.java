@@ -19,7 +19,6 @@ public class BotonObjetivo extends Button {
 
     public BotonObjetivo(Stage ventana, Juego juego){
         this.juego = juego;
-//        this.setText("Objetivo");
 
         Tooltip unTooltip = new Tooltip("Objetivo Secreto");
         unTooltip.setShowDelay(Duration.millis(10));
@@ -50,25 +49,12 @@ public class BotonObjetivo extends Button {
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
-//            Scene nuevaEscena = new Scene(layout, 450,300);
-
             //POPUP
             Popup popup = new Popup(layout);
             popup.setDimensiones(450,300);
             popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
             popup.crearPopup();
 
-            // New window (Stage)
-//            Stage nuevaVentana = new Stage();
-//            nuevaVentana.setScene(nuevaEscena);
-//
-//            nuevaVentana.initStyle(StageStyle.UNDECORATED);
-//            nuevaVentana.setX(ventana.getX() + 415 );
-//            nuevaVentana.setY(ventana.getY() + 260 );
-//
-//            nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
-//
-//            nuevaVentana.show();
         });
     }
 

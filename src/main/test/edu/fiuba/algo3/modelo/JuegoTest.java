@@ -1,17 +1,20 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.archivos.LeerArchivo;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
-import edu.fiuba.algo3.modelo.color.*;
-import edu.fiuba.algo3.modelo.moduloRonda.*;
+import edu.fiuba.algo3.modelo.color.ColorAmarillo;
+import edu.fiuba.algo3.modelo.color.ColorVerde;
+import edu.fiuba.algo3.modelo.moduloRonda.AccionDePrueba;
+import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class JuegoTest {
