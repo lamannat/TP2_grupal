@@ -42,7 +42,6 @@ public class VistaTitulo extends Escena {
         label2.setPadding(new Insets(25));
 
         // FOTO
-        //File file = new File(("src/main/java/edu/fiuba/algo3/archivos/logo_teg.png"));
         Image image = new Image("logo_teg.png");
         ImageView logo = new ImageView(image);
 

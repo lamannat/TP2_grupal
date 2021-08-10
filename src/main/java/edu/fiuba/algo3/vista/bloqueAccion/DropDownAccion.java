@@ -19,10 +19,6 @@ public class DropDownAccion extends ComboBox implements Observer {
         this.actualizarDropDown.actualizar();
     }
 
-    public void enAccion(EventHandler eventHandler) {
-        this.setOnAction(eventHandler);
-    }
-
     @Override
     public void change() {
         if (actualizarDropDown != null)

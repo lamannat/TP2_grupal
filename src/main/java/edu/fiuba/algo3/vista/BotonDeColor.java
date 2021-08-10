@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 public class BotonDeColor extends Button {
 
-    private Color color;
+    private final Color color;
 
     public BotonDeColor(Color unColor){
         this.color = unColor;

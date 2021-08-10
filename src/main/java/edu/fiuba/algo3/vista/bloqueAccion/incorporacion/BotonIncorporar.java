@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 public class BotonIncorporar extends Button {
 
-    private Juego juego;
+    private final Juego juego;
     private Pais paisIncorporador = null;
     private Integer cantidadDeFichas = null;
 

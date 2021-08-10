@@ -39,13 +39,13 @@ public class BloqueDeMovimiento extends BloqueAccion {
         paisDestino.setActualizacion(() -> {
             paisDestino.getItems().clear();
         });
-        paisDestino.enAccion(new DropDownPaisDestinoMovimientoEventHandler(juego, paisDestino, moverTropas));
+        paisDestino.setOnAction(new DropDownPaisDestinoMovimientoEventHandler(juego, paisDestino, moverTropas));
 
         DropDownAccion cantidadFichas = new DropDownAccion("N° Fichas");
         cantidadFichas.setActualizacion(() -> {
             cantidadFichas.getItems().clear();
         });
-        cantidadFichas.enAccion(new DropDownCantidadFichasMovimientoEventHandler(cantidadFichas, moverTropas));
+        cantidadFichas.setOnAction(new DropDownCantidadFichasMovimientoEventHandler(cantidadFichas, moverTropas));
 
         DropDownAccion paisElegido = new DropDownAccion("Origen");
         paisElegido.setActualizacion(() -> {
@@ -56,7 +56,7 @@ public class BloqueDeMovimiento extends BloqueAccion {
             paisElegido.getItems().clear();
             paisElegido.getItems().addAll(paisesDelJugador.sorted());
         });
-        paisElegido.enAccion(new DropDownPaisElegidoMovimientoEventHandler(juego, paisElegido, cantidadFichas, paisDestino, moverTropas));
+        paisElegido.setOnAction(new DropDownPaisElegidoMovimientoEventHandler(juego, paisElegido, cantidadFichas, paisDestino, moverTropas));
         dropDownPaisesOrigen = paisElegido;
         Label labelDestino = new Label("Elegi pais a donde\nmover fichas");
         Label labelFichas = new Label("Elegi n° de Fichas");

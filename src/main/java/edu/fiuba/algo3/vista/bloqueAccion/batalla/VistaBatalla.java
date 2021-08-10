@@ -34,7 +34,7 @@ public class VistaBatalla implements Observer {
         this.botonBatalla = new BotonBatalla(paisDefensor,paisAtacante,nuevaVentana);
 
         this.dropDown = new DropDownAccion("N° Fichas");
-        this.dropDown.enAccion(new DropDownBatallaEventHandler(dropDown, botonBatalla));
+        this.dropDown.setOnAction(new DropDownBatallaEventHandler(dropDown, botonBatalla));
 
         ObservableList<String> cantidadAMover = FXCollections.observableArrayList();
 

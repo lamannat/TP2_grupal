@@ -45,6 +45,10 @@ public class VistaTerminoElJuego extends Escena {
         felicidades.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
         felicidades.setStyle("-fx-font-size: 150px");
 
+        Label yey = new Label("yey");
+        yey.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
+        yey.setStyle("-fx-font-size: 16px");
+
         Label ganador = new Label(jugador.getNombre());
         ganador.setStyle("-fx-font-size: 130px");
         ganador.setTextFill(Color.valueOf(jugador.getColor().getColorText()));
@@ -65,7 +69,7 @@ public class VistaTerminoElJuego extends Escena {
         botones.setAlignment(Pos.CENTER);
 
         padre.getChildren().clear();
-        padre.getChildren().addAll(felicidades,ganador,hasGanado,botones);
+        padre.getChildren().addAll(felicidades, yey, ganador, hasGanado, botones);
         padre.setStyle("-fx-background-color: " + jugador.getColor().getCodigo());
         padre.setAlignment(Pos.CENTER);
         padre.setSpacing(30);

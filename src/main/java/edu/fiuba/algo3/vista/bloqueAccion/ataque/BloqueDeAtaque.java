@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 
 public class BloqueDeAtaque extends BloqueAccion {
 
-    private Juego juego;
+    private final Juego juego;
     private DropDownAccion dropDownAtacantes;
 
     public BloqueDeAtaque(Juego juego) {
@@ -29,7 +29,6 @@ public class BloqueDeAtaque extends BloqueAccion {
 
     @Override
     public void setDropDown(Pais paisASetear) {
-
         dropDownAtacantes.setPais(paisASetear);
     }
 
@@ -37,10 +36,8 @@ public class BloqueDeAtaque extends BloqueAccion {
         BotonAtacar botonAtacar = new BotonAtacar(juego);
 
         DropDownAccion paisDefensor = new DropDownAccion("Defensor");
-        paisDefensor.setActualizacion(() -> {
-            paisDefensor.getItems().clear();
-        });
-        paisDefensor.enAccion(new DropDownPaisDefensorEventHandler(juego, paisDefensor, botonAtacar));
+        paisDefensor.setActualizacion(() -> paisDefensor.getItems().clear());
+        paisDefensor.setOnAction(new DropDownPaisDefensorEventHandler(juego, paisDefensor, botonAtacar));
 
         DropDownAccion paisParaAtacar = new DropDownAccion("Atacante");
         paisParaAtacar.setActualizacion(() -> {
@@ -51,7 +48,7 @@ public class BloqueDeAtaque extends BloqueAccion {
             paisParaAtacar.getItems().clear();
             paisParaAtacar.getItems().addAll(opciones.sorted());
         });
-        paisParaAtacar.enAccion(new DropDownPaisElegidoEventHandler(juego, paisParaAtacar, paisDefensor, botonAtacar));
+        paisParaAtacar.setOnAction(new DropDownPaisElegidoEventHandler(juego, paisParaAtacar, paisDefensor, botonAtacar));
 
         dropDownAtacantes = paisParaAtacar;
 

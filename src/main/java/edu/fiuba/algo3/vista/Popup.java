@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Popup extends Stage {
-    private Pane layout = null;
+    private final Pane layout;
     private int v;
     private int v1;
     private double x = 0;

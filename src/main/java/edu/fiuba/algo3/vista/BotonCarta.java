@@ -17,8 +17,7 @@ import java.util.List;
 public class BotonCarta extends Button {
 
     private List<VistaCarta> cartas;
-    private Juego juego;
-//    String listaObjetivos = "Esto no son los objetivos o.0";
+    private final Juego juego;
 
     public BotonCarta(Stage ventana, Juego juego) {
         this.juego = juego;
