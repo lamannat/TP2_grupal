@@ -2,8 +2,7 @@ package edu.fiuba.algo3.modelo.color;
 
 public class ColorAmarillo extends Color{
 
-    public ColorAmarillo()
-    {
+    public ColorAmarillo() {
         this.codigo = "#d4ca1c";
         this.nombre = "Amarillo";
     }
