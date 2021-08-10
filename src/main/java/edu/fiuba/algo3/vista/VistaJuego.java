@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.SetUpJuego;
+import edu.fiuba.algo3.archivos.LeerArchivo;
 import edu.fiuba.algo3.controlador.BotonSiguienteEscenaEventHandler;
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
 import edu.fiuba.algo3.modelo.*;
@@ -67,7 +68,7 @@ public class VistaJuego extends Escena implements Observer{
         for (BloqueAccion bloque : bloqueDeAccion.values())
             bloque.setVisible(false);
 
-        BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego,this);
+        BotonSiguienteTurno botonSiguienteTurno = new BotonSiguienteTurno(juego);
         botonSiguienteTurno.getStyleClass().addAll("botonSiguienteTurno", "hoverOscuro");
         botonSiguienteTurno.setAlignment(Pos.CENTER);
 

@@ -50,6 +50,6 @@ public class Turno {
             indicePrimerVivo  += 1;
             primerVivo = jugadores.get(indicePrimerVivo);
         }
-        indice =  indicePrimerVivo;
+        indice = indicePrimerVivo;
     }
 }

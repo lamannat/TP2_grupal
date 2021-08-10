@@ -5,7 +5,6 @@ public abstract class Simbolo {
     protected boolean esComodin = false; // revisar
 
     public abstract boolean sonIguales (Simbolo simbolo);
-    public abstract boolean sonDiferentes (Simbolo simbolo);
 
     @Override
     public String toString() {

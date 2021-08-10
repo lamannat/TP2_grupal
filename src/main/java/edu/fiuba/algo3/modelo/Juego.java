@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Juego implements Observable {
+
     private final Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
@@ -33,19 +34,10 @@ public class Juego implements Observable {
         return turno.jugadorActual();
     }
 
-    public Pais getPaisPorNombre(String nombre) {
-        return tablero.getPaisPorNombre(nombre);
-    }
+    public void avanzar() {
+        if (this.rondaActual.terminaste())
+            terminaLaRonda();
 
-    public void avanzar(Observer observer){
-        if (this.rondaActual.terminaste()){
-            if (this.turno.ultimoJugador()){
-                this.rondaActual = this.rondaActual.siguienteRonda();
-                this.rondaActual.addObserver(observer);
-            }
-            this.rondaActual.resetearAcciones();
-            this.turno.avanzarJugador();
-        }
         if (this.turno.jugadorActual().ganador()) {
             jugadorGanador = this.turno.jugadorActual();
             notifyObservers();
@@ -55,19 +47,48 @@ public class Juego implements Observable {
         }
     }
 
+    private void terminaLaRonda() {
+        if (this.turno.ultimoJugador()) {
+            this.rondaActual = this.rondaActual.siguienteRonda();
+            for (Observer observer : observadores)
+                this.rondaActual.addObserver(observer);
+        }
+        this.rondaActual.resetearAcciones();
+        this.turno.avanzarJugador();
+    }
+
     public void cartaParaJugador(Jugador jugador) {
         if (jugador.merecesCarta())
             jugador.solicitarCarta(mazo.sacarCartaAleatoria());
     }
 
-    public Batalla getBatalla() {
-        return this.batalla;
+    public int fichasPorContinente(Jugador jugador) {
+        return tablero.fichasPorContinente(jugador);
     }
 
     public Ronda dameRonda() {
         return this.rondaActual;
     }
 
+    public Batalla getBatalla() {
+        return this.batalla;
+    }
+
+    public Jugador getJugadorGanador() {
+        return jugadorGanador;
+    }
+
+    public Pais getPaisPorNombre(String nombre) {
+        return tablero.getPaisPorNombre(nombre);
+    }
+
+    public void agregarObserverARondaActual(Observer observer) {
+        this.rondaActual.addObserver(observer);
+    }
+
+    public void addObserverAPaises(Observer observer){
+        this.tablero.addObserverAPaises(observer);
+    }
 
     @Override
     public void addObserver(Observer observer) {
@@ -82,22 +103,5 @@ public class Juego implements Observable {
     @Override
     public void removeObserver(Observer observer) {
         observadores.remove(observer);
-    }
-
-    public void addObserverAPaises(Observer observer){
-        this.tablero.addObserverAPaises(observer);
-    }
-
-    public void agregarObserverARondaActual(Observer observer) {
-        this.rondaActual.addObserver(observer);
-    }
-
-
-    public int fichasPorContinente(Jugador jugador) {
-        return tablero.fichasPorContinente(jugador);
-    }
-
-    public Jugador getJugadorGanador() {
-        return jugadorGanador;
     }
 }

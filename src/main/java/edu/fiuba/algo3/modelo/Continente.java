@@ -32,8 +32,8 @@ public class Continente {
         fichasPorConquistado = cantidadFichas;
     }
 
-    public int getFichasPorConquistado() {
-        return fichasPorConquistado;
+    public int getFichasPorConquistado(Jugador jugador) {
+        return (conquistadoPorJugador(jugador) ? fichasPorConquistado : 0);
     }
 
     public boolean conquistoCantidadDePaises(Jugador unJugador, int cantidad) {
@@ -53,9 +53,8 @@ public class Continente {
     }
 
     public void addObserverAPaises(Observer observer){
-        for (Pais pais : paises){
+        for (Pais pais : paises)
             pais.addObserver(observer);
-        }
     }
 
     public String getNombre() {

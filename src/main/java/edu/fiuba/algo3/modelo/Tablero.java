@@ -62,9 +62,10 @@ public class Tablero {
 
     public int fichasPorContinente(Jugador jugador) {
         int fichasTotales = 0;
+
         for (Continente continente : continentes)
-            if (continente.conquistadoPorJugador(jugador))
-                fichasTotales += continente.getFichasPorConquistado();
+            fichasTotales += continente.getFichasPorConquistado(jugador);
+
         return fichasTotales;
     }
 }

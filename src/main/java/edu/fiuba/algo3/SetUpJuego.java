@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 
+import edu.fiuba.algo3.archivos.LeerArchivo;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
