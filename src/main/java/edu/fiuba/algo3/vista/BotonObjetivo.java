@@ -1,24 +1,15 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
-import edu.fiuba.algo3.modelo.objetivos.ObjetivoCompuesto;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 public class BotonObjetivo extends Button {

@@ -2,8 +2,8 @@ package edu.fiuba.algo3.controlador.accionesHandlers.ataque;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.bloqueAccion.ataque.BotonAtacar;
 import edu.fiuba.algo3.vista.bloqueAccion.DropDownAccion;
+import edu.fiuba.algo3.vista.bloqueAccion.ataque.BotonAtacar;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 

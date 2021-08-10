@@ -6,8 +6,6 @@ import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.Border;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class VistaBotonPais extends Button implements Observer {

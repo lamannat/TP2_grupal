@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 

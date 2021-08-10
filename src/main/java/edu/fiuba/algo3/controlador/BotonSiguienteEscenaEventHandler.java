@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.vista.Escena;
-import edu.fiuba.algo3.vista.VistaSetearCantidadJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class BotonSiguienteEscenaEventHandler implements EventHandler<ActionEvent> {

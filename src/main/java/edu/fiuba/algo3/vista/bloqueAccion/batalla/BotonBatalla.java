@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.bloqueAccion.batalla;
 
 import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.Popup;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 

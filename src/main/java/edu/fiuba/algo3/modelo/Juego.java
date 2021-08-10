@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.cartas.Mazo;
-import edu.fiuba.algo3.modelo.moduloRonda.*;
+import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 
 import java.util.ArrayList;
 import java.util.List;

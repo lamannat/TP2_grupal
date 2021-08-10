@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.moduloRonda;
 
 import edu.fiuba.algo3.modelo.Jugador;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Turno {

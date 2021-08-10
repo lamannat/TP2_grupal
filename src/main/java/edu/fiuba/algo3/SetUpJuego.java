@@ -6,7 +6,8 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.Color;
-import edu.fiuba.algo3.modelo.moduloRonda.*;
+import edu.fiuba.algo3.modelo.moduloRonda.Ronda;
+import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.*;
 import edu.fiuba.algo3.modelo.objetivos.*;
 import edu.fiuba.algo3.modelo.simbolo.Comodin;
@@ -27,21 +28,6 @@ public class SetUpJuego implements Observable {
         this.observers = new ArrayList<>();
         this.nombresYColores = new ArrayList<>();
         this.juego = null;
-    }
-
-    @Override
-    public void addObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        observers.forEach(Observer::change);
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
     }
 
     public void asignarCantidadJugadores(int cantidad) {
@@ -158,8 +144,7 @@ public class SetUpJuego implements Observable {
     }
 
     private void agregarLimitrofes(List<Pais> paises) {
-        for (List<String> lineaPaises : LeerArchivo.leerArchivo("paisesLimitrofes.txt"))
-        {
+        for (List<String> lineaPaises : LeerArchivo.leerArchivo("paisesLimitrofes.txt")) {
             Pais paisActual = buscarPais(paises, lineaPaises.get(0));
             if (paisActual == null)
                 continue;
@@ -251,17 +236,26 @@ public class SetUpJuego implements Observable {
     }
 
     private Continente buscarContinente(List<Continente> continentes, String nombreContinente) {
-        for (Continente continente : continentes)
-            if (continente.tieneNombre(nombreContinente))
-                return continente;
-        return null;
+        return continentes.stream().filter(continente -> continente.tieneNombre(nombreContinente)).findFirst().orElse(null);
     }
-
 
     private Pais buscarPais(List<Pais> paises, String nombre) {
-        for (Pais pais : paises)
-            if (pais.tieneNombre(nombre))
-                return pais;
-        return null;
+        return paises.stream().filter(pais -> pais.tieneNombre(nombre)).findFirst().orElse(null);
     }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(Observer::change);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
 }
