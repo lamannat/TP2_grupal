@@ -67,8 +67,8 @@ public class AccionTest {
     @Test
     public void enAtacarJugadorReseteaListaDePaisesConquistados(){
         Jugador jugador = new Jugador(":D", new ColorAmarillo(), new Canjeador(new Mazo()));
-        jugador.conquistate(new Pais(":)"));
-        jugador.conquistate(new Pais(":("));
+        jugador.agregarPaisConquistado(new Pais(":)"));
+        jugador.agregarPaisConquistado(new Pais(":("));
         jugador.merecesConseguirUnaCarta(1);
 
         assertTrue(jugador.merecesCarta());
@@ -83,8 +83,8 @@ public class AccionTest {
     @Test
     public void enSolicitarCartaJugadorTieneDosPaisesYNecesitaUnPaisParaMerecerCarta(){
         Jugador jugador = new Jugador(":D", new ColorAmarillo(), new Canjeador(new Mazo()));
-        jugador.conquistate(new Pais(":P"));
-        jugador.conquistate(new Pais(":/"));
+        jugador.agregarPaisConquistado(new Pais(":P"));
+        jugador.agregarPaisConquistado(new Pais(":/"));
 
         SolicitarCarta accion = new SolicitarCarta(1);
         accion.ejecutar(jugador);
@@ -95,8 +95,8 @@ public class AccionTest {
     @Test
     public void enSolicitarCartaJugadorTieneDosPaisesYNecesitaTresPaisesParaMerecerCarta(){
         Jugador jugador = new Jugador(":D", new ColorAmarillo(), new Canjeador(new Mazo()));
-        jugador.conquistate(new Pais(":|"));
-        jugador.conquistate(new Pais("o.O"));
+        jugador.agregarPaisConquistado(new Pais(":|"));
+        jugador.agregarPaisConquistado(new Pais("o.O"));
 
         SolicitarCarta accion = new SolicitarCarta(3);
         accion.ejecutar(jugador);

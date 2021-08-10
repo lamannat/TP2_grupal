@@ -49,7 +49,7 @@ public class Continente {
         return paises.stream().filter(pais -> pais.tieneNombre(nombre)).findFirst().orElse(null);
     }
 
-    public void addObserverAPaises(Observer observer){
+    public void addObserverAPaises(Observer observer) {
         paises.forEach(pais -> pais.addObserver(observer));
     }
 

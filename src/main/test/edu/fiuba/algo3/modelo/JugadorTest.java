@@ -4,6 +4,9 @@ import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorRojo;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
+import edu.fiuba.algo3.modelo.moduloRonda.ObjetivoDePrueba;
+import edu.fiuba.algo3.modelo.objetivos.Objetivo;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoComun;
 import edu.fiuba.algo3.modelo.simbolo.*;
 import org.junit.jupiter.api.Test;
 
@@ -74,14 +77,50 @@ public class JugadorTest {
 
         Canjeador canjeador = new Canjeador(mazo);
 
-        Jugador j = new Jugador("J", new ColorVerde(),canjeador);
+        Jugador jugador = new Jugador("J", new ColorVerde(),canjeador);
 
-        j.solicitarCarta(mazo.sacarCartaAleatoria());
-        j.solicitarCarta(mazo.sacarCartaAleatoria());
-        j.solicitarCarta(mazo.sacarCartaAleatoria());
+        jugador.solicitarCarta(mazo.sacarCartaAleatoria());
+        jugador.solicitarCarta(mazo.sacarCartaAleatoria());
+        jugador.solicitarCarta(mazo.sacarCartaAleatoria());
 
-        j.hacerCanjePorCarta();
+        jugador.hacerCanjePorCarta();
 
-        assertEquals(4,j.contarTotalFichas());
+        assertEquals(4,jugador.contarTotalFichas());
+    }
+
+    @Test
+    public void jugadorConDosObjetivosSoloCumpleUnoEntoncesGana() {
+        Jugador jugador = new Jugador("o.0", new ColorVerde(), new Canjeador(new Mazo()));
+
+        Objetivo objetivo1 = new ObjetivoDePrueba(true);
+        jugador.agregarObjetivo(objetivo1);
+
+        Objetivo objetivo2 = new ObjetivoDePrueba(false);
+        jugador.agregarObjetivo(objetivo2);
+
+        assertTrue(jugador.ganador());
+    }
+    @Test
+    public void jugadorConDosObjetivosNoCumpleNingunoEntoncesNoGana() {
+        Jugador jugador = new Jugador("o.0", new ColorVerde(), new Canjeador(new Mazo()));
+
+        Objetivo objetivo1 = new ObjetivoDePrueba(false);
+        jugador.agregarObjetivo(objetivo1);
+
+        Objetivo objetivo2 = new ObjetivoDePrueba(false);
+        jugador.agregarObjetivo(objetivo2);
+
+        assertFalse(jugador.ganador());
+    }
+
+    @Test
+    public void jugadorTieneDosPaisesConquistadosYSeNecesitaUnPaisParaMereceUnaCarta() {
+        Jugador jugador = new Jugador("o.0", new ColorVerde(), new Canjeador(new Mazo()));
+        jugador.agregarPaisConquistado(new Pais("Hola1"));
+        jugador.agregarPaisConquistado(new Pais("Hola2"));
+
+        jugador.merecesConseguirUnaCarta(1);
+
+        assertTrue(jugador.merecesCarta());
     }
 }
