@@ -1,22 +1,14 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
-import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -32,7 +24,7 @@ public class BotonCarta extends Button {
         this.juego = juego;
         this.cartas = new ArrayList<>();
 
-        Tooltip unTooltip = new Tooltip("Cartas PaÃ­s");
+        Tooltip unTooltip = new Tooltip("Cartas País");
         unTooltip.setShowDelay(Duration.millis(10));
         this.setTooltip(unTooltip);
         this.getStyleClass().addAll("botonFoto", "hoverOscuro");

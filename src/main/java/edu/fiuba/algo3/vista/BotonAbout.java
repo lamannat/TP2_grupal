@@ -14,7 +14,6 @@ import javafx.util.Duration;
 public class BotonAbout extends Button {
 
     public BotonAbout(Stage ventana) {
-        //this.getStyleClass().addAll("botonJuego", "hoverOscuro");
 
         Tooltip unTooltip = new Tooltip("About us");
         unTooltip.setShowDelay(Duration.millis(10));
@@ -30,16 +29,20 @@ public class BotonAbout extends Button {
 
         this.setOnAction(e-> {
 
+            Label titulo = new Label("TP II - 1C 2021");
+            titulo.setTextFill(Color.WHITE);
+            titulo.setStyle("-fx-font-size: 40; -fx-padding: 10px");
+
             Label integrantes = new Label("Integrantes");
             integrantes.setTextFill(Color.WHITE);
-            integrantes.setStyle("-fx-font-size: 30");
+            integrantes.setStyle("-fx-font-size: 30; -fx-padding: 20px; -fx-padding-top: 0px");
 
             Label nomsIntegrantes = new Label("-Tobias Lamanna\n-Juan Ignacio Biancuzzo\n-Dolores Levi\n-Valentín Santander");
             nomsIntegrantes.setTextFill(Color.WHITE);
             nomsIntegrantes.setStyle("-fx-font-size: 20");
 
             VBox layout = new VBox();
-            layout.getChildren().addAll(integrantes,nomsIntegrantes);
+            layout.getChildren().addAll(titulo,integrantes,nomsIntegrantes);
 
             layout.setStyle("-fx-background-color: #272727;" +
                     "-fx-border-color: #ffcc3d;\n" +

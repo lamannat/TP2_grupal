@@ -50,45 +50,22 @@ public class VistaTitulo extends Escena {
         // BOTON ABOUT
         BotonAbout botonAbout = new BotonAbout(ventana);
 
-//        botonAbout.getStyleClass().addAll("botonJuego", "hoverOscuro");
-//        botonAbout.setOnAction(e-> {
-//
-//            Label integrantes = new Label("Integrantes");
-//            integrantes.setTextFill(Color.WHITE);
-//            integrantes.setStyle("-fx-font-size: 30");
-//
-//            Label nomsIntegrantes = new Label("-Tobias Lamanna\n-Juan Ignacio Biancuzzo\n-Dolores Levi\n-Valentín Santander");
-//            nomsIntegrantes.setTextFill(Color.WHITE);
-//            nomsIntegrantes.setStyle("-fx-font-size: 20");
-//
-//            VBox layout = new VBox();
-//            layout.getChildren().addAll(integrantes,nomsIntegrantes);
-//
-//            layout.setStyle("-fx-background-color: #272727;" +
-//                    "-fx-border-color: #ffcc3d;\n" +
-//                    "-fx-border-style: solid;\n" +
-//                    "-fx-border-width: 5;");
-//
-//            layout.setAlignment(Pos.CENTER);
-//
-//            //POPUP
-//            Popup popup = new Popup(layout);
-//            popup.setDimensiones(450,300);
-//            popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
-//            popup.crearPopup();
-//
-//        });
+        // BOTON SALIR
+        BotonSalir botonSalir = new BotonSalir(ventana);
 
         //BorderPane para los botones
         AnchorPane botones = new AnchorPane();
 
-        botonJugar.setLayoutX(640 - botonJugar.getWidth()/2);
+        botonJugar.setLayoutX(350 - botonJugar.getWidth()/2);
         botonJugar.setLayoutY(botones.getHeight()/2 - botonJugar.getHeight()/2);
+
+        botonSalir.setLayoutX(650 - botonJugar.getWidth()/2);
+        botonSalir.setLayoutY(botones.getHeight()/2 - botonJugar.getHeight()/2);
 
         botonAbout.setLayoutX(20);
         botonAbout.setLayoutY(40);
 
-        botones.getChildren().addAll(botonJugar,botonAbout);
+        botones.getChildren().addAll(botonJugar,botonSalir,botonAbout);
 
 
         // LAYOUT SECUNDARIO

@@ -6,10 +6,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -17,9 +14,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
-
-import java.io.File;
 import java.nio.file.Paths;
 
 public class VistaTerminoElJuego extends Escena {
@@ -63,7 +57,7 @@ public class VistaTerminoElJuego extends Escena {
 
         BotonSiguiente botonSiguiente = new BotonSiguiente(ventana, controladorDeEscena);
         botonSiguiente.setText("Volver a jugar");
-        botonSiguiente.getStyleClass().add("botonVolverAJugar");
+        botonSiguiente.getStyleClass().addAll("botonVolverAJugar","hoverOscuro");
 
         BotonSalir botonSalir = new BotonSalir(ventana);
 
