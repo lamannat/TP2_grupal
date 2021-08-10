@@ -15,7 +15,7 @@ public class BotonColorEventHandler implements EventHandler<ActionEvent> {
     private final TextField inputNombre;
     private final Label listaInputs;
     private BotonDeColor miBotonDeColor;
-    private ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
+    private final ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
 
     public BotonColorEventHandler(TextField inputNombre, Label listaInputs, ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton){
         this.inputNombre = inputNombre;

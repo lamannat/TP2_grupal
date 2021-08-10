@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista.bloqueAccion.incorporacion;
 
-import edu.fiuba.algo3.controlador.accionesHandlers.incorporacion.DropDownCAntidadFichasIncorporarEventHandler;
+import edu.fiuba.algo3.controlador.accionesHandlers.incorporacion.DropDownCantidadFichasIncorporarEventHandler;
 import edu.fiuba.algo3.controlador.accionesHandlers.incorporacion.DropDownPaisIncorporacionEventHandler;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -45,7 +45,7 @@ public class BloqueDeIncorporacion extends BloqueAccion {
             cantidadFichas.getItems().clear();
             cantidadFichas.getItems().addAll(cantidadIncorporable);
         });
-        cantidadFichas.setOnAction(new DropDownCAntidadFichasIncorporarEventHandler(cantidadFichas, incorporar));
+        cantidadFichas.setOnAction(new DropDownCantidadFichasIncorporarEventHandler(cantidadFichas, incorporar));
 
         DropDownAccion paisElegido = new DropDownAccion("Pais Destino");
         paisElegido.setActualizacion(() -> {

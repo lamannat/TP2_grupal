@@ -9,9 +9,9 @@ import javafx.event.EventHandler;
 
 public class DropDownPaisDefensorEventHandler implements EventHandler {
 
-    private Juego juego;
-    private DropDownAccion dropDownPaisDefensor;
-    private BotonAtacar botonAtacar;
+    private final Juego juego;
+    private final DropDownAccion dropDownPaisDefensor;
+    private final BotonAtacar botonAtacar;
 
     public DropDownPaisDefensorEventHandler(Juego juego, DropDownAccion dropDownPaisDefensor, BotonAtacar botonAtacar) {
         this.juego = juego;

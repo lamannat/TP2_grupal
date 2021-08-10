@@ -7,8 +7,8 @@ import javafx.event.EventHandler;
 
 public class BotonPaisEventHandler implements EventHandler<ActionEvent> {
 
-    private VistaJuego vistaJuego;
-    private Pais pais;
+    private final VistaJuego vistaJuego;
+    private final Pais pais;
 
     public BotonPaisEventHandler(VistaJuego vistaJuego, Pais pais) {
 
