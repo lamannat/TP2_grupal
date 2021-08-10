@@ -280,4 +280,30 @@ public class JuegoTest {
 
         assertEquals(0, juego.fichasPorContinente(jugador));
     }
+
+    @Test
+    public void alAvanzarUnaVezSeReseteaLaRondaYSeAvanzaElJugador() {
+        Mazo mazo = new Mazo();
+        Jugador primero = new Jugador(":)", new ColorAmarillo(), new Canjeador(mazo));
+        Jugador segundo = new Jugador("Loli fea", new ColorAmarillo(), new Canjeador(mazo));
+        List<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(primero);
+        jugadores.add(segundo);
+
+        Turno turno = new Turno(jugadores);
+        Batalla batalla = new Batalla(new DadoEstandar());
+        Tablero tablero = new Tablero();
+
+        RondaDePrueba redonda = new RondaDePrueba();
+        redonda.agregarAccion(new AccionDePrueba());
+        redonda.setSiguienteRonda(new Ronda());
+
+        Juego juego = new Juego(tablero, turno, batalla, mazo);
+        juego.seleccionarRonda(redonda);
+        juego.avanzar();
+        juego.avanzar();
+
+        assertEquals(1, redonda.cantDeReseteos);
+        assertEquals(segundo, juego.jugadorActual());
+    }
 }
