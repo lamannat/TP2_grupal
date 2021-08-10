@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Juego implements Observable {
+
     private final Turno turno;
     private final Tablero tablero;
     private Ronda rondaActual;
@@ -34,12 +35,7 @@ public class Juego implements Observable {
         return turno.jugadorActual();
     }
 
-    public Pais getPaisPorNombre(String nombre) {
-        return tablero.getPaisPorNombre(nombre);
-    }
-
     public void avanzar(){
-
         if (!primeraRonda)
             this.rondaActual.avanzar();
         primeraRonda = false;
@@ -70,14 +66,33 @@ public class Juego implements Observable {
             jugador.solicitarCarta(mazo.sacarCartaAleatoria());
     }
 
-    public Batalla getBatalla() {
-        return this.batalla;
+    public int fichasPorContinente(Jugador jugador) {
+        return tablero.fichasPorContinente(jugador);
     }
 
     public Ronda dameRonda() {
         return this.rondaActual;
     }
 
+    public Batalla getBatalla() {
+        return this.batalla;
+    }
+
+    public Jugador getJugadorGanador() {
+        return jugadorGanador;
+    }
+
+    public Pais getPaisPorNombre(String nombre) {
+        return tablero.getPaisPorNombre(nombre);
+    }
+
+    public void agregarObserverARondaActual(Observer observer) {
+        this.rondaActual.addObserver(observer);
+    }
+
+    public void addObserverAPaises(Observer observer){
+        this.tablero.addObserverAPaises(observer);
+    }
 
     @Override
     public void addObserver(Observer observer) {
@@ -92,22 +107,5 @@ public class Juego implements Observable {
     @Override
     public void removeObserver(Observer observer) {
         observadores.remove(observer);
-    }
-
-    public void addObserverAPaises(Observer observer){
-        this.tablero.addObserverAPaises(observer);
-    }
-
-    public void agregarObserverARondaActual(Observer observer) {
-        this.rondaActual.addObserver(observer);
-    }
-
-
-    public int fichasPorContinente(Jugador jugador) {
-        return tablero.fichasPorContinente(jugador);
-    }
-
-    public Jugador getJugadorGanador() {
-        return jugadorGanador;
     }
 }

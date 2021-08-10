@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Jugador implements Observable {
 
@@ -22,7 +23,6 @@ public class Jugador implements Observable {
     private Jugador jugadorAsesino;
 
     public Jugador(String nombre, Color color, Canjeador canjeador) {
-        //despues vamos a editar los constructores
         this.nombre = nombre;
         this.color = color;
         this.paisesIniciales = new ArrayList<>();
@@ -35,26 +35,20 @@ public class Jugador implements Observable {
         this.jugadorAsesino = null;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public void agregarPais(Pais pais){
         pais.asignarJugador(this);
         this.paisesIniciales.add(pais);
     }
 
-    public void setObjetivo(Objetivo objetivo){
-        this.objetivos.add(objetivo);
+    public void agregarObjetivo(Objetivo objetivo) {
+        objetivos.add(objetivo);
     }
 
+    public boolean ganador() {
+        return objetivos.stream().anyMatch(Objetivo::cumplido);
+    }
 
-//    public int cuantosPaisesConquistados(){
-//        return paisesIniciales.size();
-//    }
-
-
-    public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor,Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
+    public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
         if (!paisesIniciales.contains(paisAtacante)) {
         // return PaisNoEncontradoExcepcion --> Puede Estar en Juego
         }
@@ -85,22 +79,13 @@ public class Jugador implements Observable {
         this.fichasReservadas.addAll(this.generarFichas(numeroDeFichas));
     }
 
-    public Color getColor(){
-        return this.color;
-    }
-
     public void colocarFichasEnPais(List<Ficha> fichas, Pais pais){
         //verificacion de que pais le pertenece ya se hizo
         pais.agregarFichas(fichas);
     }
 
     public int contarTotalFichas(){
-        int total = this.fichasReservadas.size();
-
-        for (Pais pais : paisesIniciales)
-            total += pais.cantidadFichas();
-
-        return total;
+        return paisesIniciales.stream().reduce(this.fichasReservadas.size(), (total, pais) -> total + pais.cantidadFichas(), Integer::sum);
     }
 
     public boolean quitarPais(Pais pais) {
@@ -135,32 +120,6 @@ public class Jugador implements Observable {
             this.jugadorAsesino = jugador;
     }
 
-    public void agregarObjetivo(Objetivo objetivo) { objetivos.add(objetivo); }
-
-    public boolean ganador() {
-        return objetivos.stream().anyMatch(Objetivo::cumplido);
-    }
-
-    public List<Pais> getPaisAtacantes() {
-        List<Pais> paises = new ArrayList<>();
-        for (Pais pais : paisesIniciales)
-            if (pais.fichasSuficientes())
-                paises.add(pais);
-        return paises;
-    }
-
-    public List<Pais> getPaisDeReagrupamiento() {
-        List<Pais> paises = new ArrayList<>();
-        for (Pais pais : paisesIniciales)
-            if (pais.fichasSuficientesParaMover())
-                paises.add(pais);
-        return paises;
-    }
-
-    public List<Pais> getPaisesIniciales() {
-        return paisesIniciales;
-    }
-
     public void agregarFichasReservadasEnPais(Pais pais, Integer cantidad) {
         for (int i = 0; i < cantidad ; i++)
             pais.agregarFicha(fichasReservadas.remove(0));
@@ -173,10 +132,6 @@ public class Jugador implements Observable {
         notifyObservers();
     }
 
-    public Integer cantidadFichasReservadas() {
-        return fichasReservadas.size();
-    }
-
     public int cantidadFichasGanadas(Juego juego) {
         float cantPaisesConquistado = this.paisesIniciales.size();
         int fichasPorPaises = (int) Math.max(Math.floor(cantPaisesConquistado/2), 3);
@@ -184,6 +139,43 @@ public class Jugador implements Observable {
         int fichasPorContinentes = juego.fichasPorContinente(this);
 
         return fichasPorCartas + fichasPorPaises + fichasPorContinentes;
+    }
+
+    public void agregaFichasPorCartas() {
+        canjeador.canjearConCartaPais(paisesIniciales, this);
+    }
+
+    public void prepararTropas() {
+        paisesIniciales.forEach(Pais::prepararTropas);
+    }
+
+    public void agregarPaisConquistado(Pais pais) {
+        this.paisesConquistados.add(pais);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Color getColor(){
+        return this.color;
+    }
+
+    public List<Pais> getPaisAtacantes() {
+        return paisesIniciales.stream().filter(Pais::fichasSuficientes).collect(Collectors.toList());
+    }
+
+    public List<Pais> getPaisDeReagrupamiento() {
+        return paisesIniciales.stream().filter(Pais::fichasSuficientesParaMover).collect(Collectors.toList());
+    }
+
+    public List<Pais> getPaisesIniciales() {
+        return paisesIniciales;
+    }
+
+
+    public Integer cantidadFichasReservadas() {
+        return fichasReservadas.size();
     }
 
     @Override
@@ -210,20 +202,7 @@ public class Jugador implements Observable {
         return objetivos;
     }
 
-    public void agregaFichasPorCartas() {
-        canjeador.canjearConCartaPais(paisesIniciales, this);
-    }
-
-    public void prepararTropas() {
-        for (Pais pais : paisesIniciales)
-            pais.prepararTropas();
-    }
-
     public List<Carta> getCartas() {
         return this.canjeador.getCartas();
-    }
-
-    public void conquistate(Pais pais) {
-        this.paisesConquistados.add(pais);
     }
 }

@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 public class BotonSiguienteTurno extends Button {
 
-    public BotonSiguienteTurno(Juego juego, Observer observer){
+    public BotonSiguienteTurno(Juego juego){
         this.setText("Jugar");
         this.setOnAction(e->{
             juego.avanzar();

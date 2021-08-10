@@ -10,7 +10,4 @@ public class Comodin extends Simbolo{
     public boolean sonIguales(Simbolo simbolo) {
         return true;
     }
-
-    public boolean sonDiferentes(Simbolo simbolo) { return true; }
-
 }

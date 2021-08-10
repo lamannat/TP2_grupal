@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Popup extends Stage {
-    private final Pane layout;
+    private Pane layout = null;
     private int v;
     private int v1;
     private double x = 0;
     private double y = 0;
     private String stylesheet = "";
 
-    public Popup(Pane layout){
+    public Popup(Pane layout) {
         this.layout = layout;
     }
     
@@ -34,6 +34,8 @@ public class Popup extends Stage {
     }
 
     public void crearPopup(){
+        if (layout == null)
+            return;
         // New window (Stage)
         Scene nuevaEscena = new Scene(layout,v,v1);
 
@@ -52,6 +54,4 @@ public class Popup extends Stage {
         this.setScene(nuevaEscena);
         this.show();
     }
-
-
 }
