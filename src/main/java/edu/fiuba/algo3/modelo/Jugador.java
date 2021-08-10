@@ -23,7 +23,6 @@ public class Jugador implements Observable {
     private Jugador jugadorAsesino;
 
     public Jugador(String nombre, Color color, Canjeador canjeador) {
-        //despues vamos a editar los constructores
         this.nombre = nombre;
         this.color = color;
         this.paisesIniciales = new ArrayList<>();
@@ -147,8 +146,7 @@ public class Jugador implements Observable {
     }
 
     public void prepararTropas() {
-        for (Pais pais : paisesIniciales)
-            pais.prepararTropas();
+        paisesIniciales.forEach(Pais::prepararTropas);
     }
 
     public void agregarPaisConquistado(Pais pais) {
