@@ -14,6 +14,7 @@ public class Juego implements Observable {
     private final Mazo mazo;
     private final List<Observer> observadores;
     private Jugador jugadorGanador;
+    private boolean primeraRonda = true;
 
     public Juego(Tablero tablero, Turno turno, Batalla unaBatalla, Mazo unMazo) {
         this.turno = turno;
@@ -53,6 +54,35 @@ public class Juego implements Observable {
             this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
         }
     }
+
+//    public void avanzar() {
+//        if (this.rondaActual.terminaste())
+//            terminaLaRonda();
+//        if (this.turno.jugadorActual().ganador()) {
+//            jugadorGanador = this.turno.jugadorActual();
+//            notifyObservers();
+//        } else if (primeraRonda) {
+//            this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
+//<<<<<<< HEAD
+//=======
+//            primeraRonda = false;
+//        } else {
+//            this.rondaActual.avanzar();
+//            terminaLaRonda();
+//            this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
+//        }
+//    }
+//
+//    private void terminaLaRonda() {
+//        if (this.turno.ultimoJugador()) {
+//            this.rondaActual = this.rondaActual.siguienteRonda();
+//            for (Observer observer : observadores)
+//                this.rondaActual.addObserver(observer);
+//>>>>>>> 7d3ea186573fd5884cdd3e88e035be4f56ee5647
+//        }
+//        this.rondaActual.resetearAcciones();
+//        this.turno.avanzarJugador();
+//    }
 
     public void cartaParaJugador(Jugador jugador) {
         if (jugador.merecesCarta())
