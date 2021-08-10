@@ -20,10 +20,6 @@ public class Continente {
         paises.add(pais);
     }
 
-    public boolean tieneNombre(String unNombre){
-        return this.nombre.equals(unNombre);
-    }
-
     public boolean conquistadoPorJugador(Jugador jugador) {
         return paises.stream().allMatch(paisActual -> paisActual.conquistadoPorJugador(jugador));
     }
@@ -45,16 +41,16 @@ public class Continente {
         return paises.stream().filter(limitrofe -> !limitrofe.estaAsignado()).findAny().orElse(null);
     }
 
+    public boolean tieneNombre(String unNombre){
+        return this.nombre.equals(unNombre);
+    }
+
     public Pais getPaisPorNombre(String nombre) {
-        for (Pais pais : paises)
-            if (pais.tieneNombre(nombre))
-                return pais;
-        return null;
+        return paises.stream().filter(pais -> pais.tieneNombre(nombre)).findFirst().orElse(null);
     }
 
     public void addObserverAPaises(Observer observer){
-        for (Pais pais : paises)
-            pais.addObserver(observer);
+        paises.forEach(pais -> pais.addObserver(observer));
     }
 
     public String getNombre() {

@@ -16,131 +16,6 @@ import static org.mockito.Mockito.*;
 
 public class JuegoTest {
 
-    Canjeador canjeador = new Canjeador(new Mazo());
-
-    private List<Continente> listaDeContientes() {
-        List<Continente> continentes = new ArrayList<>();
-        for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
-
-            Continente continente = new Continente(continenteYPaises.get(0));
-            continentes.add(continente);
-
-            for (int i = 2; i < continenteYPaises.size(); i++)
-                continente.agregarPais(new Pais(continenteYPaises.get(i)));
-        }
-        return continentes;
-    }
-
-    @Test
-    public void SeIniciaElJuegoYLosDosJugadoresTienen25FichasCadaUno(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
-        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
-        List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(Valentin);
-        jugadores.add(Juan);
-
-        Tablero tablero = new Tablero();
-        for (Continente continente : listaDeContientes())
-            tablero.agregarContinente(continente);
-        Turno turno = new Turno(jugadores);
-        Batalla batalla = new Batalla(new DadoEstandar());
-
-        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
-
-        assertEquals(25, Valentin.contarTotalFichas());
-        assertEquals(25, Juan.contarTotalFichas());
-    }
-
-//    @Test
-//    public void DespuesDeLaPrimeraRondaLosDosJugadoresTienen30Fichas(){
-//        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
-//        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
-//        List<Jugador> jugadores = new ArrayList<>();
-//        jugadores.add(Valentin);
-//        jugadores.add(Juan);
-//
-//        Tablero tablero = new Tablero();
-//        for (Continente continente : listaDeContientes())
-//            tablero.agregarContinente(continente);
-//        Turno turno = new Turno(jugadores);
-//
-//        Batalla batalla = new Batalla(new DadoEstandar());
-//
-//        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
-//        Ronda primeraRonda = new RondaAgregarCincoFichas(juego);
-//        juego.seleccionarRonda(primeraRonda);
-//        juego.comenzarRonda();
-//
-//        assertEquals(30, Valentin.contarTotalFichas());
-//        assertEquals(30, Juan.contarTotalFichas());
-//    }
-//
-//    @Test
-//    public void DespuesDeLaSegundaRondaLosDosJugadoresTienen33Fichas(){
-//        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
-//        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
-//        List<Jugador> jugadores = new ArrayList<>();
-//        jugadores.add(Valentin);
-//        jugadores.add(Juan);
-//
-//        Tablero tablero = new Tablero();
-//        for (Continente continente : listaDeContientes())
-//            tablero.agregarContinente(continente);
-//        Turno turno = new Turno(jugadores);
-//        Batalla batalla = new Batalla(new DadoEstandar());
-//
-//        Juego juego = new Juego(tablero, turno, batalla,new Mazo());
-//        Ronda primeraRonda = new RondaAgregarCincoFichas(juego);
-//        juego.seleccionarRonda(primeraRonda);
-//        juego.comenzarRonda();
-//        juego.siguienteRonda();
-//        juego.comenzarRonda();
-//
-//        assertEquals(33, Valentin.contarTotalFichas());
-//        assertEquals(33, Juan.contarTotalFichas());
-//    }
-
-    private List<Continente> listaDelContienteAsia() {
-        List<Continente> continentes = new ArrayList<>();
-
-        Continente Asia = new Continente("Asia");
-        Asia.agregarPais(new Pais("China"));
-        continentes.add(Asia);
-
-        return continentes;
-    }
-
-    @Test
-    public void JugadorConquistoAsia(){
-        Jugador Valentin = new Jugador("Valentin", new ColorNegro(),canjeador);
-        Jugador Juan = new Jugador("Juan", new ColorMagenta(),canjeador);
-        Jugador Tobias = new Jugador("Tobias", new ColorVerde(),canjeador);
-
-        List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(Valentin);
-        jugadores.add(Juan);
-        jugadores.add(Tobias);
-
-        Tablero tablero = new Tablero();
-        for (Continente continente : listaDelContienteAsia()) {
-            if (continente.tieneNombre("Asia"))
-                while (true) {
-                    Pais paisSinAsignar = continente.obtenerPaisNoAsignado();
-                    if (paisSinAsignar == null)
-                        break;
-                    Valentin.agregarPais(paisSinAsignar);
-                }
-            tablero.agregarContinente(continente);
-        }
-
-        Turno turno = new Turno(jugadores);
-        Batalla batalla = new Batalla(new DadoEstandar());
-        Juego juego = new Juego(tablero, turno, batalla, new Mazo());
-
-        Continente Asia = tablero.encontrarContinente("Asia");
-        assertTrue(Asia.conquistadoPorJugador(Valentin));
-    }
-
     @Test
     public void siJugadorMereceCartaElJuegoSacaUnaCartaDelMazoParaDarsela() {
         Carta carta = new Carta(new Pais("Pais"), new SimboloNormal("Simbolo"));
@@ -295,12 +170,10 @@ public class JuegoTest {
         Tablero tablero = new Tablero();
 
         RondaDePrueba redonda = new RondaDePrueba();
-        redonda.agregarAccion(new AccionDePrueba());
         redonda.setSiguienteRonda(new Ronda());
 
         Juego juego = new Juego(tablero, turno, batalla, mazo);
         juego.seleccionarRonda(redonda);
-        juego.avanzar();
         juego.avanzar();
 
         assertEquals(1, redonda.cantDeReseteos);
