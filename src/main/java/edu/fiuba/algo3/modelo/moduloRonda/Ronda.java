@@ -27,14 +27,14 @@ public class Ronda implements Observable {
     }
 
     public void comenzarLaRonda(Jugador jugador) {
-        if (acciones.size() < 1 || numeroAccion > acciones.size())
+        if (acciones.size() < 1 || numeroAccion > acciones.size() - 1)
             return;
         this.acciones.get(this.numeroAccion).ejecutar(jugador);
         this.notifyObservers();
     }
 
     public boolean terminaste() {
-        this.avanzar();
+//        this.avanzar();
         return numeroAccion == acciones.size();
     }
 

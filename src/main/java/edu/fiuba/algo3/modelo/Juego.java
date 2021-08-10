@@ -38,15 +38,15 @@ public class Juego implements Observable {
         return tablero.getPaisPorNombre(nombre);
     }
 
-    public void avanzar(Observer observer){
-        if (this.rondaActual.terminaste()){
-            if (this.turno.ultimoJugador()){
-                this.rondaActual = this.rondaActual.siguienteRonda();
-                this.rondaActual.addObserver(observer);
-            }
-            this.rondaActual.resetearAcciones();
-            this.turno.avanzarJugador();
-        }
+    public void avanzar(){
+
+        if (!primeraRonda)
+            this.rondaActual.avanzar();
+        primeraRonda = false;
+
+        if (this.rondaActual.terminaste())
+            terminaste();
+
         if (this.turno.jugadorActual().ganador()) {
             jugadorGanador = this.turno.jugadorActual();
             notifyObservers();
@@ -55,34 +55,15 @@ public class Juego implements Observable {
         }
     }
 
-//    public void avanzar() {
-//        if (this.rondaActual.terminaste())
-//            terminaLaRonda();
-//        if (this.turno.jugadorActual().ganador()) {
-//            jugadorGanador = this.turno.jugadorActual();
-//            notifyObservers();
-//        } else if (primeraRonda) {
-//            this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
-//<<<<<<< HEAD
-//=======
-//            primeraRonda = false;
-//        } else {
-//            this.rondaActual.avanzar();
-//            terminaLaRonda();
-//            this.rondaActual.comenzarLaRonda(this.turno.jugadorActual());
-//        }
-//    }
-//
-//    private void terminaLaRonda() {
-//        if (this.turno.ultimoJugador()) {
-//            this.rondaActual = this.rondaActual.siguienteRonda();
-//            for (Observer observer : observadores)
-//                this.rondaActual.addObserver(observer);
-//>>>>>>> 7d3ea186573fd5884cdd3e88e035be4f56ee5647
-//        }
-//        this.rondaActual.resetearAcciones();
-//        this.turno.avanzarJugador();
-//    }
+    private void terminaste() {
+        if (this.turno.ultimoJugador()){
+            this.rondaActual = this.rondaActual.siguienteRonda();
+            for (Observer observer : observadores)
+                this.rondaActual.addObserver(observer);
+        }
+        this.rondaActual.resetearAcciones();
+        this.turno.avanzarJugador();
+    }
 
     public void cartaParaJugador(Jugador jugador) {
         if (jugador.merecesCarta())

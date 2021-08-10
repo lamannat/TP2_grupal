@@ -28,8 +28,7 @@ public class VistaBotonPais extends Button implements Observer {
         unTooltip.setShowDelay(Duration.millis(100));
         this.setTooltip(unTooltip);
         this.setText(String.valueOf(paisAsociado.cantidadFichas()));
-        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + "; -fx-text-fill: " + paisAsociado.getColor().getColorText());
-
+        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 12 ; -fx-text-fill: "+ paisAsociado.getColor().getColorText());
     }
 
     @Override
