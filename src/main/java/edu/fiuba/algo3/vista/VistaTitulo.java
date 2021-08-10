@@ -7,7 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -40,7 +42,6 @@ public class VistaTitulo extends Escena {
         label2.setPadding(new Insets(25));
 
         // FOTO
-        //File file = new File(("src/main/java/edu/fiuba/algo3/archivos/logo_teg.png"));
         Image image = new Image("logo_teg.png");
         ImageView logo = new ImageView(image);
 

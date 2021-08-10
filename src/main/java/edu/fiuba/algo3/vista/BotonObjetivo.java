@@ -1,24 +1,15 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ListenerVentanaDesenfocada;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
-import edu.fiuba.algo3.modelo.objetivos.ObjetivoCompuesto;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 public class BotonObjetivo extends Button {
@@ -28,7 +19,6 @@ public class BotonObjetivo extends Button {
 
     public BotonObjetivo(Stage ventana, Juego juego){
         this.juego = juego;
-//        this.setText("Objetivo");
 
         Tooltip unTooltip = new Tooltip("Objetivo Secreto");
         unTooltip.setShowDelay(Duration.millis(10));
@@ -59,25 +49,12 @@ public class BotonObjetivo extends Button {
                     "-fx-border-style: solid;\n" +
                     "-fx-border-width: 5;");
 
-//            Scene nuevaEscena = new Scene(layout, 450,300);
-
             //POPUP
             Popup popup = new Popup(layout);
             popup.setDimensiones(450,300);
             popup.setDistanciaAPrincipal(ventana.getX() + 415,ventana.getY() + 260 );
             popup.crearPopup();
 
-            // New window (Stage)
-//            Stage nuevaVentana = new Stage();
-//            nuevaVentana.setScene(nuevaEscena);
-//
-//            nuevaVentana.initStyle(StageStyle.UNDECORATED);
-//            nuevaVentana.setX(ventana.getX() + 415 );
-//            nuevaVentana.setY(ventana.getY() + 260 );
-//
-//            nuevaVentana.focusedProperty().addListener(new ListenerVentanaDesenfocada(nuevaVentana));
-//
-//            nuevaVentana.show();
         });
     }
 

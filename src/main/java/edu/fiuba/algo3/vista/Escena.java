@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorDeEscena;
-import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

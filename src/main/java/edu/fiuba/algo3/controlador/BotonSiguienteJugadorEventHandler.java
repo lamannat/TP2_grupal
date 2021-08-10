@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.SetUpJuego;
 import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.vista.BotonDeColor;
-import edu.fiuba.algo3.SetUpJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -19,8 +19,8 @@ public class BotonSiguienteJugadorEventHandler implements EventHandler<ActionEve
     private final ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton;
     private final Button botonSiguiente;
     private int cantidadActualJugadores;
-    private int cantidadTotalJugadores;
-    private SetUpJuego setUp;
+    private final int cantidadTotalJugadores;
+    private final SetUpJuego setUp;
 
 
     public BotonSiguienteJugadorEventHandler(ArrayList<Pair<String, BotonDeColor>> listaNombreYBoton, TextField texto, Label label, int cantidadTotalJugadores, Button botonSiguiente, SetUpJuego setUp) {

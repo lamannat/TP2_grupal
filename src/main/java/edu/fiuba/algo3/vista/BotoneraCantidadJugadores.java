@@ -14,7 +14,6 @@ public class BotoneraCantidadJugadores extends HBox {
     public BotoneraCantidadJugadores(Button botonSiguiente, SetUpJuego setUp) {
 
         // Configuración Botonera
-
         this.setStyle("-fx-background-color: #272727");
 
         List<Button> botones = new ArrayList<>();

@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.cartas;
 
-import edu.fiuba.algo3.modelo.cartas.EstadoCarta;
-
 public class EstadoBocaAbajo implements EstadoCarta {
 
     @Override

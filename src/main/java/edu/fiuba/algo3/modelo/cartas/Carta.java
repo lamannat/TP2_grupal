@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.cartas;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.modelo.simbolo.Simbolo;
 
 public class Carta {

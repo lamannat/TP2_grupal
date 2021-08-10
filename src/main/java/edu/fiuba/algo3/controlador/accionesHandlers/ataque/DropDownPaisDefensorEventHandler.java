@@ -2,16 +2,16 @@ package edu.fiuba.algo3.controlador.accionesHandlers.ataque;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
-import edu.fiuba.algo3.vista.bloqueAccion.ataque.BotonAtacar;
 import edu.fiuba.algo3.vista.bloqueAccion.DropDownAccion;
+import edu.fiuba.algo3.vista.bloqueAccion.ataque.BotonAtacar;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class DropDownPaisDefensorEventHandler implements EventHandler {
 
-    private Juego juego;
-    private DropDownAccion dropDownPaisDefensor;
-    private BotonAtacar botonAtacar;
+    private final Juego juego;
+    private final DropDownAccion dropDownPaisDefensor;
+    private final BotonAtacar botonAtacar;
 
     public DropDownPaisDefensorEventHandler(Juego juego, DropDownAccion dropDownPaisDefensor, BotonAtacar botonAtacar) {
         this.juego = juego;

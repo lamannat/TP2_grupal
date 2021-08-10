@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 public class ObjetivoConquistaContinente implements Objetivo{
     private final Continente continente;
-    private Jugador jugador;
+    private final Jugador jugador;
 
     public ObjetivoConquistaContinente(Continente continente, Jugador jugador) {
         this.continente = continente;

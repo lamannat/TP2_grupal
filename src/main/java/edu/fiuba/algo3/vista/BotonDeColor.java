@@ -2,13 +2,11 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonColorEventHandler;
 import edu.fiuba.algo3.modelo.color.Color;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 public class BotonDeColor extends Button {
 
-    private Color color;
+    private final Color color;
 
     public BotonDeColor(Color unColor){
         this.color = unColor;
@@ -17,8 +15,6 @@ public class BotonDeColor extends Button {
         this.setStyle("-fx-text-fill: " + color.getColorText());
         this.setStyle("-fx-background-color: " + color.getCodigo() + ";-fx-text-fill:" + color.getColorText());
     }
-
-
 
     public void enAccion(BotonColorEventHandler eventHandler){
         eventHandler.setColor(color);
@@ -36,5 +32,4 @@ public class BotonDeColor extends Button {
     public Color getColor() {
         return color;
     }
-
 }

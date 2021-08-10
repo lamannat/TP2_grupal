@@ -6,13 +6,11 @@ import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.Border;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class VistaBotonPais extends Button implements Observer {
 
-    private Pais paisAsociado;
+    private final Pais paisAsociado;
 
     public VistaBotonPais(Juego juego, String nombrePais, VistaJuego vistaJuego){
         super();
@@ -27,13 +25,16 @@ public class VistaBotonPais extends Button implements Observer {
         Tooltip unTooltip = new Tooltip(paisAsociado.toString());
         unTooltip.setShowDelay(Duration.millis(100));
         this.setTooltip(unTooltip);
+        this.actualizar();
+    }
+
+    private void actualizar() {
         this.setText(String.valueOf(paisAsociado.cantidadFichas()));
         this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 12 ; -fx-text-fill: "+ paisAsociado.getColor().getColorText());
     }
 
     @Override
     public void change() {
-        this.setText(String.valueOf(paisAsociado.cantidadFichas()));
-        this.setStyle("-fx-background-color: " + paisAsociado.getColor().getCodigo() + ";" + "-fx-font-weight: bold"+ ";" + "-fx-font-size: 12 ; -fx-text-fill: "+ paisAsociado.getColor().getColorText());
+        this.actualizar();
     }
 }

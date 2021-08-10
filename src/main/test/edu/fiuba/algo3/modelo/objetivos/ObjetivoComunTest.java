@@ -7,7 +7,8 @@ import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ObjetivoComunTest {
 

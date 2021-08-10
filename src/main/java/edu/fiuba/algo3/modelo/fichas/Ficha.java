@@ -1,13 +1,9 @@
 package edu.fiuba.algo3.modelo.fichas;
 
-import edu.fiuba.algo3.modelo.color.*;
-
 public class Ficha {
-//    private Color color;
     private EstadoFicha estadoFicha;
 
     public Ficha() {
-//        this.color = color;
         resetear();
     }
 

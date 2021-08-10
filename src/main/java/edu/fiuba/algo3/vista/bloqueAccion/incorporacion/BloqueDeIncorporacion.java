@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista.bloqueAccion.incorporacion;
 
-import edu.fiuba.algo3.controlador.accionesHandlers.incorporacion.DropDownCAntidadFichasIncorporarEventHandler;
+import edu.fiuba.algo3.controlador.accionesHandlers.incorporacion.DropDownCantidadFichasIncorporarEventHandler;
 import edu.fiuba.algo3.controlador.accionesHandlers.incorporacion.DropDownPaisIncorporacionEventHandler;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 
 public class BloqueDeIncorporacion extends BloqueAccion {
-    private Juego juego;
+    private final Juego juego;
     private DropDownAccion dropDownPaisesParaIncorporar;
     public BloqueDeIncorporacion(Juego juego) {
         this.juego = juego;
@@ -45,7 +45,7 @@ public class BloqueDeIncorporacion extends BloqueAccion {
             cantidadFichas.getItems().clear();
             cantidadFichas.getItems().addAll(cantidadIncorporable);
         });
-        cantidadFichas.enAccion(new DropDownCAntidadFichasIncorporarEventHandler(cantidadFichas, incorporar));
+        cantidadFichas.setOnAction(new DropDownCantidadFichasIncorporarEventHandler(cantidadFichas, incorporar));
 
         DropDownAccion paisElegido = new DropDownAccion("Pais Destino");
         paisElegido.setActualizacion(() -> {
@@ -58,7 +58,7 @@ public class BloqueDeIncorporacion extends BloqueAccion {
             paisElegido.getItems().clear();
             paisElegido.getItems().addAll(incorporables.sorted());
         });
-        paisElegido.enAccion(new DropDownPaisIncorporacionEventHandler(juego, paisElegido, cantidadFichas, incorporar));
+        paisElegido.setOnAction(new DropDownPaisIncorporacionEventHandler(juego, paisElegido, cantidadFichas, incorporar));
         dropDownPaisesParaIncorporar = paisElegido;
         Label labelDestino = new Label("Elija pais\ndestino");
         Label labelCantidadFichas = new Label("Elija cantidad\nde fichas");

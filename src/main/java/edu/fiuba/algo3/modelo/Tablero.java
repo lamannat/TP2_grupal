@@ -13,13 +13,6 @@ public class Tablero {
         continentes = new ArrayList<>();
     }
 
-    public Continente encontrarContinente(String nombreContinente) {
-        for (Continente continente : this.continentes)
-            if (continente.tieneNombre(nombreContinente))
-                return continente;
-        return null;
-    }
-
     public void agregarContinente(Continente continente) {
         continentes.add(continente);
     }
@@ -46,18 +39,14 @@ public class Tablero {
     }
 
     public Pais getPaisPorNombre(String nombre) {
-        for (Continente continente : continentes) {
-            Pais pais = continente.getPaisPorNombre(nombre);
-            if (pais != null)
-                return pais;
-        }
+        for (Continente continente : continentes)
+            if (continente.getPaisPorNombre(nombre) != null)
+                return continente.getPaisPorNombre(nombre);
         return null;
     }
 
     public void addObserverAPaises(Observer observer){
-        for (Continente continente : continentes) {
-            continente.addObserverAPaises(observer);
-        }
+        continentes.forEach(continente -> continente.addObserverAPaises(observer));
     }
 
     public int fichasPorContinente(Jugador jugador) {

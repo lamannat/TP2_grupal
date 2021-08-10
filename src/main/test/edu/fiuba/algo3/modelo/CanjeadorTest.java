@@ -2,10 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
-import edu.fiuba.algo3.modelo.simbolo.*;
+import edu.fiuba.algo3.modelo.simbolo.Comodin;
+import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CanjeadorTest {
 

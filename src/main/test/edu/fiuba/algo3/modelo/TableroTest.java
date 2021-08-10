@@ -2,14 +2,17 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.archivos.LeerArchivo;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
-import edu.fiuba.algo3.modelo.color.*;
+import edu.fiuba.algo3.modelo.color.ColorAmarillo;
+import edu.fiuba.algo3.modelo.color.ColorRojo;
+import edu.fiuba.algo3.modelo.color.ColorVerde;
 import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TableroTest {
 

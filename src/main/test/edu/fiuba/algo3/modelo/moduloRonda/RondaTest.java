@@ -7,7 +7,8 @@ import edu.fiuba.algo3.modelo.color.ColorAmarillo;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.Atacar;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RondaTest {
 

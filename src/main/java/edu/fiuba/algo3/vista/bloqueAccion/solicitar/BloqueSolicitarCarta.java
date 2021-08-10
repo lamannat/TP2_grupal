@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 public class BloqueSolicitarCarta extends BloqueAccion {
 
-    private Juego juego;
+    private final Juego juego;
 
     public BloqueSolicitarCarta(Juego juego) {
         this.juego = juego;
@@ -35,5 +35,4 @@ public class BloqueSolicitarCarta extends BloqueAccion {
         this.getChildren().clear();
         this.getChildren().addAll(estadoDeCarta, botonSolicitarCarta, cartaGanada);
     }
-
 }

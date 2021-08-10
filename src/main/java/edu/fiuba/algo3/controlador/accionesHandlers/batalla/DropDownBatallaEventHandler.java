@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controlador.accionesHandlers.batalla;
 
-import edu.fiuba.algo3.vista.bloqueAccion.batalla.BotonBatalla;
 import edu.fiuba.algo3.vista.bloqueAccion.DropDownAccion;
+import edu.fiuba.algo3.vista.bloqueAccion.batalla.BotonBatalla;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 

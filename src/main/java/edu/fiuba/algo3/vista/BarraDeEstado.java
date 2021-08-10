@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 
 public class BarraDeEstado extends HBox implements Observer {
 
-    private Juego juego;
+    private final Juego juego;
 
     public BarraDeEstado(Juego juego) {
         this.juego = juego;
