@@ -1,7 +1,11 @@
-.bloqueDeAccion{
+.bloqueDeAccion {
     -fx-spacing: 20;
     -fx-padding: 10px;
     -fx-alignment: TOP_CENTER;
+}
+
+.popUpBatalla {
+    -fx-alignment: CENTER;
 }
 
 .bloqueDeAccion .button  {

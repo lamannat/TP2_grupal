@@ -54,22 +54,22 @@ public class VistaBatalla implements Observer {
 
         VBox layout = new VBox();
         layout.getChildren().clear();
-        Label labelConquista = new Label(paisAtacante.toString() + " conquisto a " + paisDefensor.toString());
+        Label labelConquista = new Label(paisAtacante + " conquisto a " + paisDefensor + "\nTiene " + paisAtacante.cantidadFichas() + " fichas");
         labelConquista.setTextFill(Color.WHITE);
 
         Label elegirTropas = new Label("Elegi cuantas tropas pasar");
         elegirTropas.setTextFill(Color.WHITE);
+
+        layout.setAlignment(Pos.CENTER);
+        layout.getStyleClass().addAll("bloqueDeAccion", "popUpBatalla");
+        layout.getChildren().addAll(labelConquista,elegirTropas,dropDown,botonBatalla);
 
         Scene nuevaEscena = new Scene(layout, 450,300);
         layout.setStyle("-fx-background-color: #272727;" +
                 "-fx-border-color: #ffcc3d;\n" +
                 "-fx-border-style: solid;\n" +
                 "-fx-border-width: 5;");
-        layout.getStyleClass().add("bloqueDeAccion");
         nuevaEscena.getStylesheets().addAll("estiloSidePanel.css");
-
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(labelConquista,elegirTropas,dropDown,botonBatalla);
 
         nuevaVentana.setScene(nuevaEscena);
         nuevaVentana.show();
