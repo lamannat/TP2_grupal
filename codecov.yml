@@ -5,3 +5,4 @@ ignore:
   - "**/Main.java"
   - "**/App.java"
   - "**/SystemInfo.java"
+  - "**/SetUpJuego.java"
