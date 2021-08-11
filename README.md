@@ -1,4 +1,4 @@
-![tp2](https://github.com/lamannat/TP2_grupal/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/lamannat/TP2_grupal/branch/master/graph/badge.svg)](https://codecov.io/gh/lamannat/TP2_grupal)
+![tp2](https://github.com/lamannat/TP2_grupal/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/lamannat/TP2_grupal/graph/badge.svg)](https://codecov.io/gh/lamannat/TP2_grupal)
 
 # TP2 Algoritmos 3: A.L.T.E.G.O. 
 
