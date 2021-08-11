@@ -8,10 +8,17 @@ import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorAzul;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ObjetivoConquistaContinenteTest {
+
+    @Test
+    public void objetivoGeneraStringAPartirDeContinenteAsignado() {
+        Jugador jugador = new Jugador("Jugador", new ColorAzul(), new Canjeador(new Mazo()));
+        Continente continente = new Continente("Africa");
+        Objetivo objetivo = new ObjetivoConquistaContinente(continente, jugador);
+        assertEquals("Ocupar Africa", objetivo.toString());
+    }
 
     @Test
     public void jugadorNoConquistaTodoElContinente() {

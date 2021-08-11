@@ -48,10 +48,6 @@ public class Jugador implements Observable {
         return objetivos.stream().anyMatch(Objetivo::cumplido);
     }
 
-    public void atacaUnPaisCon(Pais paisAtacante, Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        paisAtacante.paisAtacaAPais(paisDefensor,unaBatalla);
-    }
-
     public void solicitarCarta(Carta carta) {
         mereceCarta = false;
         canjeador.agregarCartaPais(carta);
@@ -174,10 +170,6 @@ public class Jugador implements Observable {
         return fichasReservadas.size();
     }
 
-    @Override
-    public String toString() {
-        return nombre;
-    }
 
     @Override
     public void addObserver(Observer observer) {

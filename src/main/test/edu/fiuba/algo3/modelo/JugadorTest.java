@@ -4,12 +4,14 @@ import edu.fiuba.algo3.modelo.cartas.Carta;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorRojo;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
+import edu.fiuba.algo3.modelo.fichas.Ficha;
 import edu.fiuba.algo3.modelo.moduloRonda.ObjetivoDePrueba;
 import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +20,23 @@ import static org.mockito.Mockito.*;
 public class JugadorTest {
 
     Canjeador canjeador = new Canjeador(new Mazo());
+
+    @Test
+    public void unJugadorAlQueSeLeAsignaUnNombreTieneEseNombre() {
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+
+        assertEquals("Pedro", jugador.getNombre());
+
+    }
+
+    @Test
+    public void unJugadorAlQueSeLeDanFichasLasGuarda() {
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+        List<Ficha> fichas = jugador.generarFichas(15);
+        jugador.darFichas(fichas);
+        assertEquals(15, jugador.contarTotalFichas());
+    }
+
 
     @Test
     public void agregarPaisesAJugador() {
@@ -43,6 +62,65 @@ public class JugadorTest {
         jugador.agregarPais(pais);
         jugador.colocarFichasEnPais(jugador.generarFichas(1),pais);
         assertEquals(pais.cantidadFichas(),1);
+    }
+
+    @Test
+    public void jugadorGuardaLasFichasQueSeLeDanComoReservadas(){
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+        Pais pais = new Pais("Aral");
+        List<Ficha> fichas = jugador.generarFichas(15);
+        jugador.darFichas(fichas);
+        assertEquals(15,jugador.cantidadFichasReservadas());
+    }
+
+    @Test
+    public void jugadorColocaFichasReservadasEnPaisPropio(){
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+        Pais pais = new Pais("Aral");
+        List<Ficha> fichas = jugador.generarFichas(15);
+        jugador.darFichas(fichas);
+        jugador.agregarPais(pais);
+        jugador.agregarFichasReservadasEnPais(pais, 7);
+        assertEquals(7,pais.cantidadFichas());
+    }
+
+    @Test
+    public void jugadorPuedePreparTropasParaMoverseLuegoDeHaberSidoMovidas(){
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+        Pais pais1 = new Pais("Argentina");
+        Pais pais2 = new Pais("Chile");
+        pais1.agregarPaisLimitrofe(pais2);
+        jugador.agregarPais(pais1);
+        jugador.agregarPais(pais2);
+
+        jugador.colocarFichasEnPais(jugador.generarFichas(5),pais1);
+        pais1.moverTropas(pais2, 3);
+        jugador.prepararTropas();
+        assertEquals(2, pais2.fichasParaMover());
+    }
+
+    @Test
+    public void jugadorPoseePaisesQuePuedenAtacarSiTienenMasDeUnaFicha(){
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+
+        Pais pais = new Pais("Aral");
+        List<Pais> paisesAtacantes = new ArrayList<>();
+        paisesAtacantes.add(pais);
+        jugador.agregarPais(pais);
+        jugador.colocarFichasEnPais(jugador.generarFichas(2),pais);
+        assertEquals(paisesAtacantes,jugador.getPaisAtacantes());
+    }
+
+    @Test
+    public void jugadorPoseePaisesQuePuedenReagruparSiTienenMasDeUnaFichaConLasTropasPreparadas(){
+        Jugador jugador = new Jugador("Pedro", new ColorRojo(),canjeador);
+        Pais pais = new Pais("Aral");
+        List<Pais> paisesParaReagrupar = new ArrayList<>();
+        paisesParaReagrupar.add(pais);
+        jugador.agregarPais(pais);
+        jugador.colocarFichasEnPais(jugador.generarFichas(2),pais);
+        jugador.prepararTropas();
+        assertEquals(paisesParaReagrupar,jugador.getPaisDeReagrupamiento());
     }
 
     @Test
@@ -88,6 +166,21 @@ public class JugadorTest {
         jugador.hacerCanjePorCarta();
 
         assertEquals(4,jugador.contarTotalFichas());
+    }
+
+    @Test
+    public void jugadorAlQueSeLeAsignanObjetivosLosRecuerda() {
+        Jugador jugador = new Jugador("o.0", new ColorVerde(), new Canjeador(new Mazo()));
+
+        Objetivo objetivo1 = new ObjetivoDePrueba(true);
+        jugador.agregarObjetivo(objetivo1);
+        Objetivo objetivo2 = new ObjetivoDePrueba(true);
+        jugador.agregarObjetivo(objetivo2);
+
+        List<Objetivo> objetivos = new ArrayList<>();
+        objetivos.add(objetivo1);
+        objetivos.add(objetivo2);
+        assertEquals(objetivos, jugador.getObjetivos());
     }
 
     @Test
@@ -167,6 +260,26 @@ public class JugadorTest {
         when(canjeador.canjearCartas()).thenReturn(0);
 
         assertEquals(4, jugador.cantidadFichasGanadas(juego));
+    }
+
+    @Test
+    public void jugadorAlQueSeLeDanCartasLasGuarda() {
+        Juego juego = mock(Juego.class);
+        Canjeador canjeador = new Canjeador(new Mazo());
+
+        Jugador jugador = new Jugador("o.0", new ColorVerde(), canjeador);
+        Carta c1 = new Carta(new Pais("1"), new SimboloNormal(";lkj"));
+        Carta c2 = new Carta(new Pais("1"), new SimboloNormal(";lkj"));
+        Carta c3 = new Carta(new Pais("1"), new SimboloNormal(";lkj"));
+        jugador.solicitarCarta(c1);
+        jugador.solicitarCarta(c2);
+        jugador.solicitarCarta(c3);
+
+        List<Carta> cartas = new ArrayList<>();
+        cartas.add(c1);
+        cartas.add(c2);
+        cartas.add(c3);
+        assertEquals(cartas, jugador.getCartas());
     }
 
     @Test

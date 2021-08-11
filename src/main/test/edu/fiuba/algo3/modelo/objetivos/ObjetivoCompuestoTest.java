@@ -12,10 +12,22 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ObjetivoCompuestoTest {
+
+    @Test
+    public void objetivoCompuestoGeneraStringAPartirDeSubobjetivos() {
+        List<Objetivo> subObjetivos = new ArrayList<>();
+        Jugador jugador = new Jugador("Jugador", new ColorMagenta(), new Canjeador(new Mazo()));
+        Continente continente = new Continente("Africa");
+
+        subObjetivos.add(new ObjetivoConquistaContinente(continente, jugador));
+        subObjetivos.add(new ObjetivoEliminarJugador(jugador, new Jugador("paraEliminar", new ColorAmarillo(), new Canjeador(new Mazo()))));
+
+        Objetivo objetivo = new ObjetivoCompuesto(subObjetivos);
+        assertEquals("OBJETIVOS:\n- Ocupar Africa\n- Destruir el ejercito Amarillo\n", objetivo.toString());
+    }
 
     @Test
     public void jugadorNoCumpleNingunoDeSusSubobjetivosEntoncesNoCumpleElObjetivo() {
@@ -42,6 +54,7 @@ public class ObjetivoCompuestoTest {
         subObjetivos.add(new ObjetivoEliminarJugador(jugador, new Jugador("paraEliminar", new ColorAmarillo(), new Canjeador(new Mazo()))));
 
         Objetivo objetivo = new ObjetivoCompuesto(subObjetivos);
+        System.out.println(objetivo.toString());
         assertFalse(objetivo.cumplido());
     }
 

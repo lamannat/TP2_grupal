@@ -5,10 +5,10 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.cartas.Mazo;
 import edu.fiuba.algo3.modelo.color.ColorAmarillo;
 import edu.fiuba.algo3.modelo.moduloRonda.acciones.Atacar;
+import edu.fiuba.algo3.modelo.moduloRonda.acciones.Movimiento;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RondaTest {
 
@@ -25,6 +25,14 @@ public class RondaTest {
         ronda.agregarAccion(new Atacar());
 
         assertFalse(ronda.terminaste());
+    }
+
+    @Test
+    public void unaRondaConUnaAccionAsignadaQueNoTerminoDevuelveSuAccionActual() {
+        Ronda ronda = new Ronda();
+        Atacar accion = new Atacar();
+        ronda.agregarAccion(accion);
+        assertEquals(accion, ronda.dameFase());
     }
 
     @Test
@@ -70,5 +78,17 @@ public class RondaTest {
         ronda.comenzarLaRonda(jugador);
 
         assertTrue(accion.comprobar(2, jugador));
+    }
+
+    @Test
+    public void aUnaRondaSeLePuedeAsignarUnaRondaSiguiente() {
+        Ronda ronda1 = new Ronda();
+        Ronda ronda2 = new Ronda();
+        ronda1.agregarAccion(new Atacar());
+        ronda2.agregarAccion(new Movimiento());
+
+        ronda1.setSiguienteRonda(ronda2);
+
+        assertEquals(ronda2, ronda1.siguienteRonda());
     }
 }

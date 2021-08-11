@@ -20,6 +20,21 @@ import static org.mockito.Mockito.*;
 public class JuegoTest {
 
     @Test
+    public void unJuegoSeCreaYGuardaLaBatallaAsignada() {
+        Mazo mazo = new Mazo();
+        List<Jugador> jugadores = new ArrayList<>();
+        Jugador jugador = mock(Jugador.class);
+        when(jugador.seguisJugando()).thenReturn(true);
+        jugadores.add(jugador);
+        Turno turno = new Turno(jugadores);
+        Batalla batalla = new Batalla(new DadoEstandar());
+        Tablero tablero = new Tablero();
+        Juego juego = new Juego(tablero, turno, batalla, mazo);
+
+        assertEquals(batalla,juego.getBatalla());
+    }
+
+    @Test
     public void siJugadorMereceCartaElJuegoSacaUnaCartaDelMazoParaDarsela() {
         Carta carta = new Carta(new Pais("Pais"), new SimboloNormal("Simbolo"));
         Mazo mazo = new Mazo();
@@ -81,6 +96,8 @@ public class JuegoTest {
 
         Juego juego = new Juego(tablero, turno, batalla, mazo);
         juego.seleccionarRonda(ronda);
+        assertEquals(ronda, juego.dameRonda());
+
         juego.avanzar();
 
         assertTrue(accion.comprobar(1, jugador));
@@ -106,6 +123,29 @@ public class JuegoTest {
         juego.avanzar();
 
         assertEquals(juego.getJugadorGanador(), jugador);
+    }
+
+    @Test
+    public void juegoAccedeALosPaisesDelTablero() {
+        Mazo mazo = new Mazo();
+        Jugador jugador = new Jugador(":)", new ColorAmarillo(), new Canjeador(mazo));
+        List<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(jugador);
+        jugadores.add(new Jugador("H", new ColorVerde(), new Canjeador(mazo)));
+
+        Turno turno = new Turno(jugadores);
+        Batalla batalla = new Batalla(new DadoEstandar());
+
+        Continente continente = new Continente("Africa");
+        Pais unPais = new Pais("Egipto");
+        continente.agregarPais(unPais);
+
+        Tablero tablero = new Tablero();
+        tablero.agregarContinente(continente);
+
+        Juego juego = new Juego(tablero, turno, batalla, mazo);
+
+        assertEquals(unPais, juego.getPaisPorNombre("Egipto"));
     }
 
     @Test

@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.cartas.Mazo;
+import edu.fiuba.algo3.modelo.color.Color;
 import edu.fiuba.algo3.modelo.color.ColorAmarillo;
+import edu.fiuba.algo3.modelo.color.ColorRojo;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
 import edu.fiuba.algo3.modelo.fichas.Ficha;
 import org.junit.jupiter.api.Test;
@@ -18,6 +20,13 @@ public class PaisTest {
     Canjeador canjeador = new Canjeador(new Mazo());
 
     @Test
+    public void paisAlQueSeleAsignaUnNombreTieneEseNombre(){
+        Pais pais = new Pais("Argentina");
+        assertTrue(pais.tieneNombre("Argentina"));
+        assertEquals("Argentina", pais.toString());
+    }
+
+    @Test
     public void paisEmpiezaSinFichasYNoPuedeAtacar(){
         Pais pais = new Pais("Argentina");
         assertFalse(pais.fichasSuficientes());
@@ -32,6 +41,58 @@ public class PaisTest {
 
         pais.agregarFichas(fichas);
         assertTrue(pais.fichasSuficientes());
+    }
+
+    @Test
+    public void paisEmpiezaSinFichasNoPuedeMoverSiSeLeAgregaFichas(){
+        Pais pais = new Pais("Temeria");
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+
+        pais.agregarFichas(fichas);
+        assertFalse(pais.fichasSuficientesParaMover());
+    }
+
+    @Test
+    public void paisEmpiezaSinFichasPuedeMoverSiSeLeAgregaFichasYSePreparanLasTropas(){
+        Pais pais = new Pais("Temeria");
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+
+        pais.agregarFichas(fichas);
+        pais.prepararTropas();
+        assertTrue(pais.fichasSuficientesParaMover());
+    }
+
+    @Test
+    public void paisAlQueSeLeAgreganDosFichasPuedeMoverUnaSiPreviamenteSePreparanLasTropas(){
+        Pais pais = new Pais("Temeria");
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+
+        pais.agregarFichas(fichas);
+        pais.prepararTropas();
+        assertEquals(1, pais.fichasParaMover());
+    }
+
+    @Test
+    public void unPaisConDosFichasQuePasaUnaAOtroSinFichasDejaAmbosPaisesConUnaFicha(){
+        Pais paisOrigen = new Pais("Temeria");
+        Pais paisDestino = new Pais("Redania");
+        List<Ficha> fichas = new ArrayList<>();
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+
+        paisOrigen.agregarFichas(fichas);
+        paisOrigen.prepararTropas();
+
+        paisOrigen.moverTropas(paisDestino, 1);
+
+        assertEquals(1, paisOrigen.cantidadFichas());
+        assertEquals(1, paisDestino.cantidadFichas());
     }
 
     @Test
@@ -71,6 +132,63 @@ public class PaisTest {
     }
 
     @Test
+    public void unPaisPertenecienteAlJugadorRojoEsRojo() {
+        Color rojo = new ColorRojo();
+        Jugador j1 = new Jugador("Jugador 1", rojo,canjeador);
+        Pais pais = new Pais("Japón");
+
+        j1.agregarPais(pais);
+
+        assertEquals(rojo, pais.getColor());
+    }
+
+
+
+    @Test
+    public void unPaisLimitrofePertenecienteAOtroJugadorEsAtacableSiAmbosTienenFichasSuficientes(){
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+        Jugador j2 = new Jugador("Jugador 2", new ColorAmarillo(),canjeador);
+
+        Pais paisAtacante, paisDefensor;
+        paisAtacante = new Pais("Temeria");
+        paisDefensor = new Pais("Kaedwen");
+        paisAtacante.agregarPaisLimitrofe(paisDefensor);
+        List<Pais> paisesAtacables = new ArrayList();
+        paisesAtacables.add(paisDefensor);
+
+        j1.agregarPais(paisAtacante);
+        j2.agregarPais(paisDefensor);
+        paisAtacante.agregarFichas(j1.generarFichas(3));
+        paisAtacante.agregarFichas(j2.generarFichas(1));
+
+        assertTrue(paisAtacante.getPaisesParaAtacar().equals(paisesAtacables));
+    }
+
+    @Test
+    public void PaisesLimitrofesPertenecientesAlMismoJugadorSonAliados(){
+        Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
+
+        Pais pais1, pais2, pais3;
+        pais1 = new Pais("Temeria");
+        pais2 = new Pais("Kaedwen");
+        pais3 = new Pais("Kaedwen");
+
+        pais1.agregarPaisLimitrofe(pais2);
+        pais1.agregarPaisLimitrofe(pais3);
+
+        List<Pais> paisesAliados = new ArrayList();
+        paisesAliados.add(pais2);
+        paisesAliados.add(pais3);
+
+        j1.agregarPais(pais1);
+        j1.agregarPais(pais2);
+        j1.agregarPais(pais3);
+
+        assertTrue(pais1.getPaisesLimitrofesAliados().equals(paisesAliados));
+    }
+
+
+    @Test
     public void noSePuedeAtacarAUnPaisAliado() {
 
         Jugador j1 = new Jugador("Jugador 1", new ColorVerde(),canjeador);
@@ -92,7 +210,7 @@ public class PaisTest {
 
         assertThrows(AtaqueAPaisAliadoException.class,
                 ()->{
-                    j1.atacaUnPaisCon(paisAtacante,paisDefensor,unaBatalla);
+                    paisAtacante.paisAtacaAPais(paisDefensor, unaBatalla);
                 });
     }
 
@@ -116,7 +234,7 @@ public class PaisTest {
 
         assertThrows(NoEsLimitrofeException.class,
                 ()->{
-                    j1.atacaUnPaisCon(paisAtacante,paisDefensor,unaBatalla);
+                    paisAtacante.paisAtacaAPais(paisDefensor, unaBatalla);
                 });
     }
 
@@ -140,7 +258,7 @@ public class PaisTest {
 
         assertThrows(FichasInsuficientesException.class,
                 ()->{
-                    j1.atacaUnPaisCon(paisAtacante,paisDefensor,unaBatalla);
+                    paisAtacante.paisAtacaAPais(paisDefensor, unaBatalla);
                 });
     }
 

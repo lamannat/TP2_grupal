@@ -13,11 +13,38 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class AccionTest {
+
+    @Test
+    public void accionAgregarFichasTieneIDIncorporarFichas(){
+
+        AgregarFichas accion = new AgregarFichas(3);
+        assertEquals("incorporar fichas", accion.ID());
+    }
+
+    @Test
+    public void accionAtacarTieneIDAtacar(){
+
+        Atacar accion = new Atacar();
+        assertEquals("atacar", accion.ID());
+    }
+
+    @Test
+    public void accionMovimientoTieneIDReagrupar(){
+
+        Movimiento accion = new Movimiento();
+        assertEquals("reagrupar", accion.ID());
+    }
+
+    @Test
+    public void accionIncorporacionTieneIDIncorporarFichas(){
+        Juego juego = mock(Juego.class);
+        Incorporacion accion = new Incorporacion(juego);
+        assertEquals("incorporar fichas", accion.ID());
+    }
 
     @Test
     public void enAccionAgregarFichasJugadorAgregaFichas(){

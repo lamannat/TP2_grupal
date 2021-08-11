@@ -6,12 +6,31 @@ import edu.fiuba.algo3.modelo.color.ColorNegro;
 import edu.fiuba.algo3.modelo.color.ColorVerde;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ContinenteTest {
 
     Canjeador canjeador = new Canjeador(new Mazo());
+
+    @Test
+    public void unContienenteAlQueSeLeAsignaUnNombreTieneDichoNombre() {
+
+        Continente continente = new Continente("Africa");
+
+        assertTrue(continente.tieneNombre("Africa"));
+        assertEquals("Africa", continente.getNombre());
+    }
+
+    @Test
+    public void unContienenteAlQueSeLeAsignaUnPaisGuardaDichoPais() {
+
+        Continente continente = new Continente("Africa");
+        Pais unPais = new Pais("Egipto");
+
+        continente.agregarPais(unPais);
+
+        assertEquals(unPais, continente.getPaisPorNombre("Egipto"));
+    }
 
     @Test
     public void continenteConquistado() {
