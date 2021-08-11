@@ -6,3 +6,7 @@ ignore:
   - "**/App.java"
   - "**/SystemInfo.java"
   - "**/SetUpJuego.java"
+  - "src/main/java/edu/fiuba/algo3/vista"
+  - "src/main/java/edu/fiuba/algo3/vista/**/*"
+  - "src/main/java/edu/fiuba/algo3/controlador"
+  - "src/main/java/edu/fiuba/algo3/controlador/**/*"
