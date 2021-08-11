@@ -1,9 +1,7 @@
 ignore:
-  - "*/**/controlador/*"
+  - "**/controlador/*"
   - "**/vista/*"
   - "**/archivos/*"
   - "**/Main.java"
   - "**/App.java"
   - "**/SystemInfo.java"
-  - "src/main/java/edu/fiuba/algo3/vista"
-  - "src/main/java/edu/fiuba/algo3/vista/**/*"
