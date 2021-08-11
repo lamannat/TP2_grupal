@@ -169,7 +169,13 @@ public class Pais implements Observable{
     }
 
     public List<Pais> getPaisesAliados() {
-        return (List<Pais>) limitrofes.stream().filter(pais -> pais.esAliado(this));
+        List<Pais> limitrofes = new ArrayList();
+        for(Pais pais : this.limitrofes){
+            if (pais.esAliado(this)){
+                limitrofes.add(pais);
+            }
+        }
+        return limitrofes;
     }
 
     public Color getColor(){

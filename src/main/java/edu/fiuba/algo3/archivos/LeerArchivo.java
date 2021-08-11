@@ -1,16 +1,11 @@
 package edu.fiuba.algo3.archivos;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class LeerArchivo {
-
-    static final private String carpetaArchivo = "src/main/java/edu/fiuba/algo3/archivos/";
 
     static public List<List<String>> leerArchivo(String archivo) {
 
@@ -18,8 +13,7 @@ public class LeerArchivo {
 
         try {
             String cadena;
-            FileReader f = new FileReader(carpetaArchivo + archivo);
-            BufferedReader b = new BufferedReader(f);
+            BufferedReader b = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(archivo)));
             while((cadena = b.readLine())!=null)
                 resultado.add(Arrays.asList(cadena.split(",", 0)));
             b.close();

@@ -114,8 +114,7 @@ public class VistaJuego extends Escena implements Observer{
         contenedorMapa.setPrefHeight(ALTO);
         contenedorMapa.setPrefWidth(ANCHO);
 
-        File file = new File("src/main/resources/mapaTEg.jpg");
-        Image image = new Image(file.toURI().toString());
+        Image image = new Image("mapaTEg.jpg");
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
         iv.fitWidthProperty().set(ANCHO);
