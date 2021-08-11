@@ -60,12 +60,14 @@ public class BloqueDeIncorporacion extends BloqueAccion {
         });
         paisElegido.setOnAction(new DropDownPaisIncorporacionEventHandler(juego, paisElegido, cantidadFichas, incorporar));
         dropDownPaisesParaIncorporar = paisElegido;
+
+        Label labelMostrarFichas = new Label("Se tiene " + juego.jugadorActual().cantidadFichasReservadas() + "\nfichas");
         Label labelDestino = new Label("Elija pais\ndestino");
         Label labelCantidadFichas = new Label("Elija cantidad\nde fichas");
 
         juego.jugadorActual().addObserver(cantidadFichas);
         juego.jugadorActual().addObserver(paisElegido);
         this.getChildren().clear();
-        this.getChildren().addAll(labelDestino,paisElegido, labelCantidadFichas,cantidadFichas, incorporar);
+        this.getChildren().addAll(labelMostrarFichas, labelDestino,paisElegido, labelCantidadFichas,cantidadFichas, incorporar);
     }
 }
