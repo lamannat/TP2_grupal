@@ -26,7 +26,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,7 +117,7 @@ public class VistaJuego extends Escena implements Observer{
         contenedorMapa.setPrefHeight(ALTO);
         contenedorMapa.setPrefWidth(ANCHO);
 
-        Image image = new Image("mapaTEg.jpg");
+        Image image = new Image(getClass().getResourceAsStream("/imagenes/mapaTEg.jpg"));
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
         iv.fitWidthProperty().set(ANCHO);
@@ -139,7 +140,7 @@ public class VistaJuego extends Escena implements Observer{
 
         AnchorPane fichas = new AnchorPane();
 
-        for (List<String> linea : LeerArchivo.leerArchivo("mapa.txt")) {
+        for (List<String> linea : LeerArchivo.leerArchivo(getClass().getResourceAsStream("/archivos/mapa.txt"))) {
             VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0), this);
             double x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
             x *= ANCHO / 1280.0;

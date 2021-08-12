@@ -17,7 +17,8 @@ public class VistaCarta extends VBox {
         Pais paisAMostrar = carta.getPais();
         Simbolo simboloAMostrar = carta.getSimbolo();
 
-        Image img = new Image(simboloAMostrar.toString() + ".png");
+        String pathSimbolo = "/imagenes/" + simboloAMostrar.toString() + ".png";
+        Image img = new Image(getClass().getResourceAsStream(pathSimbolo));
         ImageView view = new ImageView(img);
         view.setFitHeight(150);
         view.setFitWidth(150);

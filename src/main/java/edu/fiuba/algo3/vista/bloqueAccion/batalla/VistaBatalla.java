@@ -68,7 +68,9 @@ public class VistaBatalla implements Observer {
                 "-fx-border-color: #ffcc3d;\n" +
                 "-fx-border-style: solid;\n" +
                 "-fx-border-width: 5;");
-        nuevaEscena.getStylesheets().addAll("estiloSidePanel.css");
+
+        layout.getStyleClass().add("bloqueDeAccion");
+        nuevaEscena.getStylesheets().addAll(getClass().getResource("/css/estiloSidePanel.css").toExternalForm());
 
         nuevaVentana.setScene(nuevaEscena);
         nuevaVentana.show();

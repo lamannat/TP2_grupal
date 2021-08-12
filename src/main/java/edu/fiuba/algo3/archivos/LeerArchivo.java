@@ -7,13 +7,14 @@ import java.util.List;
 
 public class LeerArchivo {
 
-    static public List<List<String>> leerArchivo(String archivo) {
+
+    static public List<List<String>> leerArchivo(InputStream archivo) {
 
         List<List<String>> resultado = new ArrayList<>();
 
         try {
             String cadena;
-            BufferedReader b = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(archivo)));
+            BufferedReader b = new BufferedReader( new InputStreamReader(archivo));
             while((cadena = b.readLine())!=null)
                 resultado.add(Arrays.asList(cadena.split(",", 0)));
             b.close();
