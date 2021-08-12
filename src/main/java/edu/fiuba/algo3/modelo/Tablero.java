@@ -33,7 +33,6 @@ public class Tablero {
             jugadorActual.agregarPais(paisParaAsignar);
             paisParaAsignar.agregarFichas(jugadorActual.generarFichas(1));
             paisParaAsignar = obtenerPaisNoAsignado();
-            turno.avanzarJugador();
         }
         turno.resetear();
     }

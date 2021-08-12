@@ -54,7 +54,6 @@ public class ObjetivoCompuestoTest {
         subObjetivos.add(new ObjetivoEliminarJugador(jugador, new Jugador("paraEliminar", new ColorAmarillo(), new Canjeador(new Mazo()))));
 
         Objetivo objetivo = new ObjetivoCompuesto(subObjetivos);
-        System.out.println(objetivo.toString());
         assertFalse(objetivo.cumplido());
     }
 
