@@ -30,7 +30,12 @@ public class BloqueDeIncorporacion extends BloqueAccion {
     }
 
     public void actualizar() {
-        BotonIncorporar incorporar = new BotonIncorporar(juego);
+
+        Label labelMostrarFichas = new Label("Tiene " + juego.jugadorActual().cantidadFichasReservadas() + " fichas");
+        Label labelDestino = new Label("Elija pais destino");
+        Label labelCantidadFichas = new Label("Elija cantidad\nde fichas");
+
+        BotonIncorporar incorporar = new BotonIncorporar(juego, labelMostrarFichas);
         incorporar.setText("Incorporar");
 
         DropDownAccion cantidadFichas = new DropDownAccion("N° de Fichas");
@@ -60,10 +65,6 @@ public class BloqueDeIncorporacion extends BloqueAccion {
         });
         paisElegido.setOnAction(new DropDownPaisIncorporacionEventHandler(juego, paisElegido, cantidadFichas, incorporar));
         dropDownPaisesParaIncorporar = paisElegido;
-
-        Label labelMostrarFichas = new Label("Tiene " + juego.jugadorActual().cantidadFichasReservadas() + " fichas");
-        Label labelDestino = new Label("Elija pais destino");
-        Label labelCantidadFichas = new Label("Elija cantidad\nde fichas");
 
         juego.jugadorActual().addObserver(cantidadFichas);
         juego.jugadorActual().addObserver(paisElegido);
