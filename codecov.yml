@@ -1,0 +1,10 @@
+ignore:
+  - "**/controlador/**/*"
+  - "**/controlador/*"
+  - "**/vista/**/*"
+  - "**/vista/*"
+  - "**/archivos/*"
+  - "**/Main.java"
+  - "**/App.java"
+  - "**/SystemInfo.java"
+  - "**/SetUpJuego.java"

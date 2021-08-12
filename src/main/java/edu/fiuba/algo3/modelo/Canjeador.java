@@ -1,14 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.cartas.Carta;
+import edu.fiuba.algo3.modelo.cartas.Mazo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class Canjeador {
     private final List<Carta> cartas;
-    private Mazo mazo;
+    private final Mazo mazo;
     private int numeroDeCanje;
     private final static int cantidadCartasConPatron = 3;
 
@@ -18,15 +20,18 @@ public class Canjeador {
         this.numeroDeCanje = 0;
     }
 
-    public void agregarCartaPais(Carta carta) { cartas.add(carta); }
+    public void agregarCartaPais(Carta carta) {
+        cartas.add(carta);
+    }
 
     private boolean hayPatronDeIguales() {
-        List<Carta> listaIguales = new ArrayList<>();
         for (Carta cartaActual : this.cartas) {
-            listaIguales = cartas.stream().filter(cartaActual::sonIguales).collect(Collectors.toList());
+            List<Carta> listaIguales = cartas.stream().filter(cartaActual::sonIguales).collect(Collectors.toList());
             if (listaIguales.size() >= cantidadCartasConPatron) {
-                for (Carta unaCarta : listaIguales)
-                    mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
+                for (Carta unaCarta : listaIguales){
+                    cartas.remove(unaCarta);
+                    unaCarta.devolverAlMazo(mazo);
+                }
                 return true;
             }
         }
@@ -39,19 +44,19 @@ public class Canjeador {
             listaDiferentes.add(cartaActual);
             for(Carta cartaAuxiliar: this.cartas) {
                 if (listaDiferentes.size() >= cantidadCartasConPatron) {
-                    for (Carta unaCarta : listaDiferentes)
-                        mazo.agregarCarta(cartas.remove(cartas.indexOf(unaCarta)));
+                    for (Carta unaCarta : listaDiferentes) {
+                        cartas.remove(unaCarta);
+                        unaCarta.devolverAlMazo(mazo);
+                    }
                     return true;
                 }
-                if( listaDiferentes.stream().noneMatch(carta -> carta.sonIguales(cartaAuxiliar)) ) {
+                if( listaDiferentes.stream().noneMatch(carta -> carta.sonIguales(cartaAuxiliar)) )
                     listaDiferentes.add(cartaAuxiliar);
-                }
             }
             listaDiferentes.clear();
         }
         return false;
     }
-
 
     public int canjearCartas() { //canjeo se hace automaticamente
         if (cartas.size() < 3)
@@ -59,6 +64,7 @@ public class Canjeador {
         if (!hayPatronDeIguales() && !hayPatronDeDiferentes())
             return 0;
         this.numeroDeCanje++;
+
         return decidirNumeroFichas();
     }
 
@@ -70,6 +76,13 @@ public class Canjeador {
         }
     }
 
+    public void canjearConCartaPais(List<Pais> paisesDelJugador, Jugador jugador) {
+        for (Pais pais : paisesDelJugador)
+            for (Carta carta : cartas)
+                pais.agregarFichas(jugador.generarFichas(carta.fichasPorPais(pais)));
+    }
 
-
+    public List<Carta> getCartas() {
+        return cartas;
+    }
 }

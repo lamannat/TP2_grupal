@@ -1,55 +1,41 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.vista.VistaSetearCantidadJugadores;
-import edu.fiuba.algo3.vista.VistaSetearNombresYColores;
-import edu.fiuba.algo3.vista.VistaTitulo;
-import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import edu.fiuba.algo3.controlador.ControladorDeEscena;
+import edu.fiuba.algo3.vista.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends javafx.application.Application {
 
     Stage ventana;
-    Scene sceneTitulo, sceneCantJugadores, sceneNombresColores;
-    Button botonVolver;
 
     @Override
     public void start(Stage stage) {
         ventana = stage;
+        ventana.setResizable(false);
+        SetUpJuego inicio = new SetUpJuego();
 
-//        // BOTON VOLVER
-//        botonVolver = new Button("VOLVER");
-//        botonVolver.setOnAction(e -> ventana.setScene(sceneTitulo));
-//        botonVolver.setAlignment(Pos.CENTER);
-//        botonVolver.setScaleX(2);
-//        botonVolver.setScaleY(2);
-//        botonVolver.setStyle("-fx-background-color: black");
-//        botonVolver.setTextFill(Color.WHITE);
-//
-//        BorderPane pane = new BorderPane();
-//        pane.setCenter(botonVolver);
-//
-//        Scene sceneVolver = new Scene(pane);
+        ControladorDeEscena controladorDeEscena = new ControladorDeEscena(1280, 720);
+        controladorDeEscena.agregarEscena(new VistaTitulo(new VBox(50), controladorDeEscena));
+        controladorDeEscena.agregarEscena(new VistaSetearCantidadJugadores(new VBox(250), controladorDeEscena, inicio));
+        VistaSetearNombresYColores vistaSetearNombresYColores = new VistaSetearNombresYColores(new VBox(250), controladorDeEscena, inicio);
+        inicio.addObserver(vistaSetearNombresYColores);
+        controladorDeEscena.agregarEscena(vistaSetearNombresYColores);
 
-//        VistaSetearNombresYColores nombresYColores = new VistaSetearNombresYColores();
-//        Scene sceneNombresColores =  nombresYColores.crearJugadores(ventana,sceneVolver);
-//
-//        VistaSetearCantidadJugadores cantJugadores = new VistaSetearCantidadJugadores();
-//        Scene sceneCantJugadores = cantJugadores.crearCantJugadores(ventana,sceneNombresColores);
+        VistaJuego vistaJuego = new VistaJuego(new BorderPane(), controladorDeEscena, inicio);
+        controladorDeEscena.agregarEscena(vistaJuego);
+        controladorDeEscena.agregarEscena(new VistaTerminoElJuego(new VBox(), controladorDeEscena, inicio));
 
-        VistaTitulo titulo = new VistaTitulo();
-        sceneTitulo = titulo.crearTitulo(ventana);
+        Escena sceneTitulo = controladorDeEscena.siguienteEscena();
+        sceneTitulo.mostrar(ventana);
 
         ventana.setTitle("A.L.T.E.G.O");
+        ventana.setFullScreen(false);
         ventana.setScene(sceneTitulo);
-        ventana.setMaximized(true);
 
         ventana.show();
     }

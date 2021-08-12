@@ -1,13 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.color.*;
+import edu.fiuba.algo3.archivos.LeerArchivo;
+import edu.fiuba.algo3.modelo.cartas.Mazo;
+import edu.fiuba.algo3.modelo.color.ColorAmarillo;
+import edu.fiuba.algo3.modelo.color.ColorRojo;
+import edu.fiuba.algo3.modelo.color.ColorVerde;
 import edu.fiuba.algo3.modelo.moduloRonda.Turno;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TableroTest {
 
@@ -15,12 +20,12 @@ public class TableroTest {
 
     private List<Continente> listaDeContientes() {
         List<Continente> continentes = new ArrayList<>();
-        for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
+        for (List<String> continenteYPaises : LeerArchivo.leerArchivo(getClass().getResourceAsStream("/archivos/paisesEnContinentes.txt"))) {
 
             Continente continente = new Continente(continenteYPaises.get(0));
             continentes.add(continente);
 
-            for (int i = 1; i < continenteYPaises.size(); i++)
+            for (int i = 2; i < continenteYPaises.size(); i++)
                 continente.agregarPais(new Pais(continenteYPaises.get(i)));
         }
         return continentes;
@@ -43,8 +48,8 @@ public class TableroTest {
 
         tablero.asignarPaises(turno);
 
-        assertEquals(25, Juance.cuantosPaisesConquistados());
-        assertEquals(25, Valentin.cuantosPaisesConquistados());
+        assertEquals(25, Juance.getPaisesIniciales().size());
+        assertEquals(25, Valentin.getPaisesIniciales().size());
     }
 
     @Test
@@ -66,9 +71,9 @@ public class TableroTest {
 
         tablero.asignarPaises(turno);
 
-        Integer paisesValentin = Valentin.cuantosPaisesConquistados();
-        Integer paisesJuance = Juance.cuantosPaisesConquistados();
-        Integer paisesTobias = Tobias.cuantosPaisesConquistados();
+        Integer paisesValentin = Valentin.getPaisesIniciales().size();
+        Integer paisesJuance = Juance.getPaisesIniciales().size();
+        Integer paisesTobias = Tobias.getPaisesIniciales().size();
 
         assertTrue(paisesValentin == 16 || paisesValentin == 17);
         assertTrue(paisesJuance == 16 || paisesJuance == 17);

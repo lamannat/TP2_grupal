@@ -1,21 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.color.ColorNegro;
+import edu.fiuba.algo3.modelo.fichas.Ficha;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EjercitoDeBatallaTest {
 
     @Test
     public void ejercitoDeBatallaCon3FichasDevuelveTresFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         int fichasRestantes = ejercitoDeBatalla.fichasRestantes().size();
@@ -26,9 +26,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasTieneTresFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         int fichasTotales = ejercitoDeBatalla.cantidadDeFichas();
@@ -39,9 +39,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasYPierdeUnaDevuelveDosFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         ejercitoDeBatalla.pierdeFicha();
@@ -53,9 +53,9 @@ public class EjercitoDeBatallaTest {
     @Test
     public void ejercitoDeBatallaCon3FichasYPierdeYTieneDosFichas() {
         List<Ficha> fichas = new ArrayList<>();
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
-        fichas.add(new Ficha(new ColorNegro()));
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
+        fichas.add(new Ficha());
         EjercitoDeBatalla ejercitoDeBatalla = new EjercitoDeBatalla(fichas);
 
         ejercitoDeBatalla.pierdeFicha();

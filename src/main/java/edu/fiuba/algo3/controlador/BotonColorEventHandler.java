@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.color.Color;
+import edu.fiuba.algo3.vista.BotonDeColor;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
@@ -15,7 +15,7 @@ public class BotonColorEventHandler implements EventHandler<ActionEvent> {
     private final TextField inputNombre;
     private final Label listaInputs;
     private BotonDeColor miBotonDeColor;
-    private ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
+    private final ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton;
 
     public BotonColorEventHandler(TextField inputNombre, Label listaInputs, ArrayList<Pair<String,BotonDeColor>> listaNombreYBoton){
         this.inputNombre = inputNombre;

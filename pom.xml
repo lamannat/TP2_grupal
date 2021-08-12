@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.fiuba.algo3</groupId>
     <artifactId>tp2</artifactId>
-    <version>0.3.0</version>
+    <version>1.0.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -31,6 +31,11 @@
             <artifactId>mockito-core</artifactId>
             <version>${mockito-mockito-core-version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>15.0.1</version>
         </dependency>
     </dependencies>
     <profiles>

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TiradaDeDados {
 
-    private List<Integer> resultados;
+    private final List<Integer> resultados;
 
 
     public TiradaDeDados() {

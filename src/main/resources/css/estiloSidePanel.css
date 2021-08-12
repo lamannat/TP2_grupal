@@ -1,0 +1,57 @@
+.bloqueDeAccion {
+    -fx-spacing: 20;
+    -fx-padding: 10px;
+    -fx-alignment: TOP_CENTER;
+}
+
+.popUpBatalla {
+    -fx-alignment: CENTER;
+}
+
+.bloqueDeAccion .button  {
+    -fx-padding: 5;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+#botonSolicitarCarta {
+    -fx-padding: 10px;
+    -fx-text-alignment: CENTER;
+}
+
+.bloqueDeAccion .combo-box  {
+    -fx-border-color: #e2e2e2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-accent: #898989;
+}
+
+.bloqueDeAccion .label {
+    -fx-text-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d8d8d8;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill: #d8d8d8;
+}
+
+.combo-box-popup .list-view .list-cell{
+    -fx-text-fill: #000000;
+}
+
+.bloqueDeAccion .button:hover{
+    -fx-background-color: #424242;
+}
+
+.bloqueDeAccion .button:pressed{
+    -fx-border-color: #898989;
+    -fx-background-color: #424242;
+}
