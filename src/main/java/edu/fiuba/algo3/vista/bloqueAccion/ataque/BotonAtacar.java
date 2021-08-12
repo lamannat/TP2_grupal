@@ -6,11 +6,12 @@ import javafx.scene.control.Button;
 
 public class BotonAtacar extends Button {
 
-    private Pais paisAtacante = null;
-    private Pais paisDefensor = null;
+    private Pais paisAtacante;
+    private Pais paisDefensor;
 
     public BotonAtacar(Juego juego){
         this.setText("Atacar");
+        resetear();
 
         this.setOnAction(e-> {
             if (paisAtacante == null || paisDefensor == null)
@@ -24,7 +25,14 @@ public class BotonAtacar extends Button {
             } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ignored) {}
 
             paisDefensor.removeObserver(vistaBatalla);
+
+            resetear();
         });
+    }
+
+    private void resetear() {
+        paisAtacante = null;
+        paisDefensor = null;
     }
 
     public void setPaisAtacante(Pais paisAtacante) {
