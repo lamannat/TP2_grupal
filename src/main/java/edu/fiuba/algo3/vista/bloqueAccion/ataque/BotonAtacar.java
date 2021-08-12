@@ -22,7 +22,10 @@ public class BotonAtacar extends Button {
 
             try {
                 paisAtacante.paisAtacaAPais(paisDefensor,juego.getBatalla());
-            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ignored) {}
+            } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ignored) {
+                paisAtacante.notifyObservers();
+                paisDefensor.notifyObservers();
+            }
 
             paisDefensor.removeObserver(vistaBatalla);
 

@@ -30,7 +30,6 @@ public class BloqueDeAtaque extends BloqueAccion {
 
     @Override
     public void setDropDown(Pais paisASetear) {
-
         dropDownAtacantes.setPais(paisASetear);
         dropDownDefensores.setPais(paisASetear);
     }
