@@ -28,7 +28,7 @@ public class VistaTerminoElJuego extends Escena {
         this.padre = (VBox) padre;
         this.setUp = setUp;
 
-        Media media = new Media(getClass().getResource("/ganador.mp3").toString());
+        Media media = new Media(getClass().getResource("/musica/ganador.mp3").toString());
         MediaPlayer player = new MediaPlayer(media);
         player.setVolume(0.3);
         this.player = player;

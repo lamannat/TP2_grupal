@@ -12,7 +12,9 @@ public abstract class Escena extends Scene {
     public Escena(Parent padre, ControladorDeEscena controladorDeEscena) {
         super(padre);
         this.controladorDeEscena = controladorDeEscena;
-        this.getStylesheets().addAll("estiloSidePanel.css", "estiloBotones.css");
+        String css = this.getClass().getResource("/css/estiloSidePanel.css").toExternalForm();
+        String css2 = this.getClass().getResource("/css/estiloBotones.css").toExternalForm();
+        this.getStylesheets().addAll(css, css2);
     }
 
     public abstract void mostrar(Stage ventana);

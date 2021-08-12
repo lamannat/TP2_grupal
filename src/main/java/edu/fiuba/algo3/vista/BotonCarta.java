@@ -28,7 +28,7 @@ public class BotonCarta extends Button {
         this.setTooltip(unTooltip);
         this.getStyleClass().addAll("botonFoto", "hoverOscuro");
 
-        Image img = new Image("logo_dar_carta.png");
+        Image img = new Image(getClass().getResourceAsStream("/imagenes/logo_dar_carta.png"));
         ImageView view = new ImageView(img);
         view.setFitHeight(50);
         view.setFitWidth(50);

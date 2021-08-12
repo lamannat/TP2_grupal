@@ -14,6 +14,7 @@ import edu.fiuba.algo3.modelo.simbolo.Comodin;
 import edu.fiuba.algo3.modelo.simbolo.SimboloNormal;
 import javafx.util.Pair;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -127,7 +128,7 @@ public class SetUpJuego implements Observable {
     private List<Carta>  agregarCartas(List<Pais> paises) {
         List<Carta> cartas = new ArrayList<>();
 
-        for (List<String> lineaCartas : LeerArchivo.leerArchivo("tegCartas.txt")) {
+        for (List<String> lineaCartas : LeerArchivo.leerArchivo(getClass().getResourceAsStream("/archivos/tegCartas.txt"))) {
             Pais paisActual = buscarPais(paises, lineaCartas.get(0));
             if (paisActual == null)
                 continue;
@@ -144,7 +145,7 @@ public class SetUpJuego implements Observable {
     }
 
     private void agregarLimitrofes(List<Pais> paises) {
-        for (List<String> lineaPaises : LeerArchivo.leerArchivo("paisesLimitrofes.txt")) {
+        for (List<String> lineaPaises : LeerArchivo.leerArchivo(getClass().getResourceAsStream("/archivos/paisesLimitrofes.txt"))) {
             Pais paisActual = buscarPais(paises, lineaPaises.get(0));
             if (paisActual == null)
                 continue;
@@ -161,7 +162,7 @@ public class SetUpJuego implements Observable {
 
         List<Continente> continentes = new ArrayList<>();
 
-        for (List<String> lineaContinente : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
+        for (List<String> lineaContinente : LeerArchivo.leerArchivo(getClass().getResourceAsStream("/archivos/paisesEnContinentes.txt"))) {
             Continente continente = new Continente(lineaContinente.get(0));
             continentes.add(continente);
             continente.setFichasPorConquistado(Integer.parseInt(lineaContinente.get(1)));
@@ -177,7 +178,7 @@ public class SetUpJuego implements Observable {
     }
 
     private void agregarObjetivos(List<Continente> continentes, Turno turno) {
-        List<List<String>> objetivosNoAsignados = LeerArchivo.leerArchivo("listaDeObjetivos.txt");
+        List<List<String>> objetivosNoAsignados = LeerArchivo.leerArchivo(getClass().getResourceAsStream("/archivos/listaDeObjetivos.txt"));
         Jugador primerJugador = turno.jugadorActual();
 
         do {

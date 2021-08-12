@@ -66,7 +66,7 @@ public class VistaBatalla implements Observer {
                 "-fx-border-style: solid;\n" +
                 "-fx-border-width: 5;");
         layout.getStyleClass().add("bloqueDeAccion");
-        nuevaEscena.getStylesheets().addAll("estiloSidePanel.css");
+        nuevaEscena.getStylesheets().addAll(getClass().getResource("/css/estiloSidePanel.css").toExternalForm());
 
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(labelConquista,elegirTropas,dropDown,botonBatalla);

@@ -36,7 +36,7 @@ public class MazoTest {
         Mazo mazo = new Mazo();
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("Globo"));
         Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("Barco"));
-        Carta carta3 = new Carta(new Pais("Gobi"),new SimboloNormal("Cañon"));
+        Carta carta3 = new Carta(new Pais("Gobi"),new SimboloNormal("canon"));
 
         mazo.agregarCarta(carta1);
         mazo.agregarCarta(carta2);
@@ -52,7 +52,7 @@ public class MazoTest {
         Mazo mazo = new Mazo();
         Carta carta1 = new Carta(new Pais("Argentina"),new SimboloNormal("Globo"));
         Carta carta2 = new Carta(new Pais("Mexico"),new SimboloNormal("Barco"));
-        Carta carta3 = new Carta(new Pais("Gobi"),new SimboloNormal("Cañon"));
+        Carta carta3 = new Carta(new Pais("Gobi"),new SimboloNormal("canon"));
 
         mazo.agregarCarta(carta1);
         mazo.agregarCarta(carta2);
