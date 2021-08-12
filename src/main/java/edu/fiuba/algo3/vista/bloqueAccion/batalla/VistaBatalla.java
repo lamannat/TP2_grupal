@@ -13,7 +13,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class VistaBatalla implements Observer {
     private final Pais paisAtacante;
@@ -68,7 +67,7 @@ public class VistaBatalla implements Observer {
                 "-fx-border-color: #ffcc3d;\n" +
                 "-fx-border-style: solid;\n" +
                 "-fx-border-width: 5;");
-        nuevaEscena.getStylesheets().addAll("estiloSidePanel.css");
+        nuevaEscena.getStylesheets().addAll("css/estiloSidePanel.css");
 
         nuevaVentana.setScene(nuevaEscena);
         nuevaVentana.show();

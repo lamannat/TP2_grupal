@@ -25,7 +25,7 @@ public class BotonObjetivo extends Button {
         this.setTooltip(unTooltip);
         this.getStyleClass().addAll("botonFoto", "hoverOscuro");
 
-        Image img = new Image("logo_objetivos.png");
+        Image img = new Image("imagenes/logo_objetivos.png");
         ImageView view = new ImageView(img);
         view.setFitHeight(50);
         view.setFitWidth(50);

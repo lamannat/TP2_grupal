@@ -42,7 +42,7 @@ public class VistaTitulo extends Escena {
         label2.setPadding(new Insets(25));
 
         // FOTO
-        Image image = new Image("logo_teg.png");
+        Image image = new Image("imagenes/logo_teg.png");
         ImageView logo = new ImageView(image);
 
         // BOTON JUGAR
