@@ -16,6 +16,7 @@ import edu.fiuba.algo3.vista.bloqueAccion.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.bloqueAccion.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.bloqueAccion.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -84,6 +85,7 @@ public class VistaJuego extends Escena implements Observer{
         info.getChildren().addAll(acciones, botonSiguienteTurno);
         info.setAlignment(acciones, Pos.TOP_CENTER);
         info.setAlignment(botonSiguienteTurno, Pos.BOTTOM_CENTER);
+        info.setStyle("-fx-padding: 10px 0px 15px 0px");
 
         AnchorPane mapa = this.setearMapa();
 

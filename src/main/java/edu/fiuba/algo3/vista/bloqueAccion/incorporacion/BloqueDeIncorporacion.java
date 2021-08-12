@@ -61,8 +61,8 @@ public class BloqueDeIncorporacion extends BloqueAccion {
         paisElegido.setOnAction(new DropDownPaisIncorporacionEventHandler(juego, paisElegido, cantidadFichas, incorporar));
         dropDownPaisesParaIncorporar = paisElegido;
 
-        Label labelMostrarFichas = new Label("Se tiene " + juego.jugadorActual().cantidadFichasReservadas() + "\nfichas");
-        Label labelDestino = new Label("Elija pais\ndestino");
+        Label labelMostrarFichas = new Label("Tiene " + juego.jugadorActual().cantidadFichasReservadas() + " fichas");
+        Label labelDestino = new Label("Elija pais destino");
         Label labelCantidadFichas = new Label("Elija cantidad\nde fichas");
 
         juego.jugadorActual().addObserver(cantidadFichas);

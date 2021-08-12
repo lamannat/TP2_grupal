@@ -29,7 +29,6 @@ public class VistaBatalla implements Observer {
 
         this.nuevaVentana = new Stage();
         nuevaVentana.initModality(Modality.APPLICATION_MODAL);
-        nuevaVentana.initStyle(StageStyle.UNDECORATED);
 
         this.botonBatalla = new BotonBatalla(paisDefensor,paisAtacante,nuevaVentana);
 
