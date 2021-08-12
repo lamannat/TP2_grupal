@@ -15,6 +15,7 @@ public class BloqueDeAtaque extends BloqueAccion {
 
     private final Juego juego;
     private DropDownAccion dropDownAtacantes;
+    private DropDownAccion dropDownDefensores;
 
     public BloqueDeAtaque(Juego juego) {
         this.juego = juego;
@@ -29,7 +30,9 @@ public class BloqueDeAtaque extends BloqueAccion {
 
     @Override
     public void setDropDown(Pais paisASetear) {
+
         dropDownAtacantes.setPais(paisASetear);
+        dropDownDefensores.setPais(paisASetear);
     }
 
     public void actualizar() {
@@ -38,6 +41,8 @@ public class BloqueDeAtaque extends BloqueAccion {
         DropDownAccion paisDefensor = new DropDownAccion("Defensor");
         paisDefensor.setActualizacion(() -> paisDefensor.getItems().clear());
         paisDefensor.setOnAction(new DropDownPaisDefensorEventHandler(juego, paisDefensor, botonAtacar));
+
+        dropDownDefensores = paisDefensor;
 
         DropDownAccion paisParaAtacar = new DropDownAccion("Atacante");
         paisParaAtacar.setActualizacion(() -> {
