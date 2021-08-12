@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.vista.bloqueAccion.DropDownAccion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -14,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class VistaBatalla implements Observer {
     private final Pais paisAtacante;
@@ -29,6 +31,12 @@ public class VistaBatalla implements Observer {
 
         this.nuevaVentana = new Stage();
         nuevaVentana.initModality(Modality.APPLICATION_MODAL);
+        nuevaVentana.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                event.consume();
+            }
+        });
 
         this.botonBatalla = new BotonBatalla(paisDefensor,paisAtacante,nuevaVentana);
 
