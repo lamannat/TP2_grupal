@@ -14,6 +14,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.nio.file.Paths;
+
 public class VistaTerminoElJuego extends Escena {
 
     private SetUpJuego setUp;
@@ -25,7 +28,7 @@ public class VistaTerminoElJuego extends Escena {
         this.padre = (VBox) padre;
         this.setUp = setUp;
 
-        Media media = new Media(getClass().getResource("/musica/ganador.mp3").toString());
+        Media media = new Media(getClass().getResource("/ganador.mp3").toString());
         MediaPlayer player = new MediaPlayer(media);
         player.setVolume(0.3);
         this.player = player;

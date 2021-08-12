@@ -12,7 +12,7 @@ public abstract class Escena extends Scene {
     public Escena(Parent padre, ControladorDeEscena controladorDeEscena) {
         super(padre);
         this.controladorDeEscena = controladorDeEscena;
-        this.getStylesheets().addAll("css/estiloSidePanel.css", "css/estiloBotones.css");
+        this.getStylesheets().addAll("estiloSidePanel.css", "estiloBotones.css");
     }
 
     public abstract void mostrar(Stage ventana);

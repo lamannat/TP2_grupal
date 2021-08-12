@@ -20,7 +20,7 @@ public class BotonAbout extends Button {
         this.setTooltip(unTooltip);
         this.getStyleClass().addAll("botonAbout");
 
-        Image img = new Image("imagenes/logo_about.png");
+        Image img = new Image("logo_about.png");
         ImageView view = new ImageView(img);
         view.setFitHeight(50);
         view.setFitWidth(50);

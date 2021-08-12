@@ -20,7 +20,7 @@ public class TableroTest {
 
     private List<Continente> listaDeContientes() {
         List<Continente> continentes = new ArrayList<>();
-        for (List<String> continenteYPaises : LeerArchivo.leerArchivo("archivos/paisesEnContinentes.txt")) {
+        for (List<String> continenteYPaises : LeerArchivo.leerArchivo("paisesEnContinentes.txt")) {
 
             Continente continente = new Continente(continenteYPaises.get(0));
             continentes.add(continente);

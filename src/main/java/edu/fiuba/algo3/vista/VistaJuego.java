@@ -16,6 +16,7 @@ import edu.fiuba.algo3.vista.bloqueAccion.incorporacion.BloqueDeIncorporacion;
 import edu.fiuba.algo3.vista.bloqueAccion.movimiento.BloqueDeMovimiento;
 import edu.fiuba.algo3.vista.bloqueAccion.solicitar.BloqueSolicitarCarta;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -25,6 +26,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,7 +116,7 @@ public class VistaJuego extends Escena implements Observer{
         contenedorMapa.setPrefHeight(ALTO);
         contenedorMapa.setPrefWidth(ANCHO);
 
-        Image image = new Image("imagenes/mapaTEg.jpg");
+        Image image = new Image("mapaTEg.jpg");
         ImageView iv = new ImageView();
         iv.setPreserveRatio(false);
         iv.fitWidthProperty().set(ANCHO);
@@ -137,7 +139,7 @@ public class VistaJuego extends Escena implements Observer{
 
         AnchorPane fichas = new AnchorPane();
 
-        for (List<String> linea : LeerArchivo.leerArchivo("archivos/mapa.txt")) {
+        for (List<String> linea : LeerArchivo.leerArchivo("mapa.txt")) {
             VistaBotonPais boton = new VistaBotonPais(this.juego, linea.get(0), this);
             double x = Integer.parseInt(linea.get(1)), y = Integer.parseInt(linea.get(2));
             x *= ANCHO / 1280.0;
