@@ -101,12 +101,7 @@ public class Pais implements Observable{
     }
 
     public void paisAtacaAPais(Pais paisDefensor, Batalla unaBatalla) throws FichasInsuficientesException, NoEsLimitrofeException, AtaqueAPaisAliadoException {
-        try {
-            puedeAtacarAPais(paisDefensor);
-        } catch (FichasInsuficientesException | NoEsLimitrofeException | AtaqueAPaisAliadoException ignored) {
-            notifyObservers();
-            return;
-        }
+        puedeAtacarAPais(paisDefensor);
 
         EjercitoDeBatalla ejercitoAtacante = this.ejercitoParaAtaque();
         EjercitoDeBatalla ejercitoDefensor = paisDefensor.ejercitoParaDefensa();
